@@ -216,3 +216,4 @@ pip-log.txt
 
 # GW build
 node_modules/
+*.zip
