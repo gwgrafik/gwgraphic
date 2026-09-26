@@ -1,0 +1,14 @@
+{
+  "name": "gwgraphic-website",
+  "private": true,
+  "description": "GW Graphic Design — production website (static build)",
+  "type": "module",
+  "scripts": {
+    "images": "node src/build-images.mjs",
+    "build": "node src/build.mjs",
+    "check": "node src/check.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0"
+  }
+}
