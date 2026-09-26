@@ -1,0 +1,50 @@
+# GW Graphic Design — Apache configuration
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+# HTTPS + canonical host (www)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ https://www.gwgraphic.com%{REQUEST_URI} [R=301,L]
+  # /index.html → / (avoid duplicate URLs)
+  RewriteCond %{THE_REQUEST} \s/+((?:en/|pl/)?)index\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-tkuHIlaYroTnTi6GjPS+joTrCV3o1Lj2e1AGhxiGWys=' 'sha256-IGaFX+b5V7IqJhmXdrl4T+JbOgpi4PePGSAasrGBdpc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+  # long cache for versioned / fingerprinted assets
+  <FilesMatch "\.(avif|webp|jpg|png|svg|woff2|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "public, max-age=600, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType image/svg+xml .svg
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript image/svg+xml application/xml text/xml text/plain application/json
+</IfModule>
+
+# never serve build sources or data
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>

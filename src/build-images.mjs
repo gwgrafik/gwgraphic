@@ -18,8 +18,8 @@ for (const [slug, { src }] of Object.entries(IMAGES)) {
     const base = new URL(`work/${slug}-${w}`, OUT);
     const avif = base.href.replace('file://', '') + '.avif';
     const webp = base.href.replace('file://', '') + '.webp';
-    if (!existsSync(avif)) await sharp(input).resize(w, w).avif({ quality: 50, effort: 6 }).toFile(avif);
-    if (!existsSync(webp)) await sharp(input).resize(w, w).webp({ quality: 74, effort: 6 }).toFile(webp);
+    if (!existsSync(avif)) await sharp(input).resize(w, w).avif({ quality: 50, effort: 3 }).toFile(avif);
+    if (!existsSync(webp)) await sharp(input).resize(w, w).webp({ quality: 74, effort: 4 }).toFile(webp);
     n++;
   }
 }
@@ -27,9 +27,9 @@ console.log(`portfolio: ${n} sizes`);
 
 /* ---------- wood: the supplied texture, only resized/compressed ---------- */
 const wood = await readFile(new URL('wood-original.jpg', SRC));
-for (const w of [900, 1500]) {
-  await sharp(wood).resize(w, w).avif({ quality: 48, effort: 6 }).toFile(new URL(`wood-${w}.avif`, OUT).pathname);
-  await sharp(wood).resize(w, w).webp({ quality: 70, effort: 6 }).toFile(new URL(`wood-${w}.webp`, OUT).pathname);
+for (const w of [800, 1200]) {
+  await sharp(wood).resize(w, w).avif({ quality: 40, effort: 4 }).toFile(new URL(`wood-${w}.avif`, OUT).pathname);
+  await sharp(wood).resize(w, w).webp({ quality: 62, effort: 5 }).toFile(new URL(`wood-${w}.webp`, OUT).pathname);
 }
 console.log('wood: done');
 
