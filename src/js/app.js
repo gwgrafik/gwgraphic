@@ -226,7 +226,8 @@ if (grid) {
   $$('[data-f]').forEach(b => b.addEventListener('click', () => { filter = b.dataset.f; shown = STEP; $$('[data-f]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); apply(); }));
   more.addEventListener('click', () => { const first = list()[shown]; shown += STEP; apply(); if (first) $('button', first).focus(); });
   apply();
-  const G = JSON.parse($('#gallery-data').textContent), lb = $('#lb'), img = $('#lbImg'), cap = $('#lbCap');
+  const G = JSON.parse($('#gallery-data').textContent), lb = $('#lb'), cap = $('#lbCap');
+  const img = document.createElement('img'); img.width = 1000; img.height = 1000; img.decoding = 'async'; $('#lbFig').prepend(img);
   let cur = 0, opener = null;
   const show = k => {
     const vis = list(), idx = vis.findIndex(li => +$('button', li).dataset.g === k);

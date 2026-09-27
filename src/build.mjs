@@ -301,7 +301,7 @@ function home(lang) {
   </div>
 </section>`;
   const gData = GALLERY.map(g => ({ slug: g.slug, alt: g.alt[lang], client: g.client }));
-  const lightbox = `<dialog class="lb" id="lb" aria-label="${esc(t.glTitle.join(' '))}"><div class="lb-in"><figure><img id="lbImg" alt="" width="1000" height="1000"><figcaption id="lbCap"></figcaption></figure>
+  const lightbox = `<dialog class="lb" id="lb" aria-label="${esc(t.glTitle.join(' '))}"><div class="lb-in"><figure id="lbFig"><figcaption id="lbCap"></figcaption></figure>
   <button type="button" class="lb-btn lb-close" data-lb="close" aria-label="${esc(t.close)}">${I.close}</button>
   <button type="button" class="lb-btn lb-prev" data-lb="-1" aria-label="${esc(t.prev)}">${I.prev}</button>
   <button type="button" class="lb-btn lb-next" data-lb="1" aria-label="${esc(t.next)}">${I.next}</button></div></dialog>`;
