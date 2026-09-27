@@ -7,6 +7,7 @@ import { IMAGES } from './images.mjs';
 import { LEGAL } from './legal.mjs';
 
 const OUT = new URL('../public/', import.meta.url);
+const TEST = process.env.GW_TEST === '1'; // test deploy (e.g. /gw/v10/): noindex, canonical still points to the live domain
 const out = p => new URL(p, OUT);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const pad = n => String(n).padStart(2, '0');
@@ -60,7 +61,7 @@ function href(fromDir, target) { // target is a site-root-relative path like 'en
 const homeHref = (fromDir, lang) => href(fromDir, LANGS[lang].dir);
 
 /* ------------------------------------------------------------------ head */
-const HEAD_SCRIPT_HOME = `(function(h){h.className=h.className.replace('no-js','js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!sessionStorage.getItem('gw-intro')){h.classList.add('gate-on');sessionStorage.setItem('gw-intro','1')}}catch(e){}})(document.documentElement)`;
+const HEAD_SCRIPT_HOME = `(function(h){h.className=h.className.replace('no-js','js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!localStorage.getItem('gw-intro-seen')){h.classList.add('gate-on')}}catch(e){}})(document.documentElement)`;
 const HEAD_SCRIPT_PAGE = `document.documentElement.className=document.documentElement.className.replace('no-js','js')`;
 const scriptHashes = [HEAD_SCRIPT_HOME, HEAD_SCRIPT_PAGE].map(s => `'sha256-${createHash('sha256').update(s).digest('base64')}'`);
 
@@ -77,7 +78,7 @@ function head({ lang, dir, title, description, path, alternates, home, extraHead
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${abs(path)}">
 ${alts}
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="${TEST ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'}">
 <meta name="theme-color" content="#070707">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="GW Graphic Design">
@@ -136,11 +137,11 @@ function footer(lang, dir, onHome) {
       <div class="ft-brand"><img src="${root}assets/img/brand/gw-logo-white.svg" width="240" height="163" alt="GW Graphic Design — Advertising in any form" loading="lazy"><p>${esc(t.ftLine)}</p></div>
       <div><h2>${esc(t.ftServices)}</h2><ul>${t.ftServiceLinks.map((s, i) => `<li><a href="${a('dienst-' + SERVICE_KEYS[i])}">${esc(s)}</a></li>`).join('')}</ul></div>
       <div><h2>${esc(t.ftMenu)}</h2><ul><li><a href="${a('projecten')}">${esc(t.nav.projecten)}</a></li><li><a href="${a('werkwijze')}">${esc(t.pcEyebrow)}</a></li><li><a href="${a('reviews')}">${esc(t.nav.reviews)}</a></li><li><a href="${a('over')}">${esc(t.nav.over)}</a></li><li><a href="${a('offerte')}">${esc(t.cta)}</a></li></ul></div>
-      <div><h2>${esc(t.ftContact)}</h2><address>${SITE.name}<br>${SITE.owner}<br>${SITE.locality}, ${lang === 'nl' ? SITE.region : lang === 'en' ? 'North Brabant' : 'Brabancja Północna'}<br><a href="tel:${SITE.phoneHref}">${SITE.phone}</a><br><a href="mailto:${SITE.email}">${SITE.email}</a><br><a href="https://wa.me/${SITE.whatsapp}" rel="noopener" target="_blank">WhatsApp</a></address>
+      <div><h2>${esc(t.ftContact)}</h2><address>${SITE.name}<br>${SITE.owner}<br>${esc(t.ftArea)}<br><a href="tel:${SITE.phoneHref}">${SITE.phone}</a><br><a href="mailto:${SITE.email}">${SITE.email}</a><br><a href="https://wa.me/${SITE.whatsapp}" rel="noopener" target="_blank">WhatsApp</a></address>
         <h2 style="margin-top:22px">${esc(t.ftSocial)}</h2><ul><li><a href="${SITE.social.instagram}" rel="noopener me" target="_blank">Instagram</a></li><li><a href="${SITE.social.facebook}" rel="noopener me" target="_blank">Facebook</a></li><li><a href="${SITE.social.linkedin}" rel="noopener me" target="_blank">LinkedIn</a></li></ul></div>
       <div><h2>${esc(t.ftLegal)}</h2><ul>${legal}<li><button type="button" data-cookie-settings>${esc(t.cookieSettings)}</button></li></ul></div>
     </div>
-    <div class="ft-bottom"><span>© 2026 GW Graphic Design · ${SITE.owner}</span><span>gwgraphic.com · Eindhoven</span></div>
+    <div class="ft-bottom"><span>© 2026 GW Graphic Design · ${SITE.owner}</span><span>gwgraphic.com${SITE.kvk ? ` · KvK ${esc(SITE.kvk)}` : ''}</span></div>
   </div>
 </footer>
 <dialog class="ck" id="ck" aria-labelledby="ckTitle">
@@ -154,7 +155,7 @@ function footer(lang, dir, onHome) {
 </dialog>`;
 }
 
-const i18nJson = t => `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.menu, close: t.close, csEyebrow: t.csEyebrow, csCta: t.csCta, csNext: t.csNext, fErrSummary: t.fErrSummary, fErrRate: t.fErrRate, fErrSend: t.fErrSend, fSending: t.fSending, ckCleared: t.ckCleared }).replace(/</g, '\\u003c')}</script>`;
+const i18nJson = t => `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.menu, close: t.close, csEyebrow: t.csEyebrow, csCta: t.csCta, csNext: t.csNext, csRoute: t.csRoute, fErrSummary: t.fErrSummary, waForm: t.waForm, fLabels: [t.fService, t.fName, t.fCompany, t.fEmail, t.fPhone, t.fPref, t.fMessage], fErrRate: t.fErrRate, fErrSend: t.fErrSend, fSending: t.fSending, ckCleared: t.ckCleared }).replace(/</g, '\\u003c')}</script>`;
 const scriptTag = root => `<script src="${root}assets/js/app.js?v=${JS_V}" defer></script>`;
 
 /* ------------------------------------------------------------------ JSON-LD */
@@ -168,8 +169,10 @@ function jsonLd(lang) {
         slogan: t.h1.join(' '), description: t.description,
         telephone: SITE.phoneHref, email: SITE.email,
         founder: { '@type': 'Person', name: SITE.owner, jobTitle: t.abRole },
-        address: { '@type': 'PostalAddress', addressLocality: SITE.locality, addressRegion: SITE.region, addressCountry: 'NL' },
-        areaServed: [{ '@type': 'City', name: 'Eindhoven' }, { '@type': 'AdministrativeArea', name: 'Noord-Brabant' }, { '@type': 'Country', name: 'NL' }, { '@type': 'Country', name: 'BE' }, { '@type': 'Country', name: 'DE' }],
+        address: { '@type': 'PostalAddress', addressRegion: SITE.region, addressCountry: 'NL' },
+        areaServed: [{ '@type': 'Country', name: 'Netherlands' }, { '@type': 'Country', name: 'Belgium' }, { '@type': 'Country', name: 'Germany' }],
+        ...(SITE.kvk ? { identifier: { '@type': 'PropertyValue', propertyID: 'KvK', value: SITE.kvk } } : {}),
+        ...(SITE.btw ? { vatID: SITE.btw } : {}),
         knowsAbout: t.ftServiceLinks,
         sameAs: Object.values(SITE.social) },
       { '@type': 'WebSite', '@id': SITE.origin + '/#website', url: SITE.origin + '/', name: SITE.name, inLanguage: ['nl', 'en', 'pl'], publisher: { '@id': SITE.origin + '/#business' } },
@@ -183,6 +186,7 @@ function home(lang) {
   const t = T[lang], dir = LANGS[lang].dir, root = dir ? '../' : '';
   const alternates = Object.fromEntries(Object.entries(LANGS).map(([l, v]) => [l, v.dir]));
   const svcName = i => t.services[i].name;
+  const svcOf = p => p.secs.map(([k]) => SERVICE_KEYS.indexOf(k));
   const waHref = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(t.waText)}`;
   const firstPrint = HERO_PRINTS[0][0];
   const heroSizes = '(max-width: 900px) 80vw, 46vw';
@@ -200,6 +204,7 @@ function home(lang) {
   <div class="shade" id="gateShade"></div>
   <div class="gate-lang">${Object.entries(LANGS).map(([l, v]) => `<a href="${href(dir, v.dir)}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${v.label}</a>`).join('')}</div>
   <p class="gate-hint" aria-hidden="true"><i></i>${esc(t.gateHint)}</p>
+  <button class="gate-skip" id="gateSkip" type="button">${esc(t.gateSkip)} <span aria-hidden="true">→</span></button>
 </div>`;
 
   const prints = HERO_PRINTS.map(([slug, client, svc], i) => {
@@ -214,7 +219,7 @@ function home(lang) {
     <div class="hero-copy">
       <p class="flow">${t.flow.map(esc).join(' <i aria-hidden="true">→</i> ')}</p>
       <h1 class="h1" id="h1"><span class="l1">${esc(t.h1[0])}</span> <span class="l2">${esc(t.h1[1])}</span> <span class="l3">${esc(t.h1[2])}</span></h1>
-      <p class="rotl">${esc(t.rotPre)} <span class="rot" id="rot" data-words="${esc(JSON.stringify(t.rot))}"><b>${esc(t.rot[0])}</b></span></p>
+      <p class="rotl">${esc(t.rotPre)} <span class="rot" id="rot">${t.rot.map((w, i) => `<b${i ? ' aria-hidden="true"' : ' class="on"'}>${esc(w)}</b>`).join('')}</span></p>
       <p class="lead">${esc(t.heroLead)}</p>
       <div class="hero-cta"><a class="btn" href="#offerte">${esc(t.cta)}</a><a class="btn btn-ghost" href="#projecten">${esc(t.heroBtn2)}</a></div>
     </div>
@@ -249,7 +254,7 @@ function home(lang) {
         <h3 id="dienst-${key}-h">${esc(s.name)} <span class="svc-sub">${esc(s.sub)}</span></h3>
         <p>${esc(s.text)}</p>
         <ul class="tags">${s.tags.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-        <a class="tlink" href="#offerte" data-pick="${i}">${esc(t.svCta)} ${esc(s.name.toLowerCase())} →</a>
+        <a class="tlink" href="#offerte" data-pick="${i}">${esc(s.cta)} →</a>
       </div>
       <div class="svc-media rv-el">
         <div class="slider" data-slider role="group" aria-roledescription="carousel" aria-label="${esc(s.name)}" tabindex="0">
@@ -270,13 +275,14 @@ function home(lang) {
   <div class="wrap proj-grid">
     ${PROJECTS.map((p, i) => {
       const sizes = i === 0 ? '(max-width: 760px) 92vw, 56vw' : i < 3 ? '(max-width: 760px) 92vw, 40vw' : '(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 24vw';
-      return `<article class="card rv-el">${picture(p.cover, lang, sizes)(root)}<div class="card-info"><span class="card-no">${pad(i + 1)} / ${pad(PROJECTS.length)}</span><h3>${esc(p.name)}</h3><span class="card-svc">${p.svc.map(svcName).map(esc).join(' · ')}</span>${i < 3 ? `<p>${esc(t.projects[p.id])}</p>` : ''}<button type="button" class="open" data-case="${i}" aria-haspopup="dialog">${esc(t.prOpen)}<span class="sr-only">: ${esc(p.name)}</span> ↗</button></div></article>`;
+      return `<article class="card rv-el">${picture(p.cover, lang, sizes)(root)}<div class="card-info"><span class="card-no">${pad(i + 1)} / ${pad(PROJECTS.length)}</span><h3>${esc(p.name)}</h3><span class="card-svc">${svcOf(p).map(svcName).map(esc).join(' · ')}</span>${i < 3 ? `<p>${esc(t.projects[p.id])}</p>` : ''}<button type="button" class="open" data-case="${i}" aria-haspopup="dialog">${esc(t.prOpen)}<span class="sr-only">: ${esc(p.name)}</span> ↗</button></div></article>`;
     }).join('\n    ')}
   </div>
 </section>`;
 
   const caseData = PROJECTS.map(p => ({
-    name: p.name, svc: p.svc.map(svcName).join(' · '), svcIdx: p.svc, desc: t.projects[p.id],
+    name: p.name, svc: svcOf(p).map(svcName).join(' · '), svcIdx: svcOf(p), desc: (p.long && t.projectsLong[p.id]) || t.projects[p.id],
+    route: p.secs.map(([k]) => t.services[SERVICE_KEYS.indexOf(k)].name),
     cover: { slug: p.cover, alt: IMAGES[p.cover].alt[lang] },
     secs: p.secs.map(([k, imgs]) => ({ title: svcName(SERVICE_KEYS.indexOf(k)), imgs: imgs.map(s => ({ slug: s, alt: IMAGES[s].alt[lang] })) })),
     result: t.csResult(p.secs.length)
@@ -296,7 +302,7 @@ function home(lang) {
       <div class="rv-ctrl"><button type="button" id="rvPrev" aria-label="${esc(t.rvPrev)}">${I.prev}</button><span id="rvCount" aria-live="polite">01 / ${pad(REVIEWS.length)}</span><button type="button" id="rvNext" aria-label="${esc(t.rvNext)}">${I.next}</button></div>
     </div>
     <div class="rv-stage">
-      ${REVIEWS.map((r, i) => `<figure class="rv${i === 0 ? ' on' : ''}"><blockquote lang="en"><p>“${esc(r.text)}”</p></blockquote><figcaption><b>${esc(r.name)}</b>${r.company ? `<span>${esc(r.company)}</span>` : ''}<span class="g">${I.g}${esc(t.rvSource)}</span><span class="sr-only">${esc(t.rvStars)}</span></figcaption></figure>`).join('\n      ')}
+      ${REVIEWS.map((r, i) => `<figure class="rv${i === 0 ? ' on' : ''}">${r[lang] ? `<blockquote lang="${lang}"><p>“${esc(r[lang])}”</p></blockquote><p class="rv-tr">${esc(t.rvTr)}</p><details class="rv-orig"><summary>${esc(t.rvOrig)}</summary><p lang="en">${esc(r.text)}</p></details>` : `<blockquote lang="en"><p>“${esc(r.text)}”</p></blockquote>`}<figcaption><b>${esc(r.name)}</b>${r.company ? `<span>${esc(r.company)}</span>` : ''}<span class="g">${I.g}${esc(t.rvSource)}</span><span class="sr-only">${esc(t.rvStars)}</span></figcaption></figure>`).join('\n      ')}
     </div>
     <p class="rv-foot"><a href="${SITE.reviewsUrl}" rel="noopener" target="_blank">${esc(t.rvAll)} ↗</a><small>${esc(t.rvLangNote)}</small></p>
   </div>
@@ -304,7 +310,7 @@ function home(lang) {
 
   const about = `<section class="sec dark wm wm-left" id="over" aria-labelledby="over-h">
   <div class="wrap about">
-    <figure class="plank rv-el"><img src="${root}assets/img/brand/gw-mark-black.svg" width="300" height="300" alt="" loading="lazy"><figcaption>GW Graphic Design · Eindhoven</figcaption></figure>
+    <figure class="plank rv-el"><img src="${root}assets/img/brand/gw-mark-black.svg" width="300" height="300" alt="" loading="lazy"><figcaption>GW Graphic Design</figcaption></figure>
     <div class="about-copy rv-el">
       <span class="eyebrow">05 <b>/</b> ${esc(t.abEyebrow)}</span>
       <h2 class="h2" id="over-h">${esc(t.abTitle[0])} ${esc(t.abTitle[1])} <em>${esc(t.abTitle[2])}</em></h2>
@@ -316,7 +322,7 @@ function home(lang) {
   </div>
 </section>`;
 
-  const chips = [...t.services.map(s => s.name), t.fOther];
+  const chips = [...t.services.map((s, i) => [SERVICE_KEYS[i], s.name]), ['anders', t.fOther]];
   const quote = `<section class="sec light" id="offerte" aria-labelledby="offerte-h">
   <div class="wrap quote">
     <div class="quote-intro">
@@ -326,24 +332,25 @@ function home(lang) {
       <div class="alts"><a href="${waHref}" rel="noopener" target="_blank">${I.wa}WhatsApp</a><a href="tel:${SITE.phoneHref}">${I.phone}${SITE.phone}</a><a href="mailto:${SITE.email}">${I.mail}${SITE.email}</a></div>
     </div>
     <div class="fcard">
-      <form id="quoteForm" action="${root}send.php" method="post" novalidate>
+      <form id="quoteForm" action="${root}send.php" method="post" novalidate data-wa="${SITE.whatsapp}">
         <input type="hidden" name="lang" value="${lang}">
         <input type="hidden" name="ts" value="" data-ts>
         <fieldset>
           <legend>${esc(t.fService)}</legend>
           <p class="hint">${esc(t.fServiceHint)}</p>
-          <div class="chips">${chips.map((c, i) => `<label class="chip"><input type="checkbox" name="service[]" value="${esc(c)}" data-i="${i}"><span>${i < 6 ? `<small>${pad(i + 1)}</small>` : '<small>+</small>'}${esc(c)}</span></label>`).join('')}</div>
+          <div class="chips">${chips.map(([k, c], i) => `<label class="chip"><input type="checkbox" name="service[]" value="${k}" data-i="${i}" data-label="${esc(c)}"><span>${i < 6 ? `<small>${pad(i + 1)}</small>` : '<small>+</small>'}${esc(c)}</span></label>`).join('')}</div>
         </fieldset>
         <div class="fields">
           <div class="field"><label for="f-name">${esc(t.fName)} <small>(${esc(t.fRequired)})</small></label><input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="f-name-err" data-err="${esc(t.fErrName)}"><p class="ferr" id="f-name-err"></p></div>
           <div class="field"><label for="f-company">${esc(t.fCompany)} <small>(${esc(t.fOptional)})</small></label><input id="f-company" name="company" type="text" autocomplete="organization" maxlength="120"></div>
           <div class="field"><label for="f-email">${esc(t.fEmail)} <small>(${esc(t.fRequired)})</small></label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="160" required aria-describedby="f-email-err" data-err="${esc(t.fErrEmail)}"><p class="ferr" id="f-email-err"></p></div>
-          <div class="field"><label for="f-phone">${esc(t.fPhone)} <small>(${esc(t.fOptional)})</small></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+          <div class="field"><label for="f-phone">${esc(t.fPhone)} <small>(${esc(t.fOptional)})</small></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" aria-describedby="f-phone-err" data-err="${esc(t.fErrPhone)}"><p class="ferr" id="f-phone-err"></p></div>
+          <fieldset class="field full pref"><legend>${esc(t.fPref)}</legend><div class="pref-opts">${['email', 'phone', 'whatsapp'].map((v, i) => `<label><input type="radio" name="contact_pref" value="${v}"${i === 0 ? ' checked' : ''}><span>${esc(t.fPrefOpts[i])}</span></label>`).join('')}</div></fieldset>
           <div class="field full"><label for="f-message">${esc(t.fMessage)} <small>(${esc(t.fRequired)})</small></label><textarea id="f-message" name="message" rows="5" maxlength="3000" required placeholder="${esc(t.fMessagePh)}" aria-describedby="f-message-err" data-err="${esc(t.fErrMessage)}"></textarea><p class="ferr" id="f-message-err"></p></div>
           <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" type="text" name="website" tabindex="-1" autocomplete="off"></div>
         </div>
         <p class="fpriv">${esc(t.fPrivacy)} <a href="${href(dir, dir + LEGAL_SLUGS.privacy[lang])}">${esc(t.fPrivacyLink)}</a>.</p>
-        <button class="btn" type="submit" id="fSend">${esc(t.fSend)}</button>
+        <div class="factions"><button class="btn" type="submit" id="fSend">${esc(t.fSend)}</button><button class="btn btn-ghost" type="button" id="fWa">${I.wa}${esc(t.fWa)}</button></div>
         <p class="fstatus" id="fStatus" role="alert"></p>
       </form>
       <div class="fdone" id="fDone" tabindex="-1" role="status">${I.check}<h3>${esc(t.fDoneTitle)}</h3><p>${esc(t.fDoneText)}</p></div>

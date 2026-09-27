@@ -1,4 +1,6 @@
-# GW Graphic Design — production website
+# GW Graphic Design — production website (V10)
+
+**V10 changes on top of V09:** the copy is rewritten in NL/EN/PL, written in the first person because this is a one-person studio. Services are reordered: Branding, Lettering/wraps (vehicles, shop windows, glass), Workwear, Print, Websites, Promotional items. Each service has its own CTA that preselects it in the form. The four projects with the most material (Kristofix, Maniek Diensten, PMK Klusjesman, Podtech) get a longer case-study text plus a route of the services made for them. Reviews on the NL and PL pages show a clearly marked translation with the original English underneath. The form gains a preferred-contact field (email, phone, WhatsApp) and a "Send via WhatsApp" button. The intro runs a little longer, plays only on the first visit ever and has a skip button. No city is shown in the visible copy (there is no public office). The area served is shown instead: the Netherlands, Belgium and Germany.
 
 Final production build of **www.gwgraphic.com**.
 
@@ -36,6 +38,7 @@ npm install
 npm run images   # only when source images change (slow: AVIF encoding)
 npm run build
 npm run check    # must print "OK — no errors"
+npm run build:test   # same, but every page gets noindex (for the test copy at /gw/v10/)
 ```
 
 Local preview with the form handler: `cd public && php -S 127.0.0.1:8080`.
@@ -51,13 +54,13 @@ Local preview with the form handler: `cd public && php -S 127.0.0.1:8080`.
 
 | Name | Type | Purpose | Lifetime |
 |---|---|---|---|
-| `gw-intro` | sessionStorage | Marks that the intro has already played this session | until the tab closes |
+| `gw-intro-seen` | localStorage | Marks that the visitor has seen the intro (it then never plays again) | until cleared via Cookie settings or the browser |
 
 There are **no cookies, no analytics, no tracking and no third-party resources**. Fonts are self-hosted and nothing loads from Google or elsewhere. So there is **no consent banner**, because nothing needs consent. The footer link **Cookie-instellingen** opens a dialog that says exactly this and lets visitors clear the stored value. If analytics are ever added, they must stay blocked until consent is given, with Accept, Reject and Preferences shown as equally easy choices, and the cookie policy must be updated first.
 
 ## Hero intro (V07)
 
-- It plays once per browser session. It **never blocks**: it continues on its own after about 2.4 s, and any click, key, scroll or touch skips it straight away.
+- It plays **only on the first visit ever** (localStorage). It lasts about 4.2 s plus a 1.8 s zoom, and the page stays usable: the **Skip intro** button or Escape closes it in about 0.4 s, and clicking the logo enters with the zoom.
 - `prefers-reduced-motion` means no intro and a static final hero.
 - With JavaScript off there is no intro and the page is fully usable.
 - The rings use a CSS repeating radial gradient with a radial mask. The mark is inline SVG built from the original vector. The zoom uses the Web Animations API (`transform`/`opacity`). There is no video, GIF or animation library.
@@ -83,12 +86,12 @@ There are **no cookies, no analytics, no tracking and no third-party resources**
 
 These facts could not be verified anywhere in the existing project, so they are **not shown** on the site (no placeholders). Add them to `src/legal.mjs` (Colofon / legal notice, and the controller section of the privacy policy) and optionally to the JSON-LD in `src/build.mjs`, then rebuild:
 
-1. **KvK number** (Chamber of Commerce). Dutch businesses must show it on their website.
+1. **KvK number** (Chamber of Commerce). Dutch businesses must show it on their website. Fill in `SITE.kvk` in `src/content.mjs` (and `SITE.btw`) and rebuild: it then appears in the footer, the Colofon and the schema automatically.
 2. **BTW-ID / VAT number**. Must be shown if applicable.
-3. **Business address**, or a correspondence address if the home address should not be public. Only the locality (Eindhoven, Noord-Brabant) is used now.
+3. **Business address**, or a correspondence address if the home address should not be public. Only the region (Noord-Brabant) is used now, and no city is shown on purpose.
 4. **Legal form** (for example eenmanszaak), for the colofon.
 5. **Hosting and email provider names and their location** (EU or not). They are described by category in the privacy policy now, so name them if you want to be fully specific.
 6. **Confirm the Google reviews link**. `SITE.reviewsUrl` is the Maps search URL used in V08. A direct Google Business Profile review link is better if you have one.
-7. **Optional portrait photo of Grzegorz** for the About section. It currently shows the wood block with the burned-in GW mark, with no placeholder text.
+7. The About section intentionally uses the wood block with the burned-in GW mark instead of a portrait.
 
 Verified values used on the site: GW Graphic Design · Grzegorz Woźniak · Eindhoven, Noord-Brabant · +31 6 44 31 94 15 · design@gwgraphic.com · Instagram `gw_graphic_design` · Facebook `GregWgraphicdesign` · LinkedIn `in/gwgraphic` (all taken from V07/V08). The reviews are the six authentic Google reviews supplied in V07/V08, unchanged, and no rating count or aggregate score is claimed.

@@ -1,33 +1,34 @@
-// All copy for the site, per language. Dutch is the primary market.
-// Only verified facts: no invented numbers, ratings, addresses or clients.
+// All copy for the site, per language.
+// PL is the source of meaning, NL is the primary language of the site (served at /), EN third.
+// Only verified facts: no invented numbers, ratings, addresses, clients or promises.
 
 export const SITE = {
   origin: 'https://www.gwgraphic.com',
   name: 'GW Graphic Design',
   owner: 'Grzegorz Woźniak',
-  phone: '+31\u00a06\u00a044\u00a031\u00a094\u00a015',
+  phone: '+31 6 44 31 94 15',
   phoneHref: '+31644319415',
   whatsapp: '31644319415',
   email: 'design@gwgraphic.com',
-  locality: 'Eindhoven',
-  region: 'Noord-Brabant',
+  region: 'Noord-Brabant',       // no public office: region only, no city in visible copy
+  kvk: '',                        // fill in to show on the site (Colofon + schema); empty = hidden
+  btw: '',                        // idem
   social: {
     instagram: 'https://www.instagram.com/gw_graphic_design/',
     facebook: 'https://www.facebook.com/GregWgraphicdesign',
     linkedin: 'https://www.linkedin.com/in/gwgraphic'
   },
-  reviewsUrl: 'https://www.google.com/maps/search/?api=1&query=GW%20Graphic%20Design%20Eindhoven',
-  updated: '2026-09-26'
+  reviewsUrl: 'https://www.google.com/maps/search/?api=1&query=GW%20Graphic%20Design',
+  updated: '2026-09-27'
 };
 
-// Paths are relative to the site root. Home pages live at /, /en/, /pl/.
+// Home pages live at /, /en/, /pl/.
 export const LANGS = {
   nl: { dir: '', label: 'NL', name: 'Nederlands', locale: 'nl_NL' },
   en: { dir: 'en/', label: 'EN', name: 'English', locale: 'en_GB' },
   pl: { dir: 'pl/', label: 'PL', name: 'Polski', locale: 'pl_PL' }
 };
 
-// Legal pages: key → slug per language
 export const LEGAL_SLUGS = {
   privacy: { nl: 'privacybeleid.html', en: 'privacy.html', pl: 'polityka-prywatnosci.html' },
   cookies: { nl: 'cookiebeleid.html', en: 'cookies.html', pl: 'polityka-cookies.html' },
@@ -36,364 +37,450 @@ export const LEGAL_SLUGS = {
   a11y: { nl: 'toegankelijkheid.html', en: 'accessibility.html', pl: 'dostepnosc.html' }
 };
 
-// Service → images shown in the service slider (keys from images.mjs)
+// Service order (V10): Branding, Lettering/wraps, Apparel, Print, Websites, Promo items.
+// Keys double as anchors (#dienst-<key>) and as form values sent to send.php.
 export const SERVICE_IMAGES = {
   branding: ['kristofix-logo-op-papier', 'maniek-diensten-logo', 'patera-klussenbedrijf-logo'],
+  belettering: ['kristofix-bus-belettering-zijkant', 'pmk-klusjesman-bussen-belettering', 'agm-montage-bussen-belettering', 'weldpolako-bedrijfsbussen-belettering', 'patera-klussenbedrijf-autobelettering'],
   kleding: ['maniek-diensten-bedrijfskleding', 'podtech-t-shirts', 'rijschool-simpel-weg-kleding'],
   drukwerk: ['maniek-diensten-visitekaartjes', 'spoko-flyers', 'dreamszone-roll-up-banner', 'spc-construction-spandoek', 'dpk-bouw-beachflag'],
-  voertuigen: ['kristofix-bus-belettering-zijkant', 'pmk-klusjesman-bussen-belettering', 'agm-montage-bussen-belettering', 'weldpolako-bedrijfsbussen-belettering'],
   websites: ['kristofix-website', 'maniek-diensten-website'],
   gadgets: ['palmo-trans-magneetborden', 'gk-cars-kleding-mokken', 'holografische-stickers', 'custom-garage-eindhoven-stickers']
 };
 export const SERVICE_KEYS = Object.keys(SERVICE_IMAGES);
 
-// Hero stage (V07): one print per rotator word, in the same order.
+// Hero stage: one print per rotator word, same order as the words.
 export const HERO_PRINTS = [
   ['kristofix-logo-op-papier', 'Kristofix', 'branding'],
-  ['kristofix-bus-belettering-zijkant', 'Kristofix', 'voertuigen'],
+  ['kristofix-bus-belettering-zijkant', 'Kristofix', 'belettering'],
   ['maniek-diensten-bedrijfskleding', 'Maniek Diensten', 'kleding'],
-  ['palmo-trans-magneetborden', 'Palmo-Trans', 'gadgets'],
   ['maniek-diensten-visitekaartjes', 'Maniek Diensten', 'drukwerk'],
-  ['kristofix-website', 'Kristofix', 'websites']
+  ['kristofix-website', 'Kristofix', 'websites'],
+  ['palmo-trans-magneetborden', 'Palmo-Trans', 'gadgets']
 ];
 
-// Projects (complete client identities). svc = indexes into SERVICE_KEYS.
+// Projects. secs are listed in the order the brand was built (the "route" shown in the case study).
+// Only media that were actually made for that client.
 export const PROJECTS = [
-  { id: 'kristofix', name: 'Kristofix', svc: [0, 2, 3, 4], cover: 'kristofix-bus-belettering-zijkant',
+  { id: 'kristofix', name: 'Kristofix', cover: 'kristofix-bus-belettering-zijkant', long: true,
     secs: [['branding', ['kristofix-logo', 'kristofix-logo-op-papier']], ['drukwerk', ['kristofix-visitekaartjes']],
-      ['voertuigen', ['kristofix-bus-belettering-voorzijde', 'kristofix-bus-belettering-schuin-achter', 'kristofix-bus-belettering-achterzijde']], ['websites', ['kristofix-website']]] },
-  { id: 'maniek-diensten', name: 'Maniek Diensten', svc: [0, 1, 2, 4], cover: 'maniek-diensten-bedrijfskleding',
-    secs: [['branding', ['maniek-diensten-logo', 'maniek-diensten-logo-op-papier']], ['kleding', ['maniek-diensten-bedrijfskleding']],
-      ['drukwerk', ['maniek-diensten-visitekaartjes']], ['websites', ['maniek-diensten-website']]] },
-  { id: 'patera', name: 'Patera Klussenbedrijf', svc: [0, 1, 3], cover: 'patera-klussenbedrijf-autobelettering',
-    secs: [['branding', ['patera-klussenbedrijf-logo']], ['kleding', ['patera-klussenbedrijf-t-shirts']], ['voertuigen', ['patera-klussenbedrijf-autobelettering']]] },
-  { id: 'custom-garage', name: 'Custom Garage Eindhoven', svc: [0, 1, 5], cover: 'custom-garage-eindhoven-hoodies',
-    secs: [['branding', ['custom-garage-eindhoven-logo']], ['kleding', ['custom-garage-eindhoven-hoodies']], ['gadgets', ['custom-garage-eindhoven-stickers']]] },
-  { id: 'podtech', name: 'Podtech', svc: [0, 1], cover: 'podtech-t-shirts',
+      ['belettering', ['kristofix-bus-belettering-voorzijde', 'kristofix-bus-belettering-schuin-achter', 'kristofix-bus-belettering-achterzijde']], ['websites', ['kristofix-website']]] },
+  { id: 'maniek-diensten', name: 'Maniek Diensten', cover: 'maniek-diensten-bedrijfskleding', long: true,
+    secs: [['branding', ['maniek-diensten-logo', 'maniek-diensten-logo-op-papier']], ['drukwerk', ['maniek-diensten-visitekaartjes']],
+      ['kleding', ['maniek-diensten-bedrijfskleding']], ['websites', ['maniek-diensten-website']]] },
+  { id: 'pmk-klusjesman', name: 'PMK Klusjesman', cover: 'pmk-klusjesman-bussen-belettering', long: true,
+    secs: [['belettering', ['pmk-klusjesman-bussen-belettering']], ['kleding', ['pmk-klusjesman-t-shirts-petten']], ['drukwerk', ['pmk-klusjesman-bouwbord', 'pmk-klusjesman-visitekaartjes']]] },
+  { id: 'podtech', name: 'Podtech', cover: 'podtech-t-shirts', long: true,
     secs: [['branding', ['podtech-logo']], ['kleding', ['podtech-t-shirts', 'podtech-werkshirts', 'podtech-jassen', 'podtech-softshell-jassen', 'podtech-werkbroeken']]] },
-  { id: 'weldpolako', name: 'WeldPolako', svc: [0, 3, 1], cover: 'weldpolako-bedrijfsbussen-belettering',
-    secs: [['branding', ['weldpolako-logo']], ['voertuigen', ['weldpolako-bedrijfsbussen-belettering']], ['kleding', ['weldpolako-bedrijfskleding']]] },
-  { id: 'pmk-klusjesman', name: 'PMK Klusjesman', svc: [3, 1, 2], cover: 'pmk-klusjesman-bussen-belettering',
-    secs: [['voertuigen', ['pmk-klusjesman-bussen-belettering']], ['kleding', ['pmk-klusjesman-t-shirts-petten']], ['drukwerk', ['pmk-klusjesman-bouwbord', 'pmk-klusjesman-visitekaartjes']]] }
+  { id: 'patera', name: 'Patera Klussenbedrijf', cover: 'patera-klussenbedrijf-autobelettering',
+    secs: [['branding', ['patera-klussenbedrijf-logo']], ['kleding', ['patera-klussenbedrijf-t-shirts']], ['belettering', ['patera-klussenbedrijf-autobelettering']]] },
+  { id: 'weldpolako', name: 'WeldPolako', cover: 'weldpolako-bedrijfsbussen-belettering',
+    secs: [['branding', ['weldpolako-logo']], ['belettering', ['weldpolako-bedrijfsbussen-belettering']], ['kleding', ['weldpolako-bedrijfskleding']]] },
+  { id: 'custom-garage', name: 'Custom Garage Eindhoven', cover: 'custom-garage-eindhoven-hoodies',
+    secs: [['branding', ['custom-garage-eindhoven-logo']], ['kleding', ['custom-garage-eindhoven-hoodies']], ['gadgets', ['custom-garage-eindhoven-stickers']]] }
 ];
 
-// Authentic Google reviews (as published, in English). No ratings/counts are invented.
+// Authentic Google reviews. `text` is the published text (English); translations are marked as such on the page.
 export const REVIEWS = [
-  { name: 'Marcin P.', company: 'Patera Klussenbedrijf', text: 'Professional design and a very creative approach to the project. All changes were spot on and consulted at every stage. A true expert in his field. I wholeheartedly recommend cooperation with GW Graphic. Regards and thank you for a great project.' },
-  { name: 'Catherine Z.', company: 'Dreamszone Evenementen', text: 'Fantastic collaboration is the first thing to mention. The logical and conscientious approach to the subject ensures that you will remain our advertising material provider for a long time. The logo you designed for us, Grzesiu, receives nothing but praise. The T-shirts make us noticeable and professional. Thank you so much, and we recommend you wholeheartedly.' },
-  { name: 'Konrad G.', company: '', text: 'Great designs and execution. And most importantly — great contact. Discussing projects and ideas at an early stage was something that really brought my company to life! 6/5 stars!' },
-  { name: 'Joanna P.', company: 'Fysiotherapie WeMove', text: 'Thank you for the personalized T-shirts and sweatshirts, thanks to which we could look better on Children’s Day in The Hague. Very easy and quick contact and shipping. I heartily recommend it!' },
-  { name: 'Bartosz M.', company: 'Bartosz Infra', text: 'Highly recommended! A company run with passion! Everything handled without the slightest issue!' },
-  { name: 'Elwira M.', company: 'MATU – home is You', text: 'I heartily recommend it, great project, good communication and quick implementation.' }
+  { name: 'Marcin P.', company: 'Patera Klussenbedrijf',
+    text: 'Professional design and a very creative approach to the project. All changes were spot on and consulted at every stage. A true expert in his field. I wholeheartedly recommend cooperation with GW Graphic. Regards and thank you for a great project.',
+    nl: 'Professioneel ontwerp en een heel creatieve aanpak van het project. Alle aanpassingen waren raak en werden bij elke stap overlegd. Een echte vakman. Ik raad samenwerking met GW Graphic van harte aan. Groeten en bedankt voor een geweldig project.',
+    pl: 'Profesjonalny projekt i bardzo kreatywne podejście. Wszystkie zmiany były trafione i konsultowane na każdym etapie. Prawdziwy fachowiec w swojej dziedzinie. Z całego serca polecam współpracę z GW Graphic. Pozdrawiam i dziękuję za świetny projekt.' },
+  { name: 'Catherine Z.', company: 'Dreamszone Evenementen',
+    text: 'Fantastic collaboration is the first thing to mention. The logical and conscientious approach to the subject ensures that you will remain our advertising material provider for a long time. The logo you designed for us, Grzesiu, receives nothing but praise. The T-shirts make us noticeable and professional. Thank you so much, and we recommend you wholeheartedly.',
+    nl: 'Allereerst: een fantastische samenwerking. Door je logische en zorgvuldige aanpak blijf je nog lang onze leverancier van reclamemateriaal. Het logo dat je voor ons ontwierp, Grzesiu, krijgt alleen maar complimenten. Dankzij de T-shirts vallen we op en zien we er professioneel uit. Heel erg bedankt, we raden je van harte aan.',
+    pl: 'Przede wszystkim fantastyczna współpraca. Dzięki logicznemu i sumiennemu podejściu na długo zostaniesz naszym dostawcą materiałów reklamowych. Logo, które dla nas zaprojektowałeś, Grzesiu, zbiera same pochwały. Dzięki koszulkom jesteśmy widoczni i wyglądamy profesjonalnie. Bardzo dziękujemy i z całego serca polecamy.' },
+  { name: 'Konrad G.', company: '',
+    text: 'Great designs and execution. And most importantly — great contact. Discussing projects and ideas at an early stage was something that really brought my company to life! 6/5 stars!',
+    nl: 'Geweldige ontwerpen en uitvoering. En het belangrijkste: goed contact. Door projecten en ideeën al vroeg te bespreken kwam mijn bedrijf echt tot leven! 6/5 sterren!',
+    pl: 'Świetne projekty i wykonanie. A co najważniejsze – świetny kontakt. Omawianie projektów i pomysłów na wczesnym etapie naprawdę tchnęło życie w moją firmę! 6/5 gwiazdek!' },
+  { name: 'Joanna P.', company: 'Fysiotherapie WeMove',
+    text: 'Thank you for the personalized T-shirts and sweatshirts, thanks to which we could look better on Children’s Day in The Hague. Very easy and quick contact and shipping. I heartily recommend it!',
+    nl: 'Bedankt voor de gepersonaliseerde T-shirts en sweaters, waardoor we er op Kinderdag in Den Haag beter uitzagen. Heel makkelijk en snel contact en een snelle verzending. Van harte aanbevolen!',
+    pl: 'Dziękuję za personalizowane koszulki i bluzy, dzięki którym lepiej się prezentowaliśmy na Dniu Dziecka w Hadze. Bardzo łatwy i szybki kontakt oraz wysyłka. Serdecznie polecam!' },
+  { name: 'Bartosz M.', company: 'Bartosz Infra',
+    text: 'Highly recommended! A company run with passion! Everything handled without the slightest issue!',
+    nl: 'Een echte aanrader! Een bedrijf dat met passie wordt gerund! Alles zonder het minste probleem geregeld!',
+    pl: 'Gorąco polecam! Firma prowadzona z pasją! Wszystko załatwione bez najmniejszego problemu!' },
+  { name: 'Elwira M.', company: 'MATU – home is You',
+    text: 'I heartily recommend it, great project, good communication and quick implementation.',
+    nl: 'Van harte aanbevolen: mooi ontwerp, goede communicatie en snelle uitvoering.',
+    pl: 'Serdecznie polecam: świetny projekt, dobra komunikacja i szybka realizacja.' }
 ];
 
 export const T = {
-/* =============================== NL =============================== */
+/* =============================== NL (primary) =============================== */
 nl: {
-  title: 'GW Graphic Design Eindhoven | Logo, reclame, autobelettering, kleding & webdesign',
-  description: 'GW Graphic Design in Eindhoven: logo & huisstijl, drukwerk, bedrijfskleding, autobelettering, websites en reclame. Van ontwerp tot productie en montage.',
+  title: 'GW Graphic Design | Reclame, huisstijl, autobelettering en websites',
+  description: 'Logo en huisstijl, autobelettering, bedrijfskleding, drukwerk en websites. Ontwerp, productie en montage door één vakman in Nederland, België en Duitsland.',
   ogTitle: 'GW Graphic Design | Reclame in elke vorm',
   skip: 'Naar de inhoud',
   homeAria: 'GW Graphic Design, naar de homepage',
   navAria: 'Hoofdmenu', langAria: 'Taal', menu: 'Menu', close: 'Sluiten',
-  nav: { diensten: 'Diensten', projecten: 'Projecten', reviews: 'Reviews', over: 'Over', contact: 'Contact' },
+  nav: { diensten: 'Diensten', projecten: 'Projecten', reviews: 'Reviews', over: 'Over mij', contact: 'Contact' },
   cta: 'Offerte aanvragen',
-  gateHint: 'Klik op het logo', gateAria: 'Open de website',
+  gateHint: 'Klik op het logo', gateAria: 'Naar de website', gateSkip: 'Intro overslaan',
   flow: ['Ontwerp', 'Productie', 'Montage'],
-  kicker: 'Grafisch ontwerp & reclame uit Eindhoven',
   h1: ['Reclame', 'in elke', 'vorm.'],
-  rotPre: 'Eén partner voor je',
-  rot: ['logo', 'bedrijfsauto', 'bedrijfskleding', 'relatiegeschenken', 'drukwerk', 'website'],
-  heroLead: 'Van logo tot voertuig. Ontwerp, productie en montage door één studio in Eindhoven, voor bedrijven in Nederland, België en Duitsland.',
+  rotPre: 'Jouw partner voor',
+  rot: ['huisstijl', 'autobelettering', 'bedrijfskleding', 'drukwerk', 'websites', 'relatiegeschenken'],
+  heroLead: 'Ik ontwerp, produceer en monteer: van logo tot volledig beletterde bedrijfsbus. Voor bedrijven in heel Nederland, België en Duitsland, met één aanspreekpunt van begin tot eind.',
   heroBtn2: 'Bekijk projecten',
-  heroMeta: ['Eindhoven, Noord-Brabant', 'Nederland · België · Duitsland', 'Google reviews'],
-  stageAria: 'Bekijk de dienst',
+  heroMeta: ['Nederland · België · Duitsland', 'Montage op locatie', 'Google reviews'],
+  stageAria: 'Bekijk deze dienst',
 
   svEyebrow: 'Diensten',
-  svTitle: ['Zes vakgebieden.', 'Eén GW-standaard.'],
-  svIntro: 'Van je logo tot de belettering op je bus: elk onderdeel van je merk komt uit dezelfde hand. Dezelfde kleuren, dezelfde kwaliteit en één aanspreekpunt.',
+  svTitle: ['Zes vakgebieden.', 'Eén herkenbaar merk.'],
+  svIntro: 'Je logo, je bus, de shirts van je team en je website moeten eruitzien als één bedrijf. Daarom maak ik het allemaal: dezelfde kleuren, dezelfde bestanden en één persoon die verantwoordelijk is voor het resultaat.',
   services: [
-    { name: 'Branding', sub: 'Logo & huisstijl', text: 'Een logo laten maken dat werkt op een visitekaartje én op een bus van zes meter. We ontwerpen je logo en huisstijl, met kleuren en lettertypes, en leveren alle bestanden die drukkers en webbouwers nodig hebben.', tags: ['Logo-ontwerp', 'Huisstijl', 'Merkrichtlijnen', 'Bestanden voor druk en web'] },
-    { name: 'Kleding', sub: 'Bedrijfskleding bedrukken', text: 'T-shirts, polo’s, hoodies, jassen en werkkleding met je logo, bedrukt met DTF of flex. Voor je team, een evenement of je eigen merchandise.', tags: ['T-shirts en polo’s', 'Hoodies en jassen', 'Werkkleding', 'DTF- en flexdruk'] },
-    { name: 'Drukwerk', sub: 'Van visitekaartje tot spandoek', text: 'Visitekaartjes, flyers, posters, roll-ups, spandoeken, vlaggen, stickers en borden. Ontworpen in dezelfde stijl als de rest van je merk en klaar voor productie.', tags: ['Visitekaartjes', 'Flyers en posters', 'Roll-ups en spandoeken', 'Vlaggen, stickers en borden'] },
-    { name: 'Voertuigen', sub: 'Autobelettering & wraps', text: 'Je bedrijfswagen rijdt elke dag langs potentiële klanten. We ontwerpen de belettering op maat van jouw model en monteren de folie zelf: van losse letters en raambelettering tot een complete wrap.', tags: ['Autobelettering', 'Bedrijfswagen belettering', 'Wraps', 'Raambelettering', 'Montage'] },
-    { name: 'Websites', sub: 'Webdesign', text: 'Een snelle bedrijfswebsite die past bij je bus en je visitekaartje, goed werkt op elke telefoon en gevonden wordt in Google.', tags: ['Ontwerp op maat', 'Mobielvriendelijk', 'Vindbaar in Google'] },
-    { name: 'Gadgets', sub: 'Relatiegeschenken', text: 'Kleine dingen die je naam in beeld houden: mokken, magneetborden, pins en stickers in de stijl van je merk.', tags: ['Mokken', 'Magneetborden', 'Stickers', 'Pins'] }
+    { name: 'Branding', sub: 'Logo en huisstijl', cta: 'Offerte voor branding',
+      text: 'Een goed logo werkt net zo goed op een visitekaartje als op een bus van zes meter. Ik ontwerp je logo, kies de kleuren en lettertypes en lever alle bestanden die je nodig hebt voor drukwerk, kleding, belettering en je website.',
+      tags: ['Logo-ontwerp', 'Huisstijl', 'Huisstijlgids', 'Bestanden voor druk en web'] },
+    { name: 'Belettering', sub: 'Auto’s, bussen, etalages en ramen', cta: 'Offerte voor belettering',
+      text: 'Je bedrijfswagen laat je naam elke dag zien, op elke route en elke parkeerplaats. Ik ontwerp de belettering voor jouw model en breng de folie zelf aan, van losse letters tot een complete wrap. Ook etalages en ramen voorzie ik op locatie van belettering.',
+      tags: ['Autobelettering', 'Bedrijfsbussen', 'Carwrapping', 'Raam- en etalagebelettering', 'Montage'] },
+    { name: 'Bedrijfskleding', sub: 'Kleding bedrukt met je logo', cta: 'Offerte voor bedrijfskleding',
+      text: 'Een team in dezelfde kleding ziet er meteen uit als één bedrijf. Ik bedruk T-shirts, polo’s, hoodies, jassen en werkkleding met DTF of flex, voor je team, een evenement of je eigen merchandise.',
+      tags: ['T-shirts en polo’s', 'Hoodies en jassen', 'Werkkleding', 'DTF- en flexdruk'] },
+    { name: 'Drukwerk', sub: 'Van visitekaartje tot spandoek', cta: 'Offerte voor drukwerk',
+      text: 'Een visitekaartje, flyer of bouwbord is vaak het eerste wat een klant van je ziet. Ik ontwerp alles in de stijl van je merk en maak het klaar voor productie, zodat het er op papier net zo goed uitziet als op je bus.',
+      tags: ['Visitekaartjes', 'Flyers en posters', 'Roll-ups en spandoeken', 'Vlaggen, stickers en borden'] },
+    { name: 'Websites', sub: 'Een website voor jouw bedrijf', cta: 'Offerte voor een website',
+      text: 'Wie je bus of visitekaartje ziet, zoekt daarna je website op. Ik ontwerp die op maat en in dezelfde stijl als de rest van je merk: overzichtelijk op telefoon en computer, technisch netjes opgebouwd volgens de basisregels van SEO en ingericht om makkelijk contact met je op te nemen.',
+      tags: ['Ontwerp op maat', 'Mobielvriendelijk', 'Technische SEO-basis', 'Contact binnen één klik'] },
+    { name: 'Relatiegeschenken', sub: 'Promotieartikelen met je logo', cta: 'Offerte voor relatiegeschenken',
+      text: 'Een mok op het bureau of een magneet op de koelkast houdt je naam in beeld, precies op het moment dat een klant je nodig heeft. Mokken, magneetborden, buttons en stickers in de stijl van je merk.',
+      tags: ['Mokken', 'Magneetborden', 'Stickers', 'Buttons'] }
   ],
-  svCta: 'Offerte voor', prev: 'Vorige afbeelding', next: 'Volgende afbeelding',
+  prev: 'Vorige afbeelding', next: 'Volgende afbeelding',
 
   prEyebrow: 'Projecten',
   prTitle: ['Projecten,', 'geen losse plaatjes.'],
-  prIntro: 'Complete merken uit één studio. Zo ziet één identiteit eruit op papier, textiel, voertuigen en online.',
+  prIntro: 'Zeven bedrijven waarvoor ik meerdere onderdelen van hun merk heb gemaakt. Zo werkt één logo op papier, textiel, auto’s en online.',
   prOpen: 'Bekijk project',
   projects: {
-    'kristofix': 'Van een leeg vel tot een complete uitstraling: logo, visitekaartjes, belettering van de bus en een website.',
-    'maniek-diensten': 'Logo, bedrijfskleding, visitekaartjes en een website in één herkenbare stijl.',
-    'patera': 'Logo, T-shirts en belettering van de bedrijfsauto voor een klussenbedrijf.',
-    'custom-garage': 'Logo, hoodies en stickers voor een garage uit Eindhoven.',
+    'kristofix': 'Logo, visitekaartjes, belettering van de bus en een website: de hele uitstraling vanaf een leeg vel.',
+    'maniek-diensten': 'Logo, visitekaartjes, bedrijfskleding en een website in één herkenbare stijl.',
+    'pmk-klusjesman': 'Belettering van drie bussen, werkkleding, een bouwbord en visitekaartjes.',
     'podtech': 'Logo en een complete lijn werkkleding voor een elektrotechnisch installatiebedrijf.',
-    'weldpolako': 'Logo, autobelettering en bedrijfskleding voor een lasbedrijf.',
-    'pmk-klusjesman': 'Belettering van de bussen, werkkleding, een bouwbord en visitekaartjes.'
+    'patera': 'Logo, T-shirts en belettering van de bedrijfsauto voor een klussenbedrijf.',
+    'weldpolako': 'Logo, belettering van twee bussen en bedrijfskleding voor een lasbedrijf.',
+    'custom-garage': 'Logo, hoodies en stickers voor een garage.'
   },
-  csEyebrow: 'Project', csResult: n => `Eén merk. ${n} toepassingen. Eén studio.`, csCta: 'Zo’n project starten', csNext: 'Volgend project',
+  projectsLong: {
+    'kristofix': 'Kristofix begon zonder huisstijl. Eerst kwam het logo met de drie vakmannen, daarna de visitekaartjes, de belettering van de Mercedes Vito aan alle kanten en een website in dezelfde kleuren. Overal hetzelfde logo, hetzelfde rood en dezelfde contactgegevens.',
+    'maniek-diensten': 'De blauwe druppel met de letter M is de basis van de hele huisstijl van Maniek Diensten. Hetzelfde teken staat op de zwarte visitekaartjes, de shirts van het team en de website, zodat het bedrijf er bij elk contactmoment hetzelfde uitziet.',
+    'pmk-klusjesman': 'De gele bussen van PMK Klusjesman zie je van ver. Dezelfde gele kleur en hetzelfde logo komen terug op de T-shirts, petten, het bouwbord en de visitekaartjes, zodat klanten elk onderdeel direct met het bedrijf verbinden.',
+    'podtech': 'Het gele logo met de bliksemschicht staat op een complete lijn werkkleding: T-shirts, werkshirts, jassen, softshells en werkbroeken. Het hele team ziet er op elke bouwplaats hetzelfde uit.'
+  },
+  csEyebrow: 'Project', csRoute: 'Wat ik maakte', csResult: n => `Eén merk. ${n} toepassingen. Eén aanspreekpunt.`,
+  csCta: 'Offerte aanvragen', csNext: 'Volgend project',
 
   pcEyebrow: 'Werkwijze',
-  pcTitle: ['Van idee', 'tot eindproduct.'],
+  pcTitle: ['Zo werken', 'we samen.'],
   process: [
-    ['Ontwerp', 'Je logo en ontwerp, met aanpassingen tot het klopt. Pas dan gaat het naar productie.'],
-    ['Productie', 'Drukwerk, textiel, folie en borden, in dezelfde kleuren en dezelfde kwaliteit.'],
-    ['Montage', 'Autobelettering en raambelettering monteren we zelf. Al het andere leveren we kant-en-klaar op.']
+    ['Ontwerp', 'We bespreken wat je nodig hebt en ik maak een ontwerp. Dat werken we samen af voordat het in productie gaat.'],
+    ['Productie', 'Drukwerk, kleding, folie en borden maak ik met dezelfde kleuren en bestanden, zodat alles bij elkaar past.'],
+    ['Montage', 'Auto-, raam- en etalagebelettering breng ik zelf aan. De rest lever ik klaar voor gebruik.']
   ],
-  pcNote: 'Eén studio van begin tot eind. Je vertelt je verhaal maar één keer.',
+  pcNote: 'Je hebt de hele tijd contact met één persoon: degene die ontwerpt én uitvoert.',
 
   rvEyebrow: 'Reviews', rvTitle: 'Wat klanten zeggen', rvSource: 'Review op Google', rvAll: 'Alle reviews op Google',
-  rvPrev: 'Vorige review', rvNext: 'Volgende review', rvStars: '5 van 5 sterren', rvLangNote: 'Reviews in de oorspronkelijke taal.',
+  rvPrev: 'Vorige review', rvNext: 'Volgende review', rvStars: '5 van 5 sterren',
+  rvTr: 'Vertaling', rvOrig: 'Origineel (Engels)', rvLangNote: 'Reviews in de oorspronkelijke taal, met vertaling.',
 
   abEyebrow: 'Over GW Graphic Design',
   abTitle: ['Ontwerper.', 'Maker.', 'Eén aanspreekpunt.'],
   abP: [
-    'GW Graphic Design is de studio van Grzegorz Woźniak in Eindhoven. Hij combineert grafisch ontwerp met echte productie en montage.',
-    'Dezelfde persoon die je huisstijl ontwerpt, maakt je drukwerk en kleding klaar voor productie, ontwerpt de belettering van je bedrijfswagen, brengt de folie zelf aan en bouwt je website. Geen tussenpersonen: je vertelt je verhaal één keer, en het resultaat klopt op papier, op textiel, op de weg en online.'
+    'Ik ben Grzegorz Woźniak. GW Graphic Design is mijn studio: grafisch ontwerp, productie en montage in één hand.',
+    'Ik ontwerp je logo en materialen, maak de bestanden klaar voor productie, ontwerp de belettering, breng de folie zelf aan en bouw je website. Je wordt niet doorgeschoven tussen ontwerper, verkoper, drukker en monteur: je weet altijd wie verantwoordelijk is.'
   ],
-  abFacts: [['Ontwerp', 'Logo, huisstijl en alle ontwerpen'], ['Productie', 'Drukwerk, kleding, folie en gadgets'], ['Montage', 'Auto- en raambelettering, zelf aangebracht']],
-  abRole: 'Grafisch ontwerper en reclamespecialist',
+  abFacts: [['Ontwerp', 'Logo, huisstijl en alle ontwerpen'], ['Productie', 'Drukwerk, kleding, folie en relatiegeschenken'], ['Montage', 'Auto-, raam- en etalagebelettering']],
+  abRole: 'Grafisch ontwerper en reclamemaker',
 
-  fEyebrow: 'Offerte aanvragen',
-  fTitle: ['Vertel wat', 'je nodig hebt.'],
-  fIntro: 'Een paar regels is genoeg. Je krijgt binnen korte tijd een reactie met een voorstel en een offerte.',
-  fService: 'Waar kunnen we mee helpen?', fServiceHint: 'Kies wat van toepassing is (optioneel).', fOther: 'Iets anders',
+  fEyebrow: 'Offerte',
+  fTitle: ['Wat heb je', 'nodig?'],
+  fIntro: 'Beschrijf kort je project. Ik reageer persoonlijk met een voorstel en een offerte.',
+  fService: 'Waar gaat het over?', fServiceHint: 'Je kunt meerdere opties kiezen.', fOther: 'Iets anders',
   fName: 'Naam', fCompany: 'Bedrijf', fEmail: 'E-mail', fPhone: 'Telefoon', fMessage: 'Bericht',
   fMessagePh: 'Bijvoorbeeld: belettering voor twee bussen en T-shirts voor het team.',
+  fPref: 'Hoe wil je dat ik contact opneem?', fPrefOpts: ['E-mail', 'Telefoon', 'WhatsApp'],
   fOptional: 'optioneel', fRequired: 'verplicht',
-  fPrivacy: 'We gebruiken je gegevens alleen om je aanvraag te beantwoorden. Lees ons', fPrivacyLink: 'privacybeleid',
-  fSend: 'Aanvraag versturen', fSending: 'Bezig met versturen…',
-  fErrName: 'Vul je naam in.', fErrEmail: 'Vul een geldig e-mailadres in.', fErrMessage: 'Schrijf kort waar we mee kunnen helpen.',
+  fPrivacy: 'Ik gebruik je gegevens alleen om je aanvraag te beantwoorden. Lees het', fPrivacyLink: 'privacybeleid',
+  fSend: 'Aanvraag versturen', fSending: 'Bezig met versturen…', fWa: 'Versturen via WhatsApp',
+  fErrName: 'Vul je naam in.', fErrEmail: 'Vul een geldig e-mailadres in.', fErrPhone: 'Vul je telefoonnummer in, dan kan ik je bellen of appen.', fErrMessage: 'Schrijf kort waar je hulp bij zoekt.',
   fErrSummary: 'Controleer de gemarkeerde velden.',
-  fErrRate: 'Er zijn al meerdere aanvragen verstuurd. Probeer het later opnieuw of bel ons.',
+  fErrRate: 'Er zijn al meerdere aanvragen verstuurd. Probeer het later opnieuw of bel me.',
   fErrSend: 'Versturen is niet gelukt. Probeer het opnieuw of mail naar design@gwgraphic.com.',
-  fDoneTitle: 'Bedankt!', fDoneText: 'Je aanvraag is verstuurd. We nemen zo snel mogelijk contact met je op.',
+  fDoneTitle: 'Bedankt!', fDoneText: 'Je aanvraag is binnen. Ik neem zo snel mogelijk contact met je op.',
+  waForm: 'Hallo Grzegorz, ik heb een vraag via gwgraphic.com.',
 
-  ctEyebrow: 'Contact', ctTitle: 'Liever direct contact?',
-  ctIntro: 'Stuur een appje, bel of mail. Foto’s van je bus of je huidige logo kun je meteen meesturen.',
+  ctEyebrow: 'Contact', ctTitle: 'Liever meteen contact?',
+  ctIntro: 'Bel, app of mail. Een foto van je bus of je huidige logo kun je direct meesturen.',
   ctWa: 'Stuur een bericht', ctPhone: 'Bellen', ctEmail: 'E-mail',
-  ctMeta: 'Eindhoven, Noord-Brabant. Ontwerp en productie voor heel Nederland, België en Duitsland; montage op locatie.',
-  waText: 'Hallo GW Graphic Design, ik heb een vraag.',
+  ctMeta: 'Voor bedrijven in heel Nederland, België en Duitsland. Belettering monteer ik op locatie.',
+  waText: 'Hallo Grzegorz, ik heb een vraag.',
 
-  ftLine: 'Reclame in elke vorm. Logo, drukwerk, bedrijfskleding, autobelettering, websites en relatiegeschenken uit Eindhoven.',
-  ftServices: 'Diensten', ftMenu: 'Menu', ftContact: 'Contact', ftSocial: 'Social', ftLegal: 'Juridisch',
-  ftServiceLinks: ['Logo & huisstijl', 'Bedrijfskleding bedrukken', 'Drukwerk', 'Autobelettering', 'Webdesign', 'Relatiegeschenken'],
+  ftLine: 'Reclame in elke vorm: huisstijl, autobelettering, bedrijfskleding, drukwerk, websites en relatiegeschenken. Ontwerp, productie en montage.',
+  ftServices: 'Diensten', ftMenu: 'Menu', ftContact: 'Contact', ftSocial: 'Social media', ftLegal: 'Juridisch',
+  ftServiceLinks: ['Logo en huisstijl', 'Autobelettering', 'Bedrijfskleding', 'Drukwerk', 'Websites', 'Relatiegeschenken'],
+  ftArea: 'Nederland · België · Duitsland',
   legalNames: { privacy: 'Privacybeleid', cookies: 'Cookiebeleid', terms: 'Algemene voorwaarden', notice: 'Colofon', a11y: 'Toegankelijkheid' },
   cookieSettings: 'Cookie-instellingen',
   ckTitle: 'Cookie-instellingen',
-  ckText: 'Deze website gebruikt geen cookies voor statistieken, advertenties of tracking, en laadt geen diensten van derden. Er is daarom niets om toe te staan of te weigeren.',
-  ckStore: 'Alleen tijdens je bezoek onthoudt je browser of de openingsanimatie al is afgespeeld (sessionStorage). Dat wordt gewist zodra je het tabblad sluit.',
+  ckText: 'Deze website gebruikt geen cookies voor statistieken, advertenties of tracking en laadt geen diensten van derden. Er is dus niets om toe te staan of te weigeren.',
+  ckStore: 'Je browser onthoudt alleen dat je de openingsanimatie al hebt gezien (localStorage), zodat die niet bij elk bezoek terugkomt.',
   ckClear: 'Opgeslagen gegevens wissen', ckCleared: 'Gewist.', ckMore: 'Lees het cookiebeleid',
-  backHome: 'Terug naar de homepage', updated: 'Laatst bijgewerkt', updatedDate: '26 september 2026'
+  backHome: 'Terug naar de homepage', updated: 'Laatst bijgewerkt', updatedDate: '27 september 2026'
 },
 
 /* =============================== EN =============================== */
 en: {
-  title: 'GW Graphic Design Eindhoven | Logo, signage, vehicle graphics, apparel & web',
-  description: 'GW Graphic Design in Eindhoven: logo & identity, print, branded apparel, vehicle graphics, websites and advertising. From design to production and installation.',
+  title: 'GW Graphic Design | Branding, vehicle graphics, print and websites',
+  description: 'Logo and brand identity, vehicle graphics, workwear, print and websites. Design, production and installation by one specialist in the Netherlands, Belgium and Germany.',
   ogTitle: 'GW Graphic Design | Advertising in any form',
   skip: 'Skip to content',
   homeAria: 'GW Graphic Design, go to the homepage',
   navAria: 'Main menu', langAria: 'Language', menu: 'Menu', close: 'Close',
   nav: { diensten: 'Services', projecten: 'Projects', reviews: 'Reviews', over: 'About', contact: 'Contact' },
-  cta: 'Request a quote',
-  gateHint: 'Click the logo', gateAria: 'Open the website',
+  cta: 'Get a quote',
+  gateHint: 'Click the logo', gateAria: 'Enter the website', gateSkip: 'Skip intro',
   flow: ['Design', 'Production', 'Installation'],
-  kicker: 'Graphic design & advertising from Eindhoven',
   h1: ['Advertising', 'in any', 'form.'],
-  rotPre: 'One partner for your',
-  rot: ['logo', 'company vehicle', 'workwear', 'promo products', 'print', 'website'],
-  heroLead: 'From logo to vehicle. Design, production and installation by one studio in Eindhoven, for businesses in the Netherlands, Belgium and Germany.',
+  rotPre: 'Your partner for',
+  rot: ['branding', 'vehicle graphics', 'workwear', 'print', 'websites', 'promotional items'],
+  heroLead: 'I design, produce and install: from your logo to a fully wrapped company van. For businesses across the Netherlands, Belgium and Germany, with one point of contact from start to finish.',
   heroBtn2: 'View projects',
-  heroMeta: ['Eindhoven, North Brabant', 'Netherlands · Belgium · Germany', 'Google reviews'],
-  stageAria: 'View the service',
+  heroMeta: ['Netherlands · Belgium · Germany', 'On-site installation', 'Google reviews'],
+  stageAria: 'View this service',
 
   svEyebrow: 'Services',
-  svTitle: ['Six crafts.', 'One GW standard.'],
-  svIntro: 'From your logo to the lettering on your van: every part of your brand comes from the same hands. The same colours, the same quality and one point of contact.',
+  svTitle: ['Six crafts.', 'One recognisable brand.'],
+  svIntro: 'Your logo, your van, your team’s shirts and your website should look like one company. That is why I make all of it: the same colours, the same files and one person responsible for the result.',
   services: [
-    { name: 'Branding', sub: 'Logo & visual identity', text: 'A logo that works on a business card and on a six-metre van. We design your logo and visual identity, with colours and typefaces, and deliver every file your printer and web developer need.', tags: ['Logo design', 'Visual identity', 'Brand guidelines', 'Files for print and web'] },
-    { name: 'Apparel', sub: 'Printed workwear & merch', text: 'T-shirts, polos, hoodies, jackets and workwear with your logo, printed with DTF or flex. For your team, an event or your own merchandise.', tags: ['T-shirts and polos', 'Hoodies and jackets', 'Workwear', 'DTF and flex print'] },
-    { name: 'Print', sub: 'From business card to banner', text: 'Business cards, flyers, posters, roll-ups, banners, flags, stickers and signs. Designed in the same style as the rest of your brand and ready for production.', tags: ['Business cards', 'Flyers and posters', 'Roll-ups and banners', 'Flags, stickers and signs'] },
-    { name: 'Vehicles', sub: 'Vehicle lettering & wraps', text: 'Your company van passes potential customers every day. We design the lettering for your exact model and install the vinyl ourselves: from simple lettering and window graphics to a full wrap.', tags: ['Vehicle lettering', 'Van graphics', 'Wraps', 'Window graphics', 'Installation'] },
-    { name: 'Websites', sub: 'Web design', text: 'A fast business website that matches your van and your business cards, works well on every phone and is found on Google.', tags: ['Custom design', 'Mobile-friendly', 'Found on Google'] },
-    { name: 'Gadgets', sub: 'Promotional products', text: 'Small things that keep your name in sight: mugs, magnetic signs, pins and stickers in your brand style.', tags: ['Mugs', 'Magnetic signs', 'Stickers', 'Pins'] }
+    { name: 'Branding', sub: 'Logo and brand identity', cta: 'Get a quote for branding',
+      text: 'A good logo works as well on a business card as on a six-metre van. I design your logo, choose the colours and typefaces, and deliver every file you need for print, workwear, vehicle graphics and your website.',
+      tags: ['Logo design', 'Brand identity', 'Brand guidelines', 'Files for print and web'] },
+    { name: 'Vehicle graphics', sub: 'Cars, vans, shop windows and glass', cta: 'Get a quote for vehicle graphics',
+      text: 'Your company vehicle shows your name every day, on every road and in every car park. I design the graphics for your exact model and apply the vinyl myself, from simple lettering to a full wrap. Shop windows and glazing are done on site too.',
+      tags: ['Vehicle lettering', 'Company vans', 'Full wraps', 'Window and shopfront graphics', 'Installation'] },
+    { name: 'Workwear', sub: 'Clothing printed with your logo', cta: 'Get a quote for workwear',
+      text: 'A team in matching clothing instantly looks like one business. I print T-shirts, polos, hoodies, jackets and workwear with DTF or flex, for your team, an event or your own merchandise.',
+      tags: ['T-shirts and polos', 'Hoodies and jackets', 'Workwear', 'DTF and flex print'] },
+    { name: 'Print', sub: 'From business card to banner', cta: 'Get a quote for print',
+      text: 'A business card, flyer or site sign is often the first thing a customer sees of you. I design everything in your brand style and prepare it for production, so it looks as good on paper as it does on your van.',
+      tags: ['Business cards', 'Flyers and posters', 'Roll-ups and banners', 'Flags, stickers and signs'] },
+    { name: 'Websites', sub: 'A website for your business', cta: 'Get a quote for a website',
+      text: 'Anyone who sees your van or business card will look up your website next. I design it to measure and in the same style as the rest of your brand: clear on phone and desktop, built on sound technical SEO foundations and set up so people can contact you easily.',
+      tags: ['Custom design', 'Mobile-friendly', 'Technical SEO basics', 'Contact in one click'] },
+    { name: 'Promotional items', sub: 'Branded merchandise', cta: 'Get a quote for promotional items',
+      text: 'A mug on a desk or a magnet on the fridge keeps your name in view at the moment a customer needs you. Mugs, magnetic signs, badges and stickers in your brand style.',
+      tags: ['Mugs', 'Magnetic signs', 'Stickers', 'Badges'] }
   ],
-  svCta: 'Quote for', prev: 'Previous image', next: 'Next image',
+  prev: 'Previous image', next: 'Next image',
 
   prEyebrow: 'Projects',
   prTitle: ['Projects,', 'not thumbnails.'],
-  prIntro: 'Complete brands from one studio. This is what one identity looks like on paper, fabric, vehicles and online.',
+  prIntro: 'Seven businesses for which I made several parts of their brand. This is how one logo works on paper, fabric, vehicles and online.',
   prOpen: 'View project',
   projects: {
-    'kristofix': 'From a blank page to a complete look: logo, business cards, van lettering and a website.',
-    'maniek-diensten': 'Logo, apparel, business cards and a website in one recognisable style.',
-    'patera': 'Logo, T-shirts and company car lettering for a handyman business.',
-    'custom-garage': 'Logo, hoodies and stickers for a garage from Eindhoven.',
+    'kristofix': 'Logo, business cards, van graphics and a website: the whole look, starting from a blank page.',
+    'maniek-diensten': 'Logo, business cards, workwear and a website in one recognisable style.',
+    'pmk-klusjesman': 'Graphics for three vans, workwear, a site sign and business cards.',
     'podtech': 'Logo and a complete workwear line for an electrical installation company.',
-    'weldpolako': 'Logo, vehicle graphics and apparel for a welding company.',
-    'pmk-klusjesman': 'Van lettering, workwear, a site sign and business cards.'
+    'patera': 'Logo, T-shirts and company car graphics for a handyman business.',
+    'weldpolako': 'Logo, graphics for two vans and workwear for a welding company.',
+    'custom-garage': 'Logo, hoodies and stickers for a garage.'
   },
-  csEyebrow: 'Project', csResult: n => `One brand. ${n} touchpoints. One studio.`, csCta: 'Start a project like this', csNext: 'Next project',
+  projectsLong: {
+    'kristofix': 'Kristofix started without any brand identity. First came the logo with the three tradesmen, then the business cards, graphics on every side of the Mercedes Vito, and a website in the same colours. The same logo, the same red and the same contact details everywhere.',
+    'maniek-diensten': 'The blue drop with the letter M is the basis of Maniek Diensten’s whole identity. The same mark appears on the black business cards, the team’s shirts and the website, so the business looks the same at every point of contact.',
+    'pmk-klusjesman': 'You can spot PMK Klusjesman’s yellow vans from a distance. The same yellow and the same logo return on the T-shirts, caps, site sign and business cards, so customers link every item straight to the business.',
+    'podtech': 'The yellow logo with the lightning bolt runs through a complete workwear line: T-shirts, work shirts, jackets, softshells and work trousers. The whole team looks the same on every site.'
+  },
+  csEyebrow: 'Project', csRoute: 'What I made', csResult: n => `One brand. ${n} applications. One point of contact.`,
+  csCta: 'Get a quote', csNext: 'Next project',
 
   pcEyebrow: 'How we work',
-  pcTitle: ['From idea', 'to finished product.'],
+  pcTitle: ['How we', 'work together.'],
   process: [
-    ['Design', 'Your logo and artwork, refined until it is right. Only then does it go into production.'],
-    ['Production', 'Print, textiles, vinyl and signs, in the same colours and the same quality.'],
-    ['Installation', 'We install vehicle and window graphics ourselves. Everything else is delivered ready to use.']
+    ['Design', 'We talk about what you need and I create a design. We refine it together before it goes into production.'],
+    ['Production', 'Print, workwear, vinyl and signs are made with the same colours and files, so everything matches.'],
+    ['Installation', 'I apply vehicle, window and shopfront graphics myself. Everything else is delivered ready to use.']
   ],
-  pcNote: 'One studio from start to finish. You only tell your story once.',
+  pcNote: 'You deal with one person throughout: the one who designs and makes it.',
 
   rvEyebrow: 'Reviews', rvTitle: 'What clients say', rvSource: 'Review on Google', rvAll: 'All reviews on Google',
-  rvPrev: 'Previous review', rvNext: 'Next review', rvStars: '5 out of 5 stars', rvLangNote: 'Reviews shown in their original language.',
+  rvPrev: 'Previous review', rvNext: 'Next review', rvStars: '5 out of 5 stars',
+  rvTr: 'Translation', rvOrig: 'Original (English)', rvLangNote: 'Reviews as published on Google.',
 
   abEyebrow: 'About GW Graphic Design',
   abTitle: ['Designer.', 'Maker.', 'One point of contact.'],
   abP: [
-    'GW Graphic Design is the studio of Grzegorz Woźniak in Eindhoven. He combines graphic design with real production and installation.',
-    'The same person who designs your identity also prepares your print and apparel for production, designs your vehicle graphics, applies the vinyl himself and builds your website. No middlemen: you tell your story once, and the result is right on paper, on fabric, on the road and online.'
+    'I am Grzegorz Woźniak. GW Graphic Design is my studio: graphic design, production and installation in one pair of hands.',
+    'I design your logo and materials, prepare the files for production, design your vehicle graphics, apply the vinyl myself and build your website. You are not passed between a designer, a salesperson, a printer and an installer: you always know who is responsible.'
   ],
-  abFacts: [['Design', 'Logo, identity and all artwork'], ['Production', 'Print, apparel, vinyl and gadgets'], ['Installation', 'Vehicle and window graphics, applied in person']],
-  abRole: 'Graphic designer and advertising specialist',
+  abFacts: [['Design', 'Logo, identity and all artwork'], ['Production', 'Print, workwear, vinyl and promotional items'], ['Installation', 'Vehicle, window and shopfront graphics']],
+  abRole: 'Graphic designer and sign maker',
 
-  fEyebrow: 'Request a quote',
-  fTitle: ['Tell us what', 'you need.'],
-  fIntro: 'A few lines are enough. You will soon hear back with a proposal and a quote.',
-  fService: 'What can we help with?', fServiceHint: 'Choose what applies (optional).', fOther: 'Something else',
+  fEyebrow: 'Quote',
+  fTitle: ['What do', 'you need?'],
+  fIntro: 'Describe your project briefly. I will reply personally with a proposal and a quote.',
+  fService: 'What is it about?', fServiceHint: 'You can choose more than one.', fOther: 'Something else',
   fName: 'Name', fCompany: 'Company', fEmail: 'Email', fPhone: 'Phone', fMessage: 'Message',
-  fMessagePh: 'For example: lettering for two vans and T-shirts for the team.',
+  fMessagePh: 'For example: graphics for two vans and T-shirts for the team.',
+  fPref: 'How should I get back to you?', fPrefOpts: ['Email', 'Phone', 'WhatsApp'],
   fOptional: 'optional', fRequired: 'required',
-  fPrivacy: 'We only use your details to answer your request. Read our', fPrivacyLink: 'privacy policy',
-  fSend: 'Send request', fSending: 'Sending…',
-  fErrName: 'Please enter your name.', fErrEmail: 'Please enter a valid email address.', fErrMessage: 'Please tell us briefly what we can help with.',
+  fPrivacy: 'I only use your details to answer your request. Read the', fPrivacyLink: 'privacy policy',
+  fSend: 'Send request', fSending: 'Sending…', fWa: 'Send via WhatsApp',
+  fErrName: 'Please enter your name.', fErrEmail: 'Please enter a valid email address.', fErrPhone: 'Please enter your phone number so I can call or message you.', fErrMessage: 'Please tell me briefly what you need.',
   fErrSummary: 'Please check the highlighted fields.',
-  fErrRate: 'Several requests have already been sent. Please try again later or give us a call.',
+  fErrRate: 'Several requests have already been sent. Please try again later or give me a call.',
   fErrSend: 'Sending failed. Please try again or email design@gwgraphic.com.',
-  fDoneTitle: 'Thank you!', fDoneText: 'Your request has been sent. We will get back to you as soon as possible.',
+  fDoneTitle: 'Thank you!', fDoneText: 'Your request has arrived. I will get back to you as soon as possible.',
+  waForm: 'Hello Grzegorz, I have a question via gwgraphic.com.',
 
-  ctEyebrow: 'Contact', ctTitle: 'Prefer to talk directly?',
-  ctIntro: 'Send a message, call or email. You can send photos of your van or your current logo straight away.',
+  ctEyebrow: 'Contact', ctTitle: 'Rather talk right away?',
+  ctIntro: 'Call, message or email. You can send a photo of your van or your current logo straight away.',
   ctWa: 'Send a message', ctPhone: 'Call', ctEmail: 'Email',
-  ctMeta: 'Eindhoven, North Brabant. Design and production for the whole of the Netherlands, Belgium and Germany; installation on location.',
-  waText: 'Hello GW Graphic Design, I have a question.',
+  ctMeta: 'For businesses across the Netherlands, Belgium and Germany. Vehicle and window graphics are installed on site.',
+  waText: 'Hello Grzegorz, I have a question.',
 
-  ftLine: 'Advertising in any form. Logo, print, branded apparel, vehicle graphics, websites and promotional products from Eindhoven.',
-  ftServices: 'Services', ftMenu: 'Menu', ftContact: 'Contact', ftSocial: 'Social', ftLegal: 'Legal',
-  ftServiceLinks: ['Logo & identity', 'Printed apparel', 'Print', 'Vehicle graphics', 'Web design', 'Promotional products'],
+  ftLine: 'Advertising in any form: branding, vehicle graphics, workwear, print, websites and promotional items. Design, production and installation.',
+  ftServices: 'Services', ftMenu: 'Menu', ftContact: 'Contact', ftSocial: 'Social media', ftLegal: 'Legal',
+  ftServiceLinks: ['Logo and brand identity', 'Vehicle graphics', 'Workwear', 'Print', 'Websites', 'Promotional items'],
+  ftArea: 'Netherlands · Belgium · Germany',
   legalNames: { privacy: 'Privacy policy', cookies: 'Cookie policy', terms: 'Terms and conditions', notice: 'Legal notice', a11y: 'Accessibility' },
   cookieSettings: 'Cookie settings',
   ckTitle: 'Cookie settings',
-  ckText: 'This website does not use cookies for statistics, advertising or tracking, and loads no third-party services. There is therefore nothing to accept or reject.',
-  ckStore: 'Only during your visit, your browser remembers whether the opening animation has already played (sessionStorage). It is deleted as soon as you close the tab.',
+  ckText: 'This website does not use cookies for statistics, advertising or tracking, and loads no third-party services. So there is nothing to accept or reject.',
+  ckStore: 'Your browser only remembers that you have already seen the opening animation (localStorage), so it does not play on every visit.',
   ckClear: 'Clear stored data', ckCleared: 'Cleared.', ckMore: 'Read the cookie policy',
-  backHome: 'Back to the homepage', updated: 'Last updated', updatedDate: '26 September 2026'
+  backHome: 'Back to the homepage', updated: 'Last updated', updatedDate: '27 September 2026'
 },
 
-/* =============================== PL =============================== */
+/* =============================== PL (source of meaning) =============================== */
 pl: {
-  title: 'GW Graphic Design Eindhoven | Logo, reklama, oklejanie aut, odzież i strony www',
-  description: 'GW Graphic Design w Eindhoven: logo i identyfikacja, druk, odzież firmowa, oklejanie aut, strony www i reklama. Od projektu po produkcję i montaż.',
+  title: 'GW Graphic Design | Reklama, branding, oklejanie aut i strony internetowe',
+  description: 'Logo, oklejanie aut i witryn, odzież firmowa, druk i strony internetowe. Projekt, produkcja i montaż w jednych rękach – w Holandii, Belgii i Niemczech.',
   ogTitle: 'GW Graphic Design | Reklama w każdej formie',
   skip: 'Przejdź do treści',
-  homeAria: 'GW Graphic Design, przejdź na stronę główną',
+  homeAria: 'GW Graphic Design, strona główna',
   navAria: 'Menu główne', langAria: 'Język', menu: 'Menu', close: 'Zamknij',
-  nav: { diensten: 'Usługi', projecten: 'Projekty', reviews: 'Opinie', over: 'O studiu', contact: 'Kontakt' },
+  nav: { diensten: 'Usługi', projecten: 'Projekty', reviews: 'Opinie', over: 'O mnie', contact: 'Kontakt' },
   cta: 'Zapytaj o wycenę',
-  gateHint: 'Kliknij logo', gateAria: 'Otwórz stronę',
+  gateHint: 'Kliknij logo', gateAria: 'Wejdź na stronę', gateSkip: 'Pomiń intro',
   flow: ['Projekt', 'Produkcja', 'Montaż'],
-  kicker: 'Projektowanie graficzne i reklama z Eindhoven',
   h1: ['Reklama', 'w każdej', 'formie.'],
-  rotPre: 'Jeden partner od',
-  rot: ['logo', 'oklejenia auta', 'odzieży firmowej', 'gadżetów', 'druku', 'strony www'],
-  heroLead: 'Od logo po samochód. Projekt, produkcja i montaż w jednym studiu w Eindhoven, dla firm z Holandii, Belgii i Niemiec.',
+  rotPre: 'Twój partner od',
+  rot: ['brandingu', 'oklejania aut', 'odzieży firmowej', 'druku', 'stron internetowych', 'gadżetów reklamowych'],
+  heroLead: 'Projektuję, produkuję i montuję: od logo po oklejonego busa firmowego. Dla firm z Holandii, Belgii i Niemiec, z jedną osobą do kontaktu od początku do końca.',
   heroBtn2: 'Zobacz projekty',
-  heroMeta: ['Eindhoven, Brabancja Północna', 'Holandia · Belgia · Niemcy', 'Opinie w Google'],
-  stageAria: 'Zobacz usługę',
+  heroMeta: ['Holandia · Belgia · Niemcy', 'Montaż na miejscu', 'Opinie w Google'],
+  stageAria: 'Zobacz tę usługę',
 
   svEyebrow: 'Usługi',
-  svTitle: ['Sześć specjalności.', 'Jeden standard GW.'],
-  svIntro: 'Od logo po oklejenie busa: każdy element Twojej marki powstaje w tych samych rękach. Te same kolory, ta sama jakość i jedna osoba do kontaktu.',
+  svTitle: ['Sześć specjalności.', 'Jedna rozpoznawalna marka.'],
+  svIntro: 'Logo, bus, koszulki ekipy i strona internetowa powinny wyglądać jak jedna firma. Dlatego robię to wszystko sam: te same kolory, te same pliki i jedna osoba odpowiedzialna za efekt.',
   services: [
-    { name: 'Branding', sub: 'Logo i identyfikacja wizualna', text: 'Logo, które działa na wizytówce i na sześciometrowym busie. Projektujemy logo i identyfikację wizualną, z kolorami i krojami pisma, a potem przekazujemy wszystkie pliki potrzebne drukarni i programiście.', tags: ['Projekt logo', 'Identyfikacja wizualna', 'Księga znaku', 'Pliki do druku i www'] },
-    { name: 'Odzież', sub: 'Nadruki na odzieży firmowej', text: 'Koszulki, polo, bluzy, kurtki i odzież robocza z Twoim logo, z nadrukiem DTF lub flex. Dla ekipy, na event albo jako własny merch.', tags: ['Koszulki i polo', 'Bluzy i kurtki', 'Odzież robocza', 'Nadruk DTF i flex'] },
-    { name: 'Druk', sub: 'Od wizytówki po baner', text: 'Wizytówki, ulotki, plakaty, roll-upy, banery, flagi, naklejki i tablice. W tym samym stylu co reszta Twojej marki i gotowe do produkcji.', tags: ['Wizytówki', 'Ulotki i plakaty', 'Roll-upy i banery', 'Flagi, naklejki i tablice'] },
-    { name: 'Pojazdy', sub: 'Oklejanie aut i wrapy', text: 'Twoje auto firmowe codziennie mija potencjalnych klientów. Projektujemy oklejenie pod konkretny model i sami montujemy folię: od prostych napisów i oklejenia szyb po pełny wrap.', tags: ['Oklejanie aut', 'Oklejanie busów', 'Wrapy', 'Oklejanie szyb i witryn', 'Montaż'] },
-    { name: 'Strony www', sub: 'Projektowanie stron', text: 'Szybka strona firmowa w stylu Twojego busa i wizytówek, dobrze działająca na każdym telefonie i widoczna w Google.', tags: ['Projekt na wymiar', 'Wersja mobilna', 'Widoczność w Google'] },
-    { name: 'Gadżety', sub: 'Gadżety reklamowe', text: 'Drobiazgi, dzięki którym Twoja nazwa jest stale na widoku: kubki, tablice magnetyczne, przypinki i naklejki w stylu Twojej marki.', tags: ['Kubki', 'Tablice magnetyczne', 'Naklejki', 'Przypinki'] }
+    { name: 'Branding', sub: 'Logo i identyfikacja wizualna', cta: 'Zapytaj o branding',
+      text: 'Dobre logo działa tak samo na wizytówce, jak na sześciometrowym busie. Projektuję znak, dobieram kolory i kroje pisma, a na koniec przekazuję komplet plików: do druku, na odzież, na auto i na stronę internetową.',
+      tags: ['Projekt logo', 'Identyfikacja wizualna', 'Księga znaku', 'Pliki do druku i internetu'] },
+    { name: 'Oklejanie', sub: 'Auta, busy, witryny i szyby', cta: 'Zapytaj o oklejenie',
+      text: 'Samochód firmowy pokazuje Twoją nazwę codziennie, na każdej trasie i każdym parkingu. Projekt przygotowuję pod konkretny model auta i sam montuję folię, od prostych napisów po pełny wrap. Witryny i szyby oklejam na miejscu.',
+      tags: ['Oklejanie aut', 'Oklejanie busów', 'Pełny wrap', 'Witryny i szyby', 'Montaż'] },
+    { name: 'Odzież firmowa', sub: 'Nadruki z Twoim logo', cta: 'Zapytaj o odzież',
+      text: 'Ekipa w jednakowych ubraniach od razu wygląda jak jedna firma. Robię nadruki DTF i flex na koszulkach, polo, bluzach, kurtkach i odzieży roboczej: dla zespołu, na event albo jako własny merch.',
+      tags: ['Koszulki i polo', 'Bluzy i kurtki', 'Odzież robocza', 'Nadruk DTF i flex'] },
+    { name: 'Druk', sub: 'Od wizytówki po baner', cta: 'Zapytaj o druk',
+      text: 'Wizytówka, ulotka czy tablica na budowie to często pierwsze, co klient widzi. Projektuję je w stylu całej marki i przygotowuję do produkcji, żeby na papierze wyglądały tak samo dobrze jak na Twoim aucie.',
+      tags: ['Wizytówki', 'Ulotki i plakaty', 'Roll-upy i banery', 'Flagi, naklejki i tablice'] },
+    { name: 'Strony internetowe', sub: 'Strona internetowa dla Twojej firmy', cta: 'Zapytaj o stronę internetową',
+      text: 'Kto zobaczy Twoje auto albo wizytówkę, zajrzy potem na stronę. Projektuję ją na wymiar, w tym samym stylu co reszta marki: czytelną na telefonie i komputerze, zbudowaną zgodnie z technicznymi zasadami SEO i przygotowaną tak, żeby klient łatwo się z Tobą skontaktował.',
+      tags: ['Projekt na wymiar', 'Wersja mobilna', 'Techniczne podstawy SEO', 'Kontakt jednym kliknięciem'] },
+    { name: 'Gadżety reklamowe', sub: 'Drobiazgi z Twoim logo', cta: 'Zapytaj o gadżety',
+      text: 'Kubek na biurku czy magnes na lodówce przypominają o Twojej firmie wtedy, kiedy klient jej potrzebuje. Kubki, tablice magnetyczne, przypinki i naklejki w stylu Twojej marki.',
+      tags: ['Kubki', 'Tablice magnetyczne', 'Naklejki', 'Przypinki'] }
   ],
-  svCta: 'Wycena:', prev: 'Poprzednie zdjęcie', next: 'Następne zdjęcie',
+  prev: 'Poprzednie zdjęcie', next: 'Następne zdjęcie',
 
   prEyebrow: 'Projekty',
   prTitle: ['Projekty,', 'nie miniaturki.'],
-  prIntro: 'Kompletne marki z jednego studia. Tak wygląda jedna identyfikacja na papierze, tkaninie, pojazdach i w sieci.',
+  prIntro: 'Siedem firm, dla których przygotowałem kilka elementów jednej marki. Tak jedno logo działa na papierze, tkaninie, samochodzie i w internecie.',
   prOpen: 'Zobacz projekt',
   projects: {
-    'kristofix': 'Od pustej kartki do kompletnego wizerunku: logo, wizytówki, oklejenie busa i strona www.',
-    'maniek-diensten': 'Logo, odzież firmowa, wizytówki i strona www w jednym rozpoznawalnym stylu.',
-    'patera': 'Logo, koszulki i oklejenie samochodu firmowego dla firmy remontowej.',
-    'custom-garage': 'Logo, bluzy i naklejki dla warsztatu z Eindhoven.',
-    'podtech': 'Logo i kompletna linia odzieży roboczej dla firmy instalacji elektrycznych.',
-    'weldpolako': 'Logo, oklejenie aut i odzież firmowa dla firmy spawalniczej.',
-    'pmk-klusjesman': 'Oklejenie busów, odzież robocza, tablica budowlana i wizytówki.'
+    'kristofix': 'Logo, wizytówki, oklejenie busa i strona internetowa: cały wizerunek od czystej kartki.',
+    'maniek-diensten': 'Logo, wizytówki, odzież firmowa i strona internetowa w jednym, rozpoznawalnym stylu.',
+    'pmk-klusjesman': 'Oklejenie trzech busów, odzież robocza, tablica budowlana i wizytówki.',
+    'podtech': 'Logo i pełna linia odzieży roboczej dla firmy instalacji elektrycznych.',
+    'patera': 'Logo, koszulki i oklejenie auta firmowego dla firmy remontowej.',
+    'weldpolako': 'Logo, oklejenie dwóch busów i odzież firmowa dla firmy spawalniczej.',
+    'custom-garage': 'Logo, bluzy i naklejki dla warsztatu samochodowego.'
   },
-  csEyebrow: 'Projekt', csResult: n => `Jedna marka. ${n} ${n >= 2 && n <= 4 ? 'nośniki' : 'nośników'}. Jedno studio.`, csCta: 'Chcę podobny projekt', csNext: 'Następny projekt',
+  projectsLong: {
+    'kristofix': 'Kristofix zaczynał bez żadnej identyfikacji. Najpierw powstało logo z trzema fachowcami, potem wizytówki, oklejenie Mercedesa Vito z każdej strony i strona internetowa w tych samych kolorach. Wszędzie to samo logo, ta sama czerwień i te same dane kontaktowe.',
+    'maniek-diensten': 'Niebieska kropla z literą M to podstawa całej identyfikacji Maniek Diensten. Ten sam znak trafił na czarne wizytówki, koszulki ekipy i stronę internetową, więc firma wygląda tak samo przy każdym kontakcie z klientem.',
+    'pmk-klusjesman': 'Żółte busy PMK Klusjesman widać z daleka. Ten sam kolor i to samo logo wracają na koszulkach, czapkach, tablicy budowlanej i wizytówkach, dzięki czemu klient od razu łączy każdy element z firmą.',
+    'podtech': 'Żółte logo z błyskawicą trafiło na pełną linię odzieży roboczej: koszulki, koszulki techniczne, kurtki, softshelle i spodnie robocze. Cała ekipa wygląda jednakowo na każdej budowie.'
+  },
+  csEyebrow: 'Projekt', csRoute: 'Co przygotowałem', csResult: n => `Jedna marka. ${n} ${n >= 2 && n <= 4 ? 'nośniki' : 'nośników'}. Jedna osoba do kontaktu.`,
+  csCta: 'Zapytaj o wycenę', csNext: 'Następny projekt',
 
-  pcEyebrow: 'Jak pracujemy',
-  pcTitle: ['Od pomysłu', 'do gotowego produktu.'],
+  pcEyebrow: 'Współpraca',
+  pcTitle: ['Jak wygląda', 'współpraca.'],
   process: [
-    ['Projekt', 'Logo i projekt, poprawiane do skutku. Dopiero wtedy trafiają do produkcji.'],
-    ['Produkcja', 'Druk, tekstylia, folia i tablice, w tych samych kolorach i tej samej jakości.'],
-    ['Montaż', 'Oklejenia aut i witryn montujemy sami. Całą resztę dostajesz gotową do użycia.']
+    ['Projekt', 'Rozmawiamy o tym, czego potrzebujesz, a ja przygotowuję projekt. Dopracowujemy go razem, zanim trafi do produkcji.'],
+    ['Produkcja', 'Druk, odzież, folie i tablice powstają w tych samych kolorach i z tych samych plików, więc wszystko do siebie pasuje.'],
+    ['Montaż', 'Oklejenia aut, witryn i szyb montuję sam. Pozostałe materiały dostajesz gotowe do użycia.']
   ],
-  pcNote: 'Jedno studio od początku do końca. Swoją historię opowiadasz tylko raz.',
+  pcNote: 'Przez cały czas rozmawiasz z jedną osobą: tą, która projektuje i wykonuje.',
 
   rvEyebrow: 'Opinie', rvTitle: 'Co mówią klienci', rvSource: 'Opinia w Google', rvAll: 'Wszystkie opinie w Google',
-  rvPrev: 'Poprzednia opinia', rvNext: 'Następna opinia', rvStars: '5 na 5 gwiazdek', rvLangNote: 'Opinie w oryginalnym języku.',
+  rvPrev: 'Poprzednia opinia', rvNext: 'Następna opinia', rvStars: '5 na 5 gwiazdek',
+  rvTr: 'Tłumaczenie', rvOrig: 'Oryginał (angielski)', rvLangNote: 'Opinie w oryginalnym języku, z tłumaczeniem.',
 
   abEyebrow: 'O GW Graphic Design',
   abTitle: ['Grafik.', 'Wykonawca.', 'Jedna osoba do kontaktu.'],
   abP: [
-    'GW Graphic Design to studio Grzegorza Woźniaka w Eindhoven. Łączy projektowanie graficzne z prawdziwą produkcją i montażem.',
-    'Ta sama osoba, która projektuje Twoją identyfikację, przygotowuje druk i odzież do produkcji, projektuje oklejenie auta, sama nakleja folię i buduje Twoją stronę www. Bez pośredników: swoją historię opowiadasz raz, a efekt zgadza się na papierze, na tkaninie, na drodze i w sieci.'
+    'Nazywam się Grzegorz Woźniak. GW Graphic Design to moje studio: projektowanie graficzne, produkcja i montaż w jednych rękach.',
+    'Projektuję logo i materiały, przygotowuję pliki do produkcji, projektuję oklejenia, sam montuję folię i buduję stronę internetową. Nie przekazuję Cię między grafikiem, handlowcem, drukarnią i montażystą: zawsze wiesz, kto odpowiada za efekt.'
   ],
-  abFacts: [['Projekt', 'Logo, identyfikacja i wszystkie projekty'], ['Produkcja', 'Druk, odzież, folia i gadżety'], ['Montaż', 'Oklejanie aut i witryn, osobiście']],
+  abFacts: [['Projekt', 'Logo, identyfikacja i wszystkie projekty'], ['Produkcja', 'Druk, odzież, folie i gadżety'], ['Montaż', 'Oklejanie aut, witryn i szyb']],
   abRole: 'Grafik i specjalista od reklamy',
 
-  fEyebrow: 'Zapytaj o wycenę',
-  fTitle: ['Powiedz, czego', 'potrzebujesz.'],
-  fIntro: 'Wystarczy kilka zdań. Wkrótce odpowiemy z propozycją i wyceną.',
-  fService: 'W czym możemy pomóc?', fServiceHint: 'Zaznacz, co pasuje (opcjonalnie).', fOther: 'Coś innego',
+  fEyebrow: 'Wycena',
+  fTitle: ['Czego', 'potrzebujesz?'],
+  fIntro: 'Opisz krótko projekt. Odpowiem osobiście, z propozycją i wyceną.',
+  fService: 'Czego dotyczy zapytanie?', fServiceHint: 'Możesz zaznaczyć kilka.', fOther: 'Coś innego',
   fName: 'Imię i nazwisko', fCompany: 'Firma', fEmail: 'E-mail', fPhone: 'Telefon', fMessage: 'Wiadomość',
   fMessagePh: 'Na przykład: oklejenie dwóch busów i koszulki dla ekipy.',
+  fPref: 'Jak mam się z Tobą skontaktować?', fPrefOpts: ['E-mail', 'Telefon', 'WhatsApp'],
   fOptional: 'opcjonalnie', fRequired: 'wymagane',
-  fPrivacy: 'Twoje dane wykorzystamy tylko do odpowiedzi na zapytanie. Przeczytaj naszą', fPrivacyLink: 'politykę prywatności',
-  fSend: 'Wyślij zapytanie', fSending: 'Wysyłanie…',
-  fErrName: 'Podaj imię i nazwisko.', fErrEmail: 'Podaj prawidłowy adres e-mail.', fErrMessage: 'Napisz krótko, w czym możemy pomóc.',
-  fErrSummary: 'Sprawdź zaznaczone pola.',
-  fErrRate: 'Wysłano już kilka zapytań. Spróbuj ponownie później albo zadzwoń.',
-  fErrSend: 'Nie udało się wysłać. Spróbuj ponownie lub napisz na design@gwgraphic.com.',
-  fDoneTitle: 'Dziękujemy!', fDoneText: 'Zapytanie zostało wysłane. Odezwiemy się najszybciej, jak to możliwe.',
+  fPrivacy: 'Twoje dane wykorzystam tylko do odpowiedzi na zapytanie. Przeczytaj', fPrivacyLink: 'politykę prywatności',
+  fSend: 'Wyślij zapytanie', fSending: 'Wysyłanie…', fWa: 'Wyślij przez WhatsApp',
+  fErrName: 'Podaj imię i nazwisko.', fErrEmail: 'Podaj poprawny adres e-mail.', fErrPhone: 'Podaj numer telefonu, żebym mógł zadzwonić albo napisać.', fErrMessage: 'Napisz kilka słów o projekcie.',
+  fErrSummary: 'Uzupełnij zaznaczone pola.',
+  fErrRate: 'Wysłano już kilka zapytań. Spróbuj później albo zadzwoń.',
+  fErrSend: 'Nie udało się wysłać. Spróbuj ponownie albo napisz na design@gwgraphic.com.',
+  fDoneTitle: 'Dziękuję!', fDoneText: 'Zapytanie dotarło. Odezwę się najszybciej, jak to możliwe.',
+  waForm: 'Dzień dobry, piszę przez gwgraphic.com.',
 
-  ctEyebrow: 'Kontakt', ctTitle: 'Wolisz porozmawiać od razu?',
-  ctIntro: 'Napisz, zadzwoń albo wyślij maila. Zdjęcia busa lub obecnego logo możesz przesłać od razu.',
+  ctEyebrow: 'Kontakt', ctTitle: 'Wolisz od razu porozmawiać?',
+  ctIntro: 'Zadzwoń, napisz na WhatsApp albo wyślij maila. Zdjęcie auta lub obecnego logo możesz dołączyć od razu.',
   ctWa: 'Napisz wiadomość', ctPhone: 'Zadzwoń', ctEmail: 'E-mail',
-  ctMeta: 'Eindhoven, Brabancja Północna. Projekt i produkcja dla całej Holandii, Belgii i Niemiec; montaż na miejscu.',
-  waText: 'Dzień dobry, mam pytanie do GW Graphic Design.',
+  ctMeta: 'Dla firm z całej Holandii, Belgii i Niemiec. Oklejenia montuję na miejscu u klienta.',
+  waText: 'Dzień dobry, mam pytanie.',
 
-  ftLine: 'Reklama w każdej formie. Logo, druk, odzież firmowa, oklejanie aut, strony www i gadżety z Eindhoven.',
+  ftLine: 'Reklama w każdej formie: branding, oklejanie aut, odzież firmowa, druk, strony internetowe i gadżety. Projekt, produkcja i montaż.',
   ftServices: 'Usługi', ftMenu: 'Menu', ftContact: 'Kontakt', ftSocial: 'Social media', ftLegal: 'Informacje prawne',
-  ftServiceLinks: ['Logo i identyfikacja', 'Nadruki na odzieży', 'Druk', 'Oklejanie aut', 'Strony www', 'Gadżety reklamowe'],
+  ftServiceLinks: ['Logo i identyfikacja', 'Oklejanie aut i witryn', 'Odzież firmowa', 'Druk', 'Strony internetowe', 'Gadżety reklamowe'],
+  ftArea: 'Holandia · Belgia · Niemcy',
   legalNames: { privacy: 'Polityka prywatności', cookies: 'Polityka cookies', terms: 'Regulamin', notice: 'Nota prawna', a11y: 'Dostępność' },
   cookieSettings: 'Ustawienia cookies',
   ckTitle: 'Ustawienia cookies',
-  ckText: 'Ta strona nie używa plików cookies do statystyk, reklam ani śledzenia i nie wczytuje usług zewnętrznych. Nie ma więc niczego do zaakceptowania ani odrzucenia.',
-  ckStore: 'Tylko w trakcie wizyty przeglądarka zapamiętuje, czy animacja otwarcia została już odtworzona (sessionStorage). Informacja znika po zamknięciu karty.',
+  ckText: 'Ta strona nie używa plików cookies do statystyk, reklam ani śledzenia i nie wczytuje usług zewnętrznych. Nie ma więc na co wyrażać zgody.',
+  ckStore: 'Przeglądarka zapamiętuje tylko, że animacja otwarcia została już obejrzana (localStorage), żeby nie wracała przy każdej wizycie.',
   ckClear: 'Wyczyść zapisane dane', ckCleared: 'Wyczyszczono.', ckMore: 'Przeczytaj politykę cookies',
-  backHome: 'Wróć na stronę główną', updated: 'Ostatnia aktualizacja', updatedDate: '26 września 2026'
+  backHome: 'Wróć na stronę główną', updated: 'Ostatnia aktualizacja', updatedDate: '27 września 2026'
 }
 };

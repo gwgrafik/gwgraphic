@@ -2,6 +2,9 @@
 // Business registration data that is not yet verified (address, KvK, BTW) is intentionally not shown —
 // see README “Required business data before live deployment”.
 
+import { SITE } from './content.mjs';
+const KVK = (l, v) => SITE.kvk ? `<dt>${l}</dt><dd>${SITE.kvk}</dd>` : '';
+const BTW = (l) => SITE.btw ? `<dt>${l}</dt><dd>${SITE.btw}</dd>` : '';
 const E = '<a href="mailto:design@gwgraphic.com">design@gwgraphic.com</a>';
 const P = '<a href="tel:+31644319415">+31&nbsp;6&nbsp;44&nbsp;31&nbsp;94&nbsp;15</a>';
 const AP_NL = '<a href="https://www.autoriteitpersoonsgegevens.nl" rel="noopener" target="_blank">Autoriteit Persoonsgegevens</a>';
@@ -11,9 +14,9 @@ const AP_PL = '<a href="https://www.autoriteitpersoonsgegevens.nl/en" rel="noope
 export const LEGAL = {
 /* =================================================================== PRIVACY */
 privacy: {
-nl: { title: 'Privacybeleid', description: 'Hoe GW Graphic Design in Eindhoven omgaat met persoonsgegevens van klanten en websitebezoekers.',
+nl: { title: 'Privacybeleid', description: 'Hoe GW Graphic Design omgaat met persoonsgegevens van klanten en websitebezoekers.',
   sections: [
-  { h: 'Wie is verantwoordelijk?', body: `<p>GW Graphic Design, de studio van Grzegorz Woźniak in Eindhoven (Nederland), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid.</p><p>Vragen over privacy of een verzoek over je gegevens? Mail naar ${E} of bel ${P}.</p>` },
+  { h: 'Wie is verantwoordelijk?', body: `<p>GW Graphic Design, de studio van Grzegorz Woźniak (Noord-Brabant, Nederland), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid.</p><p>Vragen over privacy of een verzoek over je gegevens? Mail naar ${E} of bel ${P}.</p>` },
   { h: 'Welke gegevens verwerken we?', body: `<ul><li><strong>Contactgegevens</strong> die je zelf aan ons geeft: naam, bedrijfsnaam, e-mailadres en telefoonnummer.</li><li><strong>Projectinformatie</strong> die je ons stuurt: je bericht, gekozen diensten en eventuele bestanden die je per e-mail of WhatsApp meestuurt.</li><li><strong>Klant- en opdrachtgegevens</strong>: offertes, afspraken, facturen en betalingen.</li><li><strong>Technische gegevens</strong>: bij het verzenden van het formulier wordt je IP-adres gehasht (onherkenbaar gemaakt) en maximaal één uur bewaard om misbruik te voorkomen. Onze hostingprovider houdt daarnaast standaard serverlogbestanden bij (zoals IP-adres, tijdstip en opgevraagde pagina) voor beveiliging.</li></ul><p>We vragen niet om bijzondere persoonsgegevens en hebben die ook niet nodig.</p>` },
   { h: 'Waarvoor en op welke grondslag?', body: `<div class="table-wrap"><table><thead><tr><th>Doel</th><th>Grondslag (AVG)</th></tr></thead><tbody>
 <tr><td>Je aanvraag beantwoorden en een offerte maken</td><td>Maatregelen op jouw verzoek vóór een overeenkomst (art. 6 lid 1 b)</td></tr>
@@ -32,9 +35,9 @@ nl: { title: 'Privacybeleid', description: 'Hoe GW Graphic Design in Eindhoven o
   { h: 'Cookies en externe diensten', body: `<p>Deze website gebruikt geen cookies voor statistieken, advertenties of tracking en laadt geen lettertypes, scripts of widgets van derden. Lees meer in het <a href="cookiebeleid.html">cookiebeleid</a>. Links naar Google, WhatsApp, Instagram, Facebook en LinkedIn openen pas een externe dienst als je erop klikt.</p>` },
   { h: 'Wijzigingen', body: `<p>We passen dit privacybeleid aan als onze werkwijze, dienstverleners of de wet veranderen. Bovenaan deze pagina staat de datum van de laatste wijziging.</p>` }
 ]},
-en: { title: 'Privacy policy', description: 'How GW Graphic Design in Eindhoven handles the personal data of clients and website visitors.',
+en: { title: 'Privacy policy', description: 'How GW Graphic Design handles the personal data of clients and website visitors.',
   sections: [
-  { h: 'Who is responsible?', body: `<p>GW Graphic Design, the studio of Grzegorz Woźniak in Eindhoven (the Netherlands), is the controller for the processing of personal data described in this privacy policy.</p><p>Questions about privacy or a request about your data? Email ${E} or call ${P}.</p>` },
+  { h: 'Who is responsible?', body: `<p>GW Graphic Design, the studio of Grzegorz Woźniak (North Brabant, the Netherlands), is the controller for the processing of personal data described in this privacy policy.</p><p>Questions about privacy or a request about your data? Email ${E} or call ${P}.</p>` },
   { h: 'What data do we process?', body: `<ul><li><strong>Contact details</strong> you give us: name, company name, email address and phone number.</li><li><strong>Project information</strong> you send us: your message, the services you choose and any files you send by email or WhatsApp.</li><li><strong>Client and order data</strong>: quotes, agreements, invoices and payments.</li><li><strong>Technical data</strong>: when you submit the form, your IP address is hashed (made unrecognisable) and kept for no more than one hour to prevent abuse. Our hosting provider also keeps standard server log files (such as IP address, time and requested page) for security.</li></ul><p>We do not ask for special categories of personal data and do not need them.</p>` },
   { h: 'Purposes and legal bases', body: `<div class="table-wrap"><table><thead><tr><th>Purpose</th><th>Legal basis (GDPR)</th></tr></thead><tbody>
 <tr><td>Answering your request and preparing a quote</td><td>Steps taken at your request before entering into a contract (Art. 6(1)(b))</td></tr>
@@ -53,9 +56,9 @@ en: { title: 'Privacy policy', description: 'How GW Graphic Design in Eindhoven 
   { h: 'Cookies and external services', body: `<p>This website does not use cookies for statistics, advertising or tracking and does not load third-party fonts, scripts or widgets. Read more in the <a href="cookies.html">cookie policy</a>. Links to Google, WhatsApp, Instagram, Facebook and LinkedIn only open an external service when you click them.</p>` },
   { h: 'Changes', body: `<p>We update this privacy policy when our way of working, service providers or the law change. The date of the latest change is shown at the top of this page.</p>` }
 ]},
-pl: { title: 'Polityka prywatności', description: 'Jak GW Graphic Design z Eindhoven przetwarza dane osobowe klientów i osób odwiedzających stronę.',
+pl: { title: 'Polityka prywatności', description: 'Jak GW Graphic Design przetwarza dane osobowe klientów i osób odwiedzających stronę.',
   sections: [
-  { h: 'Kto jest administratorem danych?', body: `<p>Administratorem danych osobowych opisanych w tej polityce jest GW Graphic Design, studio Grzegorza Woźniaka w Eindhoven (Holandia).</p><p>Pytania o prywatność lub wniosek dotyczący Twoich danych? Napisz na ${E} albo zadzwoń: ${P}.</p>` },
+  { h: 'Kto jest administratorem danych?', body: `<p>Administratorem danych osobowych opisanych w tej polityce jest GW Graphic Design, studio Grzegorza Woźniaka (Brabancja Północna, Holandia).</p><p>Pytania o prywatność lub wniosek dotyczący Twoich danych? Napisz na ${E} albo zadzwoń: ${P}.</p>` },
   { h: 'Jakie dane przetwarzamy?', body: `<ul><li><strong>Dane kontaktowe</strong>, które sam nam podajesz: imię i nazwisko, nazwa firmy, adres e-mail i numer telefonu.</li><li><strong>Informacje o projekcie</strong>, które nam przesyłasz: wiadomość, wybrane usługi i pliki wysłane e-mailem lub przez WhatsApp.</li><li><strong>Dane klientów i zleceń</strong>: wyceny, ustalenia, faktury i płatności.</li><li><strong>Dane techniczne</strong>: przy wysyłce formularza Twój adres IP jest haszowany (przekształcany w nierozpoznawalną postać) i przechowywany najwyżej godzinę, aby zapobiegać nadużyciom. Nasz dostawca hostingu prowadzi też standardowe logi serwera (np. adres IP, czas, otwierana strona) ze względów bezpieczeństwa.</li></ul><p>Nie prosimy o szczególne kategorie danych osobowych i ich nie potrzebujemy.</p>` },
   { h: 'Cele i podstawy prawne', body: `<div class="table-wrap"><table><thead><tr><th>Cel</th><th>Podstawa prawna (RODO)</th></tr></thead><tbody>
 <tr><td>Odpowiedź na zapytanie i przygotowanie wyceny</td><td>Działania na Twoje żądanie przed zawarciem umowy (art. 6 ust. 1 lit. b)</td></tr>
@@ -82,7 +85,7 @@ nl: { title: 'Cookiebeleid', description: 'Welke cookies en opslag de website va
   sections: [
   { h: 'Kort gezegd', body: `<p>Deze website plaatst <strong>geen cookies</strong> en gebruikt geen analytics, advertentienetwerken, social-media-pixels of andere trackers. Lettertypes, afbeeldingen en scripts worden allemaal vanaf onze eigen server geladen. Daarom tonen we ook geen cookiebanner: er is niets om toestemming voor te vragen.</p>` },
   { h: 'Wat wordt er wel opgeslagen?', body: `<div class="table-wrap"><table><thead><tr><th>Naam</th><th>Type</th><th>Doel</th><th>Bewaartermijn</th></tr></thead><tbody>
-<tr><td><code>gw-intro</code></td><td>sessionStorage (in je browser)</td><td>Onthoudt dat de openingsanimatie al is afgespeeld, zodat je die niet bij elke pagina opnieuw ziet. Bevat alleen de waarde “1”.</td><td>Tot je het tabblad sluit</td></tr>
+<tr><td><code>gw-intro-seen</code></td><td>localStorage (in je browser)</td><td>Onthoudt dat je de openingsanimatie al hebt gezien, zodat die niet bij elk bezoek terugkomt. Bevat alleen de waarde “1”.</td><td>Tot je het wist via Cookie-instellingen of je browser</td></tr>
 </tbody></table></div><p>Dit is strikt noodzakelijk voor de werking van de website zoals jij die gebruikt, wordt niet naar ons verstuurd en is niet te herleiden tot jou als persoon.</p>` },
   { h: 'Serverlogbestanden', body: `<p>Zoals elke website registreert onze hostingprovider technische gegevens van verzoeken aan de server (zoals IP-adres, tijdstip en opgevraagde pagina) om de website veilig en bereikbaar te houden. Dit gebeurt zonder cookies. Meer hierover lees je in het <a href="privacybeleid.html">privacybeleid</a>.</p>` },
   { h: 'Externe links', body: `<p>Links naar Google Reviews, WhatsApp, Instagram, Facebook en LinkedIn openen de betreffende dienst pas als je erop klikt. Vanaf dat moment gelden de cookie- en privacyregels van die dienst.</p>` },
@@ -93,7 +96,7 @@ en: { title: 'Cookie policy', description: 'Which cookies and storage the GW Gra
   sections: [
   { h: 'In short', body: `<p>This website sets <strong>no cookies</strong> and uses no analytics, advertising networks, social media pixels or other trackers. Fonts, images and scripts are all loaded from our own server. That is also why there is no cookie banner: there is nothing to ask consent for.</p>` },
   { h: 'What is stored?', body: `<div class="table-wrap"><table><thead><tr><th>Name</th><th>Type</th><th>Purpose</th><th>Retention</th></tr></thead><tbody>
-<tr><td><code>gw-intro</code></td><td>sessionStorage (in your browser)</td><td>Remembers that the opening animation has already played, so you do not see it again on every page. Contains only the value “1”.</td><td>Until you close the tab</td></tr>
+<tr><td><code>gw-intro-seen</code></td><td>localStorage (in your browser)</td><td>Remembers that you have already seen the opening animation, so it does not play on every visit. Contains only the value “1”.</td><td>Until you clear it via Cookie settings or your browser</td></tr>
 </tbody></table></div><p>This is strictly necessary for the website as you use it, is never sent to us and cannot identify you.</p>` },
   { h: 'Server log files', body: `<p>Like every website, our hosting provider records technical data about requests to the server (such as IP address, time and requested page) to keep the website secure and available. This happens without cookies. Read more in the <a href="privacy.html">privacy policy</a>.</p>` },
   { h: 'External links', body: `<p>Links to Google Reviews, WhatsApp, Instagram, Facebook and LinkedIn only open that service when you click them. From then on, that service’s cookie and privacy rules apply.</p>` },
@@ -104,7 +107,7 @@ pl: { title: 'Polityka cookies', description: 'Jakich plików cookies i pamięci
   sections: [
   { h: 'W skrócie', body: `<p>Ta strona <strong>nie zapisuje plików cookies</strong> i nie używa narzędzi analitycznych, sieci reklamowych, pikseli mediów społecznościowych ani innych narzędzi śledzących. Czcionki, zdjęcia i skrypty ładowane są z naszego serwera. Dlatego nie wyświetlamy banera cookies — nie ma na co wyrażać zgody.</p>` },
   { h: 'Co jest zapisywane?', body: `<div class="table-wrap"><table><thead><tr><th>Nazwa</th><th>Rodzaj</th><th>Cel</th><th>Okres przechowywania</th></tr></thead><tbody>
-<tr><td><code>gw-intro</code></td><td>sessionStorage (w przeglądarce)</td><td>Zapamiętuje, że animacja otwarcia została już odtworzona, aby nie pojawiała się na każdej stronie. Zawiera tylko wartość „1”.</td><td>Do zamknięcia karty</td></tr>
+<tr><td><code>gw-intro-seen</code></td><td>localStorage (w przeglądarce)</td><td>Zapamiętuje, że animacja otwarcia została już obejrzana, żeby nie wracała przy każdej wizycie. Zawiera tylko wartość „1”.</td><td>Do usunięcia w Ustawieniach cookies lub w przeglądarce</td></tr>
 </tbody></table></div><p>Jest to niezbędne do działania strony w sposób, w jaki z niej korzystasz, nie jest do nas wysyłane i nie pozwala Cię zidentyfikować.</p>` },
   { h: 'Logi serwera', body: `<p>Jak każda strona, nasz dostawca hostingu rejestruje dane techniczne zapytań do serwera (np. adres IP, czas i otwieraną stronę), aby zapewnić bezpieczeństwo i dostępność. Odbywa się to bez cookies. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>` },
   { h: 'Linki zewnętrzne', body: `<p>Linki do opinii Google, WhatsApp, Instagrama, Facebooka i LinkedIn otwierają daną usługę dopiero po kliknięciu. Od tej chwili obowiązują zasady cookies i prywatności tej usługi.</p>` },
@@ -117,7 +120,7 @@ pl: { title: 'Polityka cookies', description: 'Jakich plików cookies i pamięci
 terms: {
 nl: { title: 'Algemene voorwaarden', description: 'De algemene voorwaarden van GW Graphic Design voor grafisch ontwerp, drukwerk, kleding, belettering, websites en montage.',
   sections: [
-  { h: 'Toepassing', body: `<p>Deze voorwaarden gelden voor alle offertes, opdrachten en leveringen van GW Graphic Design (Grzegorz Woźniak, Eindhoven), tenzij in de offerte of een schriftelijke overeenkomst iets anders is afgesproken. Ze gelden voor onder meer grafisch ontwerp, logo en huisstijl, drukwerk, bedrukte kleding, borden en signing, autobelettering en voertuiggraphics, raambelettering, websites, relatiegeschenken en montage.</p>` },
+  { h: 'Toepassing', body: `<p>Deze voorwaarden gelden voor alle offertes, opdrachten en leveringen van GW Graphic Design (Grzegorz Woźniak), tenzij in de offerte of een schriftelijke overeenkomst iets anders is afgesproken. Ze gelden voor onder meer grafisch ontwerp, logo en huisstijl, drukwerk, bedrukte kleding, borden en signing, autobelettering en voertuiggraphics, raambelettering, websites, relatiegeschenken en montage.</p>` },
   { h: 'Offertes en opdracht', body: `<p>Een offerte is gebaseerd op de informatie die op dat moment bekend is en is 30 dagen geldig, tenzij anders vermeld. Een opdracht komt tot stand zodra je de offerte schriftelijk (ook per e-mail of WhatsApp) accepteert. Wijzigingen of extra werk buiten de afgesproken omvang bespreken we vooraf en kunnen apart worden geoffreerd.</p>` },
   { h: 'Aanbetaling en betaling', body: `<p>Voor de start van een project kan een aanbetaling worden gevraagd, meestal 50%. Het restant en eventuele termijnen staan in de offerte of op de factuur. Facturen worden betaald binnen de termijn op de factuur. Zolang een opeisbare betaling openstaat, kunnen productie, levering van definitieve bestanden of montage worden uitgesteld.</p>` },
   { h: 'Aangeleverd materiaal', body: `<p>Je bent verantwoordelijk voor de juistheid van teksten, namen, contactgegevens, afmetingen en ander materiaal dat je aanlevert, en je verklaart dat je het recht hebt dit materiaal te laten gebruiken. We voeren geen opdrachten uit met onrechtmatige of inbreukmakende inhoud.</p>` },
@@ -137,7 +140,7 @@ nl: { title: 'Algemene voorwaarden', description: 'De algemene voorwaarden van G
 ]},
 en: { title: 'Terms and conditions', description: 'The terms and conditions of GW Graphic Design for graphic design, print, apparel, vehicle graphics, websites and installation.',
   sections: [
-  { h: 'Scope', body: `<p>These terms apply to all quotes, orders and deliveries by GW Graphic Design (Grzegorz Woźniak, Eindhoven) unless the quote or a written agreement states otherwise. They cover, among other things, graphic design, logo and visual identity, print, printed apparel, signs and signage, vehicle lettering and graphics, window graphics, websites, promotional products and installation.</p>` },
+  { h: 'Scope', body: `<p>These terms apply to all quotes, orders and deliveries by GW Graphic Design (Grzegorz Woźniak) unless the quote or a written agreement states otherwise. They cover, among other things, graphic design, logo and visual identity, print, printed apparel, signs and signage, vehicle lettering and graphics, window graphics, websites, promotional products and installation.</p>` },
   { h: 'Quotes and orders', body: `<p>A quote is based on the information known at the time and is valid for 30 days unless stated otherwise. An order is placed as soon as you accept the quote in writing (including by email or WhatsApp). Changes or extra work outside the agreed scope are discussed in advance and may be quoted separately.</p>` },
   { h: 'Deposit and payment', body: `<p>A deposit, usually 50%, may be requested before a project starts. The balance and any instalments are stated in the quote or on the invoice. Invoices are paid within the term stated on the invoice. While a due payment is outstanding, production, delivery of final files or installation may be postponed.</p>` },
   { h: 'Materials you supply', body: `<p>You are responsible for the accuracy of text, names, contact details, dimensions and other material you supply, and you confirm that you have the right to have this material used. We do not carry out orders with unlawful or infringing content.</p>` },
@@ -157,7 +160,7 @@ en: { title: 'Terms and conditions', description: 'The terms and conditions of G
 ]},
 pl: { title: 'Regulamin', description: 'Ogólne warunki współpracy z GW Graphic Design: projektowanie, druk, odzież, oklejanie aut, strony www i montaż.',
   sections: [
-  { h: 'Zakres', body: `<p>Niniejsze warunki dotyczą wszystkich wycen, zleceń i dostaw realizowanych przez GW Graphic Design (Grzegorz Woźniak, Eindhoven), chyba że wycena lub pisemna umowa stanowi inaczej. Obejmują m.in. projektowanie graficzne, logo i identyfikację wizualną, druk, nadruki na odzieży, tablice i oznakowanie, oklejanie i grafikę na pojazdach, oklejanie szyb i witryn, strony www, gadżety reklamowe oraz montaż.</p>` },
+  { h: 'Zakres', body: `<p>Niniejsze warunki dotyczą wszystkich wycen, zleceń i dostaw realizowanych przez GW Graphic Design (Grzegorz Woźniak), chyba że wycena lub pisemna umowa stanowi inaczej. Obejmują m.in. projektowanie graficzne, logo i identyfikację wizualną, druk, nadruki na odzieży, tablice i oznakowanie, oklejanie i grafikę na pojazdach, oklejanie szyb i witryn, strony www, gadżety reklamowe oraz montaż.</p>` },
   { h: 'Wyceny i zlecenia', body: `<p>Wycena opiera się na informacjach znanych w chwili jej przygotowania i jest ważna 30 dni, chyba że wskazano inaczej. Zlecenie zostaje przyjęte z chwilą pisemnej akceptacji wyceny (także e-mailem lub przez WhatsApp). Zmiany i prace wykraczające poza ustalony zakres omawiamy wcześniej i mogą być wycenione osobno.</p>` },
   { h: 'Zaliczka i płatność', body: `<p>Przed rozpoczęciem projektu możemy poprosić o zaliczkę, zwykle 50%. Pozostała kwota i ewentualne raty są określone w wycenie lub na fakturze. Faktury opłaca się w terminie wskazanym na fakturze. Dopóki wymagalna płatność pozostaje nieuregulowana, produkcja, przekazanie plików końcowych lub montaż mogą zostać wstrzymane.</p>` },
   { h: 'Materiały od klienta', body: `<p>Odpowiadasz za poprawność tekstów, nazw, danych kontaktowych, wymiarów i innych przekazanych materiałów oraz potwierdzasz, że masz prawo do ich wykorzystania. Nie realizujemy zleceń z treściami niezgodnymi z prawem lub naruszającymi prawa innych osób.</p>` },
@@ -179,25 +182,25 @@ pl: { title: 'Regulamin', description: 'Ogólne warunki współpracy z GW Graphi
 
 /* =================================================================== LEGAL NOTICE */
 notice: {
-nl: { title: 'Colofon', description: 'Bedrijfsgegevens en colofon van GW Graphic Design, studio voor grafisch ontwerp en reclame in Eindhoven.',
+nl: { title: 'Colofon', description: 'Bedrijfsgegevens en colofon van GW Graphic Design, studio voor grafisch ontwerp, reclame en belettering.',
   sections: [
-  { h: 'Bedrijfsgegevens', body: `<dl><dt>Handelsnaam</dt><dd>GW Graphic Design</dd><dt>Eigenaar</dt><dd>Grzegorz Woźniak</dd><dt>Vestigingsplaats</dt><dd>Eindhoven, Noord-Brabant, Nederland</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefoon</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
+  { h: 'Bedrijfsgegevens', body: `<dl><dt>Handelsnaam</dt><dd>GW Graphic Design</dd><dt>Eigenaar</dt><dd>Grzegorz Woźniak</dd>${KVK('KvK-nummer')}${BTW('Btw-id')}<dt>Regio</dt><dd>Noord-Brabant, Nederland</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefoon</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
   { h: 'Werkgebied', body: `<p>Ontwerp en productie voor opdrachtgevers in heel Nederland, België en Duitsland. Montage van belettering op locatie.</p>` },
   { h: 'Ontwerp en realisatie', body: `<p>Ontwerp en inhoud van deze website: GW Graphic Design. Lettertype: Archivo (SIL Open Font License), zelf gehost.</p>` },
   { h: 'Auteursrecht', body: `<p>Het ontwerp van deze website, het GW Graphic Design-logo en de presentatie van het portfolio zijn auteursrechtelijk beschermd. Logo’s en merken van klanten blijven eigendom van de betreffende klant en worden getoond als voorbeeld van uitgevoerd werk.</p>` },
   { h: 'Externe links', body: `<p>Links naar externe websites zijn bedoeld als service. Voor de inhoud, voorwaarden en privacypraktijken van die websites zijn wij niet verantwoordelijk.</p>` }
 ]},
-en: { title: 'Legal notice', description: 'Business details and legal notice of GW Graphic Design, graphic design and advertising studio in Eindhoven.',
+en: { title: 'Legal notice', description: 'Business details and legal notice of GW Graphic Design, graphic design, advertising and vehicle graphics studio.',
   sections: [
-  { h: 'Business details', body: `<dl><dt>Trading name</dt><dd>GW Graphic Design</dd><dt>Owner</dt><dd>Grzegorz Woźniak</dd><dt>Based in</dt><dd>Eindhoven, North Brabant, the Netherlands</dd><dt>Email</dt><dd>${E}</dd><dt>Phone</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
+  { h: 'Business details', body: `<dl><dt>Trading name</dt><dd>GW Graphic Design</dd><dt>Owner</dt><dd>Grzegorz Woźniak</dd>${KVK('Chamber of Commerce (KvK)')}${BTW('VAT ID')}<dt>Region</dt><dd>North Brabant, the Netherlands</dd><dt>Email</dt><dd>${E}</dd><dt>Phone</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
   { h: 'Service area', body: `<p>Design and production for clients across the Netherlands, Belgium and Germany. Installation of lettering on location.</p>` },
   { h: 'Design and development', body: `<p>Design and content of this website: GW Graphic Design. Typeface: Archivo (SIL Open Font License), self-hosted.</p>` },
   { h: 'Copyright', body: `<p>The design of this website, the GW Graphic Design logo and the portfolio presentation are protected by copyright. Client logos and trademarks remain the property of the client concerned and are shown as examples of completed work.</p>` },
   { h: 'External links', body: `<p>Links to external websites are provided as a service. We are not responsible for the content, terms or privacy practices of those websites.</p>` }
 ]},
-pl: { title: 'Nota prawna', description: 'Dane firmy i nota prawna GW Graphic Design, studia projektowania graficznego i reklamy w Eindhoven.',
+pl: { title: 'Nota prawna', description: 'Dane firmy i nota prawna GW Graphic Design, studia projektowania graficznego, reklamy i oklejania.',
   sections: [
-  { h: 'Dane firmy', body: `<dl><dt>Nazwa handlowa</dt><dd>GW Graphic Design</dd><dt>Właściciel</dt><dd>Grzegorz Woźniak</dd><dt>Siedziba</dt><dd>Eindhoven, Brabancja Północna, Holandia</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefon</dt><dd>${P}</dd><dt>Strona</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
+  { h: 'Dane firmy', body: `<dl><dt>Nazwa handlowa</dt><dd>GW Graphic Design</dd><dt>Właściciel</dt><dd>Grzegorz Woźniak</dd>${KVK('Numer KvK')}${BTW('Numer VAT (BTW)')}<dt>Region</dt><dd>Brabancja Północna, Holandia</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefon</dt><dd>${P}</dd><dt>Strona</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
   { h: 'Obszar działania', body: `<p>Projekt i produkcja dla klientów z całej Holandii, Belgii i Niemiec. Montaż oklejenia na miejscu.</p>` },
   { h: 'Projekt i wykonanie', body: `<p>Projekt i treści tej strony: GW Graphic Design. Krój pisma: Archivo (SIL Open Font License), hostowany lokalnie.</p>` },
   { h: 'Prawa autorskie', body: `<p>Projekt tej strony, logo GW Graphic Design i prezentacja portfolio są chronione prawem autorskim. Logo i znaki towarowe klientów pozostają własnością tych klientów i są pokazane jako przykłady zrealizowanych prac.</p>` },
@@ -211,7 +214,7 @@ nl: { title: 'Toegankelijkheid', description: 'Hoe de website van GW Graphic Des
   sections: [
   { h: 'Ons uitgangspunt', body: `<p>We willen dat iedereen deze website kan gebruiken, ook met een toetsenbord, een schermlezer, vergroting of een trage verbinding. We streven naar de richtlijnen van WCAG 2.2 op niveau AA.</p>` },
   { h: 'Wat we hebben gedaan', body: `<ul><li>Alle functies werken met het toetsenbord, met een duidelijk zichtbare focus.</li><li>Een logische kopstructuur, herkenbare oriëntatiepunten en een link om direct naar de inhoud te gaan.</li><li>Beschrijvende alternatieve teksten bij alle portfoliofoto’s.</li><li>Voldoende kleurcontrast en tekst die meeschaalt met je browserinstellingen.</li><li>Formuliervelden met labels en foutmeldingen die door hulpsoftware worden voorgelezen.</li><li>Als je besturingssysteem vraagt om minder beweging, worden animaties uitgeschakeld en zie je direct de rustige eindstand.</li><li>Lichte pagina’s zonder trackers, zodat de site ook op een trage verbinding snel laadt.</li></ul>` },
-  { h: 'Bekende beperkingen', body: `<p>De Google-reviews staan in de oorspronkelijke (Engelse) taal waarin klanten ze schreven. Dat is als zodanig gemarkeerd, zodat schermlezers de juiste uitspraak gebruiken.</p>` },
+  { h: 'Bekende beperkingen', body: `<p>De Google-reviews zijn in het Engels gepubliceerd. Op deze pagina staat een Nederlandse vertaling, duidelijk gemarkeerd, met het origineel eronder. Beide teksten hebben de juiste taalcode, zodat schermlezers de juiste uitspraak gebruiken.</p>` },
   { h: 'Probleem gevonden?', body: `<p>Loop je ergens tegenaan? Laat het ons weten via ${E} of ${P}. We reageren zo snel mogelijk en helpen je in de tussentijd graag op een andere manier.</p>` }
 ]},
 en: { title: 'Accessibility', description: 'How the GW Graphic Design website has been made accessible and how to report a problem.',
@@ -225,7 +228,7 @@ pl: { title: 'Dostępność', description: 'Jak zadbaliśmy o dostępność stro
   sections: [
   { h: 'Nasze założenia', body: `<p>Chcemy, aby z tej strony mógł korzystać każdy, także za pomocą klawiatury, czytnika ekranu, powiększenia czy przy wolnym połączeniu. Dążymy do spełnienia wytycznych WCAG 2.2 na poziomie AA.</p>` },
   { h: 'Co zrobiliśmy', body: `<ul><li>Wszystkie funkcje działają z klawiatury, z wyraźnie widocznym fokusem.</li><li>Logiczna struktura nagłówków, czytelne punkty orientacyjne i link „przejdź do treści”.</li><li>Opisowe teksty alternatywne dla wszystkich zdjęć w portfolio.</li><li>Odpowiedni kontrast kolorów i tekst skalujący się z ustawieniami przeglądarki.</li><li>Pola formularza z etykietami i komunikatami o błędach odczytywanymi przez technologie wspomagające.</li><li>Jeśli system prosi o ograniczenie ruchu, animacje są wyłączone i od razu widzisz spokojny stan końcowy.</li><li>Lekkie strony bez narzędzi śledzących, które szybko ładują się nawet przy słabym połączeniu.</li></ul>` },
-  { h: 'Znane ograniczenia', body: `<p>Opinie z Google są pokazane w oryginalnym języku (angielskim), w którym napisali je klienci. Są odpowiednio oznaczone, aby czytniki ekranu używały właściwej wymowy.</p>` },
+  { h: 'Znane ograniczenia', body: `<p>Opinie w Google zostały opublikowane po angielsku. Na stronie pokazuję oznaczone tłumaczenie, a pod nim oryginał. Oba teksty mają właściwy kod języka, więc czytniki ekranu używają poprawnej wymowy.</p>` },
   { h: 'Znalazłeś problem?', body: `<p>Coś nie działa? Daj nam znać: ${E} lub ${P}. Odpowiemy jak najszybciej, a w międzyczasie chętnie pomożemy w inny sposób.</p>` }
 ]}
 }

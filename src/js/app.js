@@ -46,23 +46,26 @@ else {
 
 /* ---------- HERO: V07 rotator + stage prints ---------- */
 const hero = (() => {
-  const rot = $('#rot b'), stage = $('#stage');
+  const rot = $('#rot'), stage = $('#stage');
   if (!rot || !stage) return { start() {} };
-  const words = JSON.parse(rot.parentElement.dataset.words);
+  const words = $$('b', rot);
   const prints = $$('.print', stage), chip = $('.chip', stage);
   let i = 0, timer = null, visible = true;
   function show(n) {
-    const p = prints[n];
+    const p = prints[n], prev = words[i];
     hydrate(p); hydrate(prints[(n + 1) % prints.length]); // keep the next one ready
     prints.forEach((x, k) => x.classList.toggle('on', k === n));
     chip.textContent = p.dataset.client;
     stage.href = p.dataset.href;
-    rot.className = 'out';
-    setTimeout(() => { rot.textContent = words[n]; rot.className = 'pre'; void rot.offsetWidth; rot.className = ''; }, 380);
+    // every word sits in the same grid cell, so the line never changes size
+    prev.classList.remove('on'); prev.classList.add('out'); prev.setAttribute('aria-hidden', 'true');
+    words[n].classList.remove('out'); words[n].classList.add('on'); words[n].removeAttribute('aria-hidden');
+    setTimeout(() => prev.classList.remove('out'), 700);
+    i = n;
   }
-  const tick = () => { if (!visible || document.hidden) return; i = (i + 1) % prints.length; show(i); };
+  const tick = () => { if (!visible || document.hidden) return; show((i + 1) % prints.length); };
   new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(stage);
-  return { start() { if (RM || timer) return; hydrate(prints[1]); timer = setInterval(tick, 3000); } };
+  return { start() { if (RM || timer) return; hydrate(prints[1]); timer = setInterval(tick, 3200); } };
 })();
 
 /* ---------- GATE: V07 intro (logo + rings). Never blocks: auto-continues, any input skips. ---------- */
@@ -70,25 +73,33 @@ const gate = $('#gate');
 function entered() { document.body.classList.add('entered'); hero.start(); }
 if (gate && html.classList.contains('gate-on')) {
   document.body.classList.add('is-locked');
+  try { localStorage.setItem('gw-intro-seen', '1'); } catch (e) {}
   requestAnimationFrame(() => requestAnimationFrame(() => gate.classList.add('ready')));
   let opened = false;
   const zoom = $('#gateZoom'), shade = $('#gateShade');
-  const open = () => {
+  const open = fast => {
     if (opened) return; opened = true;
     clearTimeout(auto);
-    ['wheel', 'touchmove', 'keydown'].forEach(ev => removeEventListener(ev, open));
+    removeEventListener('keydown', onKey);
     const finish = () => { document.body.classList.remove('is-locked'); html.classList.remove('gate-on'); gate.remove(); };
     if (!gate.animate) { finish(); entered(); return; }
-    const dur = 1500;
+    if (fast === true) { // skip button: short fade instead of the full zoom
+      gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 350, fill: 'forwards' });
+      entered(); document.body.classList.remove('is-locked'); setTimeout(finish, 380); return;
+    }
+    const dur = 1800;
     zoom.animate([{ transform: 'scale(1) rotate(0deg)' }, { transform: 'scale(16) rotate(20deg)' }], { duration: dur, easing: 'cubic-bezier(.7,0,.25,1)', fill: 'forwards' });
     shade.animate([{ opacity: 0 }, { opacity: .35, offset: .35 }, { opacity: 1 }], { duration: dur - 150, easing: 'ease-in', fill: 'forwards' });
-    $$('.gate-hint,.gate-lang', gate).forEach(el => el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' }));
+    $$('.gate-hint,.gate-lang,.gate-skip', gate).forEach(el => el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' }));
     setTimeout(() => { gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, fill: 'forwards' }); entered(); document.body.classList.remove('is-locked'); }, dur - 120);
     setTimeout(finish, dur + 400);
   };
-  gate.addEventListener('click', e => { if (!e.target.closest('.gate-lang')) open(); });
-  ['wheel', 'touchmove', 'keydown'].forEach(ev => addEventListener(ev, open, { passive: true }));
-  const auto = setTimeout(open, 2400);
+  // the intro plays on its own; the logo, the skip button, Enter or Escape end it early
+  $('#gateBtn').addEventListener('click', () => open());
+  $('#gateSkip').addEventListener('click', () => open(true));
+  const onKey = e => { if (e.key === 'Escape') open(true); else if (e.key === 'Enter') open(); };
+  addEventListener('keydown', onKey);
+  const auto = setTimeout(() => open(), 4200);
 } else {
   if (gate) gate.remove();
   entered();
@@ -127,7 +138,8 @@ if (dlg) {
   function render(k) {
     cur = k; const p = data[k], nx = data[(k + 1) % data.length];
     body.innerHTML = `<span class="eyebrow">${esc(L.csEyebrow)} <b>${String(k + 1).padStart(2, '0')} / ${String(data.length).padStart(2, '0')}</b></span>
-      <h2 id="caseTitle">${esc(p.name)}</h2><p class="case-svc">${esc(p.svc)}</p><p class="case-desc">${esc(p.desc)}</p>
+      <h2 id="caseTitle">${esc(p.name)}</h2><p class="case-desc">${esc(p.desc)}</p>
+      <div class="case-route"><span>${esc(L.csRoute)}</span><ol>${p.route.map(r => `<li>${esc(r)}</li>`).join('')}</ol></div>
       <div class="case-hero">${pic(p.cover.slug, p.cover.alt, '(max-width: 900px) 92vw, 760px', true)}</div>
       ${p.secs.map(s => `<section class="case-sec"><h3>${esc(s.title)}</h3><div class="case-imgs">${s.imgs.map(im => `<figure>${pic(im.slug, im.alt, '(max-width: 700px) 92vw, 380px')}</figure>`).join('')}</div></section>`).join('')}
       <div class="case-end"><p>${esc(p.result)}</p><div class="case-actions"><a class="btn" href="#offerte" data-case-cta>${esc(L.csCta)}</a><button type="button" class="btn btn-ghost" data-case-next>${esc(L.csNext)}: ${esc(nx.name)}</button></div></div>`;
@@ -156,19 +168,44 @@ if (rvs.length) {
 if (form) {
   const ts = $('[data-ts]', form); if (ts) ts.value = String(Date.now());
   const status = $('#fStatus'), btn = $('#fSend'), done = $('#fDone');
-  const rules = { name: v => v.trim().length > 1, email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()), message: v => v.trim().length > 4 };
+  const pref = () => (form.elements.contact_pref.value || 'email');
+  const rules = {
+    name: v => v.trim().length > 1,
+    email: v => (pref() === 'email' || v.trim()) ? /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) : true,
+    phone: v => pref() === 'email' && !v.trim() ? true : /^[0-9+()\/\-\s.]{6,40}$/.test(v.trim()),
+    message: v => v.trim().length > 4
+  };
   const check = el => {
     const ok = rules[el.name](el.value);
     el.setAttribute('aria-invalid', String(!ok));
     $(`#${el.id}-err`).textContent = ok ? '' : el.dataset.err;
     return ok;
   };
-  Object.keys(rules).forEach(n => { const el = form.elements[n]; el.addEventListener('blur', () => { if (el.value) check(el); }); el.addEventListener('input', () => { if (el.getAttribute('aria-invalid') === 'true') check(el); }); });
+  const fields = () => Object.keys(rules).map(n => form.elements[n]);
+  fields().forEach(el => { el.addEventListener('blur', () => { if (el.value) check(el); }); el.addEventListener('input', () => { if (el.getAttribute('aria-invalid') === 'true') check(el); }); });
+  // phone becomes required when the visitor prefers a call or WhatsApp
+  const req = $('label[for="f-name"] small').textContent, opt = $('label[for="f-company"] small').textContent;
+  form.addEventListener('change', e => {
+    if (e.target.name !== 'contact_pref') return;
+    const byPhone = pref() !== 'email';
+    form.elements.phone.required = byPhone; form.elements.email.required = !byPhone;
+    $('label[for="f-phone"] small').textContent = byPhone ? req : opt;
+    $('label[for="f-email"] small').textContent = byPhone ? opt : req;
+    ['phone', 'email'].forEach(n => { const el = form.elements[n]; if (el.getAttribute('aria-invalid') === 'true' || el.value) check(el); });
+  });
+  const valid = () => { const bad = fields().filter(el => !check(el)); if (bad.length) { status.textContent = L.fErrSummary; bad[0].focus(); } else status.textContent = ''; return !bad.length; };
+  // WhatsApp: open the visitor's own WhatsApp with the request pre-filled (no data goes to the server)
+  $('#fWa').addEventListener('click', () => {
+    const v = n => form.elements[n].value.trim();
+    if (!rules.message(v('message'))) { check(form.elements.message); status.textContent = L.fErrSummary; form.elements.message.focus(); return; }
+    const svc = $$('input[name="service[]"]:checked', form).map(c => c.dataset.label).join(', ');
+    const txt = [L.waForm, svc && `${L.fLabels[0]} ${svc}`, v('message'), [v('name'), v('company')].filter(Boolean).join(' / ')].filter(Boolean).join('\n\n');
+    window.open(`https://wa.me/${form.dataset.wa}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener');
+  });
   form.addEventListener('submit', async e => {
     e.preventDefault();
-    const bad = Object.keys(rules).map(n => form.elements[n]).filter(el => !check(el));
-    if (bad.length) { status.textContent = L.fErrSummary; bad[0].focus(); return; }
-    status.textContent = ''; btn.disabled = true; const label = btn.textContent; btn.textContent = L.fSending;
+    if (!valid()) return;
+    btn.disabled = true; const label = btn.textContent; btn.textContent = L.fSending;
     let res = null;
     try { const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } }); res = await r.json(); } catch (err) { res = null; }
     btn.disabled = false; btn.textContent = label;
@@ -184,6 +221,6 @@ if (ck) {
   $$('[data-cookie-settings]').forEach(b => b.addEventListener('click', () => ck.showModal()));
   $('[data-ck-close]', ck).addEventListener('click', () => ck.close());
   ck.addEventListener('click', e => { if (e.target === ck) ck.close(); });
-  $('[data-ck-clear]', ck).addEventListener('click', () => { try { sessionStorage.removeItem('gw-intro'); localStorage.removeItem('gw-intro'); } catch (e) {} $('output', ck).textContent = L.ckCleared; });
+  $('[data-ck-clear]', ck).addEventListener('click', () => { try { localStorage.removeItem('gw-intro-seen'); } catch (e) {} $('output', ck).textContent = L.ckCleared; });
 }
 })();

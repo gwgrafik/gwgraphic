@@ -82,28 +82,33 @@ $company = clean((string)($_POST['company'] ?? ''), 120);
 $email   = clean((string)($_POST['email'] ?? ''), 160);
 $phone   = clean((string)($_POST['phone'] ?? ''), 40);
 $message = clean((string)($_POST['message'] ?? ''), 3000, true);
-$allowed = ['Branding','Kleding','Drukwerk','Voertuigen','Websites','Gadgets','Iets anders','Apparel','Print','Vehicles','Something else','Odzież','Druk','Pojazdy','Strony www','Gadżety','Coś innego'];
-$services = array_values(array_intersect(array_map(fn($s) => clean((string)$s, 40), (array)($_POST['service'] ?? [])), $allowed));
-
+$labels  = ['branding' => 'Branding', 'belettering' => 'Belettering', 'kleding' => 'Bedrijfskleding', 'drukwerk' => 'Drukwerk', 'websites' => 'Website', 'gadgets' => 'Relatiegeschenken', 'anders' => 'Iets anders'];
+$services = [];
+foreach ((array)($_POST['service'] ?? []) as $s) { $s = (string)$s; if (isset($labels[$s])) $services[] = $labels[$s]; }
+$prefs   = ['email' => 'E-mail', 'phone' => 'Telefoon', 'whatsapp' => 'WhatsApp'];
+$pref    = array_key_exists((string)($_POST['contact_pref'] ?? ''), $prefs) ? (string)$_POST['contact_pref'] : 'email';
 $bad = [];
 if (mb_strlen($name) < 2) $bad[] = 'name';
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $bad[] = 'email';
+if (($pref === 'email' || $email !== '') && !filter_var($email, FILTER_VALIDATE_EMAIL)) $bad[] = 'email';
 if (mb_strlen($message) < 5) $bad[] = 'message';
-if ($phone !== '' && !preg_match('/^[0-9+()\/\-\s.]{6,40}$/', $phone)) $phone = '';
+$phoneOk = (bool)preg_match('/^[0-9+()\/\-\s.]{6,40}$/', $phone);
+if ($pref !== 'email' && !$phoneOk) $bad[] = 'phone';
+if (!$phoneOk) $phone = '';
 if ($bad) respond(false, 'invalid', $bad);
 
 /* ---------- send ---------- */
-$subject = 'Offerteaanvraag via gwgraphic.com: ' . ($company !== '' ? $company : $name);
+$subject = 'Offerteaanvraag via gwgraphic.com: ' . ($company !== '' ? $company : $name) . ' (' . $prefs[$pref] . ')';
 $body = "Nieuwe aanvraag via gwgraphic.com ({$lang})\n\n"
       . "Naam:     {$name}\n"
       . "Bedrijf:  " . ($company ?: '-') . "\n"
       . "E-mail:   {$email}\n"
       . "Telefoon: " . ($phone ?: '-') . "\n"
-      . "Diensten: " . ($services ? implode(', ', $services) : '-') . "\n\n"
+      . "Diensten: " . ($services ? implode(', ', $services) : '-') . "\n"
+      . "Contact via: {$prefs[$pref]}\n\n"
       . "Bericht:\n{$message}\n";
 $headers = [
     'From: GW Graphic Design website <' . MAIL_FROM . '>',
-    'Reply-To: ' . $email,                       // validated address, no line breaks possible
+    ...($email !== '' ? ['Reply-To: ' . $email] : []),   // validated address, no line breaks possible
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
     'X-Mailer: gwgraphic.com',
