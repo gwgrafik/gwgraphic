@@ -2,7 +2,8 @@
 // Run: npm run build   (images first with: npm run images)
 import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { SITE, LANGS, LEGAL_SLUGS, SERVICE_IMAGES, SERVICE_KEYS, HERO_PRINTS, PROJECTS, REVIEWS, T } from './content.mjs';
+import { SITE, LANGS, LEGAL_SLUGS, SERVICE_IMAGES, SERVICE_KEYS, SERVICE_PATHS, HERO_PRINTS, PROJECTS, REVIEWS, T } from './content.mjs';
+import { GALLERY } from './gallery.mjs';
 import { IMAGES } from './images.mjs';
 import { LEGAL } from './legal.mjs';
 
@@ -61,7 +62,7 @@ function href(fromDir, target) { // target is a site-root-relative path like 'en
 const homeHref = (fromDir, lang) => href(fromDir, LANGS[lang].dir);
 
 /* ------------------------------------------------------------------ head */
-const HEAD_SCRIPT_HOME = `(function(h){h.className=h.className.replace('no-js','js');try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&!localStorage.getItem('gw-intro-seen')){h.classList.add('gate-on')}}catch(e){}})(document.documentElement)`;
+const HEAD_SCRIPT_HOME = `(function(h){h.className=h.className.replace('no-js','js');try{var l=localStorage,s=sessionStorage;if(l.getItem('gwIntroDisabled')!=='true'&&!s.getItem('gwIntroSession')){var v=(+l.getItem('gwIntroVisits')||0)+1;l.setItem('gwIntroVisits',v);s.setItem('gwIntroSession','1');h.classList.add('gate-on');if(v>=4)h.classList.add('gate-optout');if(matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('gate-rm')}}catch(e){}})(document.documentElement)`;
 const HEAD_SCRIPT_PAGE = `document.documentElement.className=document.documentElement.className.replace('no-js','js')`;
 const scriptHashes = [HEAD_SCRIPT_HOME, HEAD_SCRIPT_PAGE].map(s => `'sha256-${createHash('sha256').update(s).digest('base64')}'`);
 
@@ -137,11 +138,11 @@ function footer(lang, dir, onHome) {
       <div class="ft-brand"><img src="${root}assets/img/brand/gw-logo-white.svg" width="240" height="163" alt="GW Graphic Design — Advertising in any form" loading="lazy"><p>${esc(t.ftLine)}</p></div>
       <div><h2>${esc(t.ftServices)}</h2><ul>${t.ftServiceLinks.map((s, i) => `<li><a href="${a('dienst-' + SERVICE_KEYS[i])}">${esc(s)}</a></li>`).join('')}</ul></div>
       <div><h2>${esc(t.ftMenu)}</h2><ul><li><a href="${a('projecten')}">${esc(t.nav.projecten)}</a></li><li><a href="${a('werkwijze')}">${esc(t.pcEyebrow)}</a></li><li><a href="${a('reviews')}">${esc(t.nav.reviews)}</a></li><li><a href="${a('over')}">${esc(t.nav.over)}</a></li><li><a href="${a('offerte')}">${esc(t.cta)}</a></li></ul></div>
-      <div><h2>${esc(t.ftContact)}</h2><address>${SITE.name}<br>${SITE.owner}<br>${esc(t.ftArea)}<br><a href="tel:${SITE.phoneHref}">${SITE.phone}</a><br><a href="mailto:${SITE.email}">${SITE.email}</a><br><a href="https://wa.me/${SITE.whatsapp}" rel="noopener" target="_blank">WhatsApp</a></address>
+      <div><h2>${esc(t.ftContact)}</h2><address>${esc(SITE.legalName || SITE.name)}<br>${SITE.owner}<br>${SITE.address && SITE.address.street ? `${esc(SITE.address.street)}<br>${esc(SITE.address.postalCode)} ${esc(SITE.address.city)}<br>` : ''}${esc(t.ftArea)}<br><a href="tel:${SITE.phoneHref}">${SITE.phone}</a><br><a href="mailto:${SITE.email}">${SITE.email}</a><br><a href="https://wa.me/${SITE.whatsapp}" rel="noopener" target="_blank">WhatsApp</a></address>
         <h2 style="margin-top:22px">${esc(t.ftSocial)}</h2><ul><li><a href="${SITE.social.instagram}" rel="noopener me" target="_blank">Instagram</a></li><li><a href="${SITE.social.facebook}" rel="noopener me" target="_blank">Facebook</a></li><li><a href="${SITE.social.linkedin}" rel="noopener me" target="_blank">LinkedIn</a></li></ul></div>
       <div><h2>${esc(t.ftLegal)}</h2><ul>${legal}<li><button type="button" data-cookie-settings>${esc(t.cookieSettings)}</button></li></ul></div>
     </div>
-    <div class="ft-bottom"><span>© 2026 GW Graphic Design · ${SITE.owner}</span><span>gwgraphic.com${SITE.kvk ? ` · KvK ${esc(SITE.kvk)}` : ''}</span></div>
+    <div class="ft-bottom"><span>© 2026 GW Graphic Design · ${SITE.owner}</span><span>gwgraphic.com${SITE.kvk ? ` · KvK ${esc(SITE.kvk)}` : ''}${SITE.btw ? ` · btw ${esc(SITE.btw)}` : ''}</span></div>
   </div>
 </footer>
 <dialog class="ck" id="ck" aria-labelledby="ckTitle">
@@ -149,13 +150,13 @@ function footer(lang, dir, onHome) {
     <h2 id="ckTitle">${esc(t.ckTitle)}</h2>
     <p>${esc(t.ckText)}</p>
     <p>${esc(t.ckStore)}</p>
-    <div class="ck-actions"><button type="button" class="btn" data-ck-close>${esc(t.close)}</button><button type="button" class="btn btn-ghost" data-ck-clear>${esc(t.ckClear)}</button><output aria-live="polite"></output></div>
+    <div class="ck-actions"><button type="button" class="btn" data-ck-close>${esc(t.close)}</button><button type="button" class="btn btn-ghost" data-ck-intro hidden>${esc(t.ckIntroOn)}</button><button type="button" class="btn btn-ghost" data-ck-clear>${esc(t.ckClear)}</button><output aria-live="polite"></output></div>
     <p><a href="${href(dir, LANGS[lang].dir + LEGAL_SLUGS.cookies[lang])}">${esc(t.ckMore)}</a></p>
   </div>
 </dialog>`;
 }
 
-const i18nJson = t => `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.menu, close: t.close, csEyebrow: t.csEyebrow, csCta: t.csCta, csNext: t.csNext, csRoute: t.csRoute, fErrSummary: t.fErrSummary, waForm: t.waForm, fLabels: [t.fService, t.fName, t.fCompany, t.fEmail, t.fPhone, t.fPref, t.fMessage], fErrRate: t.fErrRate, fErrSend: t.fErrSend, fSending: t.fSending, ckCleared: t.ckCleared }).replace(/</g, '\\u003c')}</script>`;
+const i18nJson = t => `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.menu, close: t.close, csEyebrow: t.csEyebrow, csCta: t.csCta, csNext: t.csNext, csRoute: t.csRoute, fErrSummary: t.fErrSummary, waForm: t.waForm, fLabels: [t.fService, t.fName, t.fCompany, t.fEmail, t.fPhone, t.fPref, t.fMessage], fErrRate: t.fErrRate, fErrSend: t.fErrSend, fSending: t.fSending, ckCleared: t.ckCleared, ckIntroDone: t.ckIntroDone, lbOf: t.lbOf }).replace(/</g, '\\u003c')}</script>`;
 const scriptTag = root => `<script src="${root}assets/js/app.js?v=${JS_V}" defer></script>`;
 
 /* ------------------------------------------------------------------ JSON-LD */
@@ -169,7 +170,8 @@ function jsonLd(lang) {
         slogan: t.h1.join(' '), description: t.description,
         telephone: SITE.phoneHref, email: SITE.email,
         founder: { '@type': 'Person', name: SITE.owner, jobTitle: t.abRole },
-        address: { '@type': 'PostalAddress', addressRegion: SITE.region, addressCountry: 'NL' },
+        address: { '@type': 'PostalAddress', ...(SITE.address && SITE.address.street ? { streetAddress: SITE.address.street, postalCode: SITE.address.postalCode, addressLocality: SITE.address.city } : {}), addressRegion: SITE.region, addressCountry: 'NL' },
+        ...(SITE.legalName ? { legalName: SITE.legalName } : {}),
         areaServed: [{ '@type': 'Country', name: 'Netherlands' }, { '@type': 'Country', name: 'Belgium' }, { '@type': 'Country', name: 'Germany' }],
         ...(SITE.kvk ? { identifier: { '@type': 'PropertyValue', propertyID: 'KvK', value: SITE.kvk } } : {}),
         ...(SITE.btw ? { vatID: SITE.btw } : {}),
@@ -192,8 +194,8 @@ function home(lang) {
   const heroSizes = '(max-width: 900px) 80vw, 46vw';
 
   const preload = `<link rel="preload" as="image" type="image/avif" imagesrcset="${WEB_W.map(w => `${root}assets/img/work/${firstPrint}-${w}.avif ${w}w`).join(', ')}" imagesizes="${heroSizes}" fetchpriority="high">
-<link rel="preload" as="image" type="image/avif" href="${root}assets/img/wood-1200.avif" media="(min-width: 761px)">
-<link rel="preload" as="image" type="image/avif" href="${root}assets/img/wood-800.avif" media="(max-width: 760px)">
+<link rel="preload" as="image" type="image/avif" href="${root}assets/img/wood-1200.avif" media="(min-width: 761px)" fetchpriority="high">
+<link rel="preload" as="image" type="image/avif" href="${root}assets/img/wood-800.avif" media="(max-width: 760px)" fetchpriority="high">
 `;
 
   const gate = `<div id="gate" role="dialog" aria-modal="true" aria-label="GW Graphic Design">
@@ -204,7 +206,7 @@ function home(lang) {
   <div class="shade" id="gateShade"></div>
   <div class="gate-lang">${Object.entries(LANGS).map(([l, v]) => `<a href="${href(dir, v.dir)}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${v.label}</a>`).join('')}</div>
   <p class="gate-hint" aria-hidden="true"><i></i>${esc(t.gateHint)}</p>
-  <button class="gate-skip" id="gateSkip" type="button">${esc(t.gateSkip)} <span aria-hidden="true">→</span></button>
+  <div class="gate-opts"><button id="gateNever" type="button">${esc(t.gateNever)}</button><button id="gateSkip" type="button">${esc(t.gateSkip)}</button></div>
 </div>`;
 
   const prints = HERO_PRINTS.map(([slug, client, svc], i) => {
@@ -214,7 +216,7 @@ function home(lang) {
     return `<figure ${common} data-slug="${slug}" data-alt="${esc(IMAGES[slug].alt[lang])}" data-sizes="${heroSizes}"></figure>`;
   }).join('');
 
-  const heroSec = `<section class="hero" aria-labelledby="h1">
+  const heroSec = `<section class="hero" id="start" aria-labelledby="h1">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="flow">${t.flow.map(esc).join(' <i aria-hidden="true">→</i> ')}</p>
@@ -224,10 +226,10 @@ function home(lang) {
       <div class="hero-cta"><a class="btn" href="#offerte">${esc(t.cta)}</a><a class="btn btn-ghost" href="#projecten">${esc(t.heroBtn2)}</a></div>
     </div>
     <div class="hero-media">
-      <a class="stage" id="stage" href="#dienst-branding" aria-label="${esc(t.stageAria)}">
+      <a class="stage" id="stage" href="#dienst-branding"><span class="sr-only">${esc(t.stageAria)}: </span>
         ${prints}
         <img class="burn" src="${root}assets/img/brand/gw-mark-black.svg" width="60" height="60" alt="">
-        <span class="chip" aria-hidden="true">${esc(HERO_PRINTS[0][1])}</span>
+        <span class="chip">${esc(HERO_PRINTS[0][1])}</span>
       </a>
     </div>
   </div>
@@ -247,7 +249,7 @@ function home(lang) {
       if (k === 0) return `<figure class="slide on">${picture(slug, lang, sizes)(root)}${capHtml}</figure>`;
       return `<figure class="slide" data-slug="${slug}" data-alt="${esc(IMAGES[slug].alt[lang])}" data-sizes="${sizes}">${capHtml}</figure>`;
     }).join('');
-    return `<article class="svc${i % 2 ? ' alt' : ''}" id="dienst-${key}" aria-labelledby="dienst-${key}-h">
+    return `<article class="svc${i % 2 ? ' alt' : ''}" id="dienst-${key}" data-page="${SERVICE_PATHS[key]}" aria-labelledby="dienst-${key}-h">
     <div class="wrap svc-grid">
       <div class="svc-copy rv-el">
         <span class="svc-no">${pad(i + 1)}</span>
@@ -275,10 +277,34 @@ function home(lang) {
   <div class="wrap proj-grid">
     ${PROJECTS.map((p, i) => {
       const sizes = i === 0 ? '(max-width: 760px) 92vw, 56vw' : i < 3 ? '(max-width: 760px) 92vw, 40vw' : '(max-width: 760px) 92vw, (max-width: 1100px) 46vw, 24vw';
-      return `<article class="card rv-el">${picture(p.cover, lang, sizes)(root)}<div class="card-info"><span class="card-no">${pad(i + 1)} / ${pad(PROJECTS.length)}</span><h3>${esc(p.name)}</h3><span class="card-svc">${svcOf(p).map(svcName).map(esc).join(' · ')}</span>${i < 3 ? `<p>${esc(t.projects[p.id])}</p>` : ''}<button type="button" class="open" data-case="${i}" aria-haspopup="dialog">${esc(t.prOpen)}<span class="sr-only">: ${esc(p.name)}</span> ↗</button></div></article>`;
+      return `<article class="card rv-el" id="project-${p.id}" data-page="projecten/${p.id}/">${picture(p.cover, lang, sizes)(root)}<div class="card-info"><span class="card-no">${pad(i + 1)} / ${pad(PROJECTS.length)}</span><h3>${esc(p.name)}</h3><span class="card-svc">${svcOf(p).map(svcName).map(esc).join(' · ')}</span>${i < 3 ? `<p>${esc(t.projects[p.id])}</p>` : ''}<button type="button" class="open" data-case="${i}" aria-haspopup="dialog">${esc(t.prOpen)}<span class="sr-only">: ${esc(p.name)}</span> ↗</button></div></article>`;
     }).join('\n    ')}
   </div>
 </section>`;
+
+  const gSizes = '(max-width: 560px) 46vw, (max-width: 1100px) 30vw, 18vw';
+  const gCount = k => GALLERY.filter(g => g.svc === k).length;
+  const gallery = `<section class="sec dark gallery" id="meer-werk" aria-labelledby="meer-werk-h">
+  <div class="wrap sec-head">
+    <div class="rv-el"><span class="eyebrow">${esc(t.glEyebrow)}</span><h2 class="h2" id="meer-werk-h">${esc(t.glTitle[0])} <em>${esc(t.glTitle[1])}</em></h2></div>
+    <p class="lead rv-el">${esc(t.glIntro)}</p>
+  </div>
+  <div class="wrap">
+    <div class="g-filter" role="group" aria-label="${esc(t.glFilter)}">
+      <button type="button" data-f="all" aria-pressed="true">${esc(t.glAll)} <small>${GALLERY.length}</small></button>
+      ${SERVICE_KEYS.filter(k => gCount(k)).map(k => `<button type="button" data-f="${k}" aria-pressed="false">${esc(t.services[SERVICE_KEYS.indexOf(k)].name)} <small>${gCount(k)}</small></button>`).join('')}
+    </div>
+    <ul class="g-grid" id="gGrid">
+      ${GALLERY.map((g, i) => `<li data-svc="${g.svc}"><button type="button" class="g-item" data-g="${i}" aria-label="${esc(t.glOpen)}: ${esc(g.alt[lang])}"${i < 12 ? `>${picture(g.slug, lang, gSizes)(root)}` : ` data-slug="${g.slug}" data-alt="" data-sizes="${gSizes}">`}</button></li>`).join('\n      ')}
+    </ul>
+    <p class="g-more"><button type="button" class="btn btn-ghost" id="gMore">${esc(t.glMore)}</button></p>
+  </div>
+</section>`;
+  const gData = GALLERY.map(g => ({ slug: g.slug, alt: g.alt[lang], client: g.client }));
+  const lightbox = `<dialog class="lb" id="lb" aria-label="${esc(t.glTitle.join(' '))}"><div class="lb-in"><figure><img id="lbImg" alt="" width="1000" height="1000"><figcaption id="lbCap"></figcaption></figure>
+  <button type="button" class="lb-btn lb-close" data-lb="close" aria-label="${esc(t.close)}">${I.close}</button>
+  <button type="button" class="lb-btn lb-prev" data-lb="-1" aria-label="${esc(t.prev)}">${I.prev}</button>
+  <button type="button" class="lb-btn lb-next" data-lb="1" aria-label="${esc(t.next)}">${I.next}</button></div></dialog>`;
 
   const caseData = PROJECTS.map(p => ({
     name: p.name, svc: svcOf(p).map(svcName).join(' · '), svcIdx: svcOf(p), desc: (p.long && t.projectsLong[p.id]) || t.projects[p.id],
@@ -380,6 +406,7 @@ ${header(lang, dir, alternates, true)}
 ${heroSec}
 ${services}
 ${projects}
+${gallery}
 ${process}
 ${reviews}
 ${about}
@@ -388,7 +415,9 @@ ${contact}
 </main>
 ${footer(lang, dir, true)}
 ${dialog}
+${lightbox}
 <script type="application/ld+json">${jsonLd(lang)}</script>
+<script type="application/json" id="gallery-data">${JSON.stringify(gData).replace(/</g, '\\u003c')}</script>
 <script type="application/json" id="case-data">${JSON.stringify(caseData).replace(/</g, '\\u003c')}</script>
 ${i18nJson(t)}
 ${scriptTag(root)}

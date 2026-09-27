@@ -24,7 +24,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/archivo-gw-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css?v=ad8498d640">
+<link rel="stylesheet" href="../assets/css/style.css?v=9804d48d65">
 <script>document.documentElement.className=document.documentElement.className.replace('no-js','js')</script>
 </head>
 <body>
@@ -54,8 +54,8 @@
       <nav class="toc" aria-label="Cookie policy"><h2>Menu</h2><ol><li><a href="#s1">In short</a></li><li><a href="#s2">What is stored?</a></li><li><a href="#s3">Server log files</a></li><li><a href="#s4">External links</a></li><li><a href="#s5">Managing your choice</a></li><li><a href="#s6">Changes</a></li></ol><p style="margin-top:22px"><a class="tlink" href="./">← Back to the homepage</a></p></nav>
       <div class="prose"><h2 id="s1">In short</h2><p>This website sets <strong>no cookies</strong> and uses no analytics, advertising networks, social media pixels or other trackers. Fonts, images and scripts are all loaded from our own server. That is also why there is no cookie banner: there is nothing to ask consent for.</p>
 <h2 id="s2">What is stored?</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>Type</th><th>Purpose</th><th>Retention</th></tr></thead><tbody>
-<tr><td><code>gw-intro-seen</code></td><td>localStorage (in your browser)</td><td>Remembers that you have already seen the opening animation, so it does not play on every visit. Contains only the value “1”.</td><td>Until you clear it via Cookie settings or your browser</td></tr>
-</tbody></table></div><p>This is strictly necessary for the website as you use it, is never sent to us and cannot identify you.</p>
+<tr><td><code>gwIntroVisits</code></td><td>localStorage</td><td>Counts your visits (one per browser session), so that from the fourth visit you get the option to switch the opening animation off.</td><td>Until you clear it via Cookie settings or your browser</td></tr><tr><td><code>gwIntroDisabled</code></td><td>localStorage</td><td>Only if you choose ‘Don’t show again’ yourself: remembers that choice.</td><td>Until you clear it or switch the animation back on</td></tr><tr><td><code>gwIntroSession</code></td><td>sessionStorage</td><td>Prevents the animation from starting again during the same visit.</td><td>Until you close the tab</td></tr>
+</tbody></table></div><p>These are functional preferences: they stay on your own device, are never sent to us, are not used for statistics or advertising and cannot identify you.</p>
 <h2 id="s3">Server log files</h2><p>Like every website, our hosting provider records technical data about requests to the server (such as IP address, time and requested page) to keep the website secure and available. This happens without cookies. Read more in the <a href="privacy.html">privacy policy</a>.</p>
 <h2 id="s4">External links</h2><p>Links to Google Reviews, WhatsApp, Instagram, Facebook and LinkedIn only open that service when you click them. From then on, that service’s cookie and privacy rules apply.</p>
 <h2 id="s5">Managing your choice</h2><p>Use <strong>Cookie settings</strong> at the bottom of every page to see this overview and clear stored data straight away. You can also delete storage at any time in your browser settings.</p>
@@ -80,12 +80,12 @@
   <div class="ck-in">
     <h2 id="ckTitle">Cookie settings</h2>
     <p>This website does not use cookies for statistics, advertising or tracking, and loads no third-party services. So there is nothing to accept or reject.</p>
-    <p>Your browser only remembers that you have already seen the opening animation (localStorage), so it does not play on every visit.</p>
-    <div class="ck-actions"><button type="button" class="btn" data-ck-close>Close</button><button type="button" class="btn btn-ghost" data-ck-clear>Clear stored data</button><output aria-live="polite"></output></div>
+    <p>Your browser only remembers how often you have visited and whether you switched the opening animation off (localStorage). It stays on your own device.</p>
+    <div class="ck-actions"><button type="button" class="btn" data-ck-close>Close</button><button type="button" class="btn btn-ghost" data-ck-intro hidden>Show the opening animation again</button><button type="button" class="btn btn-ghost" data-ck-clear>Clear stored data</button><output aria-live="polite"></output></div>
     <p><a href="cookies.html">Read the cookie policy</a></p>
   </div>
 </dialog>
-<script type="application/json" id="i18n">{"menu":"Menu","close":"Close","csEyebrow":"Project","csCta":"Get a quote","csNext":"Next project","csRoute":"What I made","fErrSummary":"Please check the highlighted fields.","waForm":"Hello Grzegorz, I have a question via gwgraphic.com.","fLabels":["What is it about?","Name","Company","Email","Phone","How should I get back to you?","Message"],"fErrRate":"Several requests have already been sent. Please try again later or give me a call.","fErrSend":"Sending failed. Please try again or email design@gwgraphic.com.","fSending":"Sending…","ckCleared":"Cleared."}</script>
-<script src="../assets/js/app.js?v=16dfa52740" defer></script>
+<script type="application/json" id="i18n">{"menu":"Menu","close":"Close","csEyebrow":"Project","csCta":"Get a quote","csNext":"Next project","csRoute":"What I made","fErrSummary":"Please check the highlighted fields.","waForm":"Hello Grzegorz, I have a question via gwgraphic.com.","fLabels":["What is it about?","Name","Company","Email","Phone","How should I get back to you?","Message"],"fErrRate":"Several requests have already been sent. Please try again later or give me a call.","fErrSend":"Sending failed. Please try again or email design@gwgraphic.com.","fSending":"Sending…","ckCleared":"Cleared.","ckIntroDone":"The animation is switched back on.","lbOf":"of"}</script>
+<script src="../assets/js/app.js?v=9bfe7cb916" defer></script>
 </body>
 </html>

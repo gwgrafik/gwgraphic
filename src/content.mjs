@@ -11,8 +11,11 @@ export const SITE = {
   whatsapp: '31644319415',
   email: 'design@gwgraphic.com',
   region: 'Noord-Brabant',       // no public office: region only, no city in visible copy
-  kvk: '',                        // fill in to show on the site (Colofon + schema); empty = hidden
-  btw: '',                        // idem
+  // ---- Business data: fill in to show it on the site (footer, Colofon/legal notice, schema). Empty = hidden, never a placeholder.
+  legalName: '',                  // LEGAL_NAME, e.g. as registered with the KvK
+  kvk: '',                        // KVK_NUMBER
+  btw: '',                        // VAT_ID (btw-id)
+  address: null,                  // BUSINESS_ADDRESS: { street: '', postalCode: '', city: '' }
   social: {
     instagram: 'https://www.instagram.com/gw_graphic_design/',
     facebook: 'https://www.facebook.com/GregWgraphicdesign',
@@ -48,6 +51,9 @@ export const SERVICE_IMAGES = {
   gadgets: ['palmo-trans-magneetborden', 'gk-cars-kleding-mokken', 'holografische-stickers', 'custom-garage-eindhoven-stickers']
 };
 export const SERVICE_KEYS = Object.keys(SERVICE_IMAGES);
+// Future dedicated pages (one domain, same slug in every language: /branding/, /en/branding/, /pl/branding/ …).
+// Not generated yet; used as data-page on the homepage sections so the pages can be added without renaming.
+export const SERVICE_PATHS = { branding: 'branding/', belettering: 'autobelettering/', kleding: 'bedrijfskleding/', drukwerk: 'drukwerk/', websites: 'websites/', gadgets: 'relatiegeschenken/' };
 
 // Hero stage: one print per rotator word, same order as the words.
 export const HERO_PRINTS = [
@@ -69,7 +75,7 @@ export const PROJECTS = [
     secs: [['branding', ['maniek-diensten-logo', 'maniek-diensten-logo-op-papier']], ['drukwerk', ['maniek-diensten-visitekaartjes']],
       ['kleding', ['maniek-diensten-bedrijfskleding']], ['websites', ['maniek-diensten-website']]] },
   { id: 'pmk-klusjesman', name: 'PMK Klusjesman', cover: 'pmk-klusjesman-bussen-belettering', long: true,
-    secs: [['belettering', ['pmk-klusjesman-bussen-belettering']], ['kleding', ['pmk-klusjesman-t-shirts-petten']], ['drukwerk', ['pmk-klusjesman-bouwbord', 'pmk-klusjesman-visitekaartjes']]] },
+    secs: [['belettering', ['pmk-klusjesman-bussen-belettering']], ['kleding', ['pmk-klusjesman-t-shirts-petten']], ['drukwerk', ['pmk-klusjesman-bouwbord', 'pmk-klusjesman-spandoek', 'pmk-klusjesman-visitekaartjes']]] },
   { id: 'podtech', name: 'Podtech', cover: 'podtech-t-shirts', long: true,
     secs: [['branding', ['podtech-logo']], ['kleding', ['podtech-t-shirts', 'podtech-werkshirts', 'podtech-jassen', 'podtech-softshell-jassen', 'podtech-werkbroeken']]] },
   { id: 'patera', name: 'Patera Klussenbedrijf', cover: 'patera-klussenbedrijf-autobelettering',
@@ -120,6 +126,11 @@ nl: {
   nav: { diensten: 'Diensten', projecten: 'Projecten', reviews: 'Reviews', over: 'Over mij', contact: 'Contact' },
   cta: 'Offerte aanvragen',
   gateHint: 'Klik op het logo', gateAria: 'Naar de website', gateSkip: 'Intro overslaan',
+  gateNever: 'Animatie niet meer tonen',
+  glEyebrow: 'Meer werk', glTitle: ['Meer werk,', 'uit dezelfde hand.'], glFilter: 'Filter op dienst', glAll: 'Alles', glOpen: 'Vergroot',
+  glIntro: 'Logo’s, belettering, kleding en drukwerk voor bedrijven in Nederland, België en Duitsland. Allemaal echte opdrachten.',
+  glMore: 'Meer tonen', lbOf: 'van',
+  ckIntroOn: 'Openingsanimatie weer tonen', ckIntroDone: 'De animatie is weer ingeschakeld.',
   flow: ['Ontwerp', 'Productie', 'Montage'],
   h1: ['Reclame', 'in elke', 'vorm.'],
   rotPre: 'Jouw partner voor',
@@ -229,7 +240,7 @@ nl: {
   cookieSettings: 'Cookie-instellingen',
   ckTitle: 'Cookie-instellingen',
   ckText: 'Deze website gebruikt geen cookies voor statistieken, advertenties of tracking en laadt geen diensten van derden. Er is dus niets om toe te staan of te weigeren.',
-  ckStore: 'Je browser onthoudt alleen dat je de openingsanimatie al hebt gezien (localStorage), zodat die niet bij elk bezoek terugkomt.',
+  ckStore: 'Je browser onthoudt alleen hoe vaak je de site hebt bezocht en of je de openingsanimatie hebt uitgezet (localStorage). Dat blijft op je eigen apparaat.',
   ckClear: 'Opgeslagen gegevens wissen', ckCleared: 'Gewist.', ckMore: 'Lees het cookiebeleid',
   backHome: 'Terug naar de homepage', updated: 'Laatst bijgewerkt', updatedDate: '27 september 2026'
 },
@@ -245,6 +256,11 @@ en: {
   nav: { diensten: 'Services', projecten: 'Projects', reviews: 'Reviews', over: 'About', contact: 'Contact' },
   cta: 'Get a quote',
   gateHint: 'Click the logo', gateAria: 'Enter the website', gateSkip: 'Skip intro',
+  gateNever: 'Don’t show again',
+  glEyebrow: 'More work', glTitle: ['More work,', 'from the same hands.'], glFilter: 'Filter by service', glAll: 'All', glOpen: 'Enlarge',
+  glIntro: 'Logos, vehicle graphics, workwear and print for businesses in the Netherlands, Belgium and Germany. All real jobs.',
+  glMore: 'Show more', lbOf: 'of',
+  ckIntroOn: 'Show the opening animation again', ckIntroDone: 'The animation is switched back on.',
   flow: ['Design', 'Production', 'Installation'],
   h1: ['Advertising', 'in any', 'form.'],
   rotPre: 'Your partner for',
@@ -354,7 +370,7 @@ en: {
   cookieSettings: 'Cookie settings',
   ckTitle: 'Cookie settings',
   ckText: 'This website does not use cookies for statistics, advertising or tracking, and loads no third-party services. So there is nothing to accept or reject.',
-  ckStore: 'Your browser only remembers that you have already seen the opening animation (localStorage), so it does not play on every visit.',
+  ckStore: 'Your browser only remembers how often you have visited and whether you switched the opening animation off (localStorage). It stays on your own device.',
   ckClear: 'Clear stored data', ckCleared: 'Cleared.', ckMore: 'Read the cookie policy',
   backHome: 'Back to the homepage', updated: 'Last updated', updatedDate: '27 September 2026'
 },
@@ -370,6 +386,11 @@ pl: {
   nav: { diensten: 'Usługi', projecten: 'Projekty', reviews: 'Opinie', over: 'O mnie', contact: 'Kontakt' },
   cta: 'Zapytaj o wycenę',
   gateHint: 'Kliknij logo', gateAria: 'Wejdź na stronę', gateSkip: 'Pomiń intro',
+  gateNever: 'Nie pokazuj ponownie',
+  glEyebrow: 'Więcej realizacji', glTitle: ['Więcej realizacji,', 'z tych samych rąk.'], glFilter: 'Filtruj według usługi', glAll: 'Wszystko', glOpen: 'Powiększ',
+  glIntro: 'Logo, oklejenia, odzież i druk dla firm z Holandii, Belgii i Niemiec. Same prawdziwe zlecenia.',
+  glMore: 'Pokaż więcej', lbOf: 'z',
+  ckIntroOn: 'Znów pokazuj animację otwarcia', ckIntroDone: 'Animacja jest znów włączona.',
   flow: ['Projekt', 'Produkcja', 'Montaż'],
   h1: ['Reklama', 'w każdej', 'formie.'],
   rotPre: 'Twój partner od',
@@ -479,7 +500,7 @@ pl: {
   cookieSettings: 'Ustawienia cookies',
   ckTitle: 'Ustawienia cookies',
   ckText: 'Ta strona nie używa plików cookies do statystyk, reklam ani śledzenia i nie wczytuje usług zewnętrznych. Nie ma więc na co wyrażać zgody.',
-  ckStore: 'Przeglądarka zapamiętuje tylko, że animacja otwarcia została już obejrzana (localStorage), żeby nie wracała przy każdej wizycie.',
+  ckStore: 'Przeglądarka zapamiętuje tylko liczbę wizyt i to, czy wyłączyłeś animację otwarcia (localStorage). Informacja zostaje na Twoim urządzeniu.',
   ckClear: 'Wyczyść zapisane dane', ckCleared: 'Wyczyszczono.', ckMore: 'Przeczytaj politykę cookies',
   backHome: 'Wróć na stronę główną', updated: 'Ostatnia aktualizacja', updatedDate: '27 września 2026'
 }

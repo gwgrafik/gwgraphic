@@ -20,7 +20,7 @@ ErrorDocument 404 /404.html
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "DENY"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-9JlPe1HLTl/R1j4XgLpkgu9zdbXPtzHFR40kVM16sJ8=' 'sha256-IGaFX+b5V7IqJhmXdrl4T+JbOgpi4PePGSAasrGBdpc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-GRuG+mMM09tldDeg4ycXECxTAtJYaHKLLDg25gAHerk=' 'sha256-IGaFX+b5V7IqJhmXdrl4T+JbOgpi4PePGSAasrGBdpc='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
   # long cache for versioned / fingerprinted assets
   <FilesMatch "\.(avif|webp|jpg|png|svg|woff2|ico)$">
     Header set Cache-Control "public, max-age=31536000, immutable"

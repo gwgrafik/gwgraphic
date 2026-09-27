@@ -1,4 +1,16 @@
-# GW Graphic Design — production website (V10)
+# GW Graphic Design — production website (V11)
+
+**V11 on top of V10:**
+- **Intro:** the same animation (mark only, spin-in, rings, zoom), now slower and with a softer ending (about 4.5–5 s). It plays on **every visit**, counted per browser session. From the 4th visit a small "Don't show again" option appears. Only that choice disables the intro, and it can be switched back on under Cookie settings. With reduced motion there is a calm variant: no spin or zoom, just a fade.
+- **More work gallery:** 96 more real jobs (logos, vehicle graphics, workwear, print), with filters per service, "show more" and a lightbox with keyboard support. Thumbnails beyond the first 12 are only created when shown.
+- **PMK:** the site banner is added to the PMK case study.
+- **Language switch** keeps the current section (for example `#reviews`).
+- **Future pages:** services and projects carry stable paths in `data-page` (`SERVICE_PATHS` in `src/content.mjs`, `projecten/<id>/`), with the same slugs in every language.
+- **Business data:** `legalName`, `kvk`, `btw` and `address` in `SITE` (marked `LEGAL_NAME`, `KVK_NUMBER`, `VAT_ID`, `BUSINESS_ADDRESS`). When filled in they appear automatically in the footer, the Colofon/legal notice and the schema. Empty fields are hidden, never shown as placeholders.
+- **Measured locally (mobile Lighthouse):** Performance 93–95, Accessibility 100, Best Practices 100, SEO 100, CLS 0.
+- **Website screenshots:** real screenshots of kristofix.com and maniekdiensten.nl could not be made from this environment (TLS proxy). The existing real website presentations are used.
+
+### V10
 
 **V10 changes on top of V09:** the copy is rewritten in NL/EN/PL, written in the first person because this is a one-person studio. Services are reordered: Branding, Lettering/wraps (vehicles, shop windows, glass), Workwear, Print, Websites, Promotional items. Each service has its own CTA that preselects it in the form. The four projects with the most material (Kristofix, Maniek Diensten, PMK Klusjesman, Podtech) get a longer case-study text plus a route of the services made for them. Reviews on the NL and PL pages show a clearly marked translation with the original English underneath. The form gains a preferred-contact field (email, phone, WhatsApp) and a "Send via WhatsApp" button. The intro runs a little longer, plays only on the first visit ever and has a skip button. No city is shown in the visible copy (there is no public office). The area served is shown instead: the Netherlands, Belgium and Germany.
 
@@ -54,7 +66,9 @@ Local preview with the form handler: `cd public && php -S 127.0.0.1:8080`.
 
 | Name | Type | Purpose | Lifetime |
 |---|---|---|---|
-| `gw-intro-seen` | localStorage | Marks that the visitor has seen the intro (it then never plays again) | until cleared via Cookie settings or the browser |
+| `gwIntroVisits` | localStorage | Visit counter (one per browser session); from visit 4 the "don't show again" option appears | until cleared |
+| `gwIntroDisabled` | localStorage | Only set when the visitor chooses "don't show again" | until cleared or re-enabled |
+| `gwIntroSession` | sessionStorage | Prevents the intro replaying within the same visit | until the tab closes |
 
 There are **no cookies, no analytics, no tracking and no third-party resources**. Fonts are self-hosted and nothing loads from Google or elsewhere. So there is **no consent banner**, because nothing needs consent. The footer link **Cookie-instellingen** opens a dialog that says exactly this and lets visitors clear the stored value. If analytics are ever added, they must stay blocked until consent is given, with Accept, Reject and Preferences shown as equally easy choices, and the cookie policy must be updated first.
 

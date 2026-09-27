@@ -24,7 +24,7 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <link rel="preload" href="../assets/fonts/archivo-gw-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/css/style.css?v=ad8498d640">
+<link rel="stylesheet" href="../assets/css/style.css?v=9804d48d65">
 <script>document.documentElement.className=document.documentElement.className.replace('no-js','js')</script>
 </head>
 <body>
@@ -54,8 +54,8 @@
       <nav class="toc" aria-label="Polityka cookies"><h2>Menu</h2><ol><li><a href="#s1">W skrócie</a></li><li><a href="#s2">Co jest zapisywane?</a></li><li><a href="#s3">Logi serwera</a></li><li><a href="#s4">Linki zewnętrzne</a></li><li><a href="#s5">Zarządzanie wyborem</a></li><li><a href="#s6">Zmiany</a></li></ol><p style="margin-top:22px"><a class="tlink" href="./">← Wróć na stronę główną</a></p></nav>
       <div class="prose"><h2 id="s1">W skrócie</h2><p>Ta strona <strong>nie zapisuje plików cookies</strong> i nie używa narzędzi analitycznych, sieci reklamowych, pikseli mediów społecznościowych ani innych narzędzi śledzących. Czcionki, zdjęcia i skrypty ładowane są z naszego serwera. Dlatego nie wyświetlamy banera cookies — nie ma na co wyrażać zgody.</p>
 <h2 id="s2">Co jest zapisywane?</h2><div class="table-wrap"><table><thead><tr><th>Nazwa</th><th>Rodzaj</th><th>Cel</th><th>Okres przechowywania</th></tr></thead><tbody>
-<tr><td><code>gw-intro-seen</code></td><td>localStorage (w przeglądarce)</td><td>Zapamiętuje, że animacja otwarcia została już obejrzana, żeby nie wracała przy każdej wizycie. Zawiera tylko wartość „1”.</td><td>Do usunięcia w Ustawieniach cookies lub w przeglądarce</td></tr>
-</tbody></table></div><p>Jest to niezbędne do działania strony w sposób, w jaki z niej korzystasz, nie jest do nas wysyłane i nie pozwala Cię zidentyfikować.</p>
+<tr><td><code>gwIntroVisits</code></td><td>localStorage</td><td>Liczy wizyty (jedna na sesję przeglądarki), żeby od czwartej wizyty pokazać opcję wyłączenia animacji otwarcia.</td><td>Do usunięcia w Ustawieniach cookies lub w przeglądarce</td></tr><tr><td><code>gwIntroDisabled</code></td><td>localStorage</td><td>Tylko jeśli sam wybierzesz „Nie pokazuj ponownie”: zapamiętuje ten wybór.</td><td>Do usunięcia lub ponownego włączenia animacji</td></tr><tr><td><code>gwIntroSession</code></td><td>sessionStorage</td><td>Zapobiega ponownemu uruchomieniu animacji w trakcie tej samej wizyty.</td><td>Do zamknięcia karty</td></tr>
+</tbody></table></div><p>To funkcjonalne preferencje: zostają na Twoim urządzeniu, nie są do nas wysyłane, nie służą do statystyk ani reklam i nie pozwalają Cię zidentyfikować.</p>
 <h2 id="s3">Logi serwera</h2><p>Jak każda strona, nasz dostawca hostingu rejestruje dane techniczne zapytań do serwera (np. adres IP, czas i otwieraną stronę), aby zapewnić bezpieczeństwo i dostępność. Odbywa się to bez cookies. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>
 <h2 id="s4">Linki zewnętrzne</h2><p>Linki do opinii Google, WhatsApp, Instagrama, Facebooka i LinkedIn otwierają daną usługę dopiero po kliknięciu. Od tej chwili obowiązują zasady cookies i prywatności tej usługi.</p>
 <h2 id="s5">Zarządzanie wyborem</h2><p>W <strong>Ustawieniach cookies</strong> na dole każdej strony zobaczysz to zestawienie i od razu wyczyścisz zapisane dane. Możesz je też w każdej chwili usunąć w ustawieniach przeglądarki.</p>
@@ -80,12 +80,12 @@
   <div class="ck-in">
     <h2 id="ckTitle">Ustawienia cookies</h2>
     <p>Ta strona nie używa plików cookies do statystyk, reklam ani śledzenia i nie wczytuje usług zewnętrznych. Nie ma więc na co wyrażać zgody.</p>
-    <p>Przeglądarka zapamiętuje tylko, że animacja otwarcia została już obejrzana (localStorage), żeby nie wracała przy każdej wizycie.</p>
-    <div class="ck-actions"><button type="button" class="btn" data-ck-close>Zamknij</button><button type="button" class="btn btn-ghost" data-ck-clear>Wyczyść zapisane dane</button><output aria-live="polite"></output></div>
+    <p>Przeglądarka zapamiętuje tylko liczbę wizyt i to, czy wyłączyłeś animację otwarcia (localStorage). Informacja zostaje na Twoim urządzeniu.</p>
+    <div class="ck-actions"><button type="button" class="btn" data-ck-close>Zamknij</button><button type="button" class="btn btn-ghost" data-ck-intro hidden>Znów pokazuj animację otwarcia</button><button type="button" class="btn btn-ghost" data-ck-clear>Wyczyść zapisane dane</button><output aria-live="polite"></output></div>
     <p><a href="polityka-cookies.html">Przeczytaj politykę cookies</a></p>
   </div>
 </dialog>
-<script type="application/json" id="i18n">{"menu":"Menu","close":"Zamknij","csEyebrow":"Projekt","csCta":"Zapytaj o wycenę","csNext":"Następny projekt","csRoute":"Co przygotowałem","fErrSummary":"Uzupełnij zaznaczone pola.","waForm":"Dzień dobry, piszę przez gwgraphic.com.","fLabels":["Czego dotyczy zapytanie?","Imię i nazwisko","Firma","E-mail","Telefon","Jak mam się z Tobą skontaktować?","Wiadomość"],"fErrRate":"Wysłano już kilka zapytań. Spróbuj później albo zadzwoń.","fErrSend":"Nie udało się wysłać. Spróbuj ponownie albo napisz na design@gwgraphic.com.","fSending":"Wysyłanie…","ckCleared":"Wyczyszczono."}</script>
-<script src="../assets/js/app.js?v=16dfa52740" defer></script>
+<script type="application/json" id="i18n">{"menu":"Menu","close":"Zamknij","csEyebrow":"Projekt","csCta":"Zapytaj o wycenę","csNext":"Następny projekt","csRoute":"Co przygotowałem","fErrSummary":"Uzupełnij zaznaczone pola.","waForm":"Dzień dobry, piszę przez gwgraphic.com.","fLabels":["Czego dotyczy zapytanie?","Imię i nazwisko","Firma","E-mail","Telefon","Jak mam się z Tobą skontaktować?","Wiadomość"],"fErrRate":"Wysłano już kilka zapytań. Spróbuj później albo zadzwoń.","fErrSend":"Nie udało się wysłać. Spróbuj ponownie albo napisz na design@gwgraphic.com.","fSending":"Wysyłanie…","ckCleared":"Wyczyszczono.","ckIntroDone":"Animacja jest znów włączona.","lbOf":"z"}</script>
+<script src="../assets/js/app.js?v=9bfe7cb916" defer></script>
 </body>
 </html>

@@ -4,6 +4,8 @@
 
 import { SITE } from './content.mjs';
 const KVK = (l, v) => SITE.kvk ? `<dt>${l}</dt><dd>${SITE.kvk}</dd>` : '';
+const ADDR = l => SITE.address && SITE.address.street ? `<dt>${l}</dt><dd>${SITE.address.street}, ${SITE.address.postalCode} ${SITE.address.city}</dd>` : '';
+const LEGALNAME = l => SITE.legalName ? `<dt>${l}</dt><dd>${SITE.legalName}</dd>` : '';
 const BTW = (l) => SITE.btw ? `<dt>${l}</dt><dd>${SITE.btw}</dd>` : '';
 const E = '<a href="mailto:design@gwgraphic.com">design@gwgraphic.com</a>';
 const P = '<a href="tel:+31644319415">+31&nbsp;6&nbsp;44&nbsp;31&nbsp;94&nbsp;15</a>';
@@ -85,8 +87,8 @@ nl: { title: 'Cookiebeleid', description: 'Welke cookies en opslag de website va
   sections: [
   { h: 'Kort gezegd', body: `<p>Deze website plaatst <strong>geen cookies</strong> en gebruikt geen analytics, advertentienetwerken, social-media-pixels of andere trackers. Lettertypes, afbeeldingen en scripts worden allemaal vanaf onze eigen server geladen. Daarom tonen we ook geen cookiebanner: er is niets om toestemming voor te vragen.</p>` },
   { h: 'Wat wordt er wel opgeslagen?', body: `<div class="table-wrap"><table><thead><tr><th>Naam</th><th>Type</th><th>Doel</th><th>Bewaartermijn</th></tr></thead><tbody>
-<tr><td><code>gw-intro-seen</code></td><td>localStorage (in je browser)</td><td>Onthoudt dat je de openingsanimatie al hebt gezien, zodat die niet bij elk bezoek terugkomt. Bevat alleen de waarde “1”.</td><td>Tot je het wist via Cookie-instellingen of je browser</td></tr>
-</tbody></table></div><p>Dit is strikt noodzakelijk voor de werking van de website zoals jij die gebruikt, wordt niet naar ons verstuurd en is niet te herleiden tot jou als persoon.</p>` },
+<tr><td><code>gwIntroVisits</code></td><td>localStorage</td><td>Telt je bezoeken (één per browsersessie), zodat vanaf het vierde bezoek de optie verschijnt om de openingsanimatie uit te zetten.</td><td>Tot je het wist via Cookie-instellingen of je browser</td></tr><tr><td><code>gwIntroDisabled</code></td><td>localStorage</td><td>Alleen als je zelf kiest voor ‘Animatie niet meer tonen’: onthoudt die keuze.</td><td>Tot je het wist of de animatie weer inschakelt</td></tr><tr><td><code>gwIntroSession</code></td><td>sessionStorage</td><td>Voorkomt dat de animatie binnen hetzelfde bezoek opnieuw start.</td><td>Tot je het tabblad sluit</td></tr>
+</tbody></table></div><p>Dit zijn functionele voorkeuren: ze blijven op je eigen apparaat, worden niet naar ons verstuurd, worden niet gebruikt voor statistieken of reclame en zijn niet te herleiden tot jou als persoon.</p>` },
   { h: 'Serverlogbestanden', body: `<p>Zoals elke website registreert onze hostingprovider technische gegevens van verzoeken aan de server (zoals IP-adres, tijdstip en opgevraagde pagina) om de website veilig en bereikbaar te houden. Dit gebeurt zonder cookies. Meer hierover lees je in het <a href="privacybeleid.html">privacybeleid</a>.</p>` },
   { h: 'Externe links', body: `<p>Links naar Google Reviews, WhatsApp, Instagram, Facebook en LinkedIn openen de betreffende dienst pas als je erop klikt. Vanaf dat moment gelden de cookie- en privacyregels van die dienst.</p>` },
   { h: 'Je keuze beheren', body: `<p>Via <strong>Cookie-instellingen</strong> onderaan elke pagina zie je dit overzicht en kun je de opgeslagen gegevens direct wissen. Je kunt de opslag ook altijd verwijderen via de instellingen van je browser.</p>` },
@@ -96,8 +98,8 @@ en: { title: 'Cookie policy', description: 'Which cookies and storage the GW Gra
   sections: [
   { h: 'In short', body: `<p>This website sets <strong>no cookies</strong> and uses no analytics, advertising networks, social media pixels or other trackers. Fonts, images and scripts are all loaded from our own server. That is also why there is no cookie banner: there is nothing to ask consent for.</p>` },
   { h: 'What is stored?', body: `<div class="table-wrap"><table><thead><tr><th>Name</th><th>Type</th><th>Purpose</th><th>Retention</th></tr></thead><tbody>
-<tr><td><code>gw-intro-seen</code></td><td>localStorage (in your browser)</td><td>Remembers that you have already seen the opening animation, so it does not play on every visit. Contains only the value “1”.</td><td>Until you clear it via Cookie settings or your browser</td></tr>
-</tbody></table></div><p>This is strictly necessary for the website as you use it, is never sent to us and cannot identify you.</p>` },
+<tr><td><code>gwIntroVisits</code></td><td>localStorage</td><td>Counts your visits (one per browser session), so that from the fourth visit you get the option to switch the opening animation off.</td><td>Until you clear it via Cookie settings or your browser</td></tr><tr><td><code>gwIntroDisabled</code></td><td>localStorage</td><td>Only if you choose ‘Don’t show again’ yourself: remembers that choice.</td><td>Until you clear it or switch the animation back on</td></tr><tr><td><code>gwIntroSession</code></td><td>sessionStorage</td><td>Prevents the animation from starting again during the same visit.</td><td>Until you close the tab</td></tr>
+</tbody></table></div><p>These are functional preferences: they stay on your own device, are never sent to us, are not used for statistics or advertising and cannot identify you.</p>` },
   { h: 'Server log files', body: `<p>Like every website, our hosting provider records technical data about requests to the server (such as IP address, time and requested page) to keep the website secure and available. This happens without cookies. Read more in the <a href="privacy.html">privacy policy</a>.</p>` },
   { h: 'External links', body: `<p>Links to Google Reviews, WhatsApp, Instagram, Facebook and LinkedIn only open that service when you click them. From then on, that service’s cookie and privacy rules apply.</p>` },
   { h: 'Managing your choice', body: `<p>Use <strong>Cookie settings</strong> at the bottom of every page to see this overview and clear stored data straight away. You can also delete storage at any time in your browser settings.</p>` },
@@ -107,8 +109,8 @@ pl: { title: 'Polityka cookies', description: 'Jakich plików cookies i pamięci
   sections: [
   { h: 'W skrócie', body: `<p>Ta strona <strong>nie zapisuje plików cookies</strong> i nie używa narzędzi analitycznych, sieci reklamowych, pikseli mediów społecznościowych ani innych narzędzi śledzących. Czcionki, zdjęcia i skrypty ładowane są z naszego serwera. Dlatego nie wyświetlamy banera cookies — nie ma na co wyrażać zgody.</p>` },
   { h: 'Co jest zapisywane?', body: `<div class="table-wrap"><table><thead><tr><th>Nazwa</th><th>Rodzaj</th><th>Cel</th><th>Okres przechowywania</th></tr></thead><tbody>
-<tr><td><code>gw-intro-seen</code></td><td>localStorage (w przeglądarce)</td><td>Zapamiętuje, że animacja otwarcia została już obejrzana, żeby nie wracała przy każdej wizycie. Zawiera tylko wartość „1”.</td><td>Do usunięcia w Ustawieniach cookies lub w przeglądarce</td></tr>
-</tbody></table></div><p>Jest to niezbędne do działania strony w sposób, w jaki z niej korzystasz, nie jest do nas wysyłane i nie pozwala Cię zidentyfikować.</p>` },
+<tr><td><code>gwIntroVisits</code></td><td>localStorage</td><td>Liczy wizyty (jedna na sesję przeglądarki), żeby od czwartej wizyty pokazać opcję wyłączenia animacji otwarcia.</td><td>Do usunięcia w Ustawieniach cookies lub w przeglądarce</td></tr><tr><td><code>gwIntroDisabled</code></td><td>localStorage</td><td>Tylko jeśli sam wybierzesz „Nie pokazuj ponownie”: zapamiętuje ten wybór.</td><td>Do usunięcia lub ponownego włączenia animacji</td></tr><tr><td><code>gwIntroSession</code></td><td>sessionStorage</td><td>Zapobiega ponownemu uruchomieniu animacji w trakcie tej samej wizyty.</td><td>Do zamknięcia karty</td></tr>
+</tbody></table></div><p>To funkcjonalne preferencje: zostają na Twoim urządzeniu, nie są do nas wysyłane, nie służą do statystyk ani reklam i nie pozwalają Cię zidentyfikować.</p>` },
   { h: 'Logi serwera', body: `<p>Jak każda strona, nasz dostawca hostingu rejestruje dane techniczne zapytań do serwera (np. adres IP, czas i otwieraną stronę), aby zapewnić bezpieczeństwo i dostępność. Odbywa się to bez cookies. Więcej w <a href="polityka-prywatnosci.html">polityce prywatności</a>.</p>` },
   { h: 'Linki zewnętrzne', body: `<p>Linki do opinii Google, WhatsApp, Instagrama, Facebooka i LinkedIn otwierają daną usługę dopiero po kliknięciu. Od tej chwili obowiązują zasady cookies i prywatności tej usługi.</p>` },
   { h: 'Zarządzanie wyborem', body: `<p>W <strong>Ustawieniach cookies</strong> na dole każdej strony zobaczysz to zestawienie i od razu wyczyścisz zapisane dane. Możesz je też w każdej chwili usunąć w ustawieniach przeglądarki.</p>` },
@@ -184,7 +186,7 @@ pl: { title: 'Regulamin', description: 'Ogólne warunki współpracy z GW Graphi
 notice: {
 nl: { title: 'Colofon', description: 'Bedrijfsgegevens en colofon van GW Graphic Design, studio voor grafisch ontwerp, reclame en belettering.',
   sections: [
-  { h: 'Bedrijfsgegevens', body: `<dl><dt>Handelsnaam</dt><dd>GW Graphic Design</dd><dt>Eigenaar</dt><dd>Grzegorz Woźniak</dd>${KVK('KvK-nummer')}${BTW('Btw-id')}<dt>Regio</dt><dd>Noord-Brabant, Nederland</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefoon</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
+  { h: 'Bedrijfsgegevens', body: `<dl><dt>Handelsnaam</dt><dd>GW Graphic Design</dd>${LEGALNAME('Statutaire naam')}<dt>Eigenaar</dt><dd>Grzegorz Woźniak</dd>${ADDR('Adres')}${KVK('KvK-nummer')}${BTW('Btw-id')}<dt>Regio</dt><dd>Noord-Brabant, Nederland</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefoon</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
   { h: 'Werkgebied', body: `<p>Ontwerp en productie voor opdrachtgevers in heel Nederland, België en Duitsland. Montage van belettering op locatie.</p>` },
   { h: 'Ontwerp en realisatie', body: `<p>Ontwerp en inhoud van deze website: GW Graphic Design. Lettertype: Archivo (SIL Open Font License), zelf gehost.</p>` },
   { h: 'Auteursrecht', body: `<p>Het ontwerp van deze website, het GW Graphic Design-logo en de presentatie van het portfolio zijn auteursrechtelijk beschermd. Logo’s en merken van klanten blijven eigendom van de betreffende klant en worden getoond als voorbeeld van uitgevoerd werk.</p>` },
@@ -192,7 +194,7 @@ nl: { title: 'Colofon', description: 'Bedrijfsgegevens en colofon van GW Graphic
 ]},
 en: { title: 'Legal notice', description: 'Business details and legal notice of GW Graphic Design, graphic design, advertising and vehicle graphics studio.',
   sections: [
-  { h: 'Business details', body: `<dl><dt>Trading name</dt><dd>GW Graphic Design</dd><dt>Owner</dt><dd>Grzegorz Woźniak</dd>${KVK('Chamber of Commerce (KvK)')}${BTW('VAT ID')}<dt>Region</dt><dd>North Brabant, the Netherlands</dd><dt>Email</dt><dd>${E}</dd><dt>Phone</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
+  { h: 'Business details', body: `<dl><dt>Trading name</dt><dd>GW Graphic Design</dd>${LEGALNAME('Registered name')}<dt>Owner</dt><dd>Grzegorz Woźniak</dd>${ADDR('Address')}${KVK('Chamber of Commerce (KvK)')}${BTW('VAT ID')}<dt>Region</dt><dd>North Brabant, the Netherlands</dd><dt>Email</dt><dd>${E}</dd><dt>Phone</dt><dd>${P}</dd><dt>Website</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
   { h: 'Service area', body: `<p>Design and production for clients across the Netherlands, Belgium and Germany. Installation of lettering on location.</p>` },
   { h: 'Design and development', body: `<p>Design and content of this website: GW Graphic Design. Typeface: Archivo (SIL Open Font License), self-hosted.</p>` },
   { h: 'Copyright', body: `<p>The design of this website, the GW Graphic Design logo and the portfolio presentation are protected by copyright. Client logos and trademarks remain the property of the client concerned and are shown as examples of completed work.</p>` },
@@ -200,7 +202,7 @@ en: { title: 'Legal notice', description: 'Business details and legal notice of 
 ]},
 pl: { title: 'Nota prawna', description: 'Dane firmy i nota prawna GW Graphic Design, studia projektowania graficznego, reklamy i oklejania.',
   sections: [
-  { h: 'Dane firmy', body: `<dl><dt>Nazwa handlowa</dt><dd>GW Graphic Design</dd><dt>Właściciel</dt><dd>Grzegorz Woźniak</dd>${KVK('Numer KvK')}${BTW('Numer VAT (BTW)')}<dt>Region</dt><dd>Brabancja Północna, Holandia</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefon</dt><dd>${P}</dd><dt>Strona</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
+  { h: 'Dane firmy', body: `<dl><dt>Nazwa handlowa</dt><dd>GW Graphic Design</dd>${LEGALNAME('Pełna nazwa firmy')}<dt>Właściciel</dt><dd>Grzegorz Woźniak</dd>${ADDR('Adres')}${KVK('Numer KvK')}${BTW('Numer VAT (BTW)')}<dt>Region</dt><dd>Brabancja Północna, Holandia</dd><dt>E-mail</dt><dd>${E}</dd><dt>Telefon</dt><dd>${P}</dd><dt>Strona</dt><dd><a href="https://www.gwgraphic.com/">www.gwgraphic.com</a></dd></dl>` },
   { h: 'Obszar działania', body: `<p>Projekt i produkcja dla klientów z całej Holandii, Belgii i Niemiec. Montaż oklejenia na miejscu.</p>` },
   { h: 'Projekt i wykonanie', body: `<p>Projekt i treści tej strony: GW Graphic Design. Krój pisma: Archivo (SIL Open Font License), hostowany lokalnie.</p>` },
   { h: 'Prawa autorskie', body: `<p>Projekt tej strony, logo GW Graphic Design i prezentacja portfolio są chronione prawem autorskim. Logo i znaki towarowe klientów pozostają własnością tych klientów i są pokazane jako przykłady zrealizowanych prac.</p>` },

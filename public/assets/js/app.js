@@ -57,7 +57,7 @@ const gate = $('#gate');
 function entered() { document.body.classList.add('entered'); hero.start(); }
 if (gate && html.classList.contains('gate-on')) {
 document.body.classList.add('is-locked');
-try { localStorage.setItem('gw-intro-seen', '1'); } catch (e) {}
+const calm = html.classList.contains('gate-rm');
 requestAnimationFrame(() => requestAnimationFrame(() => gate.classList.add('ready')));
 let opened = false;
 const zoom = $('#gateZoom'), shade = $('#gateShade');
@@ -67,22 +67,23 @@ clearTimeout(auto);
 removeEventListener('keydown', onKey);
 const finish = () => { document.body.classList.remove('is-locked'); html.classList.remove('gate-on'); gate.remove(); };
 if (!gate.animate) { finish(); entered(); return; }
-if (fast === true) { // skip button: short fade instead of the full zoom
-gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 350, fill: 'forwards' });
-entered(); document.body.classList.remove('is-locked'); setTimeout(finish, 380); return;
+if (fast === true || calm) { // skip, or reduced motion: soft fade instead of the zoom
+gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: calm ? 700 : 450, easing: 'ease-out', fill: 'forwards' });
+entered(); document.body.classList.remove('is-locked'); setTimeout(finish, calm ? 720 : 470); return;
 }
 const dur = 1800;
 zoom.animate([{ transform: 'scale(1) rotate(0deg)' }, { transform: 'scale(16) rotate(20deg)' }], { duration: dur, easing: 'cubic-bezier(.7,0,.25,1)', fill: 'forwards' });
 shade.animate([{ opacity: 0 }, { opacity: .35, offset: .35 }, { opacity: 1 }], { duration: dur - 150, easing: 'ease-in', fill: 'forwards' });
-$$('.gate-hint,.gate-lang,.gate-skip', gate).forEach(el => el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' }));
-setTimeout(() => { gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 450, fill: 'forwards' }); entered(); document.body.classList.remove('is-locked'); }, dur - 120);
-setTimeout(finish, dur + 400);
+$$('.gate-hint,.gate-lang,.gate-opts', gate).forEach(el => el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: 'forwards' }));
+setTimeout(() => { gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 700, easing: 'ease-out', fill: 'forwards' }); entered(); document.body.classList.remove('is-locked'); }, dur - 250);
+setTimeout(finish, dur + 500);
 };
 $('#gateBtn').addEventListener('click', () => open());
 $('#gateSkip').addEventListener('click', () => open(true));
+$('#gateNever').addEventListener('click', () => { try { localStorage.setItem('gwIntroDisabled', 'true'); } catch (e) {} open(true); });
 const onKey = e => { if (e.key === 'Escape') open(true); else if (e.key === 'Enter') open(); };
 addEventListener('keydown', onKey);
-const auto = setTimeout(() => open(), 4200);
+const auto = setTimeout(() => open(), calm ? 2200 : 3200);
 } else {
 if (gate) gate.remove();
 entered();
@@ -185,11 +186,50 @@ status.textContent = res && res.error === 'rate' ? L.fErrRate : L.fErrSend;
 if (res && res.fields) res.fields.forEach(n => { const el = form.elements[n]; if (el) check(el); });
 });
 }
+const grid = $('#gGrid');
+if (grid) {
+const items = $$('li', grid), more = $('#gMore'), STEP = 12;
+let filter = 'all', shown = STEP;
+const list = () => items.filter(li => filter === 'all' || li.dataset.svc === filter);
+const apply = () => { const vis = list(), on = vis.slice(0, shown); items.forEach(li => { li.hidden = !on.includes(li); if (!li.hidden) hydrate($('button', li)); }); more.hidden = vis.length <= shown; };
+$$('[data-f]').forEach(b => b.addEventListener('click', () => { filter = b.dataset.f; shown = STEP; $$('[data-f]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); apply(); }));
+more.addEventListener('click', () => { const first = list()[shown]; shown += STEP; apply(); if (first) $('button', first).focus(); });
+apply();
+const G = JSON.parse($('#gallery-data').textContent), lb = $('#lb'), img = $('#lbImg'), cap = $('#lbCap');
+let cur = 0, opener = null;
+const show = k => {
+const vis = list(), idx = vis.findIndex(li => +$('button', li).dataset.g === k);
+const n = (idx + vis.length) % vis.length; cur = +$('button', vis[n]).dataset.g;
+const g = G[cur], b = `${ROOT}assets/img/work/${g.slug}-`;
+img.srcset = `${b}800.webp 800w, ${b}1000.webp 1000w`; img.sizes = 'min(92vw, 88vh)'; img.src = `${b}1000.webp`; img.alt = g.alt;
+cap.textContent = `${g.alt} · ${n + 1} ${L.lbOf} ${vis.length}`;
+};
+grid.addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (!b) return; opener = b; show(+b.dataset.g); lb.showModal(); document.body.classList.add('is-locked'); });
+lb.addEventListener('click', e => {
+const b = e.target.closest('[data-lb]');
+if (e.target === lb || (b && b.dataset.lb === 'close')) lb.close();
+else if (b) { const vis = list(), i = vis.findIndex(li => +$('button', li).dataset.g === cur); show(+$('button', vis[(i + +b.dataset.lb + vis.length) % vis.length]).dataset.g); }
+});
+lb.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); $(`[data-lb="${e.key === 'ArrowRight' ? 1 : -1}"]`, lb).click(); } });
+lb.addEventListener('close', () => { document.body.classList.remove('is-locked'); if (opener) opener.focus({ preventScroll: true }); });
+}
+$$('.lang a[hreflang], .gate-lang a').forEach(a => a.addEventListener('click', () => {
+if (location.hash && /(^|\/)(\.\.?\/)?([a-z]{2}\/)?$/.test(a.getAttribute('href'))) a.href = a.getAttribute('href').split('#')[0] + location.hash;
+}));
+if ('IntersectionObserver' in window && $('.hero')) {
+const secs = $$('main > section[id]');
+const so = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) history.replaceState(null, '', '#' + e.target.id); }), { rootMargin: '-45% 0px -50% 0px' });
+secs.forEach(x => so.observe(x));
+}
 const ck = $('#ck');
 if (ck) {
 $$('[data-cookie-settings]').forEach(b => b.addEventListener('click', () => ck.showModal()));
 $('[data-ck-close]', ck).addEventListener('click', () => ck.close());
 ck.addEventListener('click', e => { if (e.target === ck) ck.close(); });
-$('[data-ck-clear]', ck).addEventListener('click', () => { try { localStorage.removeItem('gw-intro-seen'); } catch (e) {} $('output', ck).textContent = L.ckCleared; });
+const introBtn = $('[data-ck-intro]', ck);
+const syncIntro = () => { try { introBtn.hidden = localStorage.getItem('gwIntroDisabled') !== 'true'; } catch (e) { introBtn.hidden = true; } };
+$$('[data-cookie-settings]').forEach(b => b.addEventListener('click', syncIntro));
+introBtn.addEventListener('click', () => { try { localStorage.removeItem('gwIntroDisabled'); } catch (e) {} syncIntro(); $('output', ck).textContent = L.ckIntroDone; });
+$('[data-ck-clear]', ck).addEventListener('click', () => { try { ['gwIntroVisits', 'gwIntroDisabled'].forEach(k => localStorage.removeItem(k)); sessionStorage.removeItem('gwIntroSession'); } catch (e) {} syncIntro(); $('output', ck).textContent = L.ckCleared; });
 }
 })();
