@@ -120,12 +120,20 @@ ul,ol{margin:0;padding:0;list-style:none}
   transition:--rev 1.8s cubic-bezier(.5,0,.2,1);animation:gw-rin 3.2s linear infinite}
 #gate.ready .rings{--rev:150vmax}
 @keyframes gw-rin{from{--o:1}to{--o:0}}
-#gate .gw{position:relative;width:var(--D);height:var(--D);padding:0;border:0;border-radius:50%;background:#fff;transform:scale(.4) rotate(-150deg);opacity:0;transition:transform 1.9s cubic-bezier(.3,1.32,.52,1),opacity .6s}
-#gate.ready .gw{transform:none;opacity:1}
+#gate .gw{position:relative;width:var(--D);height:var(--D);padding:0;border:0;border-radius:50%;background:#fff;opacity:0;transition:transform .4s var(--ease)}
+/* spin-in: one and a half turns out of nothing, overshoot, then a springy settle */
+#gate.ready .gw{opacity:1;animation:gw-spin 1.7s .15s backwards}
+@keyframes gw-spin{
+  0%{transform:scale(0) rotate(-540deg);opacity:0;animation-timing-function:cubic-bezier(.15,.6,.35,1)}
+  10%{opacity:1}
+  58%{transform:scale(1.14) rotate(14deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  74%{transform:scale(.94) rotate(-7deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  88%{transform:scale(1.03) rotate(2deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  100%{transform:none;opacity:1}}
 #gate.ready .gw:hover{transform:scale(1.06)}
 #gate .gw svg{width:100%;height:100%}
-#gate .gw::after{content:"";position:absolute;inset:-7%;border-radius:50%;border:2px solid #000;opacity:0;animation:gw-ping 2.4s var(--ease) 2.1s infinite}
-@keyframes gw-ping{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+#gate .gw::after{content:"";position:absolute;inset:-7%;border-radius:50%;border:2px solid #000;opacity:0;animation:gw-ping 2.8s cubic-bezier(.15,.7,.35,1) 1.15s infinite}
+@keyframes gw-ping{0%{transform:scale(.9);opacity:.9}100%{transform:scale(3.4);opacity:0}}
 #gate .shade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
 .gate-hint{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + clamp(1.4rem,4vh,2.6rem));transform:translate(-50%,20px);opacity:0;margin:0;background:#000;color:#fff;border-radius:999px;padding:.85rem 1.4rem;font-weight:700;font-size:.95rem;display:flex;gap:.7rem;align-items:center;transition:opacity .6s 1.5s,transform .6s 1.5s var(--ease);pointer-events:none;white-space:nowrap}
 #gate.ready .gate-hint{opacity:1;transform:translate(-50%,0)}
@@ -140,7 +148,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 @media (max-width:640px){.gate-hint{bottom:calc(env(safe-area-inset-bottom,0px) + 5rem)}.gate-opts{left:0;right:0;justify-content:center}}
 /* reduced motion: same composition, no spin, no ring movement, soft fade */
 .gate-rm #gate .rings{animation:none;transition:none;--rev:150vmax}
-.gate-rm #gate .gw{transform:none;transition:opacity .8s}
+.gate-rm #gate .gw{animation:none;transition:opacity .8s}
 .gate-rm #gate .gw::after{animation:none}
 .gate-lang{position:absolute;top:calc(env(safe-area-inset-top,0px) + 1.2rem);right:var(--pad);display:flex;gap:.25rem;z-index:2}
 .gate-lang a{background:#fff;border:1.5px solid #000;border-radius:999px;padding:.35rem .7rem;font-weight:700;font-size:.8rem;color:#000;text-decoration:none}
