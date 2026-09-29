@@ -1,4 +1,3 @@
-import { GALLERY } from './gallery.mjs';
 // Portfolio image manifest.
 // key  = descriptive output filename (without size/extension)
 // src  = original file in src/source-assets/portfolio/
@@ -192,9 +191,6 @@ IMAGES['pmk-klusjesman-spandoek'] = { src: 'banner_1', alt: {
   nl: 'Geel spandoek van PMK Klusjesman met diensten en telefoonnummer',
   en: 'Yellow PMK Klusjesman banner with services and phone number',
   pl: 'Żółty baner PMK Klusjesman z usługami i numerem telefonu' } };
-
-// "More work" gallery images (see gallery.mjs)
-for (const g of GALLERY) IMAGES[g.slug] = { src: g.src, alt: g.alt };
 
 // Responsive widths generated for every portfolio image (source files are 1000 × 1000).
 export const WIDTHS = [480, 800, 1000];

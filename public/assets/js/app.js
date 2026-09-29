@@ -183,33 +183,16 @@ status.textContent = res && res.error === 'rate' ? L.fErrRate : L.fErrSend;
 if (res && res.fields) res.fields.forEach(n => { const el = form.elements[n]; if (el) check(el); });
 });
 }
-const grid = $('#gGrid');
-if (grid) {
-const items = $$('li', grid), more = $('#gMore'), STEP = 12;
-let filter = 'all', shown = STEP;
-const list = () => items.filter(li => filter === 'all' || li.dataset.svc === filter);
-const apply = () => { const vis = list(), on = vis.slice(0, shown); items.forEach(li => { li.hidden = !on.includes(li); if (!li.hidden) hydrate($('button', li)); }); more.hidden = vis.length <= shown; };
-$$('[data-f]').forEach(b => b.addEventListener('click', () => { filter = b.dataset.f; shown = STEP; $$('[data-f]').forEach(x => x.setAttribute('aria-pressed', String(x === b))); apply(); }));
-more.addEventListener('click', () => { const first = list()[shown]; shown += STEP; apply(); if (first) $('button', first).focus(); });
-apply();
-const G = JSON.parse($('#gallery-data').textContent), lb = $('#lb'), cap = $('#lbCap');
-const img = document.createElement('img'); img.width = 1000; img.height = 1000; img.decoding = 'async'; $('#lbFig').prepend(img);
-let cur = 0, opener = null;
-const show = k => {
-const vis = list(), idx = vis.findIndex(li => +$('button', li).dataset.g === k);
-const n = (idx + vis.length) % vis.length; cur = +$('button', vis[n]).dataset.g;
-const g = G[cur], b = `${ROOT}assets/img/work/${g.slug}-`;
-img.srcset = `${b}800.webp 800w, ${b}1000.webp 1000w`; img.sizes = 'min(92vw, 88vh)'; img.src = `${b}1000.webp`; img.alt = g.alt;
-cap.textContent = `${g.alt} · ${n + 1} ${L.lbOf} ${vis.length}`;
-};
-grid.addEventListener('click', e => { const b = e.target.closest('[data-g]'); if (!b) return; opener = b; show(+b.dataset.g); lb.showModal(); document.body.classList.add('is-locked'); });
-lb.addEventListener('click', e => {
-const b = e.target.closest('[data-lb]');
-if (e.target === lb || (b && b.dataset.lb === 'close')) lb.close();
-else if (b) { const vis = list(), i = vis.findIndex(li => +$('button', li).dataset.g === cur); show(+$('button', vis[(i + +b.dataset.lb + vis.length) % vis.length]).dataset.g); }
+const faq = $('.faq');
+if (faq) {
+const items = $$('.faq-item', faq);
+const set = (it, open) => { it.classList.toggle('open', open); $('button', it).setAttribute('aria-expanded', String(open)); };
+faq.addEventListener('click', e => {
+const b = e.target.closest('.faq-q button'); if (!b) return;
+const it = b.closest('.faq-item'), open = !it.classList.contains('open');
+items.forEach(x => { if (x !== it && x.classList.contains('open')) set(x, false); });
+set(it, open);
 });
-lb.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); $(`[data-lb="${e.key === 'ArrowRight' ? 1 : -1}"]`, lb).click(); } });
-lb.addEventListener('close', () => { document.body.classList.remove('is-locked'); if (opener) opener.focus({ preventScroll: true }); });
 }
 $$('.lang a[hreflang], .gate-lang a').forEach(a => a.addEventListener('click', () => {
 if (location.hash && /(^|\/)(\.\.?\/)?([a-z]{2}\/)?$/.test(a.getAttribute('href'))) a.href = a.getAttribute('href').split('#')[0] + location.hash;

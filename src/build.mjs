@@ -3,7 +3,6 @@
 import { readFile, writeFile, mkdir, copyFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { SITE, LANGS, LEGAL_SLUGS, SERVICE_IMAGES, SERVICE_KEYS, SERVICE_PATHS, HERO_PRINTS, PROJECTS, REVIEWS, T } from './content.mjs';
-import { GALLERY } from './gallery.mjs';
 import { IMAGES } from './images.mjs';
 import { LEGAL } from './legal.mjs';
 
@@ -156,7 +155,7 @@ function footer(lang, dir, onHome) {
 </dialog>`;
 }
 
-const i18nJson = t => `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.menu, close: t.close, csEyebrow: t.csEyebrow, csCta: t.csCta, csNext: t.csNext, csRoute: t.csRoute, fErrSummary: t.fErrSummary, waForm: t.waForm, fLabels: [t.fService, t.fName, t.fCompany, t.fEmail, t.fPhone, t.fPref, t.fMessage], fErrRate: t.fErrRate, fErrSend: t.fErrSend, fSending: t.fSending, ckCleared: t.ckCleared, ckIntroDone: t.ckIntroDone, lbOf: t.lbOf }).replace(/</g, '\\u003c')}</script>`;
+const i18nJson = t => `<script type="application/json" id="i18n">${JSON.stringify({ menu: t.menu, close: t.close, csEyebrow: t.csEyebrow, csCta: t.csCta, csNext: t.csNext, csRoute: t.csRoute, fErrSummary: t.fErrSummary, waForm: t.waForm, fLabels: [t.fService, t.fName, t.fCompany, t.fEmail, t.fPhone, t.fPref, t.fMessage], fErrRate: t.fErrRate, fErrSend: t.fErrSend, fSending: t.fSending, ckCleared: t.ckCleared, ckIntroDone: t.ckIntroDone }).replace(/</g, '\\u003c')}</script>`;
 const scriptTag = root => `<script src="${root}assets/js/app.js?v=${JS_V}" defer></script>`;
 
 /* ------------------------------------------------------------------ JSON-LD */
@@ -178,7 +177,9 @@ function jsonLd(lang) {
         knowsAbout: t.ftServiceLinks,
         sameAs: Object.values(SITE.social) },
       { '@type': 'WebSite', '@id': SITE.origin + '/#website', url: SITE.origin + '/', name: SITE.name, inLanguage: ['nl', 'en', 'pl'], publisher: { '@id': SITE.origin + '/#business' } },
-      { '@type': 'WebPage', '@id': abs(LANGS[lang].dir) + '#webpage', url: abs(LANGS[lang].dir), name: t.title, description: t.description, inLanguage: lang, isPartOf: { '@id': SITE.origin + '/#website' }, about: { '@id': SITE.origin + '/#business' } }
+      { '@type': 'WebPage', '@id': abs(LANGS[lang].dir) + '#webpage', url: abs(LANGS[lang].dir), name: t.title, description: t.description, inLanguage: lang, isPartOf: { '@id': SITE.origin + '/#website' }, about: { '@id': SITE.origin + '/#business' } },
+      { '@type': 'FAQPage', '@id': abs(LANGS[lang].dir) + '#faq', url: abs(LANGS[lang].dir), inLanguage: lang, isPartOf: { '@id': abs(LANGS[lang].dir) + '#webpage' },
+        mainEntity: t.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }
     ]
   }).replace(/</g, '\\u003c');
 }
@@ -282,30 +283,6 @@ function home(lang) {
   </div>
 </section>`;
 
-  const gSizes = '(max-width: 560px) 46vw, (max-width: 1100px) 30vw, 18vw';
-  const gCount = k => GALLERY.filter(g => g.svc === k).length;
-  const gallery = `<section class="sec dark gallery" id="meer-werk" aria-labelledby="meer-werk-h">
-  <div class="wrap sec-head">
-    <div class="rv-el"><span class="eyebrow">${esc(t.glEyebrow)}</span><h2 class="h2" id="meer-werk-h">${esc(t.glTitle[0])} <em>${esc(t.glTitle[1])}</em></h2></div>
-    <p class="lead rv-el">${esc(t.glIntro)}</p>
-  </div>
-  <div class="wrap">
-    <div class="g-filter" role="group" aria-label="${esc(t.glFilter)}">
-      <button type="button" data-f="all" aria-pressed="true">${esc(t.glAll)} <small>${GALLERY.length}</small></button>
-      ${SERVICE_KEYS.filter(k => gCount(k)).map(k => `<button type="button" data-f="${k}" aria-pressed="false">${esc(t.services[SERVICE_KEYS.indexOf(k)].name)} <small>${gCount(k)}</small></button>`).join('')}
-    </div>
-    <ul class="g-grid" id="gGrid">
-      ${GALLERY.map((g, i) => `<li data-svc="${g.svc}"><button type="button" class="g-item" data-g="${i}" aria-label="${esc(t.glOpen)}: ${esc(g.alt[lang])}"${i < 12 ? `>${picture(g.slug, lang, gSizes)(root)}` : ` data-slug="${g.slug}" data-alt="" data-sizes="${gSizes}">`}</button></li>`).join('\n      ')}
-    </ul>
-    <p class="g-more"><button type="button" class="btn btn-ghost" id="gMore">${esc(t.glMore)}</button></p>
-  </div>
-</section>`;
-  const gData = GALLERY.map(g => ({ slug: g.slug, alt: g.alt[lang], client: g.client }));
-  const lightbox = `<dialog class="lb" id="lb" aria-label="${esc(t.glTitle.join(' '))}"><div class="lb-in"><figure id="lbFig"><figcaption id="lbCap"></figcaption></figure>
-  <button type="button" class="lb-btn lb-close" data-lb="close" aria-label="${esc(t.close)}">${I.close}</button>
-  <button type="button" class="lb-btn lb-prev" data-lb="-1" aria-label="${esc(t.prev)}">${I.prev}</button>
-  <button type="button" class="lb-btn lb-next" data-lb="1" aria-label="${esc(t.next)}">${I.next}</button></div></dialog>`;
-
   const caseData = PROJECTS.map(p => ({
     name: p.name, svc: svcOf(p).map(svcName).join(' · '), svcIdx: svcOf(p), desc: (p.long && t.projectsLong[p.id]) || t.projects[p.id],
     route: p.secs.map(([k]) => t.services[SERVICE_KEYS.indexOf(k)].name),
@@ -349,6 +326,17 @@ function home(lang) {
 </section>`;
 
   const chips = [...t.services.map((s, i) => [SERVICE_KEYS[i], s.name]), ['anders', t.fOther]];
+  const faq = `<section class="sec light faq-sec" id="faq" aria-labelledby="faq-h">
+  <div class="wrap sec-head">
+    <div class="rv-el"><span class="eyebrow">FAQ</span><h2 class="h2" id="faq-h">${esc(t.faqTitle)}</h2></div>
+  </div>
+  <div class="wrap">
+    <div class="faq rv-el">
+      ${t.faq.map(([q, a], i) => `<div class="faq-item"><h3 class="faq-q"><button type="button" id="faq-q-${i + 1}" aria-expanded="false" aria-controls="faq-a-${i + 1}"><span>${esc(q)}</span><span class="faq-ic" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a-${i + 1}" role="region" aria-labelledby="faq-q-${i + 1}"><div><p>${esc(a)}</p></div></div></div>`).join('\n      ')}
+    </div>
+  </div>
+</section>`;
+
   const quote = `<section class="sec light" id="offerte" aria-labelledby="offerte-h">
   <div class="wrap quote">
     <div class="quote-intro">
@@ -406,18 +394,16 @@ ${header(lang, dir, alternates, true)}
 ${heroSec}
 ${services}
 ${projects}
-${gallery}
 ${process}
 ${reviews}
 ${about}
+${faq}
 ${quote}
 ${contact}
 </main>
 ${footer(lang, dir, true)}
 ${dialog}
-${lightbox}
 <script type="application/ld+json">${jsonLd(lang)}</script>
-<script type="application/json" id="gallery-data">${JSON.stringify(gData).replace(/</g, '\\u003c')}</script>
 <script type="application/json" id="case-data">${JSON.stringify(caseData).replace(/</g, '\\u003c')}</script>
 ${i18nJson(t)}
 ${scriptTag(root)}
