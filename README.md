@@ -1,7 +1,7 @@
 # GW Graphic Design — production website (V11)
 
 **V11 on top of V10:**
-- **Intro:** the same animation (mark only, spin-in, rings, zoom), now slower and with a softer ending (about 4.5–5 s). It plays on **every visit**, counted per browser session. From the 4th visit a small "Don't show again" option appears. Only that choice disables the intro, and it can be switched back on under Cookie settings. With reduced motion there is a calm variant: no spin or zoom, just a fade.
+- **Intro:** the same animation (mark only, spin-in, rings, zoom). It **stays on screen until the visitor clicks the logo** (or presses Enter), which zooms into the site; Escape fades it out. There is no Skip button, and the pulse wave around the logo travels further (3.4×). It plays on **every visit**, counted per browser session. From the 4th visit a small "Don't show again" option appears. Only that choice disables the intro, and it can be switched back on under Cookie settings. With reduced motion there is a calm variant: no spin or zoom, just a fade.
 - **More work gallery:** 96 more real jobs (logos, vehicle graphics, workwear, print), with filters per service, "show more" and a lightbox with keyboard support. Thumbnails beyond the first 12 are only created when shown.
 - **PMK:** the site banner is added to the PMK case study.
 - **Language switch** keeps the current section (for example `#reviews`).
@@ -74,7 +74,7 @@ There are **no cookies, no analytics, no tracking and no third-party resources**
 
 ## Hero intro (V07)
 
-- It plays **only on the first visit ever** (localStorage). It lasts about 4.2 s plus a 1.8 s zoom, and the page stays usable: the **Skip intro** button or Escape closes it in about 0.4 s, and clicking the logo enters with the zoom.
+- V11: it plays once per browser session (see the cookie table) and waits for the visitor: clicking the logo or Enter enters with the 1.8 s zoom, Escape closes it in about 0.4 s. "Don't show again" appears from the 4th visit.
 - `prefers-reduced-motion` means no intro and a static final hero.
 - With JavaScript off there is no intro and the page is fully usable.
 - The rings use a CSS repeating radial gradient with a radial mask. The mark is inline SVG built from the original vector. The zoom uses the Web Animations API (`transform`/`opacity`). There is no video, GIF or animation library.
