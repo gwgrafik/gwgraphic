@@ -78,7 +78,6 @@ setTimeout(() => { gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 70
 setTimeout(finish, dur + 500);
 };
 $('#gateBtn').addEventListener('click', () => open());
-$('#gateSkip').addEventListener('click', () => open(true));
 $('#gateNever').addEventListener('click', () => { try { localStorage.setItem('gwIntroDisabled', 'true'); } catch (e) {} open(true); });
 const onKey = e => { if (e.key === 'Escape') open(true); else if (e.key === 'Enter') open(); };
 addEventListener('keydown', onKey);

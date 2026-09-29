@@ -93,9 +93,8 @@ if (gate && html.classList.contains('gate-on')) {
     setTimeout(() => { gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 700, easing: 'ease-out', fill: 'forwards' }); entered(); document.body.classList.remove('is-locked'); }, dur - 250);
     setTimeout(finish, dur + 500);
   };
-  // the intro waits: the logo (or Enter) zooms into the site, the skip button (or Escape) fades out
+  // the intro waits: the logo (or Enter) zooms into the site, Escape fades out
   $('#gateBtn').addEventListener('click', () => open());
-  $('#gateSkip').addEventListener('click', () => open(true));
   $('#gateNever').addEventListener('click', () => { try { localStorage.setItem('gwIntroDisabled', 'true'); } catch (e) {} open(true); });
   const onKey = e => { if (e.key === 'Escape') open(true); else if (e.key === 'Enter') open(); };
   addEventListener('keydown', onKey);

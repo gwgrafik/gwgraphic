@@ -206,7 +206,7 @@ function home(lang) {
   <div class="shade" id="gateShade"></div>
   <div class="gate-lang">${Object.entries(LANGS).map(([l, v]) => `<a href="${href(dir, v.dir)}" hreflang="${l}" lang="${l}"${l === lang ? ' aria-current="true"' : ''}>${v.label}</a>`).join('')}</div>
   <p class="gate-hint" aria-hidden="true"><i></i>${esc(t.gateHint)}</p>
-  <div class="gate-opts"><button id="gateNever" type="button">${esc(t.gateNever)}</button><button id="gateSkip" type="button">${esc(t.gateSkip)}</button></div>
+  <div class="gate-opts"><button id="gateNever" type="button">${esc(t.gateNever)}</button></div>
 </div>`;
 
   const prints = HERO_PRINTS.map(([slug, client, svc], i) => {
