@@ -63,7 +63,6 @@ let opened = false;
 const zoom = $('#gateZoom'), shade = $('#gateShade');
 const open = fast => {
 if (opened) return; opened = true;
-clearTimeout(auto);
 removeEventListener('keydown', onKey);
 const finish = () => { document.body.classList.remove('is-locked'); html.classList.remove('gate-on'); gate.remove(); };
 if (!gate.animate) { finish(); entered(); return; }
@@ -83,7 +82,6 @@ $('#gateSkip').addEventListener('click', () => open(true));
 $('#gateNever').addEventListener('click', () => { try { localStorage.setItem('gwIntroDisabled', 'true'); } catch (e) {} open(true); });
 const onKey = e => { if (e.key === 'Escape') open(true); else if (e.key === 'Enter') open(); };
 addEventListener('keydown', onKey);
-const auto = setTimeout(() => open(), calm ? 2200 : 3200);
 } else {
 if (gate) gate.remove();
 entered();

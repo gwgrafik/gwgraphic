@@ -68,7 +68,7 @@ const hero = (() => {
   return { start() { if (RM || timer) return; hydrate(prints[1]); timer = setInterval(tick, 3200); } };
 })();
 
-/* ---------- GATE: V07 intro (logo + rings). Never blocks: auto-continues, any input skips. ---------- */
+/* ---------- GATE: V07 intro (logo + rings). Stays until the visitor clicks the logo or skips. ---------- */
 const gate = $('#gate');
 function entered() { document.body.classList.add('entered'); hero.start(); }
 if (gate && html.classList.contains('gate-on')) {
@@ -79,7 +79,6 @@ if (gate && html.classList.contains('gate-on')) {
   const zoom = $('#gateZoom'), shade = $('#gateShade');
   const open = fast => {
     if (opened) return; opened = true;
-    clearTimeout(auto);
     removeEventListener('keydown', onKey);
     const finish = () => { document.body.classList.remove('is-locked'); html.classList.remove('gate-on'); gate.remove(); };
     if (!gate.animate) { finish(); entered(); return; }
@@ -94,13 +93,12 @@ if (gate && html.classList.contains('gate-on')) {
     setTimeout(() => { gate.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 700, easing: 'ease-out', fill: 'forwards' }); entered(); document.body.classList.remove('is-locked'); }, dur - 250);
     setTimeout(finish, dur + 500);
   };
-  // the intro plays on its own; the logo, the skip button, Enter or Escape end it early
+  // the intro waits: the logo (or Enter) zooms into the site, the skip button (or Escape) fades out
   $('#gateBtn').addEventListener('click', () => open());
   $('#gateSkip').addEventListener('click', () => open(true));
   $('#gateNever').addEventListener('click', () => { try { localStorage.setItem('gwIntroDisabled', 'true'); } catch (e) {} open(true); });
   const onKey = e => { if (e.key === 'Escape') open(true); else if (e.key === 'Enter') open(); };
   addEventListener('keydown', onKey);
-  const auto = setTimeout(() => open(), calm ? 2200 : 3200);
 } else {
   if (gate) gate.remove();
   entered();
