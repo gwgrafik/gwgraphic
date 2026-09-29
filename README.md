@@ -2,7 +2,7 @@
 
 **V11 on top of V10:**
 - **Intro:** the same animation (mark only, spin-in, rings, zoom). It **stays on screen until the visitor clicks the logo** (or presses Enter), which zooms into the site; Escape fades it out. There is no Skip button, and the pulse wave around the logo travels further (3.4×). It plays on **every visit**, counted per browser session. From the 4th visit a small "Don't show again" option appears. Only that choice disables the intro, and it can be switched back on under Cookie settings. With reduced motion there is a calm variant: no spin or zoom, just a fade.
-- **FAQ:** eight questions per language between "About" and the quote form; accordion (one answer open at a time, button + aria-expanded/aria-controls) and matching FAQPage JSON-LD. The former "More work" gallery was removed.
+- **FAQ:** eight questions per language between "About" and the quote form, on a graphite background with numbered questions; accordion (one answer open at a time, button + aria-expanded/aria-controls) and matching FAQPage JSON-LD. The former "More work" gallery was removed.
 - **PMK:** the site banner is added to the PMK case study.
 - **Language switch** keeps the current section (for example `#reviews`).
 - **Future pages:** services and projects carry stable paths in `data-page` (`SERVICE_PATHS` in `src/content.mjs`, `projecten/<id>/`), with the same slugs in every language.

@@ -221,7 +221,7 @@ function home(lang) {
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="flow">${t.flow.map(esc).join(' <i aria-hidden="true">→</i> ')}</p>
-      <h1 class="h1" id="h1"><span class="l1">${esc(t.h1[0])}</span> <span class="l2">${esc(t.h1[1])}</span> <span class="l3">${esc(t.h1[2])}</span></h1>
+      <h1 class="h1" id="h1"><span class="l1${t.h1[0].length > 8 ? ' long' : ''}">${esc(t.h1[0])}</span> <span class="l2">${esc(t.h1[1])}</span> <span class="l3">${esc(t.h1[2])}</span></h1>
       <p class="rotl">${esc(t.rotPre)} <span class="rot" id="rot">${t.rot.map((w, i) => `<b${i ? ' aria-hidden="true"' : ' class="on"'}>${esc(w)}</b>`).join('')}</span></p>
       <p class="lead">${esc(t.heroLead)}</p>
       <div class="hero-cta"><a class="btn" href="#offerte">${esc(t.cta)}</a><a class="btn btn-ghost" href="#projecten">${esc(t.heroBtn2)}</a></div>
@@ -326,11 +326,9 @@ function home(lang) {
 </section>`;
 
   const chips = [...t.services.map((s, i) => [SERVICE_KEYS[i], s.name]), ['anders', t.fOther]];
-  const faq = `<section class="sec light faq-sec" id="faq" aria-labelledby="faq-h">
-  <div class="wrap sec-head">
-    <div class="rv-el"><span class="eyebrow">FAQ</span><h2 class="h2" id="faq-h">${esc(t.faqTitle)}</h2></div>
-  </div>
-  <div class="wrap">
+  const faq = `<section class="sec dark faq-sec" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-head rv-el"><span class="eyebrow">FAQ</span><h2 class="h2" id="faq-h">${esc(t.faqTitle)}</h2></div>
     <div class="faq rv-el">
       ${t.faq.map(([q, a], i) => `<div class="faq-item"><h3 class="faq-q"><button type="button" id="faq-q-${i + 1}" aria-expanded="false" aria-controls="faq-a-${i + 1}"><span>${esc(q)}</span><span class="faq-ic" aria-hidden="true"></span></button></h3><div class="faq-a" id="faq-a-${i + 1}" role="region" aria-labelledby="faq-q-${i + 1}"><div><p>${esc(a)}</p></div></div></div>`).join('\n      ')}
     </div>
