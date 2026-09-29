@@ -121,14 +121,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 #gate.ready .rings{--rev:150vmax}
 @keyframes gw-rin{from{--o:1}to{--o:0}}
 #gate .gw{position:relative;width:var(--D);height:var(--D);padding:0;border:0;border-radius:50%;background:#fff;opacity:0;transition:transform .4s var(--ease)}
-/* spin-in: one and a half turns out of nothing, overshoot, then a springy settle */
+/* spin-in: three quarters of a turn out of nothing, overshoot, then a springy settle */
 #gate.ready .gw{opacity:1;animation:gw-spin 1.7s .15s backwards}
 @keyframes gw-spin{
-  0%{transform:scale(0) rotate(-540deg);opacity:0;animation-timing-function:cubic-bezier(.15,.6,.35,1)}
+  0%{transform:scale(0) rotate(-270deg);opacity:0;animation-timing-function:cubic-bezier(.15,.6,.35,1)}
   10%{opacity:1}
-  58%{transform:scale(1.14) rotate(14deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
-  74%{transform:scale(.94) rotate(-7deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
-  88%{transform:scale(1.03) rotate(2deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  58%{transform:scale(1.1) rotate(8deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  74%{transform:scale(.96) rotate(-4deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
+  88%{transform:scale(1.02) rotate(1deg);animation-timing-function:cubic-bezier(.45,0,.55,1)}
   100%{transform:none;opacity:1}}
 #gate.ready .gw:hover{transform:scale(1.06)}
 #gate .gw svg{width:100%;height:100%}
