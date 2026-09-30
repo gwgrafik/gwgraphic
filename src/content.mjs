@@ -22,7 +22,7 @@ export const SITE = {
     linkedin: 'https://www.linkedin.com/in/gwgraphic'
   },
   reviewsUrl: 'https://www.google.com/maps/search/?api=1&query=GW%20Graphic%20Design',
-  updated: '2026-09-27'
+  updated: '2026-09-30'
 };
 
 // Home pages live at /, /en/, /pl/.
@@ -143,44 +143,44 @@ nl: {
   h1: ['Reclame', 'in elke', 'vorm.'],
   rotPre: 'Ik ontwerp:',
   rot: ['branding', 'voertuigbelettering', 'bedrijfskleding', 'drukwerk', 'websites', 'promotionele producten'],
-  heroLead: 'Een herkenbaar merk — van logo tot bedrijfswagen. Alles ontworpen zodat je bedrijf er op elk medium hetzelfde uitziet.',
+  heroLead: 'Van logo tot bedrijfswagen: alles wordt zo ontworpen dat je bedrijf er overal hetzelfde uitziet.',
   heroBtn2: 'Bekijk projecten',
   heroMeta: ['Nederland · België · Duitsland', 'Montage op locatie', 'Google-reviews'],
   stageAria: 'Bekijk deze dienst',
 
   svEyebrow: 'Diensten',
-  svTitle: ['Een consistente uitstraling', 'op elk medium.'],
-  svIntro: 'Logo, bedrijfswagen, kleding, drukwerk en website moeten direct herkenbaar zijn als onderdelen van hetzelfde merk. Elk ontwerp wordt afgestemd op de rest, zodat alles samen één duidelijke en herkenbare uitstraling vormt.',
+  svTitle: ['Eén uitstraling', 'op elk medium.'],
+  svIntro: 'Je logo, bedrijfswagen, kleding, drukwerk en website moeten in één oogopslag bij hetzelfde merk horen. Bij elk ontwerp houd ik rekening met de andere materialen, zodat de hele uitstraling herkenbaar en eenduidig blijft.',
   services: [
     { name: 'Branding', sub: 'Logo en visuele identiteit', cta: 'Vraag naar branding',
-      text: 'Een goed logo moet meer kunnen dan er op een scherm goed uitzien. Het moet werken op een visitekaartje, kleding, een voertuig en een website. Ik ontwerp een visuele identiteit die consequent in alle communicatie van je bedrijf kan worden toegepast.',
+      text: 'Een goed logo moet ook buiten het scherm werken. Het moet kloppen op een visitekaartje, kleding, een voertuig en een website. Ik ontwerp een visuele identiteit die je consequent in alle communicatie van je bedrijf kunt toepassen.',
       tags: ['Logo-ontwerp', 'Visuele identiteit', 'Huisstijlrichtlijnen', 'Bestanden voor drukwerk en online gebruik'] },
     { name: 'Voertuig­belettering', sub: 'Auto\'s, bedrijfswagens, etalages en ramen', cta: 'Vraag naar belettering',
       text: 'Een bedrijfswagen is reclame die elke dag onderweg is. Het ontwerp wordt gemaakt voor het exacte voertuigmodel, met aandacht voor leesbaarheid, verhoudingen en zichtbaarheid op afstand. Van eenvoudige bedrijfsbelettering tot uitgebreidere wraps. Etalages en ramen worden op locatie aangebracht.',
       tags: ['Autobelettering', 'Bedrijfswagenbelettering', 'Full wrap', 'Etalages en ramen', 'Montage'] },
     { name: 'Bedrijfs­kleding', sub: 'Bedrukking voor bedrijf en team', cta: 'Vraag naar bedrijfskleding',
-      text: 'Consistente bedrijfskleding versterkt de uitstraling van je bedrijf en maakt je team direct herkenbaar. Ik verzorg DTF- en flexbedrukking op T-shirts, polo\'s, hoodies, jassen en werkkleding — voor teams, evenementen en merchandise.',
+      text: 'Bedrijfskleding in je eigen huisstijl versterkt de uitstraling van je bedrijf en maakt je team direct herkenbaar. Ik verzorg DTF- en flexbedrukking op T-shirts, polo\'s, hoodies, jassen en werkkleding, voor teams, evenementen en merchandise.',
       tags: ['T-shirts en polo\'s', 'Hoodies en jassen', 'Werkkleding', 'DTF- en flexbedrukking'] },
     { name: 'Drukwerk', sub: 'Van visitekaartje tot banner', cta: 'Vraag naar drukwerk',
-      text: 'Drukwerk moet er in het echt net zo goed uitzien als in het ontwerp. Ik verzorg visitekaartjes, flyers, posters, roll-ups, banners, vlaggen, stickers en borden — passend bij de huisstijl en technisch correct voorbereid voor productie.',
+      text: 'Drukwerk moet er in het echt net zo goed uitzien als in het ontwerp. Ik verzorg visitekaartjes, flyers, posters, roll-ups, banners, vlaggen, stickers en borden, passend bij je huisstijl en technisch correct voorbereid voor productie.',
       tags: ['Visitekaartjes', 'Flyers en posters', 'Roll-ups en banners', 'Vlaggen, stickers en borden'] },
     { name: 'Websites', sub: 'Een website die bij je bedrijf past', cta: 'Vraag naar een website',
-      text: 'Ik ontwerp websites die duidelijk, snel en herkenbaar zijn als onderdeel van je merk. Indeling, inhoud en contactmogelijkheden hebben één doel: bezoekers moeten snel begrijpen wat je aanbiedt en wat de volgende stap is. Elke website is responsive en technisch goed opgebouwd voor SEO.',
+      text: 'Ik ontwerp websites die duidelijk en snel zijn en passen bij je merk. Indeling, inhoud en contactmogelijkheden hebben één doel: bezoekers moeten snel begrijpen wat je aanbiedt en wat de volgende stap is. Elke website is responsive en technisch goed opgebouwd voor SEO.',
       tags: ['Maatwerk ontwerp', 'Mobiele versie', 'Technische SEO-basis', 'Contact met één klik'] },
     { name: 'Promo­tionele producten', sub: 'Producten met jouw branding', cta: 'Vraag naar promotionele producten',
-      text: 'Niet elk contact met een merk vindt online plaats. Mokken, magneten, buttons, stickers en andere promotionele producten kunnen je huisstijl versterken — tijdens evenementen, bij klanten of binnen je team.',
+      text: 'Niet elk contact met een merk vindt online plaats. Mokken, magneten, buttons, stickers en andere promotionele producten kunnen je huisstijl versterken: tijdens evenementen, bij klanten of binnen je team.',
       tags: ['Mokken', 'Magneetborden', 'Stickers', 'Buttons'] }
   ],
   prev: 'Vorige afbeelding', next: 'Volgende afbeelding',
 
   prEyebrow: 'Projecten',
   prTitle: ['Je merk', 'in de praktijk.'],
-  prIntro: 'Geselecteerde projecten waarin meerdere onderdelen — van logo tot voertuig, kleding of website — samen één herkenbare uitstraling vormen.',
+  prIntro: 'Geselecteerde projecten waarin meerdere onderdelen — van logo tot voertuig, kleding of website — samen één geheel vormen.',
   prOpen: 'Bekijk project',
   projects: {
     'kristofix': 'Logo, visitekaartjes, busbelettering en website — een complete visuele identiteit vanaf de basis.',
     'maniek-diensten': 'Logo, visitekaartjes, bedrijfskleding en website — één herkenbare stijl op ieder contactmoment.',
-    'pmk-klusjesman': 'Belettering van drie bedrijfswagens, werkkleding, bouwbord en visitekaartjes — één consistente uitstraling voor een bedrijf dat dagelijks op locatie werkt.',
+    'pmk-klusjesman': 'Belettering van drie bedrijfswagens, werkkleding, bouwbord en visitekaartjes — overal dezelfde uitstraling voor een bedrijf dat dagelijks op locatie werkt.',
     'podtech': 'Logo en een complete lijn werkkleding voor een elektrotechnisch installatiebedrijf.',
     'patera': 'Logo, T-shirts en belettering van de bedrijfsauto voor een klussenbedrijf.',
     'weldpolako': 'Logo, belettering van twee bussen en bedrijfskleding voor een lasbedrijf.',
@@ -197,8 +197,8 @@ nl: {
 
   pcEyebrow: 'Werkwijze',
   pcTitle: ['Van idee', 'tot uitvoering.'],
-  process: [['Ontwerp', 'We bepalen de omvang, stijl en toepassing. Op basis daarvan ontstaat het ontwerp, dat we verfijnen voordat het wordt uitgevoerd.'], ['Productie', 'Na akkoord worden de materialen voorbereid voor de juiste techniek: drukwerk, folie, textielbedrukking of online publicatie.'], ['Montage', 'Belettering van voertuigen, etalages en ramen monteer ik op locatie. De overige materialen worden gebruiksklaar geleverd.']],
-  pcNote: 'Eerst bepalen we wat je nodig hebt. Daarna volgen ontwerp en productie en, waar nodig, montage.',
+  process: [['Ontwerp', 'Samen bepalen we de omvang, stijl en toepassing. Op basis daarvan maak ik het ontwerp en werk ik het verder uit voordat het wordt geproduceerd.'], ['Productie', 'Na akkoord worden de materialen voorbereid voor de juiste techniek: drukwerk, folie, textielbedrukking of online publicatie.'], ['Montage', 'Belettering van voertuigen, etalages en ramen monteer ik op locatie. De overige materialen worden gebruiksklaar geleverd.']],
+  pcNote: 'Eerst breng ik in kaart wat je nodig hebt. Daarna volgen productie en, waar nodig, montage.',
 
   rvEyebrow: 'Reviews', rvTitle: 'Wat klanten zeggen', rvSource: 'Google-review', rvAll: 'Alle Google-reviews',
   rvPrev: 'Vorige review', rvNext: 'Volgende review', rvStars: '5 van 5 sterren',
@@ -206,7 +206,7 @@ nl: {
 
   abEyebrow: 'Over GW Graphic Design',
   abTitle: ['Ontworpen', 'met de uitvoering', 'in gedachten.'],
-  abP: ['Mijn naam is Grzegorz Woźniak en ik run GW Graphic Design. Ik combineer grafisch ontwerp met de realisatie van reclamematerialen — van visuele identiteit, drukwerk en bedrijfskleding tot voertuigbelettering en websites.', 'Elk ontwerp wordt vanaf het begin gemaakt met de uiteindelijke toepassing in gedachten: op een scherm, papier, textiel, folie of voertuig. Het resultaat moet niet alleen goed ogen, maar ook duidelijk, praktisch en herkenbaar zijn.'],
+  abP: ['Mijn naam is Grzegorz Woźniak en ik ben de eigenaar van GW Graphic Design. Ik combineer grafisch ontwerp met de realisatie van reclamematerialen — van visuele identiteit, drukwerk en bedrijfskleding tot voertuigbelettering en websites.', 'Elk ontwerp maak ik vanaf het begin voor de plek waar het echt gebruikt wordt: op een scherm, papier, textiel, folie of een voertuig. Het resultaat moet er goed uitzien en tegelijk duidelijk, praktisch en herkenbaar zijn.'],
   abFacts: [['Ontwerp', 'Logo, visuele identiteit en grafische materialen'], ['Productie', 'Drukwerk, kleding, folie en promotionele producten'], ['Montage', 'Voertuigen, etalages en ramen']],
   abRole: 'Grafisch ontwerper en reclamespecialist',
 
@@ -216,9 +216,9 @@ nl: {
   fService: 'Waar gaat je aanvraag over?', fServiceHint: 'Je kunt meerdere opties selecteren.', fOther: 'Iets anders',
   fName: 'Naam', fCompany: 'Bedrijf', fEmail: 'E-mail', fPhone: 'Telefoon', fMessage: 'Bericht',
   fMessagePh: 'Bijvoorbeeld: belettering voor twee bussen en T-shirts voor het team.',
-  fPref: 'Hoe wil je gecontacteerd worden?', fPrefOpts: ['E-mail', 'Telefoon', 'WhatsApp'],
+  fPref: 'Hoe wil je dat ik contact opneem?', fPrefOpts: ['E-mail', 'Telefoon', 'WhatsApp'],
   fOptional: 'optioneel', fRequired: 'verplicht',
-  fPrivacy: 'Je gegevens worden alleen gebruikt om je aanvraag te beantwoorden. Lees het', fPrivacyLink: 'privacybeleid',
+  fPrivacy: 'Ik gebruik je gegevens alleen om je aanvraag te beantwoorden. Lees het', fPrivacyLink: 'privacybeleid',
   fSend: 'Aanvraag versturen', fSending: 'Bezig met versturen…', fWa: 'Via WhatsApp versturen',
   fErrName: 'Vul je naam in.', fErrEmail: 'Vul een geldig e-mailadres in.', fErrPhone: 'Vul je telefoonnummer in, dan kan ik je bellen of appen.', fErrMessage: 'Schrijf kort waar je hulp bij zoekt.',
   fErrSummary: 'Controleer de gemarkeerde velden.',
@@ -230,10 +230,10 @@ nl: {
   ctEyebrow: 'Contact', ctTitle: 'Liever direct overleggen?',
   ctIntro: 'Bel, stuur een WhatsApp-bericht of mail. Gaat het om voertuigbelettering of branding? Dan kun je meteen een foto van het voertuig of je huidige logo meesturen.',
   ctWa: 'Stuur een bericht', ctPhone: 'Bellen', ctEmail: 'E-mail',
-  ctMeta: 'Ik werk voor bedrijven in heel Nederland, België en Duitsland. Voertuigbelettering, etalages en ramen worden op locatie gemonteerd.',
+  ctMeta: 'Ik werk voor bedrijven in Nederland, België, Duitsland en Polen. Voertuigbelettering, etalages en ramen worden op locatie gemonteerd.',
   waText: 'Hallo Grzegorz, ik heb een vraag.',
 
-  ftLine: 'Branding, voertuigbelettering, bedrijfskleding, drukwerk, websites en promotionele producten — van ontwerp tot uitvoering in één herkenbare stijl.',
+  ftLine: 'Branding, voertuigbelettering, bedrijfskleding, drukwerk, websites en promotionele producten — van ontwerp tot uitvoering.',
   ftServices: 'Diensten', ftMenu: 'Menu', ftContact: 'Contact', ftSocial: 'Social media', ftLegal: 'Juridische informatie',
   ftServiceLinks: ['Logo en visuele identiteit', 'Voertuig- en raambelettering', 'Bedrijfskleding', 'Drukwerk', 'Websites', 'Promotionele producten'],
   ftArea: 'Nederland · België · Duitsland',
@@ -243,7 +243,7 @@ nl: {
   ckText: 'Deze website gebruikt geen cookies voor statistieken, advertenties of tracking en laadt geen diensten van derden. Er is dus niets om toe te staan of te weigeren.',
   ckStore: 'Je browser onthoudt alleen hoe vaak je de site hebt bezocht en of je de openingsanimatie hebt uitgezet (localStorage). Dat blijft op je eigen apparaat.',
   ckClear: 'Opgeslagen gegevens wissen', ckCleared: 'Gewist.', ckMore: 'Lees het cookiebeleid',
-  backHome: 'Terug naar de homepage', updated: 'Laatst bijgewerkt', updatedDate: '27 september 2026'
+  backHome: 'Terug naar de homepage', updated: 'Laatst bijgewerkt', updatedDate: '30 september 2026'
 },
 
 /* =============================== EN =============================== */
@@ -274,44 +274,44 @@ en: {
   h1: ['Advertising', 'in every', 'form.'],
   rotPre: 'I design:',
   rot: ['branding', 'vehicle graphics', 'branded clothing', 'print', 'websites', 'promotional products'],
-  heroLead: 'A consistent brand — from logo to vehicle. Everything designed so your business looks the same on every medium.',
+  heroLead: 'From your logo to your vehicle, every item is designed so your business looks the same wherever it appears.',
   heroBtn2: 'View projects',
   heroMeta: ['Netherlands · Belgium · Germany', 'On-site installation', 'Google reviews'],
   stageAria: 'View this service',
 
   svEyebrow: 'Services',
-  svTitle: ['A consistent identity', 'across every medium.'],
-  svIntro: 'Your logo, vehicle, clothing, print and website should immediately look like parts of the same brand. Each element is designed with the others in mind, creating a consistent and recognisable identity.',
+  svTitle: ['One identity', 'across every medium.'],
+  svIntro: 'Your logo, van, workwear, print and website should all feel like the same brand at first glance. When I design one element, I keep the others in mind so the whole identity keeps the same character and remains easy to recognise.',
   services: [
     { name: 'Branding', sub: 'Logo and visual identity', cta: 'Ask about branding',
-      text: 'A good logo needs to do more than look good on a screen. It has to work on a business card, clothing, a vehicle and a website. I design visual identities that can be used consistently across every part of your business communication.',
+      text: 'A good logo has to work beyond the screen. It should look right on a business card, clothing, a vehicle and a website. I design visual identities that can be used consistently across all of your business communications.',
       tags: ['Logo design', 'Visual identity', 'Brand guidelines', 'Files for print and digital use'] },
     { name: 'Vehicle graphics', sub: 'Cars, vans, shop windows and glass', cta: 'Ask about vehicle graphics',
       text: 'A company vehicle is advertising that works every day on the road. Each design is created for the exact vehicle model, with a strong focus on readability, proportions and visibility from a distance. From simple business lettering to more extensive wraps. Window graphics are installed on location.',
       tags: ['Car graphics', 'Van graphics', 'Full wraps', 'Windows and glass', 'Installation'] },
     { name: 'Branded clothing', sub: 'Prints for businesses and teams', cta: 'Ask about branded clothing',
-      text: 'Consistent branded clothing strengthens your company\'s image and makes your team instantly recognisable. I provide DTF and flex printing on T-shirts, polos, hoodies, jackets and workwear — for teams, events and branded merchandise.',
+      text: 'Clothing in your company colours strengthens your image and makes your team instantly recognisable. I provide DTF and flex printing on T-shirts, polos, hoodies, jackets and workwear for teams, events and branded merchandise.',
       tags: ['T-shirts and polos', 'Hoodies and jackets', 'Workwear', 'DTF and flex printing'] },
     { name: 'Print', sub: 'From business cards to banners', cta: 'Ask about print',
-      text: 'Printed materials should look just as good in real life as they do in the design. I create business cards, flyers, posters, roll-ups, banners, flags, stickers and signs — consistent with your visual identity and correctly prepared for production.',
+      text: 'Printed materials should look just as good in real life as they do in the design. I create business cards, flyers, posters, roll-ups, banners, flags, stickers and signs, all matched to your visual identity and correctly prepared for production.',
       tags: ['Business cards', 'Flyers and posters', 'Roll-ups and banners', 'Flags, stickers and signs'] },
     { name: 'Websites', sub: 'A website built around your business', cta: 'Ask about a website',
-      text: 'I design websites that are clear, fast and consistent with your brand. Layout, content and contact options all serve one goal: visitors should quickly understand what you offer and know what to do next. Every website is responsive and built with a solid technical structure for SEO.',
+      text: 'I design websites that are clear, fast and true to your brand. Layout, content and contact options all serve one goal: visitors should quickly understand what you offer and know what to do next. Every website is responsive and built with a solid technical structure for SEO.',
       tags: ['Custom design', 'Mobile responsive', 'Technical SEO foundations', 'One-click contact'] },
     { name: 'Promotional products', sub: 'Products with your branding', cta: 'Ask about promotional products',
-      text: 'Not every interaction with a brand happens on a screen. Mugs, magnets, buttons, stickers and other promotional products can extend your visual identity — at events, with customers or within your team.',
+      text: 'Not every interaction with a brand happens on a screen. Mugs, magnets, buttons, stickers and other promotional products can extend your visual identity at events, with customers or within your team.',
       tags: ['Mugs', 'Magnetic signs', 'Stickers', 'Buttons'] }
   ],
   prev: 'Previous image', next: 'Next image',
 
   prEyebrow: 'Projects',
   prTitle: ['Your brand', 'in practice.'],
-  prIntro: 'Selected projects where several elements — from the logo to vehicles, clothing or a website — come together as one consistent identity.',
+  prIntro: 'Selected projects in which several elements, from the logo to vehicles, clothing or a website, work together as one identity.',
   prOpen: 'View project',
   projects: {
-    'kristofix': 'Logo, business cards, van graphics and website — a complete visual identity built from the ground up.',
-    'maniek-diensten': 'Logo, business cards, branded clothing and website — one recognisable style across every customer touchpoint.',
-    'pmk-klusjesman': 'Graphics for three vans, workwear, a construction sign and business cards — a consistent set of materials for a company working on location every day.',
+    'kristofix': 'Logo, business cards, van graphics and website: a complete visual identity built from the ground up.',
+    'maniek-diensten': 'Logo, business cards, branded clothing and website: one recognisable style at every customer touchpoint.',
+    'pmk-klusjesman': 'Graphics for three vans, workwear, a construction sign and business cards: one matching set of materials for a company that works on location every day.',
     'podtech': 'Logo and a complete workwear line for an electrical installation company.',
     'patera': 'Logo, T-shirts and company car graphics for a handyman business.',
     'weldpolako': 'Logo, graphics for two vans and workwear for a welding company.',
@@ -324,12 +324,12 @@ en: {
     'podtech': 'The yellow logo with the lightning bolt runs through a complete workwear line: T-shirts, work shirts, jackets, softshells and work trousers. The whole team looks the same on every site.'
   },
   csEyebrow: 'Project', csRoute: 'What I made', csResult: n => `One brand. ${n} applications. One point of contact.`,
-  csCta: 'Get a quote', csNext: 'Next project',
+  csCta: 'Request a quote', csNext: 'Next project',
 
   pcEyebrow: 'Process',
   pcTitle: ['From idea', 'to finished result.'],
-  process: [['Design', 'We define the scope, style and application. From there, the design is developed and refined before it goes into production.'], ['Production', 'Once approved, the materials are prepared for the right production method: print, vinyl, garment printing or online publication.'], ['Installation', 'Vehicle, shop window and glass graphics are installed on location. Everything else is delivered ready to use.']],
-  pcNote: 'First, we define what you need. Then the project moves through design and production and, where required, installation.',
+  process: [['Design', 'Together we agree on the scope, style and use. I then develop the design and refine it before it goes into production.'], ['Production', 'Once approved, the materials are prepared for the right production method: print, vinyl, garment printing or online publication.'], ['Installation', 'Vehicle, shop window and glass graphics are installed on location. Everything else is delivered ready to use.']],
+  pcNote: 'First I find out what you need. Then the project goes into production and, where required, installation.',
 
   rvEyebrow: 'Reviews', rvTitle: 'What clients say', rvSource: 'Google review', rvAll: 'View all Google reviews',
   rvPrev: 'Previous review', rvNext: 'Next review', rvStars: '5 out of 5 stars',
@@ -337,7 +337,7 @@ en: {
 
   abEyebrow: 'About GW Graphic Design',
   abTitle: ['Designed', 'with real-world', 'use in mind.'],
-  abP: ['My name is Grzegorz Woźniak and I run GW Graphic Design. I combine graphic design with the production of advertising materials — from visual identity, print and branded clothing to vehicle graphics and websites.', 'Every project is designed from the start with its final use in mind: on screen, paper, fabric, vinyl or a vehicle. The result should not only look good, but also be clear, practical and consistent with the brand.'],
+  abP: ['My name is Grzegorz Woźniak and I run GW Graphic Design. I combine graphic design with the production of advertising materials — from visual identity, print and branded clothing to vehicle graphics and websites.', 'From the start, I plan every project for where it will actually be used: on screen, paper, fabric, vinyl or a vehicle. The result should look good and also be clear, practical and true to the brand.'],
   abFacts: [['Design', 'Logos, visual identity and graphic materials'], ['Production', 'Print, clothing, vinyl and promotional products'], ['Installation', 'Vehicles, shop windows and glass']],
   abRole: 'Graphic designer and advertising specialist',
 
@@ -345,11 +345,11 @@ en: {
   fTitle: ['Tell me', 'what you need.'],
   fIntro: 'Describe your project in a few sentences. You\'ll receive a clear proposal and a quote.',
   fService: 'What is your enquiry about?', fServiceHint: 'You can select more than one.', fOther: 'Something else',
-  fName: 'Name', fCompany: 'Company', fEmail: 'E-mail', fPhone: 'Phone', fMessage: 'Message',
+  fName: 'Name', fCompany: 'Company', fEmail: 'Email', fPhone: 'Phone', fMessage: 'Message',
   fMessagePh: 'For example: graphics for two vans and T-shirts for the team.',
-  fPref: 'How would you like to be contacted?', fPrefOpts: ['E-mail', 'Phone', 'WhatsApp'],
+  fPref: 'How would you like to be contacted?', fPrefOpts: ['Email', 'Phone', 'WhatsApp'],
   fOptional: 'optional', fRequired: 'required',
-  fPrivacy: 'Your details will only be used to respond to your enquiry. Read the', fPrivacyLink: 'privacy policy',
+  fPrivacy: 'I will only use your details to reply to your enquiry. Read the', fPrivacyLink: 'privacy policy',
   fSend: 'Send enquiry', fSending: 'Sending…', fWa: 'Send via WhatsApp',
   fErrName: 'Please enter your name.', fErrEmail: 'Please enter a valid email address.', fErrPhone: 'Please enter your phone number so I can call or message you.', fErrMessage: 'Please tell me briefly what you need.',
   fErrSummary: 'Please check the highlighted fields.',
@@ -359,22 +359,22 @@ en: {
   waForm: 'Hello Grzegorz, I have a question via gwgraphic.com.',
 
   ctEyebrow: 'Contact', ctTitle: 'Prefer to talk straight away?',
-  ctIntro: 'Call, send a WhatsApp message or e-mail. If you\'re asking about vehicle graphics or branding, you can send a photo of the vehicle or your current logo straight away.',
-  ctWa: 'Send a message', ctPhone: 'Call', ctEmail: 'E-mail',
-  ctMeta: 'I work with businesses across the Netherlands, Belgium and Germany. Vehicle, shop window and glass graphics are installed on location.',
+  ctIntro: 'Call, send a WhatsApp message or email. If you\'re asking about vehicle graphics or branding, feel free to include a photo of the vehicle or your current logo.',
+  ctWa: 'Send a message', ctPhone: 'Call', ctEmail: 'Email',
+  ctMeta: 'I work with businesses in the Netherlands, Belgium, Germany and Poland. Vehicle, shop window and glass graphics are installed on location.',
   waText: 'Hello Grzegorz, I have a question.',
 
-  ftLine: 'Branding, vehicle graphics, branded clothing, print, websites and promotional products — consistent from design through to finished result.',
+  ftLine: 'Branding, vehicle graphics, branded clothing, print, websites and promotional products, from first design to finished result.',
   ftServices: 'Services', ftMenu: 'Menu', ftContact: 'Contact', ftSocial: 'Social media', ftLegal: 'Legal information',
   ftServiceLinks: ['Logo and visual identity', 'Vehicle and window graphics', 'Branded clothing', 'Print', 'Websites', 'Promotional products'],
   ftArea: 'Netherlands · Belgium · Germany',
   legalNames: { privacy: 'Privacy policy', cookies: 'Cookie policy', terms: 'Terms and conditions', notice: 'Legal notice', a11y: 'Accessibility' },
   cookieSettings: 'Cookie settings',
   ckTitle: 'Cookie settings',
-  ckText: 'This website does not use cookies for statistics, advertising or tracking, and loads no third-party services. So there is nothing to accept or reject.',
+  ckText: 'This website does not use cookies for analytics, advertising or tracking, and loads no third-party services, so there is nothing to accept or reject.',
   ckStore: 'Your browser only remembers how often you have visited and whether you switched the opening animation off (localStorage). It stays on your own device.',
   ckClear: 'Clear stored data', ckCleared: 'Cleared.', ckMore: 'Read the cookie policy',
-  backHome: 'Back to the homepage', updated: 'Last updated', updatedDate: '27 September 2026'
+  backHome: 'Back to the homepage', updated: 'Last updated', updatedDate: '30 September 2026'
 },
 
 /* =============================== PL (source of meaning) =============================== */
@@ -405,26 +405,26 @@ pl: {
   h1: ['Reklama', 'w każdej', 'postaci.'],
   rotPre: 'Projektuję:',
   rot: ['branding', 'oklejanie pojazdów', 'odzież firmową', 'druk', 'strony internetowe', 'gadżety reklamowe'],
-  heroLead: 'Spójny wizerunek firmy — od logo po samochód. Wszystko zaprojektowane tak, żeby firma wyglądała jednolicie na każdym nośniku.',
+  heroLead: 'Od logo po samochód — wszystkie materiały zaprojektowane tak, żeby firma wyglądała jednolicie na każdym nośniku.',
   heroBtn2: 'Zobacz realizacje',
   heroMeta: ['Holandia · Belgia · Niemcy', 'Montaż na miejscu', 'Opinie w Google'],
   stageAria: 'Zobacz tę usługę',
 
   svEyebrow: 'Usługi',
   svTitle: ['Spójny wizerunek', 'na każdym materiale.'],
-  svIntro: 'Logo, bus, odzież, druk i strona internetowa powinny od razu wyglądać jak elementy tej samej marki. Każdy projekt powstaje z uwzględnieniem pozostałych, żeby całość była konsekwentna i rozpoznawalna.',
+  svIntro: 'Logo, bus, odzież, druk i strona internetowa powinny od razu wyglądać jak elementy tej samej marki. Przy każdym projekcie biorę pod uwagę pozostałe materiały, żeby cały wizerunek zachował ten sam charakter i był łatwy do rozpoznania.',
   services: [
     { name: 'Branding', sub: 'Logo i identyfikacja wizualna', cta: 'Zapytaj o branding',
-      text: 'Dobre logo nie kończy się na ekranie. Musi działać na wizytówce, odzieży, samochodzie i stronie internetowej. Projektuję identyfikację, którą można konsekwentnie wykorzystać w całej komunikacji firmy.',
+      text: 'Dobre logo nie kończy się na ekranie. Musi działać na wizytówce, odzieży, samochodzie i stronie internetowej. Projektuję identyfikację, którą można konsekwentnie stosować w całej komunikacji firmy.',
       tags: ['Projekt logo', 'Identyfikacja wizualna', 'Księga znaku', 'Pliki do druku i internetu'] },
     { name: 'Oklejanie', sub: 'Auta, busy, witryny i szyby', cta: 'Zapytaj o oklejenie',
       text: 'Samochód firmowy to reklama, która codziennie pracuje w ruchu. Projekt powstaje pod konkretny model pojazdu, z naciskiem na czytelność, proporcje i dobrą widoczność z dystansu. Od prostego oznakowania po bardziej rozbudowane oklejenia. Witryny i szyby realizuję na miejscu.',
       tags: ['Oklejanie aut', 'Oklejanie busów', 'Pełny wrap', 'Witryny i szyby', 'Montaż'] },
     { name: 'Odzież firmowa', sub: 'Nadruki dla firmy i zespołu', cta: 'Zapytaj o odzież',
-      text: 'Spójna odzież wzmacnia wizerunek firmy i sprawia, że zespół jest od razu rozpoznawalny. Realizuję nadruki DTF i flex na koszulkach, polo, bluzach, kurtkach i odzieży roboczej — dla ekip, na wydarzenia i jako firmowy merch.',
+      text: 'Odzież w barwach firmy wzmacnia jej wizerunek i sprawia, że zespół jest od razu rozpoznawalny. Realizuję nadruki DTF i flex na koszulkach, polo, bluzach, kurtkach i odzieży roboczej — dla ekip, na wydarzenia i jako firmowy merch.',
       tags: ['Koszulki i polo', 'Bluzy i kurtki', 'Odzież robocza', 'Nadruk DTF i flex'] },
     { name: 'Druk', sub: 'Od wizytówki po baner', cta: 'Zapytaj o druk',
-      text: 'Materiały drukowane powinny wyglądać tak samo dobrze jak projekt na ekranie. Przygotowuję wizytówki, ulotki, plakaty, roll-upy, banery, flagi, naklejki i tablice — spójne z identyfikacją i poprawnie przygotowane do produkcji.',
+      text: 'Materiały drukowane powinny wyglądać tak samo dobrze jak projekt na ekranie. Przygotowuję wizytówki, ulotki, plakaty, roll-upy, banery, flagi, naklejki i tablice — dopasowane do identyfikacji i poprawnie przygotowane do produkcji.',
       tags: ['Wizytówki', 'Ulotki i plakaty', 'Roll-upy i banery', 'Flagi, naklejki i tablice'] },
     { name: 'Strony internetowe', sub: 'Strona dopasowana do Twojej firmy', cta: 'Zapytaj o stronę internetową',
       text: 'Projektuję strony, które są czytelne, szybkie i spójne z marką. Układ, treść i kontakt są podporządkowane jednemu celowi: klient ma szybko zrozumieć ofertę i wiedzieć, co zrobić dalej. Każda strona jest responsywna i ma poprawną strukturę techniczną pod SEO.',
@@ -437,7 +437,7 @@ pl: {
 
   prEyebrow: 'Projekty',
   prTitle: ['Marka', 'w praktyce.'],
-  prIntro: 'Wybrane realizacje, w których kilka elementów — od logo po samochód, odzież czy stronę internetową — tworzy jeden spójny wizerunek.',
+  prIntro: 'Wybrane realizacje, w których kilka elementów — od logo po samochód, odzież czy stronę internetową — tworzy jedną całość.',
   prOpen: 'Zobacz projekt',
   projects: {
     'kristofix': 'Logo, wizytówki, oklejenie busa i strona internetowa — kompletna identyfikacja przygotowana od podstaw.',
@@ -459,8 +459,8 @@ pl: {
 
   pcEyebrow: 'Współpraca',
   pcTitle: ['Od pomysłu', 'do gotowej realizacji.'],
-  process: [['Projekt', 'Ustalamy zakres, styl i zastosowanie. Na tej podstawie powstaje projekt, który dopracowujemy przed realizacją.'], ['Produkcja', 'Po akceptacji materiały są przygotowywane do odpowiedniej technologii: druku, folii, znakowania odzieży lub publikacji online.'], ['Montaż', 'Oklejenia pojazdów, witryn i szyb montuję na miejscu. Pozostałe materiały dostajesz gotowe do użycia.']],
-  pcNote: 'Najpierw ustalamy, czego potrzebujesz. Potem projekt przechodzi do produkcji i — tam, gdzie jest to potrzebne — montażu.',
+  process: [['Projekt', 'Razem ustalamy zakres, styl i zastosowanie. Na tej podstawie przygotowuję projekt i dopracowuję go przed realizacją.'], ['Produkcja', 'Po akceptacji materiały są przygotowywane do odpowiedniej technologii: druku, folii, znakowania odzieży lub publikacji online.'], ['Montaż', 'Oklejenia pojazdów, witryn i szyb montuję na miejscu. Pozostałe materiały dostajesz gotowe do użycia.']],
+  pcNote: 'Najpierw poznaję Twoje potrzeby. Potem projekt przechodzi do produkcji i — tam, gdzie jest to potrzebne — montażu.',
 
   rvEyebrow: 'Opinie', rvTitle: 'Co mówią klienci', rvSource: 'Opinia w Google', rvAll: 'Wszystkie opinie w Google',
   rvPrev: 'Poprzednia opinia', rvNext: 'Następna opinia', rvStars: '5 na 5 gwiazdek',
@@ -468,7 +468,7 @@ pl: {
 
   abEyebrow: 'O GW Graphic Design',
   abTitle: ['Projektowanie', 'z myślą', 'o realnym wykonaniu.'],
-  abP: ['Nazywam się Grzegorz Woźniak i prowadzę GW Graphic Design. Łączę projektowanie graficzne z realizacją materiałów reklamowych — od identyfikacji wizualnej, przez druk i odzież, po oklejanie pojazdów i strony internetowe.', 'Każdy projekt od początku powstaje z myślą o tym, gdzie naprawdę będzie używany: na ekranie, papierze, tkaninie, folii czy samochodzie. Efekt ma być nie tylko estetyczny, ale też czytelny, praktyczny i spójny z marką.'],
+  abP: ['Nazywam się Grzegorz Woźniak i prowadzę GW Graphic Design. Łączę projektowanie graficzne z realizacją materiałów reklamowych — od identyfikacji wizualnej, przez druk i odzież, po oklejanie pojazdów i strony internetowe.', 'Każdy projekt od początku przygotowuję pod konkretne zastosowanie: ekran, papier, tkaninę, folię czy samochód. Efekt ma być estetyczny, a przy tym czytelny, praktyczny i spójny z marką.'],
   abFacts: [['Projekt', 'Logo, identyfikacja i materiały graficzne'], ['Produkcja', 'Druk, odzież, folie i gadżety'], ['Montaż', 'Pojazdy, witryny i szyby']],
   abRole: 'Projektant graficzny i specjalista reklamy',
 
@@ -492,7 +492,7 @@ pl: {
   ctEyebrow: 'Kontakt', ctTitle: 'Wolisz porozmawiać od razu?',
   ctIntro: 'Zadzwoń, napisz na WhatsApp albo wyślij e-mail. Jeśli chodzi o oklejanie lub branding, możesz od razu przesłać zdjęcie auta albo obecne logo.',
   ctWa: 'Napisz wiadomość', ctPhone: 'Zadzwoń', ctEmail: 'E-mail',
-  ctMeta: 'Obsługuję firmy w całej Holandii, Belgii i Niemczech. Oklejanie pojazdów, witryn i szyb realizuję na miejscu.',
+  ctMeta: 'Pracuję dla firm z Holandii, Belgii, Niemiec i Polski. Oklejanie pojazdów, witryn i szyb realizuję na miejscu.',
   waText: 'Dzień dobry, mam pytanie.',
 
   ftLine: 'Branding, oklejanie pojazdów, odzież firmowa, druk, strony internetowe i gadżety — spójnie od projektu po realizację.',
@@ -505,6 +505,6 @@ pl: {
   ckText: 'Ta strona nie używa plików cookies do statystyk, reklam ani śledzenia i nie wczytuje usług zewnętrznych. Nie ma więc na co wyrażać zgody.',
   ckStore: 'Przeglądarka zapamiętuje tylko liczbę wizyt i to, czy wyłączyłeś animację otwarcia (localStorage). Informacja zostaje na Twoim urządzeniu.',
   ckClear: 'Wyczyść zapisane dane', ckCleared: 'Wyczyszczono.', ckMore: 'Przeczytaj politykę cookies',
-  backHome: 'Wróć na stronę główną', updated: 'Ostatnia aktualizacja', updatedDate: '27 września 2026'
+  backHome: 'Wróć na stronę główną', updated: 'Ostatnia aktualizacja', updatedDate: '30 września 2026'
 }
 };
