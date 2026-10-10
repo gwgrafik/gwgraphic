@@ -1,0 +1,76 @@
+import json, sys, collections
+OUT = sys.argv[1]
+rows = json.load(open(f'{OUT}/_rows.json')); summ = json.load(open(f'{OUT}/_summary.json'))
+key = lambda r: ({'A':0,'B':1,'C':2}[r['Priorytet']], -r['Punkty'], r['Firma'].lower())
+L = []
+L.append('# Baza potencjalnych klientów — region Eindhoven\n')
+L.append('Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko po decyzji Grzegorza.\n')
+L.append('## Co jest w środku\n')
+L.append('- `baza-klientow.xlsx` — wszystko w jednym pliku: zakładka **Podsumowanie**, zakładka **TOP – priorytet A** i osobna zakładka dla każdej kategorii (z filtrami).')
+L.append('- `csv/` — te same dane, jeden plik na kategorię (separator `;`, UTF-8, otwiera się w Excelu).')
+L.append('- `narzedzia/` — skrypty i surowa lista firm z wyszukiwarki, żeby ChatGPT/Claude mogli powtórzyć i sprawdzić wynik.\n')
+L.append(f'**Razem: {len(rows)} firm** w {len(summ)-2} kategoriach, obszar: Eindhoven, Veldhoven, Best, Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Waalre, Valkenswaard, Heeze, Oirschot i okolice.\n')
+L.append('## Skąd dane\n')
+L.append('1. **OpenStreetMap** (wycinek Noord-Brabant z 2026-10-09): wszystkie firmy z nazwą w wybranych branżach w prostokącie wokół Eindhoven. Dane © OpenStreetMap contributors, licencja ODbL.')
+L.append('2. **Wyszukiwarka firm (Exa, dane w stylu LinkedIn)** dla branż słabo widocznych na mapie (dekarze, budowlanka, instalatorzy, ogrody, sprzątanie, transport, malarze, szkoły jazdy): liczba pracowników, zmiana zatrudnienia rok do roku, rok założenia, posty o rekrutacji.')
+L.append('3. **Automatyczny przegląd strony głównej** każdej firmy ze stroną (2435 adresów, 2026-10-10): HTTPS, wersja na telefon (`viewport`), rok w stopce ©, system strony, linki do social media, słowa-sygnały (rekrutacja, przeprowadzka/nowa lokalizacja, sklep online).\n')
+L.append('## Jak czytać ocenę\n')
+L.append('| Pole | Znaczenie |\n|---|---|')
+L.append('| Stan strony: **OK** | strona działa, HTTPS, wersja na telefon, stopka 2022+ albo brak roku |')
+L.append('| **PRZESTARZAŁA** | brak HTTPS **lub** brak wersji na telefon **lub** rok w stopce ≤ 2021 |')
+L.append('| **BŁĄD STRONY (do potwierdzenia)** | adres zwrócił błąd 4xx/5xx; może to być stary podstronowy link z mapy — sprawdzić ręcznie |')
+L.append('| **NIE ZNALEZIONO STRONY W DANYCH** | mapa nie ma adresu strony. **To nie znaczy, że firma nie ma strony** — do sprawdzenia |')
+L.append('| **BRAK STRONY** | według danych firmy (wyszukiwarka) brak własnej strony, tylko np. LinkedIn |')
+L.append('| **NIEUSTALONE** | strona blokuje roboty (403/429) albo moje środowisko nie mogło się połączyć — nie oceniamy |')
+L.append('| Oklejenie aut / odzież / witryna | **zawsze NIEUSTALONE** — bez zdjęć lub wizji lokalnej nie wiadomo, co mają. Nigdy nie piszemy „nie mają” |')
+L.append('| Social media (znalezione) | linki znalezione na stronie lub w mapie. Puste = **nie znaleziono**, nie „brak” |')
+L.append('| Sygnały zakupu | rekrutacja, przeprowadzka/nowa lokalizacja, wzrost zatrudnienia, nowa firma, sklep online |')
+L.append('| Priorytet A/B/C | punkty: dopasowanie branży do usług GW (auta/odzież = najwyżej) + luki online + sygnały; sieci/franczyzy −4 |\n')
+L.append('## Podsumowanie kategorii\n')
+L.append('| ' + ' | '.join(summ[0]) + ' |'); L.append('|' + '---|'*len(summ[0]))
+for r in summ[1:]: L.append('| ' + ' | '.join(str(x) for x in r) + ' |')
+L.append('')
+L.append('## Najlepsi kandydaci w każdej kategorii (max 8)\n')
+L.append('Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkretnie można zaproponować.\n')
+for c in [x[0] for x in summ[1:-1]]:
+    rs = sorted([r for r in rows if r['Kategoria']==c and not r['Sieć / franczyza']], key=key)[:8]
+    if not rs: continue
+    L.append(f'### {c}\n')
+    L.append('| Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |\n|---|---|---|---|---|---|---|')
+    for r in rs:
+        L.append(f"| {r['Priorytet']} | {r['Firma']} | {r['Miasto']} | {r['Strona WWW'] or '—'} | {r['Stan strony']} | {(r['Sygnały zakupu'] or '—')[:90]} | {r['Szansa dla GW'][:110]} |")
+    L.append('')
+L.append('## Ograniczenia (uczciwie)\n')
+n_tr=sum(1 for x in rows if x['Źródło'].startswith('wyszukiwarka'))
+L.append(f'- Fachowcy (dekarze, budowlanka, instalatorzy) rzadko są na mapie — ich lista pochodzi z wyszukiwarki i **nie jest kompletna** ({n_tr} firm z wyszukiwarki). Kolejne rundy: KvK, Google Maps, branżowe katalogi — tylko ręcznie albo przez ChatGPT, bez masowego pobierania.')
+L.append('- Ocena strony to automatyczny przegląd jednej strony głównej, nie pełny audyt.')
+L.append('- Część stron zablokowała roboty albo nie odpowiedziała z mojego środowiska — oznaczone „NIEUSTALONE”.')
+L.append('- Brak telefonów i e-maili celowo: baza służy do wyboru firm, nie do masowej wysyłki.')
+L.append('- Oznakowanie aut, odzieży i witryn trzeba sprawdzić zdjęciami (strona firmy, Google Street View, social media) przed jakąkolwiek propozycją.')
+import json as _j
+_c = _j.load(open(f'{OUT}/_cand.json'))
+_cnt = {}
+for _r in _c['rows']: _cnt[_r[0]] = _cnt.get(_r[0], 0) + 1
+L.append('')
+L.append('## KANDYDACI – wszystkie branże (arkusz i `csv/KANDYDACI-wszystkie-branze.csv`)')
+L.append(f"Wstępna lista {len(_c['rows'])} firm rozłożona po kategoriach, z jednym produktem głównym GW, dowodem (link) i dwoma osobnymi polami: **dopasowanie do GW (1–5)** oraz **pewność dowodów**. Wszystkie wiersze są **niezweryfikowane przez człowieka**; auta, odzież i witryny to „NIEUSTALONE”. Sygnały zapotrzebowania są bez dat (z automatycznego przeglądu strony i danych LinkedIn), więc nie dają statusu A.")
+L.append('')
+L.append('| Kategoria | Kandydatów | Wszystkich spełniających warunki |')
+L.append('|---|---|---|')
+for _k, _n in _cnt.items(): L.append(f"| {_k} | {_n} | {_c['eligible'].get(_k, _n)} |")
+L.append('')
+L.append('Warunki wejścia: działająca strona (OK lub przestarzała), nie sieć/franczyza, nie organizacja ani partner. Małe kategorie (np. malarze) nie są uzupełniane na siłę.')
+import os as _o
+if _o.path.exists(f'{OUT}/_verdicts.json'):
+    _v = _j.load(open(f'{OUT}/_verdicts.json')); _vr = _v['rows']
+    _cw = {}
+    for _r in _vr: _cw[_r[5]] = _cw.get(_r[5], 0) + 1
+    L.append('')
+    L.append('## WERDYKT REKLAMY 289 (arkusz i `csv/WERDYKT-REKLAMY-289.csv`)')
+    L.append(f"Każda z {len(_vr)} firm z listy kandydatów dostała indywidualny przegląd: strona główna, podstrony i, jeśli były, zdjęcia (obejrzane zdjęcia u {sum(1 for _r in _vr if _r[17])} firm). Werdykt oznacza: JUŻ MAJĄ, OPCJA ROZSZERZENIA, OKAZJA, NISKA SZANSA albo NIEUSTALONE. Przegląd był automatyczny (pomocnicze agenty AI), **nie zastępuje weryfikacji człowieka**; dowody mają linki, a daty zdjęć z ścieżek plików są przybliżone.")
+    L.append('')
+    L.append('| Werdykt | Firm |'); L.append('|---|---|')
+    for _k in ['JUŻ MAJĄ','OPCJA ROZSZERZENIA','OKAZJA','NISKA SZANSA','NIEUSTALONE','BŁĄD DANYCH']: L.append(f"| {_k} | {_cw.get(_k, 0)} |")
+    L.append('')
+    L.append('„NIEUSTALONE” znaczy, że nie znaleziono dowodu w żadną stronę, nie że firma nie ma reklamy. Surowe wyniki agentów: folder `werdykty/`.')
+open(f'{OUT}/README.md','w').write('\n'.join(L)+'\n'); print(len(L))
