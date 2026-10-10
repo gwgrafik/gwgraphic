@@ -68,6 +68,7 @@ Proponowane minimum: rejestr otwartych ofert/follow-upów, kosztorys zlecenia i 
   https://cyberfolks.pl/pomoc/konfiguracja-klientow-poczty-porty-adres-serwera-przyklady/
 - [POTWIERDZONE W DOKUMENTACJI GOOGLE 2026] Gmail w przeglądarce zapowiada wycofanie pobierania poczty z zewnętrznego konta POP i „Send mail as” dla kont zewnętrznych w styczniu 2027, z ograniczaniem nowych konfiguracji wcześniej:
   https://support.google.com/mail/answer/17101213
+- [POTWIERDZONE PRZEZ GRZEGORZA 2026-10-10] Obecnie używa firmowej poczty bezpośrednio przez stronę/webmail cyber_Folks; nie używa Gmaila do obsługi tej skrzynki. Nie zakładać istniejącej synchronizacji lub przekierowania do Gmaila.
 - [WAŻNE] Przekierowanie poczty cyber_Folks → Gmail może sprawić, że kopie przychodzących maili są w Gmailu, ale NIE przenosi automatycznie wysłanych maili, folderów, statusów IMAP ani uprawnień do oryginalnej skrzynki. Integracja AI z Gmail wymaga osobnego podłączenia i uprawnień; nie daje sama z siebie bezpośredniego dostępu do Roundcube.
 - [OPCJA] cyber_Folks + samodzielna integracja IMAP/SMTP i automatyzacja, po audycie zabezpieczeń (nie udostępniać haseł w czacie); lub Google Workspace jako natywna skrzynka firmowa z autoryzowanymi narzędziami; nie trzeba przenosić hostingu strony.
 - [RYZYKO] Autoresponder z obietnicą 1 dnia roboczego może być nietrafny; wiadomości automatyczne wymagają zabezpieczeń przed pętlą, spamem, ponownymi wysyłkami. Nie zmieniać DMARC na p=quarantine bez raportów, analizy źródeł i testów.
@@ -75,7 +76,7 @@ Proponowane minimum: rejestr otwartych ofert/follow-upów, kosztorys zlecenia i 
 ## 10. Pytania do właściciela — kolejka, nie ankieta naraz
 **Pierwsza kolejność:**
 1. Czy korzystasz z ofert (offertes) w SnelStart i czy możesz eksportować historię?
-2. Z jakiego programu korzystasz do maili na komputerze i telefonie; czy firmowa skrzynka jest już przekierowana do Gmail?
+2. Poczta na komputerze: webmail cyber_Folks, bez Gmaila (ustalone). Do ustalenia tylko ewentualny program na telefonie oraz dostępne filtry w panelu.
 3. Co zabiera najwięcej czasu w pracy i jakie masz źródła ostatnich 10 zleceń?
 
 **Dalsza kolejka:**
