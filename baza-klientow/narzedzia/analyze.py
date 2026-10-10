@@ -107,7 +107,10 @@ def add(base, src):
         'Ocena ogólna': overall, 'Luki': '; '.join(gaps), 'Szansa dla GW': '; '.join(dict.fromkeys(opp)), 'Punkty': score, 'Priorytet': prio,
         'Źródło': src, 'Sprawdzono': datetime.date.today().isoformat(), 'Status kontaktu': 'nie kontaktowano'})
     if d: seen_dom[d] = len(rows) - 1
+import os as _o
+_r2 = [json.loads(l) for l in open(f'{S}/trades_r2.jsonl')] if _o.path.exists(f'{S}/trades_r2.jsonl') else []
 for t in trades: add(t, 'wyszukiwarka firm (dane LinkedIn/strona)')
+for t in _r2: add(t, t.get('src') or 'runda 2')
 for o in osm: add(o, f"OpenStreetMap ({o['sub']}, {o['id']})")
 
 # --- Korekty po audycie ChatGPT (baza-klientow/AUDYT_CHATGPT.md) ---

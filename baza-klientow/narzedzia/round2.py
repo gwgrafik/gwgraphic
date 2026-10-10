@@ -30,5 +30,10 @@ def table(fn, title, pref=None):
 table('konkurenci', 'KONKURENCI', ['nazwa','miasto','strona'])
 table('partnerzy', 'PARTNERZY', ['nazwa','typ','miasto','strona'])
 table('ceny', 'CENY RYNKOWE', ['produkt','firma','miasto','region','kwota','jednostka'])
+rows_all = json.load(open(f'{OUT}/_rows.json'))
+nw = [r for r in rows_all if 'runda 2' in (r.get('Źródło') or '')]
+nw.sort(key=lambda r: ({'A':0,'B':1,'C':2}[r['Priorytet']], r['Kategoria'], r['Firma']))
+sheets['NOWE FIRMY (runda 2)'] = dict(hdr=['Kategoria','Firma','Miasto','Strona WWW','Stan strony','Social media (znalezione)','Sygnały zakupu','Pracownicy (LinkedIn)','Rok założenia','Priorytet','Punkty','Luki','Źródło i dowód','Status'],
+    rows=[[r['Kategoria'],r['Firma'],r['Miasto'],r['Strona WWW'],r['Stan strony'],r['Social media (znalezione)'],r['Sygnały zakupu'],r['Pracownicy (LinkedIn)'],r['Rok założenia'],r['Priorytet'],r['Punkty'],r['Luki'],r['Źródło'],'bez indywidualnego werdyktu reklamy; niezweryfikowane przez człowieka'] for r in nw])
 json.dump(sheets, open(f'{OUT}/_round2.json', 'w'), ensure_ascii=False)
 print({k: len(v['rows']) for k, v in sheets.items()})

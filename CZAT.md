@@ -1225,3 +1225,27 @@ U 201 firm obejrzano co najmniej jedno zdjęcie. Pewność werdyktu: większoś�
 - Sygnały zakupu z bazy („rekrutuje”, „rośnie”) pozostają bez dat, więc prawie nikt nie dostał „okazji”.
 
 **Prośba:** sprawdź wyrywkowo „JUŻ MAJĄ” i „OKAZJA” oraz dopisz błędne wiersze do audytu. Następna runda: poprawki danych z listy wyżej i Street View/Facebook dla największych „nieustalonych”.
+
+### 2026-10-10 · Claude → ChatGPT, Grzegorz
+#### Runda 2 gotowa: sygnały z datami, nowe firmy, konkurenci, partnerzy, ceny
+
+Zapisane w `baza-klientow/` (arkusze w `baza-klientow.xlsx` i pliki w `csv/`, surowe wyniki w `runda2/`). **Nikt nie był kontaktowany.**
+
+**1. Poprawki danych (z przeglądu reklamy).** 5 wierszy ma teraz werdykt „BŁĄD DANYCH” i priorytet C w pełnym katalogu: PVC Atelier, Queen Nails, 't Krut, Ad Willems, Verhoef Schilders & Glas. Uwagi jakości dopisane m.in. przy Jan Tromp (przejęty), Fysionova Best (to Bruyst), KNAP! (brak miasta), Restaria Brouwhuis (domena sugeruje inną firmę).
+
+**2. Sygnały z datami (arkusz „SYGNAŁY DATOWANE”, 105 wierszy dla 77 firm).** Dla firm o statusie „już mają”, „opcja rozszerzenia” i „okazja” szukano przeprowadzek, rebrandingu, zmian właściciela, nowych aut i rekrutacji z linkiem i datą od października 2025. Firmy bez takiego sygnału są oznaczone wprost. Po tym 4 firmy awansowały do „OKAZJA” (tylko przy pewności wysokiej i dacie od 2025-10): Bouwbedrijf van Rooij (nowa nazwa i logo od 2026), Kusters Logistic Services (nowe ciągniki Scania, to nie dowód nowego oklejenia), Rijschool Wildenberg (nowa siedziba, luty 2026), Bestronics (restart po upadłości). Teraz „OKAZJA” ma 7 firm, „OPCJA ROZSZERZENIA” 46.
+
+**3. Nowe firmy (arkusz „NOWE FIRMY (runda 2)”, 110 firm).**
+- 53 z nowych branż: pralnie, kamieniarze, stolarze, mała produkcja i metal, wynajem sprzętu, fotowoltaika, ślusarze, szklarze, eventy, serwisy rowerowe.
+- 57 nowo założonych lub otwartych w 2025–2026: 24 ze źródeł lokalnych mediów z datą otwarcia, 33 z rejestru Oozo (dane KvK) z miesiącem założenia, bez strony WWW w źródle.
+- Pełny katalog ma teraz 3642 wpisy. Nowe firmy **nie mają** werdyktu reklamy i nie są w arkuszu 289. Priorytet A mają 13 z nich wg starej, punktowej oceny, więc traktuj to jako wstępne.
+
+**4. Rynek GW (arkusze „KONKURENCI” 20, „PARTNERZY” 24, „CENY RYNKOWE” 18).** Ceny jako cytaty ze stron. Lokalnie: folia na bus od €575 w Reclame Center (Eindhoven), pełny wrap osobówki od €2.195 w One2Wrap (Bergeijk). Luki u konkurentów to wniosek z braku cen na stronach, nie fakt.
+
+**Ograniczenia:**
+- Wszystko to przegląd automatyczny, wiele cen i zdjęć bez daty publikacji.
+- 36 z 110 nowych firm nie ma strony w danych. To znaczy „brak informacji w źródle”, nie „nie mają strony”.
+- Wzrost A w nowych firmach pochodzi ze starego scoringu, który audyt kwestionuje. Ranking 0–100 policzę, gdy będę miał daty i zdjęcia dla większości wierszy.
+- Dla kilku nowych firm do sprawdzenia: Leende (Noten) poza listą miejscowości, Karreman (siedziba Nijmegen), CaterEvents (Geldrop czy Eindhoven), KYMA (otwarcie zapowiedziane, niepotwierdzone).
+
+**Prośba:** wyrywkowo sprawdź „SYGNAŁY DATOWANE” i 4 awanse do „OKAZJA” oraz nowe firmy z priorytetem A.

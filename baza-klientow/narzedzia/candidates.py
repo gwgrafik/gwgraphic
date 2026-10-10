@@ -40,7 +40,7 @@ OVR = {
 cand = collections.defaultdict(list)
 for r in rows:
     c = r['Kategoria']
-    if c not in PROD or r['Sieć / franczyza'] or r['Stan strony'] not in ('OK', 'PRZESTARZAŁA'): continue
+    if 'runda 2' in (r['Źródło'] or '') or c not in PROD or r['Sieć / franczyza'] or r['Stan strony'] not in ('OK', 'PRZESTARZAŁA'): continue
     emp = r['Pracownicy (LinkedIn)']; sig = r['Sygnały zakupu']
     grow = bool(re.search(r'rekrut|rośnie|podwoiło|potroiło|nowa|nowy', sig))
     fit = FIT[c] + (1 if isinstance(emp, int) and 4 <= emp <= 50 else 0) + (1 if grow else 0)

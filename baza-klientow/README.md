@@ -8,7 +8,7 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 - `csv/` — te same dane, jeden plik na kategorię (separator `;`, UTF-8, otwiera się w Excelu).
 - `narzedzia/` — skrypty i surowa lista firm z wyszukiwarki, żeby ChatGPT/Claude mogli powtórzyć i sprawdzić wynik.
 
-**Razem: 3532 firm** w 18 kategoriach, obszar: Eindhoven, Veldhoven, Best, Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Waalre, Valkenswaard, Heeze, Oirschot i okolice.
+**Razem: 3642 firm** w 18 kategoriach, obszar: Eindhoven, Veldhoven, Best, Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Waalre, Valkenswaard, Heeze, Oirschot i okolice.
 
 ## Skąd dane
 
@@ -35,25 +35,25 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 
 | Kategoria | Firm | Priorytet A | Priorytet B | Strona OK | Strona przestarzała | Strona z błędem | Brak strony (dane firmy) | Nie znaleziono strony w danych | Nieustalone | Z sygnałem zakupu | Sieci |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Dekarze | 11 | 1 | 9 | 9 | 0 | 0 | 0 | 0 | 2 | 10 | 0 |
-| Budowlanka i remonty | 31 | 2 | 24 | 22 | 1 | 0 | 1 | 3 | 4 | 19 | 0 |
-| Malarze | 8 | 1 | 5 | 4 | 1 | 1 | 0 | 0 | 2 | 4 | 0 |
-| Instalatorzy i elektrycy | 34 | 5 | 24 | 19 | 4 | 0 | 0 | 7 | 4 | 19 | 0 |
-| Ogrody i zieleń | 14 | 5 | 7 | 10 | 3 | 0 | 0 | 1 | 0 | 7 | 0 |
-| Sprzątanie | 21 | 6 | 12 | 15 | 1 | 2 | 0 | 0 | 3 | 15 | 0 |
-| Transport i logistyka | 20 | 3 | 14 | 12 | 2 | 0 | 1 | 2 | 3 | 16 | 1 |
-| Motoryzacja | 169 | 7 | 81 | 73 | 10 | 3 | 0 | 74 | 9 | 29 | 47 |
-| Szkoły jazdy | 11 | 0 | 7 | 7 | 0 | 0 | 0 | 2 | 2 | 5 | 0 |
-| Inne rzemiosło | 61 | 1 | 42 | 23 | 5 | 1 | 0 | 23 | 9 | 9 | 0 |
-| Fryzjerzy i beauty | 346 | 0 | 26 | 118 | 17 | 6 | 0 | 188 | 17 | 41 | 12 |
-| Zdrowie i fizjoterapia | 102 | 0 | 25 | 53 | 11 | 1 | 0 | 27 | 10 | 31 | 2 |
-| Fitness i sport | 229 | 0 | 11 | 90 | 2 | 2 | 0 | 129 | 6 | 35 | 11 |
-| Gastronomia | 1414 | 1 | 140 | 671 | 78 | 22 | 0 | 546 | 97 | 302 | 95 |
-| Sklepy lokalne | 520 | 5 | 54 | 277 | 36 | 12 | 0 | 161 | 34 | 155 | 114 |
-| Biura i usługi B2B | 507 | 0 | 23 | 249 | 20 | 10 | 0 | 198 | 30 | 159 | 9 |
+| Dekarze | 15 | 1 | 13 | 9 | 0 | 0 | 0 | 4 | 2 | 14 | 0 |
+| Budowlanka i remonty | 40 | 3 | 32 | 27 | 1 | 0 | 1 | 7 | 4 | 28 | 0 |
+| Malarze | 13 | 1 | 10 | 4 | 1 | 1 | 0 | 5 | 2 | 9 | 0 |
+| Instalatorzy i elektrycy | 46 | 5 | 36 | 28 | 4 | 0 | 0 | 10 | 4 | 31 | 0 |
+| Ogrody i zieleń | 18 | 5 | 11 | 10 | 3 | 0 | 0 | 5 | 0 | 11 | 0 |
+| Sprzątanie | 24 | 6 | 15 | 15 | 1 | 2 | 0 | 3 | 3 | 18 | 0 |
+| Transport i logistyka | 28 | 4 | 21 | 15 | 2 | 0 | 1 | 7 | 3 | 24 | 1 |
+| Motoryzacja | 171 | 7 | 83 | 73 | 10 | 3 | 0 | 76 | 9 | 31 | 47 |
+| Szkoły jazdy | 13 | 0 | 9 | 7 | 0 | 0 | 0 | 4 | 2 | 7 | 0 |
+| Inne rzemiosło | 86 | 12 | 56 | 42 | 10 | 1 | 0 | 24 | 9 | 34 | 0 |
+| Fryzjerzy i beauty | 347 | 0 | 26 | 119 | 17 | 6 | 0 | 188 | 17 | 42 | 12 |
+| Zdrowie i fizjoterapia | 103 | 0 | 26 | 54 | 11 | 1 | 0 | 27 | 10 | 32 | 2 |
+| Fitness i sport | 230 | 0 | 11 | 91 | 2 | 2 | 0 | 129 | 6 | 36 | 11 |
+| Gastronomia | 1429 | 1 | 150 | 683 | 78 | 22 | 0 | 548 | 98 | 317 | 95 |
+| Sklepy lokalne | 524 | 5 | 57 | 280 | 36 | 12 | 0 | 162 | 34 | 159 | 114 |
+| Biura i usługi B2B | 521 | 0 | 25 | 262 | 21 | 10 | 0 | 198 | 30 | 173 | 9 |
 | Partnerzy (dostawcy) | 2 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
 | Organizacje i stowarzyszenia | 32 | 0 | 0 | 23 | 3 | 0 | 0 | 6 | 0 | 5 | 0 |
-| RAZEM | 3532 | 37 | 504 | 1676 | 195 | 60 | 2 | 1367 | 232 | 862 | 291 |
+| RAZEM | 3642 | 50 | 581 | 1743 | 201 | 60 | 2 | 1403 | 233 | 972 | 291 |
 
 ## Najlepsi kandydaci w każdej kategorii (max 8)
 
@@ -65,25 +65,25 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 |---|---|---|---|---|---|---|
 | A | Dakdekkersbedrijf Verhoeven B.V. | Budel (projekty w Eindhoven) | https://verhoevendak.nl/ | OK | rekrutuje; duże projekty w Eindhoven (Trudo, Woonbedrijf) 2025; rośnie zatrudnienie +50.0% | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | B | A. van Diessen Dakbedekkingen B.V. | Valkenswaard | https://vandiessendak.nl/ | OK | rekrutuje; bardzo aktywny LinkedIn, duże projekty Helmond/Eindhoven 2026 | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
+| B | AA Dakwerken | Geldrop | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona czerwiec 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Centra Daktechniek B.V. | Eindhoven | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona wrzesień 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | dakAlliance B.V. | Eindhoven | https://dakalliance.nl/ | OK | rekrutuje; aktywny LinkedIn (projekt Helmond 2025-11) | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
+| B | DB Dakwerken | Best | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona czerwiec 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Heesmans Dakwerken | Mierlo | https://heesmansdakwerken.nl/ | OK | rekrutuje; potroiło zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | v.d. Hurk & Doezé Dakwerken | Heeze | https://hurkdoeze.nl/ | OK | rekrutuje; wg strony ok. 45 fachowców | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Van der Meer Dakbedekkingen B.V. | Eindhoven | https://vandermeerdakbedekking.nl/ | OK | domena z KOMO/Company.info (audyt ChatGPT); działanie strony do sprawdzenia | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | Van Doorn Dakspecialist (oddział Veldhoven) | Veldhoven (oddział; centrala Oud-Gastel) | https://vandoorndakspecialist.nl/ | OK | rekrutuje; rośnie zatrudnienie; większa firma, centrala poza regionem | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | ZND Nedicom | Eindhoven | https://zndnedicom.nl/ | OK | rekrutuje; rośnie zatrudnienie; dach + elewacje + solar; rośnie zatrudnienie +9.6% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
+| B | RM Dakwerken B.V. | Waalre | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona czerwiec 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Budowlanka i remonty
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
+| A | Glasservice Geldrop-Mierlo | Geldrop | https://glasservicegeldrop.nl/ | OK | sklep online; szklarz 24/7, Geldrop 5667 TG (strona OK 2026-10-10) | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | A | Stucadoorsbedrijf W. Derhaag | Eindhoven | https://derhaag.nl/ | OK | rekrutuje; rośnie zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | A | Top Deuren Veldhoven | Veldhoven | — | BRAK STRONY | oddział rośnie, szuka montażysty (2025) | strona WWW + identyfikacja; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklej |
 | B | Aannemersbedrijf Van Rijswijck | Eindhoven, North Brabant, Netherlands | https://vanrijswijck.nl/ | OK | rekrutuje; rośnie zatrudnienie +10.6% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Bouwbedrijf Th. van Kasteren | Veldhoven, Noord-Brabant, Netherlands | https://thvankasteren.nl/ | OK | rekrutuje; rośnie zatrudnienie +12.5% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Groenen Groep | Veldhoven, Noord-Brabant, Netherlands | https://groenengroep.com/ | OK | rekrutuje; rośnie zatrudnienie +27.8% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Heuvel Afbouwgroep | Deurne | https://heuvelafbouw.nl/ | OK | rekrutuje; duże projekty w Eindhoven (Nieuwe Bergen 2026) | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Joost. Renovatie & Nieuwbouw B.V. | Helmond, Noord-Brabant, Netherlands | https://joostbouw.nl/ | OK | rośnie zatrudnienie +33.3% | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
-| B | Stucadoorsbedrijf Kolen | Mierlo | https://www.stucadoorsbedrijfkolen.nl/ | PRZESTARZAŁA | napis „Wij zijn verhuisd” bez daty (nie świeży sygnał) | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); oznakowanie |
+| B | Dak en Bouwservice Van Hal | Geldrop | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona wrzesień 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | De Bie Totaalbouw | Eindhoven | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona październik 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | EC Bouw & Veranda | Veldhoven | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona sierpień 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Malarze
 
@@ -91,12 +91,12 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 |---|---|---|---|---|---|---|
 | A | VermulstBenders Schilderwerken | Helmond | https://schilderwerken-vb.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okle |
 | B | KB schilder-, glas- en behangwerken | Eindhoven/Veldhoven | https://kbschilderwerken.nl/ | BŁĄD STRONY (do potwierdzenia) | — | nowa/naprawiona strona; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Küsters schilderwerken | Helmond | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona lipiec 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Schildersbedrijf de Gouden appel | Best | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona sierpień 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Schildersbedrijf van de Looy | Veldhoven | https://vandelooy.nl/ | OK | rekrutuje; rośnie zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Edwin van Gool Schilderwerken | Eindhoven | https://edwinvangool.nl/ | OK | — | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | Paint and More Brabant | Eindhoven | https://www.paintandmorebrabant.nl/ | OK | — | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | Schildersbedrijf van der Kruijs | Eindhoven | https://vanderkruijs.nl/ | NIEUSTALONE (brak połączenia z mojego środowiska) | większa firma, 30 osób; rekrutuje (posty/vacatures) | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| C | Schildersbedrijf Leo Baeten | Eindhoven | https://leobaeten.nl/ | NIEUSTALONE (brak połączenia z mojego środowiska) | — | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| C | Verhoef Schilders & Glas | Veldhoven | https://verhoefschilders.nl/ | OK | wg strony 180+ fachowców (cała NL) | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Sjeng van der Wijst Schilderwerken | Helmond | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona sierpień 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Tijn van Beek Schilderwerken | Son en Breugel | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona wrzesień 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | VB Spuit- en Schilderwerken B.V. | Valkenswaard | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona lipiec 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Instalatorzy i elektrycy
 
@@ -107,9 +107,9 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | A | Gebr. Wijnen Installaties | Valkenswaard | https://wijneninstallaties.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okle |
 | A | Kremers Installatietechniek | Budel | https://kremersbudel.nl/ | OK | rekrutuje; potroiło zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | A | VAN DEN HOFF Installatiebedrijf | Eindhoven | https://vandenhoff.nl/ | OK | rekrutuje; rośnie zatrudnienie; ok. 45 osób wg strony; rośnie zatrudnienie +13.6% | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
-| B | Elektrotechnisch buro Vlemmix | Eindhoven | https://www.etbvlemmix.nl/ | OK | rekrutuje | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
-| B | Gevers Installatie | Eindhoven | https://geversinstallatie.nl/ | OK | rekrutuje; rośnie zatrudnienie; rośnie zatrudnienie +14.3% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Heesmans Klimaatinrichting | Helmond | https://heesmans.nl/ | OK | rekrutuje; rośnie zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
+| B | 24Seth Klus + Solar | Veldhoven | https://24seth.nl/ | OK | instalacje PV w promieniu 25 km, Vlierbeek 62 Veldhoven; wg strony 15 lat w OZE (strona OK | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Bozon Eindhoven | Eindhoven | https://bozoneindhoven.nl/ | OK | instalator PV, KvK 75169886 (strona OK 2026-10-10) | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | EK installatietechniek | Eindhoven | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona październik 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Ogrody i zieleń
 
@@ -120,9 +120,9 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | A | Hoveniersbedrijf van Eijndhoven | Veldhoven | https://hoveniersbedrijfvaneijndhoven.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | A | Nuenhem Tuinen | Nuenen | https://nuenhem.nl/ | OK | rekrutuje; podwoiło zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | A | Soontiëns Hoveniers | Eindhoven | https://soontienshoveniers.nl/ | OK | rekrutuje; rośnie zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
+| B | Ecotuinen van der Velden | Someren | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona lipiec 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Hoveniersbedrijf De Haas | Nuenen | https://hovenierdehaas.nl/ | OK | rekrutuje; lista ChatGPT K06 | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Hoveniersbedrijf Henri van der Wijst | Sint-Oedenrode | https://www.hoveniersbedrijfhenrivanderwijst.nl/ | OK | — | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | Hoveniersbedrijf Jeroen van Lange | Riethoven | https://jeroenvanlange.nl/ | OK | — | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Hoveniersbedrijf Van Mol | Eersel | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona październik 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Sprzątanie
 
@@ -144,11 +144,11 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | A | Formule Logistics | Eindhoven | https://formulelogistics.nl/ | PRZESTARZAŁA | rekrutuje; nowa usługa: dostawy w centrum Eindhoven (2026) | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okle |
 | A | Wijnen Vlotweg Verhuisgroep | Eindhoven | https://vlotwegverhuizingen.nl/ | PRZESTARZAŁA | rośnie zatrudnienie | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | A | Kusters Bergings- en Transportbedrijf | Eindhoven | — | BRAK STRONY | brak własnej strony WWW w danych firmy | strona WWW + identyfikacja; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| A | Vereijken Verhuizingen | Eindhoven | https://www.vereijkenverhuizingen.nl/ | OK | rekrutuje; nowa lokalizacja; rodzinna firma przeprowadzkowa wg strony 60+ lat, magazyn 20  | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut; |
+| B | Brabantse Verhuiscentrale (BVC) | Eindhoven | https://www.verhuiscentrale.nl/ | OK | przeprowadzki i magazyn, 4 pokolenia, Broekakkerseweg 22 Eindhoven (strona OK 2026-10-10) | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Dambacher Transport Services | Eindhoven | https://dambacher.nu/ | OK | rekrutuje; wg strony ok. 35 osób i 30 pojazdów | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Diligence Koeriers Helmond | Helmond | https://diligencekoeriers.nl/ | OK | podwoiło zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | B | Gebr. van den Eijnden Euromovers | Eindhoven | https://movers.nl/ | OK | rekrutuje; rośnie zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Send Solution | Eindhoven | https://sendsolution.com/ | OK | otwiera kolejne lokalizacje | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | SMK Logistics | Eindhoven | https://www.smk-logistics.nl/ | OK | rekrutuje; rośnie zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 
 ### Motoryzacja
 
@@ -168,26 +168,26 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
 | B | LEEUW opleidingen | Eindhoven | https://leeuwopleidingen.nl/ | OK | sklep online; szkoła zawodowa (C/D, code 95) | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | NOEN Autorijschool | Eindhoven | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona wrzesień 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Rijschool Dekker | Eindhoven | https://rijschooldekker.nl/ | OK | rekrutuje; rośnie zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
+| B | Rijschool K.E. B.V. | Eindhoven | — | NIE ZNALEZIONO STRONY W DANYCH | rejestr firm (KvK via Oozo): zalozona październik 2026; brak znalezionej strony | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Autorijschool Elsenaar |  | — | NIE ZNALEZIONO STRONY W DANYCH | — | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Dekker rijschool | Eindhoven | — | NIE ZNALEZIONO STRONY W DANYCH | — | jeśli faktycznie brak: strona WWW; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Rijschool Heezen | Waalre | https://rijschoolheezen.nl/ | OK | rekrutuje | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Rijschool Kennis | Eindhoven | https://rijschoolkennis.nl/ | OK | rośnie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Rijschool Wildenberg | Eindhoven | https://rijschoolwildenberg.nl/ | OK | rekrutuje | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| C | Rijschool Elsenaar | Geldrop | https://rijschoolelsenaar.nl/ | OK | — | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Inne rzemiosło
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
+| A | Constructiebedrijf De Vries | Eindhoven | https://constructiebedrijfdevries.nl/ | PRZESTARZAŁA | rekrutuje; konstrukcje stalowe, cięcie laserem; wg strony 65 lat, Esp 407 Eindhoven, KvK 1 | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okle |
+| A | J. Noten Bloemengroothandel | Leende | https://noten-bloemen.nl/ | PRZESTARZAŁA | hurtownia kwiatów ciętych dla kwiaciarni regionu Eindhoven, Strijperstraat 10 Leende (KvK  | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
+| A | Studio Houtwerk | Nuenen | http://www.studiohoutwerk.nl/ | PRZESTARZAŁA | jednoosobowa stolarka/meble na wymiar, region Eindhoven (Nuenen, Helmond, Geldrop, Waalre, | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
+| A | Vogels Machinale Houtbewerking & Timmerwerk | Someren | https://www.vogelshoutbewerking.nl/ | PRZESTARZAŁA | stolarnia: okna, drzwi z drewna twardego, KOMO; od 2016 także lakiernia przemysłowa (stron | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
+| A | De Scootmobielman | Veldhoven | https://scootmobielman.nl/ | OK | sklep online; serwis skuterów inwalidzkich u klienta, warsztat Veldhoven (strona OK 2026-1 | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| A | Gebr. Nijssen Metaalbewerking | Eindhoven | https://www.gebr-nijssen.nl/ | OK | rekrutuje; rodzinna firma ok. 40 specjalistów, obróbka blachy/fijnconstructie, nowy budyne | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | A | Jeroen Schreurs | Eindhoven | https://www.jeroenschreurs.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
-| B | Café 100 Watt | Eindhoven | https://100watt.nl/cafe-100-watt/ | BŁĄD STRONY (do potwierdzenia) | — | nowa/naprawiona strona; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | De Walhut |  | https://www.imkerijdewalhut.nl | OK | sklep online | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | Metaalbewerking v.d. Boogaert | Valkenswaard | https://metaalvdb.nl | OK | rekrutuje | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
-| B | Mima schoenmakerij | Eindhoven | https://www.mimaschoenmakerij.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | N°49 Chocolate | Mierlo | https://no49-chocolate.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | Van Moll | Eindhoven | https://vanmollcraftbeer.com/bar/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | Volksbelang | Eindhoven | https://volksbelangeindhoven.nl/ | OK | nowa lokalizacja | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); oznakowanie n |
+| A | Karreman Wasserij (oddział Eindhoven) | Eindhoven | https://karreman-wasserij.nl/ | PRZESTARZAŁA | rodzinna pralnia/stomerij, Nijmegen + Eindhoven/Helmond od 1996; adres Heezerweg 276 Eindh | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Fryzjerzy i beauty
 
@@ -259,13 +259,13 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
 | B | Advocaten Willemstraat | Eindhoven | https://www.advocatenwillemstraat.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; odzież/oklejenie dla nowych ludzi i aut |
+| B | Bazelmans AV | Veldhoven | https://www.bazelmans.com/nl | PRZESTARZAŁA | rekrutuje; wynajem i obsługa AV (światło, dźwięk, wideo), De Run 4537 Veldhoven; drugi odd | nowa strona (mobile, HTTPS); odzież/oklejenie dla nowych ludzi i aut |
 | B | Hattrick Uitzendbureau | Eindhoven | https://hattrick.nl | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; odzież/oklejenie dla nowych ludzi i aut |
 | B | Janssens Interieurprojecten | Mierlo | http://www.interieurprojecten.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; odzież/oklejenie dla nowych ludzi i aut |
 | B | Saasen | Mierlo | http://www.saasen.com/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; odzież/oklejenie dla nowych ludzi i aut |
 | B | Van Vlerken | Mierlo | http://www.vv-vanvlerken.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; odzież/oklejenie dla nowych ludzi i aut |
+| B | CaterEvents | Geldrop | https://caterevents.nl/ | OK | rekrutuje; catering firmowy/eventowy 20-6000 gości, strona 5667 KP (Geldrop); Exa Places a | materiały do social media; odzież/oklejenie dla nowych ludzi i aut |
 | B | De Proost Administratiekantoor | Bergeijk | http://www.deproostadministratie.nl/overdeproost.html | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media |
-| B | Dikkerboom | Waalre | http://dikkerboom.nl/waalre | BŁĄD STRONY (do potwierdzenia) | rekrutuje | nowa/naprawiona strona; odzież/oklejenie dla nowych ludzi i aut |
-| B | Eindhoven Relocations | Eindhoven | https://www.eindhovenrelocations.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media |
 
 ### Partnerzy (dostawcy)
 
