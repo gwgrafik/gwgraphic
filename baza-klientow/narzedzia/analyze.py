@@ -35,9 +35,10 @@ def page(u):
     return m, html
 rows = []
 seen_dom = {}
+URL_OVERRIDE = {'John Vermeulen Fietsplezier': 'https://johnvermeulengeldrop.nl/'}
 def add(base, src):
     global rows
-    u = norm(base.get('website'))
+    u = norm(URL_OVERRIDE.get(base.get('name'), base.get('website')))
     d = domain(u)
     if d and d in seen_dom:   # duplikat (np. ta sama firma w OSM i w wyszukiwarce)
         r = rows[seen_dom[d]]
@@ -81,7 +82,8 @@ def add(base, src):
         gaps.append('przestarzała strona (' + ', '.join(why) + ')'); opp.append('nowa strona (mobile, HTTPS)')
     if not social and st in ('OK', 'PRZESTARZAŁA'): gaps.append('nie znaleziono social media na stronie'); opp.append('materiały do social media')
     if cat in VEH: opp.append('oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach)')
-    if cat in STREET: opp.append('witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu)')
+    if cat == 'Gastronomia': opp.append('witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu)')
+    elif cat in STREET: opp.append('witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branży)')
     if any('rekrut' in s or 'rośnie' in s or 'podwoiło' in s or 'potroiło' in s for s in sig): opp.append('odzież/oklejenie dla nowych ludzi i aut')
     if any('nowa' in s for s in sig): opp.append('oznakowanie nowej lokalizacji / start marki')
     # punktacja
@@ -107,6 +109,37 @@ def add(base, src):
     if d: seen_dom[d] = len(rows) - 1
 for t in trades: add(t, 'wyszukiwarka firm (dane LinkedIn/strona)')
 for o in osm: add(o, f"OpenStreetMap ({o['sub']}, {o['id']})")
+
+# --- Korekty po audycie ChatGPT (baza-klientow/AUDYT_CHATGPT.md) ---
+def reclass(r, cat, note):
+    r['Kategoria'] = cat; r['Priorytet'] = 'C'; r['Punkty'] = min(r['Punkty'], 3)
+    r['Ocena ogólna'] = note; r['Szansa dla GW'] = 'poza standardową oceną klientów B2B'
+for r in rows:
+    n = r['Firma']
+    if n.startswith('Wagenbouwplaats Vriendenkring Snoeyen'):
+        reclass(r, 'Organizacje i stowarzyszenia', 'Grupa budowniczych wozów (parada Brabantsedag, Heeze), nie firma budowlana. Wg audytu ChatGPT.')
+    elif n.startswith('BijenBerkt'):
+        reclass(r, 'Organizacje i stowarzyszenia', 'Stowarzyszenie pszczelarzy (Veldhoven), nie firma rzemieślnicza. Wg audytu ChatGPT.')
+    elif n.startswith('Drukkerij Spapens'):
+        reclass(r, 'Partnerzy (dostawcy)', 'Drukarnia: konkurent lub partner podwykonawczy, nie klient końcowy. Wg audytu ChatGPT.')
+    elif n.startswith('John Vermeulen Fietsplezier'):
+        r['Firma'] = 'John Vermeulen (Geldrop)'
+        r['Ocena ogólna'] = 'Stary wpis mylił z byłą placówką w Eindhoven (dziś VELOO). Adres strony poprawiony na johnvermeulengeldrop.nl. Wg audytu ChatGPT.'
+    elif n.startswith('Wijnen Installaties'):
+        r['Punkty'] -= 2; r['Priorytet'] = 'A' if r['Punkty'] >= 6 else ('B' if r['Punkty'] >= 4 else 'C')
+        r['Ocena ogólna'] = 'Część grupy Wijnen Bouw (możliwe zakupy centralne); to nie to samo co Gebr. Wijnen Installaties z Valkenswaard. Wg audytu ChatGPT.'
+    elif n.startswith('Van der Meer Dakbedekkingen'):
+        r['Ocena ogólna'] = 'Domena vandermeerdakbedekking.nl znana z KOMO/Company.info; wcześniejsze „brak strony” było błędne. Wg audytu ChatGPT.'
+    elif n.startswith('Stucadoorsbedrijf Kolen'):
+        r['Sygnały zakupu'] = r['Sygnały zakupu'].replace('nowa lokalizacja', 'napis „Wij zijn verhuisd” bez daty (nie świeży sygnał)')
+        r['Punkty'] -= 1; r['Priorytet'] = 'A' if r['Punkty'] >= 6 else ('B' if r['Punkty'] >= 4 else 'C')
+        r['Ocena ogólna'] = 'Napis o przeprowadzce bez daty; nie liczony jako świeży sygnał. Wg audytu ChatGPT.'
+ORG_RX = re.compile(r'wagenbouwplaats|stichting|vereniging|^gilde st\.|bijenberkt', re.I)
+for r in rows:
+    if r['Kategoria'] not in ('Gastronomia', 'Organizacje i stowarzyszenia') and ORG_RX.search(r['Firma']) and not r['Firma'].startswith(('Stucadoors',)):
+        reclass(r, 'Organizacje i stowarzyszenia', 'Stowarzyszenie, fundacja lub grupa (nie firma). Wykryte po nazwie, do sprawdzenia; nie oceniane jak klient B2B.')
+    if r['Firma'] == 'John Vermeulen' and not r['Strona WWW']:
+        r['Ocena ogólna'] = 'Dawna placówka w Eindhoven, dziś VELOO (po przejęciu). Do usunięcia lub weryfikacji. Wg audytu ChatGPT.'
 os.makedirs(OUT, exist_ok=True)
 json.dump(rows, open(f'{OUT}/_rows.json', 'w'), ensure_ascii=False)
 c = collections.Counter((r['Kategoria'], r['Stan strony']) for r in rows)

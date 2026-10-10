@@ -29,7 +29,10 @@ Kryteria: firma ma pojazdy lub ekipy w terenie (to produkt GW), rośnie lub rekr
 - Wybór opiera się na danych publicznych, nie na rozmowie z firmą.
 - Rekrutacja to sygnał, nie dowód potrzeby.
 
-## Propozycja rankingu według sygnałów zakupu
+## Uwaga po audycie ChatGPT
+Audyt (`AUDYT_CHATGPT.md`) jest ważniejszy niż ten wybór. Moje wybrane 3 firmy nie były w audycie, więc są nadal do weryfikacji tak samo jak reszta TOP A. Sygnały „rekrutuje” i „rośnie” nie mają tu dat ani linków do ogłoszeń. Najpierw czyścimy TOP A, potem wybieramy 5–10 firm.
+
+## Propozycja rankingu według sygnałów zakupu (stara, punktowa; patrz też model 0–100 w audycie)
 Obecnie punkty w bazie liczą się tak (max sens: 7):
 - Kategoria: 3 pkt (firmy z autami), 2 pkt (lokalne z witryną), 1 pkt (reszta).
 - Strona: brak strony +2, przestarzała +2, błąd strony +2, nie znaleziono w danych +1, OK 0.

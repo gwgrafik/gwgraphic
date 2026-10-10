@@ -8,7 +8,7 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 - `csv/` — te same dane, jeden plik na kategorię (separator `;`, UTF-8, otwiera się w Excelu).
 - `narzedzia/` — skrypty i surowa lista firm z wyszukiwarki, żeby ChatGPT/Claude mogli powtórzyć i sprawdzić wynik.
 
-**Razem: 3532 firm** w 17 kategoriach, obszar: Eindhoven, Veldhoven, Best, Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Waalre, Valkenswaard, Heeze, Oirschot i okolice.
+**Razem: 3532 firm** w 18 kategoriach, obszar: Eindhoven, Veldhoven, Best, Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Waalre, Valkenswaard, Heeze, Oirschot i okolice.
 
 ## Skąd dane
 
@@ -35,24 +35,25 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 
 | Kategoria | Firm | Priorytet A | Priorytet B | Strona OK | Strona przestarzała | Strona z błędem | Brak strony (dane firmy) | Nie znaleziono strony w danych | Nieustalone | Z sygnałem zakupu | Sieci |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Dekarze | 11 | 2 | 8 | 8 | 0 | 0 | 1 | 0 | 2 | 10 | 0 |
-| Budowlanka i remonty | 47 | 4 | 29 | 36 | 3 | 0 | 1 | 3 | 4 | 23 | 0 |
+| Dekarze | 11 | 1 | 9 | 9 | 0 | 0 | 0 | 0 | 2 | 10 | 0 |
+| Budowlanka i remonty | 31 | 2 | 25 | 22 | 1 | 0 | 1 | 3 | 4 | 19 | 0 |
 | Malarze | 8 | 1 | 6 | 4 | 1 | 1 | 0 | 0 | 2 | 4 | 0 |
-| Instalatorzy i elektrycy | 34 | 5 | 25 | 19 | 4 | 0 | 0 | 7 | 4 | 19 | 0 |
+| Instalatorzy i elektrycy | 34 | 5 | 24 | 19 | 4 | 0 | 0 | 7 | 4 | 19 | 0 |
 | Ogrody i zieleń | 14 | 5 | 7 | 10 | 3 | 0 | 0 | 1 | 0 | 7 | 0 |
 | Sprzątanie | 21 | 6 | 12 | 15 | 1 | 2 | 0 | 0 | 3 | 15 | 0 |
 | Transport i logistyka | 20 | 3 | 14 | 12 | 2 | 0 | 1 | 2 | 3 | 16 | 1 |
 | Motoryzacja | 169 | 7 | 81 | 73 | 10 | 3 | 0 | 74 | 9 | 29 | 47 |
 | Szkoły jazdy | 11 | 0 | 7 | 7 | 0 | 0 | 0 | 2 | 2 | 5 | 0 |
-| Inne rzemiosło | 64 | 4 | 43 | 23 | 7 | 1 | 0 | 24 | 9 | 9 | 0 |
+| Inne rzemiosło | 61 | 2 | 42 | 23 | 5 | 1 | 0 | 23 | 9 | 9 | 0 |
 | Fryzjerzy i beauty | 346 | 0 | 27 | 118 | 17 | 6 | 0 | 188 | 17 | 41 | 12 |
 | Zdrowie i fizjoterapia | 102 | 0 | 25 | 53 | 11 | 1 | 0 | 27 | 10 | 31 | 2 |
-| Fitness i sport | 242 | 0 | 11 | 99 | 2 | 2 | 0 | 133 | 6 | 36 | 11 |
+| Fitness i sport | 229 | 0 | 11 | 90 | 2 | 2 | 0 | 129 | 6 | 35 | 11 |
 | Gastronomia | 1414 | 1 | 140 | 671 | 78 | 22 | 0 | 546 | 97 | 302 | 95 |
-| Sklepy lokalne | 520 | 6 | 54 | 276 | 36 | 13 | 0 | 161 | 34 | 156 | 114 |
-| Biura i usługi B2B | 508 | 0 | 23 | 249 | 20 | 10 | 0 | 199 | 30 | 159 | 9 |
-| Partnerzy (dostawcy) | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
-| RAZEM | 3532 | 44 | 512 | 1674 | 195 | 61 | 3 | 1367 | 232 | 863 | 291 |
+| Sklepy lokalne | 520 | 5 | 54 | 277 | 36 | 12 | 0 | 161 | 34 | 155 | 114 |
+| Biura i usługi B2B | 507 | 0 | 23 | 249 | 20 | 10 | 0 | 198 | 30 | 159 | 9 |
+| Partnerzy (dostawcy) | 2 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
+| Organizacje i stowarzyszenia | 32 | 0 | 0 | 23 | 3 | 0 | 0 | 6 | 0 | 5 | 0 |
+| RAZEM | 3532 | 38 | 507 | 1676 | 195 | 60 | 2 | 1367 | 232 | 862 | 291 |
 
 ## Najlepsi kandydaci w każdej kategorii (max 8)
 
@@ -63,11 +64,11 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
 | A | Dakdekkersbedrijf Verhoeven B.V. | Budel (projekty w Eindhoven) | https://verhoevendak.nl/ | OK | rekrutuje; duże projekty w Eindhoven (Trudo, Woonbedrijf) 2025; rośnie zatrudnienie +50.0% | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
-| A | Van der Meer Dakbedekkingen B.V. | Eindhoven | — | BRAK STRONY | w danych firmy brak własnej strony WWW (tylko LinkedIn) | strona WWW + identyfikacja; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | A. van Diessen Dakbedekkingen B.V. | Valkenswaard | https://vandiessendak.nl/ | OK | rekrutuje; bardzo aktywny LinkedIn, duże projekty Helmond/Eindhoven 2026 | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | dakAlliance B.V. | Eindhoven | https://dakalliance.nl/ | OK | rekrutuje; aktywny LinkedIn (projekt Helmond 2025-11) | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Heesmans Dakwerken | Mierlo | https://heesmansdakwerken.nl/ | OK | rekrutuje; potroiło zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | v.d. Hurk & Doezé Dakwerken | Heeze | https://hurkdoeze.nl/ | OK | rekrutuje; wg strony ok. 45 fachowców | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
+| B | Van der Meer Dakbedekkingen B.V. | Eindhoven | https://vandermeerdakbedekking.nl/ | OK | domena z KOMO/Company.info (audyt ChatGPT); działanie strony do sprawdzenia | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Van Doorn Dakspecialist (oddział Veldhoven) | Veldhoven (oddział; centrala Oud-Gastel) | https://vandoorndakspecialist.nl/ | OK | rekrutuje; rośnie zatrudnienie; większa firma, centrala poza regionem | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | ZND Nedicom | Eindhoven | https://zndnedicom.nl/ | OK | rekrutuje; rośnie zatrudnienie; dach + elewacje + solar; rośnie zatrudnienie +9.6% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 
@@ -75,14 +76,14 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
-| A | Stucadoorsbedrijf Kolen | Mierlo | https://www.stucadoorsbedrijfkolen.nl/ | PRZESTARZAŁA | nowa lokalizacja | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); oznakowanie |
 | A | Stucadoorsbedrijf W. Derhaag | Eindhoven | https://derhaag.nl/ | OK | rekrutuje; rośnie zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | A | Top Deuren Veldhoven | Veldhoven | — | BRAK STRONY | oddział rośnie, szuka montażysty (2025) | strona WWW + identyfikacja; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklej |
-| A | Wagenbouwplaats Vriendenkring Snoeyen | Heeze | http://www.snoeyen.nl | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okle |
 | B | Aannemersbedrijf Van Rijswijck | Eindhoven, North Brabant, Netherlands | https://vanrijswijck.nl/ | OK | rekrutuje; rośnie zatrudnienie +10.6% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Bouwbedrijf Th. van Kasteren | Veldhoven, Noord-Brabant, Netherlands | https://thvankasteren.nl/ | OK | rekrutuje; rośnie zatrudnienie +12.5% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Groenen Groep | Veldhoven, Noord-Brabant, Netherlands | https://groenengroep.com/ | OK | rekrutuje; rośnie zatrudnienie +27.8% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Heuvel Afbouwgroep | Deurne | https://heuvelafbouw.nl/ | OK | rekrutuje; duże projekty w Eindhoven (Nieuwe Bergen 2026) | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
+| B | Joost. Renovatie & Nieuwbouw B.V. | Helmond, Noord-Brabant, Netherlands | https://joostbouw.nl/ | OK | rośnie zatrudnienie +33.3% | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
+| B | Stucadoorsbedrijf Kolen | Mierlo | https://www.stucadoorsbedrijfkolen.nl/ | PRZESTARZAŁA | napis „Wij zijn verhuisd” bez daty (nie świeży sygnał) | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); oznakowanie |
 
 ### Malarze
 
@@ -179,53 +180,53 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
-| A | BijenBerkt | Veldhoven | https://bijenberkt.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
-| A | Drukkerij Spapens | Waalre | https://drukkerijspapens.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | A | Jeroen Schreurs | Eindhoven | https://www.jeroenschreurs.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | A | PVC Atelier | Eindhoven | https://www.pvcatelier.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | B | Café 100 Watt | Eindhoven | https://100watt.nl/cafe-100-watt/ | BŁĄD STRONY (do potwierdzenia) | — | nowa/naprawiona strona; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | De Walhut |  | https://www.imkerijdewalhut.nl | OK | sklep online | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Metaalbewerking v.d. Boogaert | Valkenswaard | https://metaalvdb.nl | OK | rekrutuje | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | B | Mima schoenmakerij | Eindhoven | https://www.mimaschoenmakerij.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | N°49 Chocolate | Mierlo | https://no49-chocolate.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Van Moll | Eindhoven | https://vanmollcraftbeer.com/bar/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Fryzjerzy i beauty
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
-| B | Dittis | Gemert | https://dittisdesign.nl/ | PRZESTARZAŁA | nowa lokalizacja | nowa strona (mobile, HTTPS); witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejs |
-| B | Eefje Timmers Nail Academy | Lieshout | https://www.etnailacademy.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Giesing | Oisterwijk | https://www.giesingkappers.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Jaap For Men | Bladel | http://www.jaapformen.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | John Rengers | Waalre | https://www.kapsalon-rengers.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Kapsalon Evi | Nuenen | http://www.kapsalon-evi.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Sunday's | Eindhoven | https://www.sundays.nl/zonnestudio/eindhoven/willemstraat-8 | BŁĄD STRONY (do potwierdzenia) | rekrutuje | nowa/naprawiona strona; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu);  |
-| B | Amigo Tattoo | Gemert | http://amigotattoo.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejs |
+| B | Dittis | Gemert | https://dittisdesign.nl/ | PRZESTARZAŁA | nowa lokalizacja | nowa strona (mobile, HTTPS); witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od  |
+| B | Eefje Timmers Nail Academy | Lieshout | https://www.etnailacademy.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Giesing | Oisterwijk | https://www.giesingkappers.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Jaap For Men | Bladel | http://www.jaapformen.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | John Rengers | Waalre | https://www.kapsalon-rengers.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Kapsalon Evi | Nuenen | http://www.kapsalon-evi.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Sunday's | Eindhoven | https://www.sundays.nl/zonnestudio/eindhoven/willemstraat-8 | BŁĄD STRONY (do potwierdzenia) | rekrutuje | nowa/naprawiona strona; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branż |
+| B | Amigo Tattoo | Gemert | http://amigotattoo.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od  |
 
 ### Zdrowie i fizjoterapia
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
-| B | Britstra | Eindhoven | http://www.britstrafysio.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Daas Podotherapie | Best | https://www.daaspodotherapie.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Fysiotherapie Heezerweg | Eindhoven | http://www.fysiotherapieheezerweg.nl/contact/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Praktijk voor mondhygiëne Stratum | Eindhoven | https://pvmstratum.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | PsyWorks | Gemert | https://www.psyworks.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Centrum voor Tandheelkunde Eindhoven | Eindhoven | https://www.cvteindhoven.nl/ | OK | rekrutuje | materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu |
-| B | De Tandarts Nuenen | Nuenen | https://www.detandartsnuenen.nl | OK | rekrutuje | materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu |
-| B | Dini | Helmond | https://www.tandartsdini.nl/ | OK | rekrutuje | materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu |
+| B | Britstra | Eindhoven | http://www.britstrafysio.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Daas Podotherapie | Best | https://www.daaspodotherapie.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Fysiotherapie Heezerweg | Eindhoven | http://www.fysiotherapieheezerweg.nl/contact/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Praktijk voor mondhygiëne Stratum | Eindhoven | https://pvmstratum.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | PsyWorks | Gemert | https://www.psyworks.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Centrum voor Tandheelkunde Eindhoven | Eindhoven | https://www.cvteindhoven.nl/ | OK | rekrutuje | materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od br |
+| B | De Tandarts Nuenen | Nuenen | https://www.detandartsnuenen.nl | OK | rekrutuje | materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od br |
+| B | Dini | Helmond | https://www.tandartsdini.nl/ | OK | rekrutuje | materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od br |
 
 ### Fitness i sport
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
-| B | Neoliet | Eindhoven | https://www.neoliet.nl/eindhoven-zuid/ | BŁĄD STRONY (do potwierdzenia) | rekrutuje | nowa/naprawiona strona; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu);  |
-| B | Sporthal de Coevering | Geldrop | https://geldrop-mierlo.accommodatiehuur.nl/location/sporthal-de-coevering | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | 040FIT Heeze | Heeze | https://www.040fit.nl/ | OK | rekrutuje | materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu |
-| B | Cardo Waalre | Waalre | https://www.cardo.nl | OK | rekrutuje; sklep online | witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu); odzież/oklejenie dla now |
-| B | Gymbokx | Helmond | https://www.gymbokx.nl/ | OK | rekrutuje; sklep online | witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu); odzież/oklejenie dla now |
-| B | Harks | Geldrop | https://www.harks.nl | OK | rekrutuje; sklep online | witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu); odzież/oklejenie dla now |
-| B | Hezemans Karting | Eindhoven | https://hezemans.nl | OK | rekrutuje | materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu |
-| B | MONK Eindhoven | Eindhoven | https://monk.nl/ | OK | rekrutuje; sklep online | witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu); odzież/oklejenie dla now |
+| B | Neoliet | Eindhoven | https://www.neoliet.nl/eindhoven-zuid/ | BŁĄD STRONY (do potwierdzenia) | rekrutuje | nowa/naprawiona strona; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branż |
+| B | Sporthal de Coevering | Geldrop | https://geldrop-mierlo.accommodatiehuur.nl/location/sporthal-de-coevering | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | 040FIT Heeze | Heeze | https://www.040fit.nl/ | OK | rekrutuje | materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od br |
+| B | Cardo Waalre | Waalre | https://www.cardo.nl | OK | rekrutuje; sklep online | witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branży); odzież/oklejenie dla |
+| B | Gymbokx | Helmond | https://www.gymbokx.nl/ | OK | rekrutuje; sklep online | witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branży); odzież/oklejenie dla |
+| B | Harks | Geldrop | https://www.harks.nl | OK | rekrutuje; sklep online | witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branży); odzież/oklejenie dla |
+| B | Hezemans Karting | Eindhoven | https://hezemans.nl | OK | rekrutuje | materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od br |
+| B | MONK Eindhoven | Eindhoven | https://monk.nl/ | OK | rekrutuje; sklep online | witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branży); odzież/oklejenie dla |
 
 ### Gastronomia
 
@@ -244,14 +245,14 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
-| A | 'T Bikertje | Helmond | http://bikertjefietsen.nl | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| A | Fietsspecialist van de Wijgert | Eindhoven | http://www.fietsspecialistvandewijgert.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| A | John Vermeulen Fietsplezier | Geldrop | https://www.johnvermeulenfietsplezier.nl/winkels/geldrop | BŁĄD STRONY (do potwierdzenia) | rekrutuje; sklep online | nowa/naprawiona strona; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu);  |
-| A | Jungerius Flowers | Helmond | https://www.jungeriusflowers.nl | PRZESTARZAŁA | rekrutuje; sklep online | nowa strona (mobile, HTTPS); witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejs |
-| A | Stadsbakkerij Broodt | Eindhoven | http://www.broodt.nl/ | PRZESTARZAŁA | rekrutuje; sklep online | nowa strona (mobile, HTTPS); witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejs |
-| A | Svea | Son en Breugel | https://www.sveakeukens.nl | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, druk (menu, ulotki), odzież dla persone |
-| B | Ad van Lieshout | Helmond | https://advanlieshoutfietsen.nl | BŁĄD STRONY (do potwierdzenia) | rekrutuje | nowa/naprawiona strona; witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejscu);  |
-| B | Battery Point | Eindhoven | https://www.batterypoint.nl | PRZESTARZAŁA | sklep online | nowa strona (mobile, HTTPS); witryna/szyld, druk (menu, ulotki), odzież dla personelu (do sprawdzenia na miejs |
+| A | 'T Bikertje | Helmond | http://bikertjefietsen.nl | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| A | Fietsspecialist van de Wijgert | Eindhoven | http://www.fietsspecialistvandewijgert.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| A | Jungerius Flowers | Helmond | https://www.jungeriusflowers.nl | PRZESTARZAŁA | rekrutuje; sklep online | nowa strona (mobile, HTTPS); witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od  |
+| A | Stadsbakkerij Broodt | Eindhoven | http://www.broodt.nl/ | PRZESTARZAŁA | rekrutuje; sklep online | nowa strona (mobile, HTTPS); witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od  |
+| A | Svea | Son en Breugel | https://www.sveakeukens.nl | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
+| B | Ad van Lieshout | Helmond | https://advanlieshoutfietsen.nl | BŁĄD STRONY (do potwierdzenia) | rekrutuje | nowa/naprawiona strona; witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od branż |
+| B | Battery Point | Eindhoven | https://www.batterypoint.nl | PRZESTARZAŁA | sklep online | nowa strona (mobile, HTTPS); witryna/szyld, odzież dla personelu (do sprawdzenia na miejscu; oferta zależy od  |
+| B | De Brabantse fietsenmaker | Eindhoven | http://www.debrabantsefietsenmaker.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; witryna/szyld, odzież dla personelu (do sprawdzenia na |
 
 ### Biura i usługi B2B
 
@@ -270,7 +271,21 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
+| C | Drukkerij Spapens | Waalre | https://drukkerijspapens.nl | PRZESTARZAŁA | — | poza standardową oceną klientów B2B |
 | C | Verhoeven Garden Stones & Basics | Helmond | https://schutting.nl/ | OK | hurtownia dla hoveniers/stratenmakers – potencjalny partner poleceń |  |
+
+### Organizacje i stowarzyszenia
+
+| Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
+|---|---|---|---|---|---|---|
+| C | Atletiekvereniging Oirschot |  | — | NIE ZNALEZIONO STRONY W DANYCH | — | poza standardową oceną klientów B2B |
+| C | BijenBerkt | Veldhoven | https://bijenberkt.nl | PRZESTARZAŁA | — | poza standardową oceną klientów B2B |
+| C | Eindhovense Studenten Roeivereniging Thêta | Eindhoven | https://esrtheta.nl | OK | — | poza standardową oceną klientów B2B |
+| C | Handboogvereniging Prins Bernhard | Mierlo | — | NIE ZNALEZIONO STRONY W DANYCH | — | poza standardową oceną klientów B2B |
+| C | Mierlose Tennis Vereniging | Mierlo | https://www.mierlosetv.nl/ | OK | rekrutuje | poza standardową oceną klientów B2B |
+| C | RK Voetbal Vereniging Waalre | Waalre | — | NIE ZNALEZIONO STRONY W DANYCH | — | poza standardową oceną klientów B2B |
+| C | Tennisvereniging de Korrel |  | https://www.tvdekorrel.nl/ | OK | — | poza standardową oceną klientów B2B |
+| C | Vereniging De Klokkenmakers | Eindhoven | — | NIE ZNALEZIONO STRONY W DANYCH | — | poza standardową oceną klientów B2B |
 
 ## Ograniczenia (uczciwie)
 
