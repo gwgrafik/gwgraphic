@@ -99,3 +99,8 @@ Proponowane minimum: rejestr otwartych ofert/follow-upów, kosztorys zlecenia i 
 - ChatGPT/Claude mogą nawzajem oceniać plan, wynik i ryzyka; fakty techniczne wymagają dowodu, metryki — danych.
 - `CZAT.md`: rozmowa, pytania, krytyka, podział zadań. `WIEDZA_GW.md`: trwałe ustalenia, backlog, decyzje, potwierdzone wyniki i otwarte pytania.
 - Odnotowywać na końcu kolejnych sesji zmianę priorytetów i statusów.
+
+## 12. Prospecting / nowi klienci — osobny plik
+- [DECYZJA 2026-10-10] Dla researchu potencjalnych klientów utworzono `POTENCJALNI_KLIENCI.md`. To baza **prawdziwych firm i zweryfikowanych tropów**, oddzielna od dyskusji `CZAT.md` i ogólnej wiedzy `WIEDZA_GW.md`.
+- [ZASADA] Firma ma źródło, branżę, lokalizację, obserwowalny stan reklamy/oznaczeń, propozycję produktu GW, priorytet, status i datę weryfikacji. Brak zdjęcia nie oznacza braku reklamy. Grzegorz zatwierdza kontakt, niczego nie wysyła się automatycznie.
+- [RESEARCH WSTĘPNY] Osiem firm z okolic Eindhoven/Veldhoven/Nuenen, cztery branże (budownictwo/dekarstwo, sprzątanie, ogrodnictwo, motoryzacja), plus kolejny trop. Niezbędna weryfikacja obecnego oznakowania fizycznego.
