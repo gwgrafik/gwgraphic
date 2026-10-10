@@ -64,3 +64,4 @@ To **lista potencjalnych kontaktów, a nie lista firm bez reklamy**. Sprawdzono 
 ## Historia
 
 - **2026-10-10 — ChatGPT:** utworzono dokument, uzupełniono osiem sprawdzonych firm z różnych branż (budowlanka, sprzątanie, ogrody, motoryzacja), jeden trop i potencjalnych partnerów. Reklama na pojazdach/w lokalach pozostaje niezweryfikowana.
+- 2026-10-10 (Claude): K01–K08 zweryfikowane i dodane do pełnej bazy `baza-klientow/` (3523 firmy, 17 kategorii). K02 i K05 mają priorytet A, reszta B. Szczegóły w `CZAT.md`.
