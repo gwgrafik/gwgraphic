@@ -35,6 +35,12 @@ def sheet(title, rs):
     widths = {'Firma':34,'Miasto':16,'Adres':24,'Strona WWW':32,'Stan strony':18,'Social media (znalezione)':22,'Oklejenie aut / odzież / witryna':22,'Sygnały zakupu':34,'Luki':40,'Szansa dla GW':48,'Źródło':30,'Ocena ogólna':18}
     for i, k in enumerate(COLS, 1): ws.column_dimensions[get_column_letter(i)].width = widths.get(k, 11)
     ws.freeze_panes = 'D2'; ws.auto_filter.ref = ws.dimensions
+cd = json.load(open(f'{OUT}/_cand.json'))
+wk = wb.create_sheet('KANDYDACI – wszystkie branże', 1); wk.append(cd['hdr'])
+for cell in wk[1]: cell.font = H; cell.fill = HF; cell.alignment = Alignment(wrap_text=True, vertical='top')
+for r in cd['rows']: wk.append(r)
+for i, w in enumerate([22,34,16,34,38,22,34,34,50,12,44,12,12,30,9], 1): wk.column_dimensions[get_column_letter(i)].width = w
+wk.freeze_panes = 'C2'; wk.auto_filter.ref = wk.dimensions
 top = [r for r in rows if r['Priorytet']=='A']
 sheet('TOP – priorytet A', top)
 for c in cats: sheet(c, [r for r in rows if r['Kategoria']==c])
@@ -44,5 +50,7 @@ for c in cats:
     with open(f'{OUT}/csv/{slug(c)}.csv', 'w', encoding='utf-8-sig', newline='') as f:
         w = csv.writer(f, delimiter=';'); w.writerow(['Kategoria'] + COLS)
         for r in sorted([r for r in rows if r['Kategoria']==c], key=key): w.writerow([c] + [r.get(k, '') for k in COLS])
+with open(f'{OUT}/csv/KANDYDACI-wszystkie-branze.csv', 'w', encoding='utf-8-sig', newline='') as f:
+    w = csv.writer(f, delimiter=';'); w.writerow(cd['hdr']); w.writerows(cd['rows'])
 json.dump(summ, open(f'{OUT}/_summary.json','w'), ensure_ascii=False)
 print('ok', len(rows), len(top))

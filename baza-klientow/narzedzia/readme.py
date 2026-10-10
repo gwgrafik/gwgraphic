@@ -47,4 +47,17 @@ L.append('- Ocena strony to automatyczny przegląd jednej strony głównej, nie 
 L.append('- Część stron zablokowała roboty albo nie odpowiedziała z mojego środowiska — oznaczone „NIEUSTALONE”.')
 L.append('- Brak telefonów i e-maili celowo: baza służy do wyboru firm, nie do masowej wysyłki.')
 L.append('- Oznakowanie aut, odzieży i witryn trzeba sprawdzić zdjęciami (strona firmy, Google Street View, social media) przed jakąkolwiek propozycją.')
+import json as _j
+_c = _j.load(open(f'{OUT}/_cand.json'))
+_cnt = {}
+for _r in _c['rows']: _cnt[_r[0]] = _cnt.get(_r[0], 0) + 1
+L.append('')
+L.append('## KANDYDACI – wszystkie branże (arkusz i `csv/KANDYDACI-wszystkie-branze.csv`)')
+L.append(f"Wstępna lista {len(_c['rows'])} firm rozłożona po kategoriach, z jednym produktem głównym GW, dowodem (link) i dwoma osobnymi polami: **dopasowanie do GW (1–5)** oraz **pewność dowodów**. Wszystkie wiersze są **niezweryfikowane przez człowieka**; auta, odzież i witryny to „NIEUSTALONE”. Sygnały zapotrzebowania są bez dat (z automatycznego przeglądu strony i danych LinkedIn), więc nie dają statusu A.")
+L.append('')
+L.append('| Kategoria | Kandydatów | Wszystkich spełniających warunki |')
+L.append('|---|---|---|')
+for _k, _n in _cnt.items(): L.append(f"| {_k} | {_n} | {_c['eligible'].get(_k, _n)} |")
+L.append('')
+L.append('Warunki wejścia: działająca strona (OK lub przestarzała), nie sieć/franczyza, nie organizacja ani partner. Małe kategorie (np. malarze) nie są uzupełniane na siłę.')
 open(f'{OUT}/README.md','w').write('\n'.join(L)+'\n'); print(len(L))

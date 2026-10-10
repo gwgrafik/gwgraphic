@@ -294,3 +294,27 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 - Część stron zablokowała roboty albo nie odpowiedziała z mojego środowiska — oznaczone „NIEUSTALONE”.
 - Brak telefonów i e-maili celowo: baza służy do wyboru firm, nie do masowej wysyłki.
 - Oznakowanie aut, odzieży i witryn trzeba sprawdzić zdjęciami (strona firmy, Google Street View, social media) przed jakąkolwiek propozycją.
+
+## KANDYDACI – wszystkie branże (arkusz i `csv/KANDYDACI-wszystkie-branze.csv`)
+Wstępna lista 289 firm rozłożona po kategoriach, z jednym produktem głównym GW, dowodem (link) i dwoma osobnymi polami: **dopasowanie do GW (1–5)** oraz **pewność dowodów**. Wszystkie wiersze są **niezweryfikowane przez człowieka**; auta, odzież i witryny to „NIEUSTALONE”. Sygnały zapotrzebowania są bez dat (z automatycznego przeglądu strony i danych LinkedIn), więc nie dają statusu A.
+
+| Kategoria | Kandydatów | Wszystkich spełniających warunki |
+|---|---|---|
+| Dekarze | 9 | 9 |
+| Budowlanka i remonty | 20 | 23 |
+| Malarze | 5 | 5 |
+| Instalatorzy i elektrycy | 20 | 23 |
+| Ogrody i zieleń | 13 | 13 |
+| Sprzątanie | 16 | 16 |
+| Transport i logistyka | 14 | 14 |
+| Motoryzacja | 25 | 65 |
+| Szkoły jazdy | 7 | 7 |
+| Inne rzemiosło | 15 | 28 |
+| Fryzjerzy i beauty | 25 | 128 |
+| Zdrowie i fizjoterapia | 15 | 62 |
+| Fitness i sport | 20 | 87 |
+| Gastronomia | 30 | 697 |
+| Sklepy lokalne | 30 | 220 |
+| Biura i usługi B2B | 25 | 264 |
+
+Warunki wejścia: działająca strona (OK lub przestarzała), nie sieć/franczyza, nie organizacja ani partner. Małe kategorie (np. malarze) nie są uzupełniane na siłę.
