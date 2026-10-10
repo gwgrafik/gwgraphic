@@ -1,6 +1,6 @@
 # BAZA WIEDZY — GW Graphic Design
 
-Stan: 2026-10-10. Wspólny rejestr ustaleń ChatGPT, Claude i Grzegorza.
+Stan: 2026-10-10 (aktualizacja Claude, runda 12). Wspólny rejestr ustaleń ChatGPT, Claude i Grzegorza.
 
 ## Jak używać
 - To **pamięć projektu**, a `CZAT.md` służy do rozmowy. Nowe trwałe ustalenia, decyzje, hipotezy, pytania i wyniki testów przenosimy tutaj. Nie kopiujemy każdej wypowiedzi.
@@ -34,6 +34,7 @@ Rozwinąć całą firmę GW Graphic Design, nie tylko stronę. Priorytety: pozys
 6. [DO SPRAWDZENIA] Mniej nieopłaconych poprawek poprzez jednoznaczny brief, limit korekt, pisemną akceptację i techniczny preflight produkcji.
 7. [DO SPRAWDZENIA] Jedna karta/numer zlecenia, bez dublowania danych SnelStart; przed narzędziem audyt obecnych funkcji.
 8. [DO SPRAWDZENIA] Automat nie może naruszać 1:1 materiałów klienta: kolorów, plików źródłowych, wymiarów, ścieżek cięcia. Produkcja i wysyłki tylko po akceptacji.
+9. [PROPOZYCJA Claude 2026-10-10, czeka na decyzję] Eksperyment wzrostu 14 dni, maks. 90 min Grzegorza: 5 osobistych wiadomości o domówieniu, 2 prośby o polecenie od zadowolonych klientów, 2 **ciepłe** kontakty partnerskie (znane osobiście, niezależnie od typu). Mierniki osobno: odpowiedzi → zapytania z konkretem → oferty → wygrane → wartość netto wygranych. Stop: jedna skarga lub prośba „nie piszcie”.
 
 ## 5. Pomysły odłożone, ograniczenia i kontrargumenty
 - [ODŁOŻONE] Rozbudowany CRM, sklep internetowy, pełny arkusz z 24 szablonami bez zweryfikowanego popytu/procesów; koszt utrzymania może przewyższyć efekt.
@@ -59,6 +60,8 @@ Proponowane minimum: rejestr otwartych ofert/follow-upów, kosztorys zlecenia i 
 - [ZGŁOSZONE PRZEZ CLAUDE, DO WERYFIKACJI] formularz V13 może wskazywać na nieistniejący `send.php`; GET/HEAD/OPTIONS dają odpowiedź podobną do nieistniejącego pliku, **POST nie testowano**, więc nie ogłaszać awarii formularza jako dowiedzionej.
 - [ZGŁOSZONE PRZEZ CLAUDE] brak części nagłówków ochronnych dla V13; inne wersje V11/V12 obsługują .htaccess. Sprawdzić przy wznowieniu.
 - [OCENA] Raczej poprawki punktowe, nie pełna przebudowa, ale wymagany aktualny audyt i dostęp do źródeł.
+- [POTWIERDZONE przez Claude 2026-10-10] Sprawdzono wszystkie gałęzie zdalne i całą historię repo (29 commitów): brak plików V13. Źródła V13/V13.2 są tylko u Grzegorza lub na serwerze (pliki wynikowe).
+- [POTWIERDZONE przez Claude 2026-10-10] Regulamin NL/EN/PL (zaliczka min. 50%, reszta przed produkcją, liczba rund poprawek w ofercie, akceptacja projektu, tolerancje) jest w repo (`src/legal.mjs`, V11), ale na stronie na żywo brak strony z warunkami (`/algemene-voorwaarden.html`, `/pl/regulamin.html`, `/en/terms.html` → 404).
 
 ## 9. Poczta i automatyzacja (aktualizacja 2026-10-10)
 - [ZGŁOSZONE PRZEZ CLAUDE po sprawdzeniu DNS] DNS/MX GW Graphic wskazuje na cyber_Folks, webmail Roundcube; właściciel wskazywał OVH jako rejestratora. Rekordy, uprawnienia i konfigurację potwierdzić w panelu.
@@ -72,6 +75,10 @@ Proponowane minimum: rejestr otwartych ofert/follow-upów, kosztorys zlecenia i 
 - [WAŻNE] Przekierowanie poczty cyber_Folks → Gmail może sprawić, że kopie przychodzących maili są w Gmailu, ale NIE przenosi automatycznie wysłanych maili, folderów, statusów IMAP ani uprawnień do oryginalnej skrzynki. Integracja AI z Gmail wymaga osobnego podłączenia i uprawnień; nie daje sama z siebie bezpośredniego dostępu do Roundcube.
 - [OPCJA] cyber_Folks + samodzielna integracja IMAP/SMTP i automatyzacja, po audycie zabezpieczeń (nie udostępniać haseł w czacie); lub Google Workspace jako natywna skrzynka firmowa z autoryzowanymi narzędziami; nie trzeba przenosić hostingu strony.
 - [RYZYKO] Autoresponder z obietnicą 1 dnia roboczego może być nietrafny; wiadomości automatyczne wymagają zabezpieczeń przed pętlą, spamem, ponownymi wysyłkami. Nie zmieniać DMARC na p=quarantine bez raportów, analizy źródeł i testów.
+- [POTWIERDZONE W DOKUMENTACJI, Claude 2026-10-10] Autoodpowiedź w webmailu cyber_Folks można ustawić jako **filtr z akcją „Odpowiedz wiadomością o treści”**, z częstotliwością (min. „1”) i regułami daty; jest biała lista nadawców. W WebAs/server_Panel: „Częstość ponawiania” (np. 1 na tydzień na nadawcę). Dostępne **warunki** filtrów (temat, adresat, nagłówek) nie są opisane → DO SPRAWDZENIA w panelu.
+- [HIPOTEZA, propozycja Claude] Osobny adres na zapytania (np. `offerte@gwgraphic.com`) jako warunek filtra: folder „Zapytania” + autoodpowiedź bez obietnicy terminu. Nie dotyka trwających wątków na `design@`. Wymaga decyzji i testu Grzegorza.
+- [PROPOZYCJA, Claude 2026-10-10] Kolejność: (1) cyber_Folks natywnie (0 zł, ok. 1 h) → po 14 dniach ocena → ewentualnie (2) integracja IMAP tylko na osobnej skrzynce zapytań, tylko szkice, log, albo (3) Google Workspace (test na innej domenie/subdomenie, bez zmiany MX). Zawsze: brak automatycznej wysyłki do klienta, pliki źródłowe klientów nie trafiają do AI, brak haseł w czacie.
+- [OGRANICZENIE Claude, POTWIERDZONE] Środowisko Claude nie ma dostępu do skrzynki, panelu cyber_Folks, SnelStart ani Google; połączenie z IMAP (993) z tego środowiska nie działa. Claude przygotowuje teksty, reguły, arkusze i sprawdza publiczne DNS/strony.
 
 ## 10. Pytania do właściciela — kolejka, nie ankieta naraz
 **Pierwsza kolejność:**
