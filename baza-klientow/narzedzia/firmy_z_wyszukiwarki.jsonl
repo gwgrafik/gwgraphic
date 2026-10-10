@@ -41,7 +41,6 @@
 {"name": "Van den Heuvel Electrotechniek", "cat": "Instalatorzy i elektrycy", "city": "Helmond", "website": "https://heuvel-e-t.nl/", "emp": 6, "yoy": "", "founded": null, "signal": ""}
 {"name": "Kremers Installatietechniek", "cat": "Instalatorzy i elektrycy", "city": "Budel", "website": "https://kremersbudel.nl/", "emp": 3, "yoy": "+200%", "founded": 2018, "signal": "potroiło zatrudnienie"}
 {"name": "Verhees en van Dijk Installatietechniek", "cat": "Instalatorzy i elektrycy", "city": "Deurne", "website": "https://verheesenvandijk.nl/", "emp": 2, "yoy": "-33.3%", "founded": 2002, "signal": ""}
-{"name": "Wijnen Installaties", "cat": "Instalatorzy i elektrycy", "city": "Eindhoven", "website": "", "emp": 31, "yoy": "-3.1%", "founded": 2001, "signal": "część grupy Wijnen Bouw; rekrutuje"}
 {"name": "EA Logistics & Moving", "cat": "Transport i logistyka", "city": "Eindhoven", "website": "https://www.ealogistics.nl/", "emp": null, "yoy": "", "founded": 2021, "signal": "młoda firma (2021)"}
 {"name": "DM Sneltransport", "cat": "Transport i logistyka", "city": "Son en Breugel", "website": "https://dmsneltransport.nl/", "emp": 4, "yoy": "-33.3%", "founded": null, "signal": "wg strony 12 aut, 15+ osób"}
 {"name": "Hans Vos Verhuizingen", "cat": "Transport i logistyka", "city": "Helmond", "website": "https://hansvos.nl/", "emp": 3, "yoy": "-25%", "founded": 1996, "signal": ""}
@@ -112,3 +111,13 @@
 {"name": "Hoveniersbedrijf De Haas", "cat": "Ogrody i zieleń", "city": "Nuenen", "website": "https://hovenierdehaas.nl/", "emp": null, "yoy": "", "founded": null, "signal": "lista ChatGPT K06"}
 {"name": "DGS Cars", "cat": "Motoryzacja", "city": "Veldhoven", "website": "https://www.dgscars.nl/", "emp": null, "yoy": "", "founded": null, "signal": "lista ChatGPT K07"}
 {"name": "Dennis Auto's", "cat": "Motoryzacja", "city": "Veldhoven", "website": "https://www.dennisautos.nl/", "emp": null, "yoy": "", "founded": null, "signal": "lista ChatGPT K08"}
+{"name": "EDI-Techniek", "cat": "Instalatorzy i elektrycy", "city": "Helmond", "website": "https://edi-techniek.nl/", "emp": 3, "yoy": "", "founded": 2006, "signal": ""}
+{"name": "De Groot installaties", "cat": "Instalatorzy i elektrycy", "city": "Neerkant", "website": "https://degrootinstallaties.nl/", "emp": 4, "yoy": "", "founded": 2010, "signal": ""}
+{"name": "Wouters Techniek", "cat": "Instalatorzy i elektrycy", "city": "Hapert", "website": "https://wouterstechniek.nl/", "emp": 6, "yoy": "+20.0%", "founded": 2000, "signal": "rośnie zatrudnienie +20.0%"}
+{"name": "Wijnen Installaties", "cat": "Instalatorzy i elektrycy", "city": "Eindhoven", "website": "https://wijnenbouw.com/", "emp": 31, "yoy": "-3.1%", "founded": 2001, "signal": "szuka Commercieel Managera (LinkedIn)"}
+{"name": "Mulders Glazenwasser", "cat": "Sprzątanie", "city": "Nuenen", "website": "https://muldersglazenwasser.nl/", "emp": 50, "yoy": "", "founded": null, "signal": "50 osób, mycie okien (typowe auta firmowe)"}
+{"name": "RWS Smulders", "cat": "Sprzątanie", "city": "Eindhoven", "website": "https://rwssmulders.nl/", "emp": 3, "yoy": "+200.0%", "founded": 2003, "signal": "rośnie zatrudnienie +200.0%"}
+{"name": "JUIST! schoonmaak B.V.", "cat": "Sprzątanie", "city": "Nuenen", "website": "https://juistschoonmaak.nl/", "emp": 12, "yoy": "-20.0%", "founded": 2013, "signal": "60+ lokalizacji szkoły/przedszkola"}
+{"name": "Kusters Facilities", "cat": "Sprzątanie", "city": "Eindhoven", "website": "https://kusters-facilities.nl/", "emp": 3, "yoy": "", "founded": 1968, "signal": "usługi 24/7, transport specjalny"}
+{"name": "R+R Huismeesterdiensten & Schoonmaak", "cat": "Sprzątanie", "city": "Eindhoven", "website": "https://r-plus-r.nl/", "emp": 11, "yoy": "+22.2%", "founded": null, "signal": "rośnie zatrudnienie +22.2%"}
+{"name": "Interieurspuiterij Verbiest", "cat": "Inne rzemiosło", "city": "Helmond", "website": "https://interieurspuiterijverbiest.nl/", "emp": 3, "yoy": "+50.0%", "founded": null, "signal": "rośnie zatrudnienie +50.0%"}

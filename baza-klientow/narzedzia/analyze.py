@@ -55,7 +55,7 @@ def add(base, src):
         if not m: st = 'NIE SPRAWDZONO'
         elif code in ('401','403','429','503'): st = 'NIEUSTALONE (blokada robotów)'
         elif code == 'ERR': st = 'NIEUSTALONE (brak połączenia z mojego środowiska)'
-        elif not code.isdigit() or int(code) >= 400 or not html: st = 'BŁĄD STRONY (do potwierdzenia)'
+        elif not code.isdigit() or int(code) >= 400 or not html or (len(html) < 3000 and re.search(r'niet gevonden|not found|404', html[:3000], re.I)): st = 'BŁĄD STRONY (do potwierdzenia)'
         else:
             final = m['final']; https = final.lower().startswith('https://')
             viewport = ('name="viewport"' in low or "name='viewport'" in low or 'name=viewport' in low)

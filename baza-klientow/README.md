@@ -8,7 +8,7 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 - `csv/` — te same dane, jeden plik na kategorię (separator `;`, UTF-8, otwiera się w Excelu).
 - `narzedzia/` — skrypty i surowa lista firm z wyszukiwarki, żeby ChatGPT/Claude mogli powtórzyć i sprawdzić wynik.
 
-**Razem: 3523 firm** w 17 kategoriach, obszar: Eindhoven, Veldhoven, Best, Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Waalre, Valkenswaard, Heeze, Oirschot i okolice.
+**Razem: 3532 firm** w 17 kategoriach, obszar: Eindhoven, Veldhoven, Best, Son en Breugel, Nuenen, Geldrop-Mierlo, Helmond, Waalre, Valkenswaard, Heeze, Oirschot i okolice.
 
 ## Skąd dane
 
@@ -38,21 +38,21 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 | Dekarze | 11 | 2 | 8 | 8 | 0 | 0 | 1 | 0 | 2 | 10 | 0 |
 | Budowlanka i remonty | 47 | 4 | 29 | 36 | 3 | 0 | 1 | 3 | 4 | 23 | 0 |
 | Malarze | 8 | 1 | 6 | 4 | 1 | 1 | 0 | 0 | 2 | 4 | 0 |
-| Instalatorzy i elektrycy | 31 | 5 | 22 | 16 | 3 | 0 | 1 | 7 | 4 | 17 | 0 |
+| Instalatorzy i elektrycy | 34 | 5 | 25 | 19 | 4 | 0 | 0 | 7 | 4 | 19 | 0 |
 | Ogrody i zieleń | 14 | 5 | 7 | 10 | 3 | 0 | 0 | 1 | 0 | 7 | 0 |
-| Sprzątanie | 16 | 4 | 9 | 11 | 1 | 1 | 0 | 0 | 3 | 10 | 0 |
+| Sprzątanie | 21 | 6 | 12 | 15 | 1 | 2 | 0 | 0 | 3 | 15 | 0 |
 | Transport i logistyka | 20 | 3 | 14 | 12 | 2 | 0 | 1 | 2 | 3 | 16 | 1 |
 | Motoryzacja | 169 | 7 | 81 | 73 | 10 | 3 | 0 | 74 | 9 | 29 | 47 |
 | Szkoły jazdy | 11 | 0 | 7 | 7 | 0 | 0 | 0 | 2 | 2 | 5 | 0 |
-| Inne rzemiosło | 63 | 4 | 42 | 22 | 7 | 1 | 0 | 24 | 9 | 8 | 0 |
+| Inne rzemiosło | 64 | 4 | 43 | 23 | 7 | 1 | 0 | 24 | 9 | 9 | 0 |
 | Fryzjerzy i beauty | 346 | 0 | 27 | 118 | 17 | 6 | 0 | 188 | 17 | 41 | 12 |
 | Zdrowie i fizjoterapia | 102 | 0 | 25 | 53 | 11 | 1 | 0 | 27 | 10 | 31 | 2 |
 | Fitness i sport | 242 | 0 | 11 | 99 | 2 | 2 | 0 | 133 | 6 | 36 | 11 |
-| Gastronomia | 1414 | 1 | 140 | 671 | 79 | 21 | 0 | 546 | 97 | 302 | 95 |
+| Gastronomia | 1414 | 1 | 140 | 671 | 78 | 22 | 0 | 546 | 97 | 302 | 95 |
 | Sklepy lokalne | 520 | 6 | 54 | 276 | 36 | 13 | 0 | 161 | 34 | 156 | 114 |
 | Biura i usługi B2B | 508 | 0 | 23 | 249 | 20 | 10 | 0 | 199 | 30 | 159 | 9 |
 | Partnerzy (dostawcy) | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | 0 |
-| RAZEM | 3523 | 42 | 505 | 1666 | 195 | 59 | 4 | 1367 | 232 | 855 | 291 |
+| RAZEM | 3532 | 44 | 512 | 1674 | 195 | 61 | 3 | 1367 | 232 | 863 | 291 |
 
 ## Najlepsi kandydaci w każdej kategorii (max 8)
 
@@ -101,11 +101,11 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
+| A | EDI-Techniek | Helmond | https://edi-techniek.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | A | Electro Van der Zanden | Mierlo | http://www.electrovanderzanden.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | A | Gebr. Wijnen Installaties | Valkenswaard | https://wijneninstallaties.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okle |
 | A | Kremers Installatietechniek | Budel | https://kremersbudel.nl/ | OK | rekrutuje; potroiło zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | A | VAN DEN HOFF Installatiebedrijf | Eindhoven | https://vandenhoff.nl/ | OK | rekrutuje; rośnie zatrudnienie; ok. 45 osób wg strony; rośnie zatrudnienie +13.6% | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
-| A | Wijnen Installaties | Eindhoven | — | BRAK STRONY | część grupy Wijnen Bouw; rekrutuje | strona WWW + identyfikacja; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklej |
 | B | Elektrotechnisch buro Vlemmix | Eindhoven | https://www.etbvlemmix.nl/ | OK | rekrutuje | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | B | Gevers Installatie | Eindhoven | https://geversinstallatie.nl/ | OK | rekrutuje; rośnie zatrudnienie; rośnie zatrudnienie +14.3% | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 | B | Heesmans Klimaatinrichting | Helmond | https://heesmans.nl/ | OK | rekrutuje; rośnie zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
@@ -129,12 +129,12 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 |---|---|---|---|---|---|---|
 | A | Furore Schoonmaakservice | Helmond | https://furoreschoonmaakservice.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | A | J&S Bedrijfsdiensten B.V. | Eindhoven | https://j-sbedrijfsdiensten.nl/ | OK | rekrutuje; podwoiło zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
+| A | JUIST! schoonmaak B.V. | Nuenen | https://juistschoonmaak.nl/ | OK | rekrutuje; 60+ lokalizacji szkoły/przedszkola | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | A | Poetsensoleil Cleaning Services | Veldhoven / Eindhoven | https://www.poetsensoleil.nl/ | OK | rekrutuje; lista ChatGPT K02 | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
+| A | R+R Huismeesterdiensten & Schoonmaak | Eindhoven | https://r-plus-r.nl/ | BŁĄD STRONY (do potwierdzenia) | rośnie zatrudnienie +22.2% | nowa/naprawiona strona; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie |
 | A | Sparidaens B.V. | Bladel (działa w reg. Eindhoven) | https://sparidaensbv.nl/ | OK | rekrutuje; rośnie zatrudnienie | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | B | Clean Masters BV | Eindhoven | https://cleanmasterseindhoven.nl/ | OK | rekrutuje; nowa firma (2024), rośnie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut; |
 | B | Cristal Cleaning Eindhoven | Eindhoven | https://cristalcleaning.nl/eindhoven | BŁĄD STRONY (do potwierdzenia) | — | nowa/naprawiona strona; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
-| B | LumoClean | Eindhoven | https://lumoclean.nl/ | OK | nowa firma (2025); też K03 u ChatGPT | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); oznakowanie n |
-| B | Schoonmaakbedrijf Roefs | Bladel (oddział Eindhoven) | https://schoonmaakbedrijfroefs.nl/ | OK | rekrutuje; rośnie zatrudnienie, oddział Eindhoven | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
 
 ### Transport i logistyka
 
@@ -274,7 +274,7 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 
 ## Ograniczenia (uczciwie)
 
-- Fachowcy (dekarze, budowlanka, instalatorzy) rzadko są na mapie — ich lista pochodzi z wyszukiwarki i **nie jest kompletna** (107 firm z wyszukiwarki). Kolejne rundy: KvK, Google Maps, branżowe katalogi — tylko ręcznie albo przez ChatGPT, bez masowego pobierania.
+- Fachowcy (dekarze, budowlanka, instalatorzy) rzadko są na mapie — ich lista pochodzi z wyszukiwarki i **nie jest kompletna** (116 firm z wyszukiwarki). Kolejne rundy: KvK, Google Maps, branżowe katalogi — tylko ręcznie albo przez ChatGPT, bez masowego pobierania.
 - Ocena strony to automatyczny przegląd jednej strony głównej, nie pełny audyt.
 - Część stron zablokowała roboty albo nie odpowiedziała z mojego środowiska — oznaczone „NIEUSTALONE”.
 - Brak telefonów i e-maili celowo: baza służy do wyboru firm, nie do masowej wysyłki.
