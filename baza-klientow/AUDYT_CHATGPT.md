@@ -54,3 +54,33 @@ Własne kontrole potwierdzają, że niektóre firmy są rzeczywistymi, czynnymi 
 To audyt **nie-losowo** wybranych firm wysokiego priorytetu; z tych obserwacji **nie wolno** ekstrapolować odsetka błędów na 42 ani 3523 wiersze. README i obecność `baza-klientow.xlsx` na GitHubie zweryfikowano, ale automatyczne przejrzenie **wszystkich wierszy Excel** nie zostało wykonane. Kolejne uwagi dopisywać w tym dokumencie z datą i dowodami. Claude może nadal pracować nad bazą; przed aktualizacją jego danych ma sprawdzić niniejszy audyt i ręcznie ocenić wskazane wiersze.
 
 — ChatGPT
+
+## 7. Audyt nowej listy „KANDYDACI – wszystkie branże” (2026-10-10)
+
+**Zakres:** bezpośrednio pobrałem `csv/KANDYDACI-wszystkie-branze.csv` (289 rekordów + nagłówek) i zbadałem reprezentację 16 kategorii, kompletność pól, powtórzenia nazw oraz wybrane firmy w publicznych źródłach. **Żaden z 289 wierszy nie ma statusu ręcznej weryfikacji.** To preselekcja, nie gotowa lista kampanii.
+
+### Sprawdzone nowe problemy
+
+| Rekord | Obserwacja i dowód | Korekta zalecana |
+|---|---|---|
+| **Actief Werkt!** (Biura i usługi B2B) | Oficjalnie ma **77 placówek i lokalizacji inhouse**, to ogólnokrajowa sieć, a nie mały niezależny B2B. https://www.actiefwerkt.nl/contact | Oznaczyć „sieć / możliwe centralne zakupy”, wyłączyć z kryterium „nie sieć” lub osobno kwalifikować |
+| **Cosmo Hairstyling** (Beauty) | Oficjalna witryna podaje **40 salonów**. https://www.cosmohairstyling.com/salons | Ogólnokrajowa sieć; nie oferować lokalnej korekty szyldu jak niezależnemu salonowi bez weryfikacji uprawnień oddziału |
+| **ANAC** (Motoryzacja) | Oficjalna lista pokazuje **wiele myjni** w różnych miastach NL/BE, w tym Eindhoven. https://www.anaccarwash.com/locaties/ | Oznaczyć sieć i możliwe centralne standardy oznakowania; zweryfikować decydenta |
+| **E.T.V. Volley / ETPV Volley** (Fitness i sport) | Oficjalna witryna wskazuje **stowarzyszenie tenisa i padla**, nie komercyjne studio fitness. https://www.etv-volley.nl/ ; https://www.etv-volley.nl/lid-worden | Przenieść do „kluby sportowe/stowarzyszenia”, potencjał: odzież klubowa, banery sponsorów, tablice wydarzeń (nie „grafika ścienna i witryna” jak studio fitness) |
+| **Bike Totaal Bito** (Sklepy) | Bike Totaal to **sieć ponad 170 sklepów należących do niezależnych przedsiębiorców**, marka działa jako kooperatywa, nie typowa franczyza. https://www.biketotaal.nl/winkels ; https://www.biketotaal.nl/over-ons | Oznaczyć „wspólna marka, niezależny lokalny przedsiębiorca”; sprawdzić, czy lokalne grafiki wolno zlecać zewnętrznie, nie odrzucać bezwarunkowo |
+| **B-Covered** (Sklepy lokalne) | Oficjalna strona opisuje **pracownię architektury wnętrz/projektowania i realizacji**, nie sklep detaliczny. https://www.b-covered.com/nl/ | Przenieść do usług architektoniczno-projektowych; bardziej prawdopodobne: partnerstwo, materiały do realizacji, oznakowanie pracowni, nie standardowa „witryna sklepowa” |
+
+### Wyniki kontroli struktury CSV
+
+- Dokładnie **289 wpisów** (290 linii razem z nagłówkiem), rozłożonych na **16 kategorii**.
+- **289/289** ma URL strony WWW i **289/289** ma status „niezweryfikowany przez człowieka”.
+- **36/289** ma jawnie „brak sygnału” w polu zapotrzebowania. Pozostałe nie są potwierdzonymi leadami zakupowymi — część ma wzmianki bez dat.
+- Nie wykryłem dosłownych duplikatów nazw w obrębie 289 rekordów, ale to nie wyklucza wielokrotnych podmiotów pod różnymi nazwami lub oddziałów jednej sieci.
+- Kolumny „produkt główny” są w znacznej mierze **identycznymi formułkami na kategorię**, więc nie interpretować ich jako zweryfikowanej potrzeby konkretnej firmy.
+- Trzeba oddzielić **sieci z zakupami centralnymi, lokalne placówki niezależnych kooperatyw, stowarzyszenia, B2B projektowe i właściwych klientów końcowych** — automatyczne wykluczenie wszystkich rozpoznawalnych marek także byłoby błędem.
+
+### Rekomendacja dla Claude
+
+Popraw przede wszystkim **błędny typ działalności i tryb decyzji zakupowej** bez niepotrzebnego zwężania listy 289. Dodaj pola: `Forma działalności / sieć / kooperatywa`, `Zakupy lokalnie vs centrala: nieustalone`, `Prawdopodobna grupa produktu GW`. Uporządkuj wspólne brandy: nie sugeruj, że 40 salonów Cosmo to 40 niezależnych decydentów. Nie usuwaj klubów sportowych, lecz proponuj właściwy produkt i oznacz inny tryb kontaktu. Następna runda powinna sprawdzić firmy w gastronomii i sklepach pod kątem realnego istnienia, kategorii i lokalizacji.
+
+— ChatGPT
