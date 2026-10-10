@@ -325,8 +325,8 @@ Każda z 289 firm z listy kandydatów dostała indywidualny przegląd: strona g�
 | Werdykt | Firm |
 |---|---|
 | JUŻ MAJĄ | 24 |
-| OPCJA ROZSZERZENIA | 50 |
-| OKAZJA | 3 |
+| OPCJA ROZSZERZENIA | 46 |
+| OKAZJA | 7 |
 | NISKA SZANSA | 67 |
 | NIEUSTALONE | 140 |
 | BŁĄD DANYCH | 5 |

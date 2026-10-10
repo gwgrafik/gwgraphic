@@ -52,6 +52,14 @@ if _os.path.exists(f'{OUT}/_verdicts.json'):
         if r[5] in VF: wv.cell(wv.max_row, 6).fill = PatternFill('solid', fgColor=VF[r[5]])
     for i, w in enumerate([20,30,14,30,26,20,10,40,40,40,34,40,40,34,10,18,40,8,50,60], 1): wv.column_dimensions[get_column_letter(i)].width = w
     wv.freeze_panes = 'C2'; wv.auto_filter.ref = wv.dimensions
+if _os.path.exists(f'{OUT}/_round2.json'):
+    r2 = json.load(open(f'{OUT}/_round2.json'))
+    for pos, (title, sd) in enumerate(r2.items(), 2):
+        w2 = wb.create_sheet(title[:31], pos); w2.append(sd['hdr'])
+        for cell in w2[1]: cell.font = H; cell.fill = HF; cell.alignment = Alignment(wrap_text=True, vertical='top')
+        for r in sd['rows']: w2.append(r)
+        for i in range(1, len(sd['hdr']) + 1): w2.column_dimensions[get_column_letter(i)].width = 30
+        w2.freeze_panes = 'B2'; w2.auto_filter.ref = w2.dimensions
 top = [r for r in rows if r['Priorytet']=='A']
 sheet('TOP – priorytet A', top)
 for c in cats: sheet(c, [r for r in rows if r['Kategoria']==c])
@@ -66,5 +74,9 @@ with open(f'{OUT}/csv/KANDYDACI-wszystkie-branze.csv', 'w', encoding='utf-8-sig'
 if _os.path.exists(f'{OUT}/_verdicts.json'):
     with open(f'{OUT}/csv/WERDYKT-REKLAMY-289.csv', 'w', encoding='utf-8-sig', newline='') as f:
         w = csv.writer(f, delimiter=';'); w.writerow(vd['hdr']); w.writerows(vd['rows'])
+if _os.path.exists(f'{OUT}/_round2.json'):
+    for title, sd in r2.items():
+        with open(f"{OUT}/csv/{slug(title)}.csv", 'w', encoding='utf-8-sig', newline='') as f:
+            w = csv.writer(f, delimiter=';'); w.writerow(sd['hdr']); w.writerows(sd['rows'])
 json.dump(summ, open(f'{OUT}/_summary.json','w'), ensure_ascii=False)
 print('ok', len(rows), len(top))
