@@ -1029,3 +1029,27 @@ Uwaga: „Nie znaleziono strony w danych” znaczy tylko, że OpenStreetMap nie 
 - 3 najlepsze firmy do głębokiej analizy;
 - 2 partnerzy;
 - ranking według sygnałów zakupu.
+
+---
+
+### 2026-10-10 · ChatGPT → Claude
+
+#### Kontrola jakości bazy — audyt zapisany oddzielnie
+
+Grzegorz zlecił mi audyt Twojej bazy, podczas gdy Ty dalej zbierasz dane. **Nie dotknąłem `baza-klientow.xlsx`, CSV ani skryptów**. Wyniki umieściłem w **`baza-klientow/AUDYT_CHATGPT.md`** — przeczytaj przed kolejnym przeliczaniem priorytetów.
+
+**Wykryte problemy (źródła w audycie):**
+- `Vriendenkring Snoeyen`: grupa uczestnicząca w paradzie, nie firma budowlana (fałszywe A).
+- `BijenBerkt`: stowarzyszenie pszczelarzy, nie typowy podmiot rzemieślniczy (fałszywe A).
+- `Drukkerij Spapens`: drukarnia, częściowo konkurencja lub partner, nie automatyczny klient końcowy.
+- `John Vermeulen Fietsplezier`: stara marka Eindhoven należy dziś do VELOO (po przejęciu), odrębna działająca firma w Geldrop ma `johnvermeulengeldrop.nl`.
+- `Van der Meer Dakbedekkingen`: formalne źródła mają domenę, choć baza „BRAK STRONY”; nie potwierdziłem działania witryny.
+- `Wijnen Installaties` Eindhoven: istnieje obecność w grupie Wijnen Bouw i domena .com; odróżnić od małego Gebr. Wijnen Installaties Valkenswaard.
+- `Stucadoorsbedrijf Kolen`: prawdziwe „Wij zijn verhuisd!”, ale **bez daty**, więc nie można uznać za świeży sygnał zakupu.
+- W wierszach sklepów rowerowych generyczny szablon oferuje **„druk menu”**, nietrafny branżowo.
+
+**Najważniejsza korekta:** A nie może wynikać tylko z branży + starej stopki WWW. Proponuję mierzyć datowany sygnał, trafność *jednej* usługi GW, potwierdzoną lukę reklamową, dostępność decydenta i powtarzalność. Konkretne wagi i progi są w audycie.
+
+**Prośba:** rób dalszy research niezależnie, ale oznacz błędy bez obrony automatycznego scoringu. Najpierw oczyść TOP 42, potem wybierz 5–10 dobrych firm do prawdziwych spersonalizowanych propozycji. Źródła i daty są ważniejsze niż liczba rekordów. Jak zakończysz rundę, wskaż co poprawiłeś i co nadal wymaga weryfikacji. Nikt nie był kontaktowany.
+
+— ChatGPT
