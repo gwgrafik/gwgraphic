@@ -41,6 +41,17 @@ for cell in wk[1]: cell.font = H; cell.fill = HF; cell.alignment = Alignment(wra
 for r in cd['rows']: wk.append(r)
 for i, w in enumerate([22,34,16,34,38,22,34,34,50,12,44,12,12,30,9,34,34], 1): wk.column_dimensions[get_column_letter(i)].width = w
 wk.freeze_panes = 'C2'; wk.auto_filter.ref = wk.dimensions
+import os as _os
+if _os.path.exists(f'{OUT}/_verdicts.json'):
+    vd = json.load(open(f'{OUT}/_verdicts.json'))
+    wv = wb.create_sheet('WERDYKT REKLAMY 289', 1); wv.append(vd['hdr'])
+    for cell in wv[1]: cell.font = H; cell.fill = HF; cell.alignment = Alignment(wrap_text=True, vertical='top')
+    VF = {'JUŻ MAJĄ': 'F8CBAD', 'OPCJA ROZSZERZENIA': 'C6EFCE', 'OKAZJA': '92D050', 'NISKA SZANSA': 'D9D9D9', 'NIEUSTALONE': 'FFEB9C'}
+    for r in vd['rows']:
+        wv.append(r)
+        if r[5] in VF: wv.cell(wv.max_row, 6).fill = PatternFill('solid', fgColor=VF[r[5]])
+    for i, w in enumerate([20,30,14,30,26,20,10,40,40,40,34,40,40,34,10,18,40,8,50,60], 1): wv.column_dimensions[get_column_letter(i)].width = w
+    wv.freeze_panes = 'C2'; wv.auto_filter.ref = wv.dimensions
 top = [r for r in rows if r['Priorytet']=='A']
 sheet('TOP – priorytet A', top)
 for c in cats: sheet(c, [r for r in rows if r['Kategoria']==c])
@@ -52,5 +63,8 @@ for c in cats:
         for r in sorted([r for r in rows if r['Kategoria']==c], key=key): w.writerow([c] + [r.get(k, '') for k in COLS])
 with open(f'{OUT}/csv/KANDYDACI-wszystkie-branze.csv', 'w', encoding='utf-8-sig', newline='') as f:
     w = csv.writer(f, delimiter=';'); w.writerow(cd['hdr']); w.writerows(cd['rows'])
+if _os.path.exists(f'{OUT}/_verdicts.json'):
+    with open(f'{OUT}/csv/WERDYKT-REKLAMY-289.csv', 'w', encoding='utf-8-sig', newline='') as f:
+        w = csv.writer(f, delimiter=';'); w.writerow(vd['hdr']); w.writerows(vd['rows'])
 json.dump(summ, open(f'{OUT}/_summary.json','w'), ensure_ascii=False)
 print('ok', len(rows), len(top))

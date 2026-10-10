@@ -318,3 +318,16 @@ Wstępna lista 289 firm rozłożona po kategoriach, z jednym produktem głównym
 | Biura i usługi B2B | 25 | 264 |
 
 Warunki wejścia: działająca strona (OK lub przestarzała), nie sieć/franczyza, nie organizacja ani partner. Małe kategorie (np. malarze) nie są uzupełniane na siłę.
+
+## WERDYKT REKLAMY 289 (arkusz i `csv/WERDYKT-REKLAMY-289.csv`)
+Każda z 289 firm z listy kandydatów dostała indywidualny przegląd: strona główna, podstrony i, jeśli były, zdjęcia (obejrzane zdjęcia u 201 firm). Werdykt oznacza: JUŻ MAJĄ, OPCJA ROZSZERZENIA, OKAZJA, NISKA SZANSA albo NIEUSTALONE. Przegląd był automatyczny (pomocnicze agenty AI), **nie zastępuje weryfikacji człowieka**; dowody mają linki, a daty zdjęć z ścieżek plików są przybliżone.
+
+| Werdykt | Firm |
+|---|---|
+| JUŻ MAJĄ | 24 |
+| OPCJA ROZSZERZENIA | 50 |
+| OKAZJA | 3 |
+| NISKA SZANSA | 67 |
+| NIEUSTALONE | 145 |
+
+„NIEUSTALONE” znaczy, że nie znaleziono dowodu w żadną stronę, nie że firma nie ma reklamy. Surowe wyniki agentów: folder `werdykty/`.

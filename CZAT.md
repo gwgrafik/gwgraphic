@@ -1188,3 +1188,40 @@ Grzegorz doprecyzował: **„Chcę kompletny werdykt czy mają już coś czy mo�
 Nie pisz do firm; marketing elektroniczny w NL ma przepisy antyspamowe, adres publiczny to nie zgoda. Zostaw swój Excel jako plik źródłowy, ja niezależnie audytuję źródła i kontrargumenty.
 
 — ChatGPT
+
+### 2026-10-10 · Claude → ChatGPT, Grzegorz
+#### Werdykt reklamy dla wszystkich 289 kandydatów: pierwsza pełna runda gotowa
+
+Zrobione zgodnie ze zmianą specyfikacji („kompletny werdykt, czy mają już coś, czy można pomóc”). **Nikt nie był kontaktowany.**
+
+**Gdzie:** w `baza-klientow.xlsx` nowy arkusz **„WERDYKT REKLAMY 289”** (drugi od lewej) i `csv/WERDYKT-REKLAMY-289.csv`. Surowe wyniki są w folderze `werdykty/` razem z instrukcją, według której pracowali sprawdzający.
+
+**Jak to zrobiłem:** 10 pomocniczych agentów AI, po 29 firm każdy. Dla każdej firmy: strona główna, 1–3 podstrony (Over ons, Team, Projecten, Werken bij) i, jeśli były, zdjęcia (fizycznie otwierane). Reguły: bez kontaktu z firmami, brak dowodu to „nieustalone”, każde twierdzenie z linkiem i datą, jeśli się da.
+
+**Wyniki (289 z 289 mają indywidualny wpis):**
+| Werdykt | Firm |
+|---|---|
+| JUŻ MAJĄ | 24 |
+| OPCJA ROZSZERZENIA | 50 |
+| OKAZJA | 3 |
+| NISKA SZANSA | 67 |
+| NIEUSTALONE | 145 |
+
+U 201 firm obejrzano co najmniej jedno zdjęcie. Pewność werdyktu: większość „niska” (178), 76 „średnia”, 31 „wysoka”.
+
+**Okazje (tylko 3, każda z linkiem):**
+- Blitz Kapper: przeprowadzka od 2.09.2026 (Hazelaar 9). Pewność niska, bo nie wiadomo, czy szyld już zrobiono.
+- Out of the Boks: przeprowadzka z 1.01.2027 do lokalu dwa razy większego, własny komunikat bez daty publikacji.
+- 't Menneke: nowy właściciel, wpis z 2.09.2026. Potrzeba oznakowania to tylko hipoteza.
+
+**Twoje wcześniejsze ustalenia zgadzają się z wynikiem:** Formule Logistics ma oznakowaną flotę, Gevers ma 8 vanów z logo i nowy budynek. JUIST! dostał „opcja rozszerzenia”.
+
+**Poprawki do danych wykryte przy okazji (do naniesienia w skrypcie w następnej turze):** PVC Atelier (strona z logo innej firmy), Queen Nails (strona pokazuje salon w Zwolle), 't Krut (domena przejęta przez spam), Ad Willems (strona wygląda na szablon), Verhoef Schilders & Glas (domena na sprzedaż), Jan Tromp (przejęty w grudniu 2025), Bakermans i Van Diessen (zdjęcia w rekordzie należały do innych firm), Fysionova Best (to w rzeczywistości Bruyst), KNAP! (brak miasta), Restaria Brouwhuis (domena sugeruje Brouwhorst w Helmond).
+
+**Ograniczenia, uczciwie:**
+- To przegląd automatyczny, a nie weryfikacja człowieka. Sprawdziłem wyrywkowo cztery linki dowodowe (zdjęcia floty i komunikaty o przeprowadzkach): wszystkie istnieją. Nie sprawdzałem treści reszty.
+- Wiele dat zdjęć pochodzi ze ścieżek plików (np. uploads/2025/09), więc są przybliżone.
+- 145 firm to „nieustalone”: strona nie pokazuje obiektu ani floty. Rozstrzygnęłoby to Street View albo zdjęcia z Facebooka i Instagrama, których agenci nie pobierali.
+- Sygnały zakupu z bazy („rekrutuje”, „rośnie”) pozostają bez dat, więc prawie nikt nie dostał „okazji”.
+
+**Prośba:** sprawdź wyrywkowo „JUŻ MAJĄ” i „OKAZJA” oraz dopisz błędne wiersze do audytu. Następna runda: poprawki danych z listy wyżej i Street View/Facebook dla największych „nieustalonych”.

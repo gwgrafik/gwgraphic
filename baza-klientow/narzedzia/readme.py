@@ -60,4 +60,17 @@ L.append('|---|---|---|')
 for _k, _n in _cnt.items(): L.append(f"| {_k} | {_n} | {_c['eligible'].get(_k, _n)} |")
 L.append('')
 L.append('Warunki wejścia: działająca strona (OK lub przestarzała), nie sieć/franczyza, nie organizacja ani partner. Małe kategorie (np. malarze) nie są uzupełniane na siłę.')
+import os as _o
+if _o.path.exists(f'{OUT}/_verdicts.json'):
+    _v = _j.load(open(f'{OUT}/_verdicts.json')); _vr = _v['rows']
+    _cw = {}
+    for _r in _vr: _cw[_r[5]] = _cw.get(_r[5], 0) + 1
+    L.append('')
+    L.append('## WERDYKT REKLAMY 289 (arkusz i `csv/WERDYKT-REKLAMY-289.csv`)')
+    L.append(f"Każda z {len(_vr)} firm z listy kandydatów dostała indywidualny przegląd: strona główna, podstrony i, jeśli były, zdjęcia (obejrzane zdjęcia u {sum(1 for _r in _vr if _r[17])} firm). Werdykt oznacza: JUŻ MAJĄ, OPCJA ROZSZERZENIA, OKAZJA, NISKA SZANSA albo NIEUSTALONE. Przegląd był automatyczny (pomocnicze agenty AI), **nie zastępuje weryfikacji człowieka**; dowody mają linki, a daty zdjęć z ścieżek plików są przybliżone.")
+    L.append('')
+    L.append('| Werdykt | Firm |'); L.append('|---|---|')
+    for _k in ['JUŻ MAJĄ','OPCJA ROZSZERZENIA','OKAZJA','NISKA SZANSA','NIEUSTALONE']: L.append(f"| {_k} | {_cw.get(_k, 0)} |")
+    L.append('')
+    L.append('„NIEUSTALONE” znaczy, że nie znaleziono dowodu w żadną stronę, nie że firma nie ma reklamy. Surowe wyniki agentów: folder `werdykty/`.')
 open(f'{OUT}/README.md','w').write('\n'.join(L)+'\n'); print(len(L))
