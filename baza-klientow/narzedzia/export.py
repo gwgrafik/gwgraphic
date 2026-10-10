@@ -39,7 +39,7 @@ cd = json.load(open(f'{OUT}/_cand.json'))
 wk = wb.create_sheet('KANDYDACI – wszystkie branże', 1); wk.append(cd['hdr'])
 for cell in wk[1]: cell.font = H; cell.fill = HF; cell.alignment = Alignment(wrap_text=True, vertical='top')
 for r in cd['rows']: wk.append(r)
-for i, w in enumerate([22,34,16,34,38,22,34,34,50,12,44,12,12,30,9], 1): wk.column_dimensions[get_column_letter(i)].width = w
+for i, w in enumerate([22,34,16,34,38,22,34,34,50,12,44,12,12,30,9,34,34], 1): wk.column_dimensions[get_column_letter(i)].width = w
 wk.freeze_panes = 'C2'; wk.auto_filter.ref = wk.dimensions
 top = [r for r in rows if r['Priorytet']=='A']
 sheet('TOP – priorytet A', top)

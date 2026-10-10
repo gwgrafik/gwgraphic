@@ -24,6 +24,19 @@ FIT = {'Dekarze':3,'Budowlanka i remonty':3,'Malarze':3,'Instalatorzy i elektryc
 QUOTA = {'Gastronomia':30,'Sklepy lokalne':30,'Biura i usługi B2B':25,'Fryzjerzy i beauty':25,'Fitness i sport':20,'Motoryzacja':25,'Zdrowie i fizjoterapia':15,'Inne rzemiosło':15}
 def osm_link(src):
     m = re.search(r'(node|way|relation)/(\d+)', src or ''); return f'https://www.openstreetmap.org/{m.group(1)}/{m.group(2)}' if m else ''
+def regdom(u):
+    m = re.match(r'https?://(?:www\.)?([^/:]+)', u or '', re.I); h = m.group(1).lower() if m else ''
+    return '.'.join(h.split('.')[-2:])
+DOMCOUNT = collections.Counter(regdom(r['Strona WWW']) for r in rows if r['Strona WWW'])
+# korekty po audycie ChatGPT (sekcja 7): typ podmiotu i tryb zakupów
+OVR = {
+ 'Actief Werkt': ('sieć ogólnokrajowa (77 lokalizacji)', 'możliwe centralne zakupy', None),
+ 'Cosmo Hairstyling': ('sieć ogólnokrajowa (40 salonów)', 'możliwe centralne standardy; uprawnienia oddziału nieustalone', None),
+ 'ANAC': ('sieć myjni', 'możliwe centralne standardy oznakowania', None),
+ 'E.T.V. Volley': ('stowarzyszenie tenisa i padla', 'zarząd klubu; tryb kontaktu inny niż firma', ('odzież klubowa', 'banery sponsorów, tablice wydarzeń')),
+ 'B-Covered': ('pracownia architektury wnętrz (nie sklep)', 'nieustalone', ('oznakowanie pracowni', 'materiały do realizacji (możliwe partnerstwo)')),
+ 'Bike Totaal': ('wspólna marka niezależnych przedsiębiorców (kooperatywa)', 'lokalny właściciel; zakres decyzji do sprawdzenia', None),
+}
 cand = collections.defaultdict(list)
 for r in rows:
     c = r['Kategoria']
@@ -35,10 +48,17 @@ for r in rows:
     evid = 'średnia' if (emp or sig) else 'niska'
     sel = fit * 3 + (2 if evid == 'średnia' else 0) + (1 if r['Stan strony'] == 'PRZESTARZAŁA' else 0)
     p1, p2 = PROD[c]
+    forma, zakupy = 'niezależna firma (domyślnie, niezweryfikowane)', 'nieustalone'
+    for k, (f, z, pp) in OVR.items():
+        if r['Firma'].startswith(k):
+            forma, zakupy = f, z
+            if pp: p1, p2 = pp
+    if forma.startswith('niezależna') and DOMCOUNT[regdom(r['Strona WWW'])] >= 3:
+        forma, zakupy = 'wspólna marka (≥3 wpisy z tą domeną w bazie)', 'nieustalone; możliwe centralne zakupy'
     cand[c].append(dict(sel=sel, row=[c, r['Firma'], r['Miasto'], r['Strona WWW'], f"{r['Stan strony']}; social: {r['Social media (znalezione)'] or 'nie znaleziono na stronie'}",
         'NIEUSTALONE (wymaga zdjęć)', p1, p2, (r['Strona WWW'] + (' ; ' + osm_link(r['Źródło']) if osm_link(r['Źródło']) else '')), r['Sprawdzono'],
-        ('bez daty: ' + sig) if sig else 'brak sygnału', fit, evid, 'niezweryfikowany przez człowieka (strona pobrana automatycznie)', 'klient']))
-HDR = ['Kategoria','Firma','Miasto','Strona WWW','Obecność WWW (potwierdzone)','Auta / odzież / witryna','Produkt GW (główny)','Produkt GW (dodatkowy)','Dowód (link)','Data obserwacji','Sygnał zapotrzebowania','Dopasowanie do GW (1-5)','Pewność dowodów','Status weryfikacji','Typ']
+        ('bez daty: ' + sig) if sig else 'brak sygnału', fit, evid, 'niezweryfikowany przez człowieka (strona pobrana automatycznie)', 'klient', forma, zakupy]))
+HDR = ['Kategoria','Firma','Miasto','Strona WWW','Obecność WWW (potwierdzone)','Auta / odzież / witryna','Prawdopodobna grupa produktu GW (z kategorii, nie z potrzeby firmy)','Produkt GW (dodatkowy)','Dowód (link)','Data obserwacji','Sygnał zapotrzebowania','Dopasowanie do GW (1-5)','Pewność dowodów','Status weryfikacji','Typ','Forma działalności','Zakupy: lokalnie czy centrala']
 out = []
 for c, L in cand.items():
     L.sort(key=lambda x: (-x['sel'], x['row'][1].lower()))
