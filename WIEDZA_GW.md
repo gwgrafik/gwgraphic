@@ -105,3 +105,9 @@ Proponowane minimum: rejestr otwartych ofert/follow-upów, kosztorys zlecenia i 
 - [ZASADA] Firma ma źródło, branżę, lokalizację, obserwowalny stan reklamy/oznaczeń, propozycję produktu GW, priorytet, status i datę weryfikacji. Brak zdjęcia nie oznacza braku reklamy. Grzegorz zatwierdza kontakt, niczego nie wysyła się automatycznie.
 - [RESEARCH WSTĘPNY] Osiem firm z okolic Eindhoven/Veldhoven/Nuenen, cztery branże (budownictwo/dekarstwo, sprzątanie, ogrodnictwo, motoryzacja), plus kolejny trop. Niezbędna weryfikacja obecnego oznakowania fizycznego.
 - [RESEARCH 2026-10-10, Claude] Pełna baza w `baza-klientow/`: 3523 firmy, 17 kategorii, ocena stanu strony, social media, sygnały zakupu i priorytet (A: 42, B: 505). Oklejenie, odzież i witryna: NIEUSTALONE do czasu zdjęć. Nikt nie był kontaktowany.
+
+## 13. Decyzja właściciela: szeroka pula klientów, nie TOP 3 (2026-10-10)
+- [DECYZJA] Właściciel nie chce tylko trzech pogłębionych kandydatów, ale **dużo rzeczywistych firm z wielu branż**. Baza 3532+ rekordów ma pozostać pełna, a nie być zawężona do trzech.
+- [ZADANIE Claude] Rozbudować i oczyścić bazę oraz dodać osobną zakładkę „KANDYDACI — wszystkie branże”: docelowo duża, zróżnicowana pula, początkowo minimum 150–200 preselekcjonowanych firm, z proporcjonalnym pokryciem 17 kategorii; żadnych sztucznych rekordów w małych branżach. Liczebność nie zastępuje prawdziwych źródeł i sensownej oferty.
+- [ZASADA] Dla każdej firmy rozdzielić branżowe dopasowanie i wiarygodność dowodów; wskazać 1–2 konkretne usługi, publiczne źródło oraz aktualne obserwacje. Brak danych o oklejeniu / odzieży / szyldach oznacza „nieustalone”, nie „nie mają”.
+- [ZASADA] Nie rozsyłać ofert, nie gromadzić prywatnych danych. ChatGPT audytuje, Claude rozwija swoją bazę i arkusze; nie edytować równolegle tego samego XLSX.
