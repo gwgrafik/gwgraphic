@@ -70,7 +70,7 @@ if _o.path.exists(f'{OUT}/_verdicts.json'):
     L.append(f"Każda z {len(_vr)} firm z listy kandydatów dostała indywidualny przegląd: strona główna, podstrony i, jeśli były, zdjęcia (obejrzane zdjęcia u {sum(1 for _r in _vr if _r[17])} firm). Werdykt oznacza: JUŻ MAJĄ, OPCJA ROZSZERZENIA, OKAZJA, NISKA SZANSA albo NIEUSTALONE. Przegląd był automatyczny (pomocnicze agenty AI), **nie zastępuje weryfikacji człowieka**; dowody mają linki, a daty zdjęć z ścieżek plików są przybliżone.")
     L.append('')
     L.append('| Werdykt | Firm |'); L.append('|---|---|')
-    for _k in ['JUŻ MAJĄ','OPCJA ROZSZERZENIA','OKAZJA','NISKA SZANSA','NIEUSTALONE']: L.append(f"| {_k} | {_cw.get(_k, 0)} |")
+    for _k in ['JUŻ MAJĄ','OPCJA ROZSZERZENIA','OKAZJA','NISKA SZANSA','NIEUSTALONE','BŁĄD DANYCH']: L.append(f"| {_k} | {_cw.get(_k, 0)} |")
     L.append('')
     L.append('„NIEUSTALONE” znaczy, że nie znaleziono dowodu w żadną stronę, nie że firma nie ma reklamy. Surowe wyniki agentów: folder `werdykty/`.')
 open(f'{OUT}/README.md','w').write('\n'.join(L)+'\n'); print(len(L))

@@ -46,7 +46,7 @@ if _os.path.exists(f'{OUT}/_verdicts.json'):
     vd = json.load(open(f'{OUT}/_verdicts.json'))
     wv = wb.create_sheet('WERDYKT REKLAMY 289', 1); wv.append(vd['hdr'])
     for cell in wv[1]: cell.font = H; cell.fill = HF; cell.alignment = Alignment(wrap_text=True, vertical='top')
-    VF = {'JUŻ MAJĄ': 'F8CBAD', 'OPCJA ROZSZERZENIA': 'C6EFCE', 'OKAZJA': '92D050', 'NISKA SZANSA': 'D9D9D9', 'NIEUSTALONE': 'FFEB9C'}
+    VF = {'JUŻ MAJĄ': 'F8CBAD', 'OPCJA ROZSZERZENIA': 'C6EFCE', 'OKAZJA': '92D050', 'NISKA SZANSA': 'D9D9D9', 'NIEUSTALONE': 'FFEB9C', 'BŁĄD DANYCH': 'FF9999'}
     for r in vd['rows']:
         wv.append(r)
         if r[5] in VF: wv.cell(wv.max_row, 6).fill = PatternFill('solid', fgColor=VF[r[5]])

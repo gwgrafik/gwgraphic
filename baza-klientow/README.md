@@ -36,16 +36,16 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 | Kategoria | Firm | Priorytet A | Priorytet B | Strona OK | Strona przestarzała | Strona z błędem | Brak strony (dane firmy) | Nie znaleziono strony w danych | Nieustalone | Z sygnałem zakupu | Sieci |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Dekarze | 11 | 1 | 9 | 9 | 0 | 0 | 0 | 0 | 2 | 10 | 0 |
-| Budowlanka i remonty | 31 | 2 | 25 | 22 | 1 | 0 | 1 | 3 | 4 | 19 | 0 |
-| Malarze | 8 | 1 | 6 | 4 | 1 | 1 | 0 | 0 | 2 | 4 | 0 |
+| Budowlanka i remonty | 31 | 2 | 24 | 22 | 1 | 0 | 1 | 3 | 4 | 19 | 0 |
+| Malarze | 8 | 1 | 5 | 4 | 1 | 1 | 0 | 0 | 2 | 4 | 0 |
 | Instalatorzy i elektrycy | 34 | 5 | 24 | 19 | 4 | 0 | 0 | 7 | 4 | 19 | 0 |
 | Ogrody i zieleń | 14 | 5 | 7 | 10 | 3 | 0 | 0 | 1 | 0 | 7 | 0 |
 | Sprzątanie | 21 | 6 | 12 | 15 | 1 | 2 | 0 | 0 | 3 | 15 | 0 |
 | Transport i logistyka | 20 | 3 | 14 | 12 | 2 | 0 | 1 | 2 | 3 | 16 | 1 |
 | Motoryzacja | 169 | 7 | 81 | 73 | 10 | 3 | 0 | 74 | 9 | 29 | 47 |
 | Szkoły jazdy | 11 | 0 | 7 | 7 | 0 | 0 | 0 | 2 | 2 | 5 | 0 |
-| Inne rzemiosło | 61 | 2 | 42 | 23 | 5 | 1 | 0 | 23 | 9 | 9 | 0 |
-| Fryzjerzy i beauty | 346 | 0 | 27 | 118 | 17 | 6 | 0 | 188 | 17 | 41 | 12 |
+| Inne rzemiosło | 61 | 1 | 42 | 23 | 5 | 1 | 0 | 23 | 9 | 9 | 0 |
+| Fryzjerzy i beauty | 346 | 0 | 26 | 118 | 17 | 6 | 0 | 188 | 17 | 41 | 12 |
 | Zdrowie i fizjoterapia | 102 | 0 | 25 | 53 | 11 | 1 | 0 | 27 | 10 | 31 | 2 |
 | Fitness i sport | 229 | 0 | 11 | 90 | 2 | 2 | 0 | 129 | 6 | 35 | 11 |
 | Gastronomia | 1414 | 1 | 140 | 671 | 78 | 22 | 0 | 546 | 97 | 302 | 95 |
@@ -53,7 +53,7 @@ Stan: 2026-10-10. Autor: Claude. **Nikt nie był kontaktowany.** Kontakt tylko p
 | Biura i usługi B2B | 507 | 0 | 23 | 249 | 20 | 10 | 0 | 198 | 30 | 159 | 9 |
 | Partnerzy (dostawcy) | 2 | 0 | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 1 | 0 |
 | Organizacje i stowarzyszenia | 32 | 0 | 0 | 23 | 3 | 0 | 0 | 6 | 0 | 5 | 0 |
-| RAZEM | 3532 | 38 | 507 | 1676 | 195 | 60 | 2 | 1367 | 232 | 862 | 291 |
+| RAZEM | 3532 | 37 | 504 | 1676 | 195 | 60 | 2 | 1367 | 232 | 862 | 291 |
 
 ## Najlepsi kandydaci w każdej kategorii (max 8)
 
@@ -92,11 +92,11 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | A | VermulstBenders Schilderwerken | Helmond | https://schilderwerken-vb.nl/ | PRZESTARZAŁA | rekrutuje | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okle |
 | B | KB schilder-, glas- en behangwerken | Eindhoven/Veldhoven | https://kbschilderwerken.nl/ | BŁĄD STRONY (do potwierdzenia) | — | nowa/naprawiona strona; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Schildersbedrijf van de Looy | Veldhoven | https://vandelooy.nl/ | OK | rekrutuje; rośnie zatrudnienie | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/oklejenie dla nowych ludzi i aut |
-| B | Verhoef Schilders & Glas | Veldhoven | https://verhoefschilders.nl/ | OK | wg strony 180+ fachowców (cała NL) | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Edwin van Gool Schilderwerken | Eindhoven | https://edwinvangool.nl/ | OK | — | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Paint and More Brabant | Eindhoven | https://www.paintandmorebrabant.nl/ | OK | — | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Schildersbedrijf van der Kruijs | Eindhoven | https://vanderkruijs.nl/ | NIEUSTALONE (brak połączenia z mojego środowiska) | większa firma, 30 osób; rekrutuje (posty/vacatures) | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | C | Schildersbedrijf Leo Baeten | Eindhoven | https://leobaeten.nl/ | NIEUSTALONE (brak połączenia z mojego środowiska) | — | oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| C | Verhoef Schilders & Glas | Veldhoven | https://verhoefschilders.nl/ | OK | wg strony 180+ fachowców (cała NL) | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 
 ### Instalatorzy i elektrycy
 
@@ -181,13 +181,13 @@ Pełne listy są w Excelu. Kolumna „Szansa dla GW” w Excelu mówi, co konkre
 | Prio | Firma | Miasto | Strona | Stan strony | Sygnały | Szansa dla GW |
 |---|---|---|---|---|---|---|
 | A | Jeroen Schreurs | Eindhoven | https://www.jeroenschreurs.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
-| A | PVC Atelier | Eindhoven | https://www.pvcatelier.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia |
 | B | Café 100 Watt | Eindhoven | https://100watt.nl/cafe-100-watt/ | BŁĄD STRONY (do potwierdzenia) | — | nowa/naprawiona strona; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | De Walhut |  | https://www.imkerijdewalhut.nl | OK | sklep online | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Metaalbewerking v.d. Boogaert | Valkenswaard | https://metaalvdb.nl | OK | rekrutuje | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); odzież/okleje |
 | B | Mima schoenmakerij | Eindhoven | https://www.mimaschoenmakerij.nl/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | N°49 Chocolate | Mierlo | https://no49-chocolate.nl | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
 | B | Van Moll | Eindhoven | https://vanmollcraftbeer.com/bar/ | PRZESTARZAŁA | — | nowa strona (mobile, HTTPS); oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach) |
+| B | Volksbelang | Eindhoven | https://volksbelangeindhoven.nl/ | OK | nowa lokalizacja | materiały do social media; oklejenie aut, odzież robocza, tablice (do sprawdzenia na zdjęciach); oznakowanie n |
 
 ### Fryzjerzy i beauty
 
@@ -328,6 +328,7 @@ Każda z 289 firm z listy kandydatów dostała indywidualny przegląd: strona g�
 | OPCJA ROZSZERZENIA | 50 |
 | OKAZJA | 3 |
 | NISKA SZANSA | 67 |
-| NIEUSTALONE | 145 |
+| NIEUSTALONE | 140 |
+| BŁĄD DANYCH | 5 |
 
 „NIEUSTALONE” znaczy, że nie znaleziono dowodu w żadną stronę, nie że firma nie ma reklamy. Surowe wyniki agentów: folder `werdykty/`.

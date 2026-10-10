@@ -134,6 +134,11 @@ for r in rows:
         r['Sygnały zakupu'] = r['Sygnały zakupu'].replace('nowa lokalizacja', 'napis „Wij zijn verhuisd” bez daty (nie świeży sygnał)')
         r['Punkty'] -= 1; r['Priorytet'] = 'A' if r['Punkty'] >= 6 else ('B' if r['Punkty'] >= 4 else 'C')
         r['Ocena ogólna'] = 'Napis o przeprowadzce bez daty; nie liczony jako świeży sygnał. Wg audytu ChatGPT.'
+BAD_ALL = {'PVC Atelier': 'Strona z logo innej firmy', 'Queen Nails': 'Strona dotyczy salonu w Zwolle', "'t Krut": 'Domena przejęta przez stronę kasynową', 'Ad Willems': 'Strona nie należy do tej firmy', 'Verhoef Schilders': 'Domena na sprzedaż'}
+for r in rows:
+    for k, why in BAD_ALL.items():
+        if r['Firma'].startswith(k):
+            r['Priorytet'] = 'C'; r['Punkty'] = min(r['Punkty'], 3); r['Ocena ogólna'] = 'BŁĄD DANYCH: ' + why + ' (wg przeglądu reklamy)'
 ORG_RX = re.compile(r'wagenbouwplaats|stichting|vereniging|^gilde st\.|bijenberkt', re.I)
 for r in rows:
     if r['Kategoria'] not in ('Gastronomia', 'Organizacje i stowarzyszenia') and ORG_RX.search(r['Firma']) and not r['Firma'].startswith(('Stucadoors',)):
